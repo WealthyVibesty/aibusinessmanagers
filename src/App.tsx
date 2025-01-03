@@ -18,37 +18,29 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <AuthProvider>
-          <ThemeProvider>
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/login" element={<Login />} />
-              <Route
-                path="/dashboard"
-                element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/profile"
-                element={
-                  <ProtectedRoute>
-                    <Profile />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="/forum" element={<Forum />} />
-              <Route path="/forum/category/:categoryId" element={<ForumCategory />} />
-              <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
-              <Route path="/forum/new-topic" element={<NewTopic />} />
-              {/* Catch-all route for 404s */}
-              <Route path="*" element={<Landing />} />
-            </Routes>
-            <Toaster />
-          </ThemeProvider>
-        </AuthProvider>
+        <ThemeProvider>
+          <Routes>
+            {/* Public routes */}
+            <Route path="/" element={<Landing />} />
+            <Route path="/login" element={<Login />} />
+            
+            {/* Protected routes */}
+            <Route element={<AuthProvider><ProtectedRoute>Dashboard</ProtectedRoute></AuthProvider>}>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/profile" element={<Profile />} />
+            </Route>
+            
+            {/* Forum routes */}
+            <Route path="/forum" element={<Forum />} />
+            <Route path="/forum/category/:categoryId" element={<ForumCategory />} />
+            <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
+            <Route path="/forum/new-topic" element={<NewTopic />} />
+            
+            {/* Catch-all route redirects to Landing */}
+            <Route path="*" element={<Landing />} />
+          </Routes>
+          <Toaster />
+        </ThemeProvider>
       </Router>
     </QueryClientProvider>
   );
