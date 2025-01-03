@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
@@ -8,43 +8,30 @@ import { LogIn } from "lucide-react";
 
 export default function Login() {
   const navigate = useNavigate();
-  const location = useLocation();
   const [view, setView] = useState<'sign_in' | 'sign_up'>('sign_up');
 
   useEffect(() => {
-    console.log("Login page - Current location:", location.pathname);
-    
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
-      console.log("Login page - Session check:", session ? "exists" : "none");
-      
-      // Only redirect if we're actually on the login page
-      if (session && location.pathname === "/login") {
-        // Redirect to the stored 'from' location or dashboard as fallback
-        const from = location.state?.from || "/dashboard";
-        console.log("Login page - Redirecting to:", from);
-        navigate(from);
+      if (session) {
+        navigate("/");
       }
     };
 
     checkUser();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      console.log("Login page - Auth state changed:", _event);
-      // Only redirect if we're actually on the login page
-      if (session && location.pathname === "/login") {
-        const from = location.state?.from || "/dashboard";
-        console.log("Login page - Redirecting to:", from);
-        navigate(from);
+      if (session) {
+        navigate("/");
       }
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate, location]);
+  }, [navigate]);
 
   // Get the current URL for redirect
   const redirectTo = `${window.location.origin}/`;
-  console.log("Redirect URL:", redirectTo);
+  console.log("Redirect URL:", redirectTo); // Debug log
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 flex items-center justify-center p-4">
