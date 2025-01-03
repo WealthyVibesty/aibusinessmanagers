@@ -7,31 +7,37 @@ import { supabase } from "@/integrations/supabase/client";
 import type { ForumCategory, ForumTopic, Profile } from "@/types/forum";
 
 export default function ForumCategory() {
-  const { categoryId } = useParams();
+  const { categoryId } = useParams<{ categoryId: string }>();
   const navigate = useNavigate();
 
-  const { data: category } = useQuery({
+  const { data: category, isError: isCategoryError } = useQuery({
     queryKey: ["forumCategory", categoryId],
     queryFn: async () => {
       if (!categoryId) throw new Error("Category ID is required");
       
+      console.log("Fetching category with ID:", categoryId);
       const { data, error } = await supabase
         .from("forum_categories")
-        .select("*")
+        .select()
         .eq("id", categoryId)
         .maybeSingle();
       
-      if (error) throw error;
+      if (error) {
+        console.error("Error fetching category:", error);
+        throw error;
+      }
+      if (!data) throw new Error("Category not found");
       return data as ForumCategory;
     },
     enabled: !!categoryId,
   });
 
-  const { data: topics, isLoading } = useQuery({
+  const { data: topics, isLoading, isError: isTopicsError } = useQuery({
     queryKey: ["forumTopics", categoryId],
     queryFn: async () => {
       if (!categoryId) throw new Error("Category ID is required");
 
+      console.log("Fetching topics for category:", categoryId);
       const { data, error } = await supabase
         .from("forum_topics")
         .select(`
@@ -44,7 +50,10 @@ export default function ForumCategory() {
         .eq("category_id", categoryId)
         .order("created_at", { ascending: false });
       
-      if (error) throw error;
+      if (error) {
+        console.error("Error fetching topics:", error);
+        throw error;
+      }
       return data as (ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
     },
     enabled: !!categoryId,
@@ -54,6 +63,26 @@ export default function ForumCategory() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  if (isCategoryError || isTopicsError) {
+    return (
+      <div className="container mx-auto py-8 px-4">
+        <div className="text-center text-red-500">
+          Error loading forum content. Please try again later.
+        </div>
+      </div>
+    );
+  }
+
+  if (!category) {
+    return (
+      <div className="container mx-auto py-8 px-4">
+        <div className="text-center">
+          Category not found.
+        </div>
       </div>
     );
   }
@@ -71,8 +100,8 @@ export default function ForumCategory() {
 
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold">{category?.name}</h1>
-          <p className="text-muted-foreground mt-2">{category?.description}</p>
+          <h1 className="text-3xl font-bold">{category.name}</h1>
+          <p className="text-muted-foreground mt-2">{category.description}</p>
         </div>
         <Button onClick={() => navigate(`/forum/new-topic?category=${categoryId}`)}>
           <Plus className="mr-2" />
