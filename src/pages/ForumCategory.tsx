@@ -8,8 +8,7 @@ import type { ForumCategory, ForumTopic, Profile } from "@/types/forum";
 
 export default function ForumCategory() {
   const navigate = useNavigate();
-  const params = useParams<{ categoryId: string }>();
-  const categoryId = params.categoryId;
+  const { categoryId } = useParams<{ categoryId: string }>();
 
   // Redirect if no categoryId is provided
   if (!categoryId) {
@@ -26,7 +25,7 @@ export default function ForumCategory() {
         .from("forum_categories")
         .select()
         .eq('id', categoryId)
-        .maybeSingle();
+        .single();
       
       if (error) {
         console.error("Error fetching category:", error);
