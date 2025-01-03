@@ -4,7 +4,8 @@ import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
-import { LogIn } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { LogIn, Home } from "lucide-react";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -37,6 +38,14 @@ export default function Login() {
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 flex items-center justify-center p-4">
       <Card className="w-full max-w-md p-8 space-y-8 shadow-lg animate-fadeIn">
         <div className="text-center space-y-4">
+          <Button 
+            variant="ghost" 
+            className="absolute top-4 left-4"
+            onClick={() => navigate("/")}
+          >
+            <Home className="mr-2 h-4 w-4" />
+            Back to Home
+          </Button>
           <div className="flex justify-center mb-8 relative">
             <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl animate-pulse"></div>
             <LogIn className="w-16 h-16 text-primary relative animate-slideUp" />
