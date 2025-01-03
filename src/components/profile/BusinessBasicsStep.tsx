@@ -10,18 +10,22 @@ interface BusinessBasicsStepProps {
 
 export function BusinessBasicsStep({ form }: BusinessBasicsStepProps) {
   return (
-    <>
+    <div className="space-y-4">
       <FormField
         control={form.control}
         name="name"
         render={({ field }) => (
           <FormItem>
             <FormLabel>Business Name</FormLabel>
-            <FormDescription>
+            <FormDescription className="text-sm">
               The official name of your business as it appears on legal documents and marketing materials.
             </FormDescription>
             <FormControl>
-              <Input placeholder="e.g., Acme Solutions, The Coffee House" {...field} />
+              <Input 
+                placeholder="e.g., Acme Solutions, The Coffee House" 
+                {...field}
+                className="w-full"
+              />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -33,16 +37,16 @@ export function BusinessBasicsStep({ form }: BusinessBasicsStepProps) {
         render={({ field }) => (
           <FormItem>
             <FormLabel>Industry</FormLabel>
-            <FormDescription>
+            <FormDescription className="text-sm">
               Select the primary industry that best describes your business activities.
             </FormDescription>
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select your industry" />
                 </SelectTrigger>
               </FormControl>
-              <SelectContent>
+              <SelectContent className="max-h-[200px]">
                 <SelectItem value="technology">Technology & Software</SelectItem>
                 <SelectItem value="retail">Retail & E-commerce</SelectItem>
                 <SelectItem value="healthcare">Healthcare & Wellness</SelectItem>
@@ -63,12 +67,12 @@ export function BusinessBasicsStep({ form }: BusinessBasicsStepProps) {
         render={({ field }) => (
           <FormItem>
             <FormLabel>Company Size</FormLabel>
-            <FormDescription>
+            <FormDescription className="text-sm">
               The total number of employees in your organization, including full-time and part-time staff.
             </FormDescription>
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select company size" />
                 </SelectTrigger>
               </FormControl>
@@ -90,16 +94,20 @@ export function BusinessBasicsStep({ form }: BusinessBasicsStepProps) {
         render={({ field }) => (
           <FormItem>
             <FormLabel>Website</FormLabel>
-            <FormDescription>
+            <FormDescription className="text-sm">
               Your business website URL. This helps us analyze your online presence and provide better recommendations.
             </FormDescription>
             <FormControl>
-              <Input placeholder="e.g., https://www.yourbusiness.com" {...field} />
+              <Input 
+                placeholder="e.g., https://www.yourbusiness.com" 
+                {...field}
+                className="w-full"
+              />
             </FormControl>
             <FormMessage />
           </FormItem>
         )}
       />
-    </>
+    </div>
   );
 }

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { Plus, ArrowLeft, ArrowRight } from "lucide-react";
+import { Plus, ArrowLeft, ArrowRight, Google } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { BusinessBasicsStep } from "./profile/BusinessBasicsStep";
 import { TargetAudienceStep } from "./profile/TargetAudienceStep";
@@ -28,8 +28,34 @@ const steps = [
 export default function CreateProfileDialog() {
   const [open, setOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+  const [isConnectingGMB, setIsConnectingGMB] = useState(false);
   const { toast } = useToast();
   const form = useForm<ProfileFormData>();
+
+  const connectGoogleMyBusiness = async () => {
+    setIsConnectingGMB(true);
+    try {
+      // Note: In a real implementation, you would:
+      // 1. Initialize the Google Sign-In client
+      // 2. Request GMB scope permissions
+      // 3. Handle the OAuth flow
+      // 4. Get business data and auto-fill the form
+      console.log("Connecting to Google My Business...");
+      toast({
+        title: "Demo Mode",
+        description: "In a real implementation, this would connect to Google My Business API.",
+      });
+    } catch (error) {
+      console.error("GMB connection error:", error);
+      toast({
+        title: "Connection Failed",
+        description: "Failed to connect to Google My Business. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsConnectingGMB(false);
+    }
+  };
 
   const nextStep = () => {
     const fields = getFieldsForStep(currentStep);
@@ -95,17 +121,29 @@ export default function CreateProfileDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-primary hover:bg-primary/90">
+        <Button className="bg-primary hover:bg-primary/90 w-full sm:w-auto">
           <Plus className="mr-2 h-4 w-4" /> Create New Profile
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] w-[95vw] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{steps[currentStep].title}</DialogTitle>
         </DialogHeader>
         <div className="mb-4 text-sm text-muted-foreground">
           {steps[currentStep].description}
         </div>
+        {currentStep === 0 && (
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full mb-4 flex items-center justify-center"
+            onClick={connectGoogleMyBusiness}
+            disabled={isConnectingGMB}
+          >
+            <Google className="mr-2 h-4 w-4" />
+            {isConnectingGMB ? "Connecting..." : "Connect Google My Business"}
+          </Button>
+        )}
         <div className="relative mb-6">
           <div className="absolute top-0 left-0 w-full h-2 bg-gray-200 rounded">
             <div
@@ -116,22 +154,25 @@ export default function CreateProfileDialog() {
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            {renderStepContent(currentStep)}
-            <div className="flex justify-between space-x-2 pt-4">
+            <div className="space-y-4 max-h-[50vh] overflow-y-auto px-1">
+              {renderStepContent(currentStep)}
+            </div>
+            <div className="flex flex-col sm:flex-row justify-between space-y-2 sm:space-y-0 sm:space-x-2 pt-4">
               <Button
                 type="button"
                 variant="outline"
                 onClick={previousStep}
                 disabled={currentStep === 0}
+                className="w-full sm:w-auto"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" /> Previous
               </Button>
               {currentStep === steps.length - 1 ? (
-                <Button type="submit">
+                <Button type="submit" className="w-full sm:w-auto">
                   Create Profile
                 </Button>
               ) : (
-                <Button type="button" onClick={nextStep}>
+                <Button type="button" onClick={nextStep} className="w-full sm:w-auto">
                   Next <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               )}
