@@ -8,11 +8,14 @@ import type { ForumCategory, ForumTopic, Profile } from "@/types/forum";
 
 export default function ForumCategory() {
   const navigate = useNavigate();
-  const { categoryId } = useParams();
+  const { categoryId } = useParams<{ categoryId: string }>();
 
-  // Redirect if no categoryId is provided
-  if (!categoryId) {
-    console.error("No category ID provided");
+  // Validate UUID format using regex
+  const isValidUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+  // Redirect if no categoryId is provided or if it's not a valid UUID
+  if (!categoryId || !isValidUUID.test(categoryId)) {
+    console.error("Invalid or missing category ID:", categoryId);
     navigate("/forum");
     return null;
   }
