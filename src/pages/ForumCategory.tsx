@@ -8,7 +8,8 @@ import type { ForumCategory, ForumTopic, Profile } from "@/types/forum";
 
 export default function ForumCategory() {
   const navigate = useNavigate();
-  const { categoryId } = useParams();
+  const params = useParams();
+  const categoryId = params.categoryId;
 
   // Redirect if no categoryId is provided
   if (!categoryId) {
@@ -45,7 +46,7 @@ export default function ForumCategory() {
         .from("forum_topics")
         .select(`
           *,
-          profiles (
+          profiles!forum_topics_user_id_fkey (
             full_name,
             avatar_url
           )
