@@ -8,8 +8,7 @@ import type { ForumCategory, ForumTopic, Profile } from "@/types/forum";
 
 export default function ForumCategory() {
   const navigate = useNavigate();
-  const params = useParams();
-  const categoryId = params.categoryId;
+  const { categoryId } = useParams();
 
   // Redirect if no categoryId is provided
   if (!categoryId) {
@@ -24,7 +23,7 @@ export default function ForumCategory() {
       console.log("Fetching category with ID:", categoryId);
       const { data, error } = await supabase
         .from("forum_categories")
-        .select()
+        .select("*")
         .eq("id", categoryId)
         .single();
       
@@ -46,7 +45,7 @@ export default function ForumCategory() {
         .from("forum_topics")
         .select(`
           *,
-          profiles!forum_topics_user_id_fkey (
+          profiles (
             full_name,
             avatar_url
           )
