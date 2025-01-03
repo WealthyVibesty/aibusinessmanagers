@@ -25,16 +25,22 @@ export default function ForumTopic() {
         .from("forum_topics")
         .select(`
           *,
-          profiles (
-            full_name,
-            avatar_url
+          user:user_id (
+            profile:profiles (
+              full_name,
+              avatar_url
+            )
           )
         `)
         .eq("id", topicId)
         .single();
       
       if (error) throw error;
-      return data as ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null };
+      
+      return {
+        ...data,
+        profiles: data.user?.profile || null
+      } as ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null };
     },
   });
 
@@ -45,16 +51,22 @@ export default function ForumTopic() {
         .from("forum_replies")
         .select(`
           *,
-          profiles (
-            full_name,
-            avatar_url
+          user:user_id (
+            profile:profiles (
+              full_name,
+              avatar_url
+            )
           )
         `)
         .eq("topic_id", topicId)
         .order("created_at");
       
       if (error) throw error;
-      return data as (ForumReply & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
+      
+      return data.map((reply: any) => ({
+        ...reply,
+        profiles: reply.user?.profile || null
+      })) as (ForumReply & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
     },
   });
 

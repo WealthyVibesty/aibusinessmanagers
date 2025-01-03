@@ -31,16 +31,23 @@ export default function ForumCategory() {
         .from("forum_topics")
         .select(`
           *,
-          profiles (
-            full_name,
-            avatar_url
+          user:user_id (
+            profile:profiles (
+              full_name,
+              avatar_url
+            )
           )
         `)
         .eq("category_id", categoryId)
         .order("created_at", { ascending: false });
       
       if (error) throw error;
-      return data as (ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
+      
+      // Transform the data to match our expected type
+      return data.map((topic: any) => ({
+        ...topic,
+        profiles: topic.user?.profile || null
+      })) as (ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
     },
   });
 
