@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MessageSquare, Plus, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import type { ForumCategory, ForumTopic } from "@/types/forum";
+import type { ForumCategory, ForumTopic, Profile } from "@/types/forum";
 
 export default function ForumCategory() {
   const { categoryId } = useParams();
@@ -31,7 +31,7 @@ export default function ForumCategory() {
         .from("forum_topics")
         .select(`
           *,
-          profiles (
+          profiles!forum_topics_user_id_fkey (
             full_name,
             avatar_url
           )
@@ -40,7 +40,7 @@ export default function ForumCategory() {
         .order("created_at", { ascending: false });
       
       if (error) throw error;
-      return data as (ForumTopic & { profiles: { full_name: string | null; avatar_url: string | null } })[];
+      return data as (ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> })[];
     },
   });
 
@@ -92,7 +92,7 @@ export default function ForumCategory() {
                   </h2>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Posted by {topic.profiles.full_name || "Anonymous"} on{" "}
+                  Posted by {topic.profiles?.full_name || "Anonymous"} on{" "}
                   {new Date(topic.created_at).toLocaleDateString()}
                 </p>
               </div>

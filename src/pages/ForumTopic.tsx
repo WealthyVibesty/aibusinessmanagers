@@ -7,7 +7,7 @@ import { ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/components/AuthProvider";
 import { useToast } from "@/hooks/use-toast";
-import type { ForumTopic, ForumReply } from "@/types/forum";
+import type { ForumTopic, ForumReply, Profile } from "@/types/forum";
 import { useState } from "react";
 
 export default function ForumTopic() {
@@ -25,7 +25,7 @@ export default function ForumTopic() {
         .from("forum_topics")
         .select(`
           *,
-          profiles (
+          profiles!forum_topics_user_id_fkey (
             full_name,
             avatar_url
           )
@@ -34,7 +34,7 @@ export default function ForumTopic() {
         .single();
       
       if (error) throw error;
-      return data as ForumTopic & { profiles: { full_name: string | null; avatar_url: string | null } };
+      return data as ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> };
     },
   });
 
@@ -45,7 +45,7 @@ export default function ForumTopic() {
         .from("forum_replies")
         .select(`
           *,
-          profiles (
+          profiles!forum_replies_user_id_fkey (
             full_name,
             avatar_url
           )
@@ -54,7 +54,7 @@ export default function ForumTopic() {
         .order("created_at");
       
       if (error) throw error;
-      return data as (ForumReply & { profiles: { full_name: string | null; avatar_url: string | null } })[];
+      return data as (ForumReply & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> })[];
     },
   });
 
@@ -109,7 +109,7 @@ export default function ForumTopic() {
       <Card className="p-6 mb-8">
         <h1 className="text-3xl font-bold mb-4">{topic?.title}</h1>
         <p className="text-sm text-muted-foreground mb-4">
-          Posted by {topic?.profiles.full_name || "Anonymous"} on{" "}
+          Posted by {topic?.profiles?.full_name || "Anonymous"} on{" "}
           {topic?.created_at && new Date(topic.created_at).toLocaleDateString()}
         </p>
         <p className="whitespace-pre-wrap">{topic?.content}</p>
@@ -122,7 +122,7 @@ export default function ForumTopic() {
           <Card key={reply.id} className="p-6">
             <div className="flex justify-between items-start mb-4">
               <p className="text-sm text-muted-foreground">
-                {reply.profiles.full_name || "Anonymous"} replied on{" "}
+                {reply.profiles?.full_name || "Anonymous"} replied on{" "}
                 {new Date(reply.created_at).toLocaleDateString()}
               </p>
             </div>
