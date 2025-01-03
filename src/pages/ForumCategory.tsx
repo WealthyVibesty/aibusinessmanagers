@@ -8,7 +8,7 @@ import type { ForumCategory, ForumTopic, Profile } from "@/types/forum";
 
 export default function ForumCategory() {
   const navigate = useNavigate();
-  const { categoryId } = useParams<{ categoryId: string }>();
+  const { categoryId } = useParams();
 
   // Redirect if no categoryId is provided
   if (!categoryId) {
@@ -23,8 +23,8 @@ export default function ForumCategory() {
       console.log("Fetching category with ID:", categoryId);
       const { data, error } = await supabase
         .from("forum_categories")
-        .select()
-        .eq('id', categoryId)
+        .select("*")
+        .eq("id", categoryId)
         .single();
       
       if (error) {
@@ -37,7 +37,7 @@ export default function ForumCategory() {
       }
       return data as ForumCategory;
     },
-    enabled: !!categoryId, // Only run query if categoryId exists
+    enabled: !!categoryId,
   });
 
   const { data: topics, isLoading, isError: isTopicsError } = useQuery({
@@ -48,13 +48,13 @@ export default function ForumCategory() {
         .from("forum_topics")
         .select(`
           *,
-          profiles!forum_topics_user_id_fkey (
+          profiles (
             full_name,
             avatar_url
           )
         `)
-        .eq('category_id', categoryId)
-        .order('created_at', { ascending: false });
+        .eq("category_id", categoryId)
+        .order("created_at", { ascending: false });
       
       if (error) {
         console.error("Error fetching topics:", error);
@@ -62,7 +62,7 @@ export default function ForumCategory() {
       }
       return data as (ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
     },
-    enabled: !!categoryId, // Only run query if categoryId exists
+    enabled: !!categoryId,
   });
 
   if (isLoading) {
