@@ -5,7 +5,7 @@ import { AuthProvider } from "@/components/AuthProvider";
 import { Toaster } from "@/components/ui/toaster";
 import { queryClient } from "@/lib/react-query";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
-import Landing from "@/pages/Landing";
+import Index from "@/pages/Index";
 import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
 import Profile from "@/pages/Profile";
@@ -21,7 +21,7 @@ function App() {
         <ThemeProvider>
           <Routes>
             {/* Public routes outside AuthProvider */}
-            <Route path="/" element={<Landing />} />
+            <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             
             {/* Protected routes wrapped in AuthProvider */}
