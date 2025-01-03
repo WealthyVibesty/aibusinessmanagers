@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import CreateProfileDialog from "./CreateProfileDialog";
 import { MarketingInsights } from "./MarketingInsights";
 import { AnalyticsDashboard } from "./analytics/AnalyticsDashboard";
+import { CommunityPanel } from "./CommunityPanel";
 
 interface Profile {
   id: string;
@@ -47,9 +48,14 @@ export default function Dashboard() {
         </div>
 
         {selectedProfile ? (
-          <div className="space-y-8">
-            <AnalyticsDashboard />
-            <MarketingInsights profile={selectedProfile} />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2 space-y-8">
+              <AnalyticsDashboard />
+              <MarketingInsights profile={selectedProfile} />
+            </div>
+            <div className="lg:col-span-1">
+              <CommunityPanel />
+            </div>
           </div>
         ) : (
           <Card className="p-8 sm:p-12 text-center bg-background border-2 border-dashed animate-slideUp">
