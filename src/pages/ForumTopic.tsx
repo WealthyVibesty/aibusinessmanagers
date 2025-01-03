@@ -25,7 +25,7 @@ export default function ForumTopic() {
         .from("forum_topics")
         .select(`
           *,
-          profiles:user_id (
+          profiles (
             full_name,
             avatar_url
           )
@@ -45,7 +45,7 @@ export default function ForumTopic() {
         .from("forum_replies")
         .select(`
           *,
-          profiles:user_id (
+          profiles (
             full_name,
             avatar_url
           )

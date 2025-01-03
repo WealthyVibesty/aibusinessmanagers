@@ -31,7 +31,7 @@ export default function ForumCategory() {
         .from("forum_topics")
         .select(`
           *,
-          profiles:user_id (
+          profiles (
             full_name,
             avatar_url
           )
