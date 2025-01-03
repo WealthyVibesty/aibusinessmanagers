@@ -99,6 +99,5 @@ export function MarketingInsights({ profile }: MarketingInsightsProps) {
         ))}
       </div>
     </div>
-  </div>
   );
 }
