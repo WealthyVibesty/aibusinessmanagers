@@ -8,6 +8,9 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Courses from "./pages/Courses";
+import CreateCourse from "./pages/CreateCourse";
+import CourseDetails from "./pages/CourseDetails";
+import Enrollments from "./pages/Enrollments";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +36,30 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <Courses />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/courses/new"
+              element={
+                <ProtectedRoute>
+                  <CreateCourse />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/courses/:id"
+              element={
+                <ProtectedRoute>
+                  <CourseDetails />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/enrollments"
+              element={
+                <ProtectedRoute>
+                  <Enrollments />
                 </ProtectedRoute>
               }
             />
