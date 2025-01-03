@@ -25,11 +25,9 @@ export default function ForumTopic() {
         .from("forum_topics")
         .select(`
           *,
-          user:user_id (
-            profile:profiles (
-              full_name,
-              avatar_url
-            )
+          profiles!forum_topics_user_id_fkey (
+            full_name,
+            avatar_url
           )
         `)
         .eq("id", topicId)
@@ -39,7 +37,7 @@ export default function ForumTopic() {
       
       return {
         ...data,
-        profiles: data.user?.profile || null
+        profiles: data.profiles || null
       } as ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null };
     },
   });
@@ -51,11 +49,9 @@ export default function ForumTopic() {
         .from("forum_replies")
         .select(`
           *,
-          user:user_id (
-            profile:profiles (
-              full_name,
-              avatar_url
-            )
+          profiles!forum_replies_user_id_fkey (
+            full_name,
+            avatar_url
           )
         `)
         .eq("topic_id", topicId)
@@ -63,9 +59,9 @@ export default function ForumTopic() {
       
       if (error) throw error;
       
-      return data.map((reply: any) => ({
+      return data.map((reply) => ({
         ...reply,
-        profiles: reply.user?.profile || null
+        profiles: reply.profiles || null
       })) as (ForumReply & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
     },
   });
