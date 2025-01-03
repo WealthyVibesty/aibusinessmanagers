@@ -4,13 +4,12 @@ import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
-import { LogIn } from "lucide-react";
+import { LogIn, Loader } from "lucide-react";
 
 export default function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is already logged in
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
@@ -20,7 +19,6 @@ export default function Login() {
 
     checkUser();
 
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session) {
         navigate("/");
@@ -31,36 +29,66 @@ export default function Login() {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <Card className="w-full max-w-md p-6 space-y-6 animate-fadeIn">
-        <div className="text-center space-y-2">
-          <div className="flex justify-center mb-6">
-            <LogIn className="w-12 h-12 text-primary" />
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md p-8 space-y-8 shadow-lg animate-fadeIn">
+        <div className="text-center space-y-4">
+          <div className="flex justify-center mb-8 relative">
+            <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl animate-pulse"></div>
+            <LogIn className="w-16 h-16 text-primary relative animate-slideUp" />
           </div>
-          <h2 className="text-2xl font-semibold">Sign in to your account</h2>
-          <p className="text-muted-foreground">Enter your credentials to continue</p>
+          <h1 className="text-3xl font-bold tracking-tight animate-slideUp [animation-delay:100ms]">
+            Welcome Back
+          </h1>
+          <p className="text-muted-foreground text-lg animate-slideUp [animation-delay:200ms]">
+            Sign in to your account to continue
+          </p>
         </div>
-        <Auth
-          supabaseClient={supabase}
-          appearance={{
-            theme: ThemeSupa,
-            variables: {
-              default: {
-                colors: {
-                  brand: 'hsl(var(--primary))',
-                  brandAccent: 'hsl(var(--primary))',
+
+        <div className="animate-slideUp [animation-delay:300ms]">
+          <Auth
+            supabaseClient={supabase}
+            appearance={{
+              theme: ThemeSupa,
+              variables: {
+                default: {
+                  colors: {
+                    brand: 'hsl(var(--primary))',
+                    brandAccent: 'hsl(var(--primary))',
+                    inputBackground: 'transparent',
+                    inputText: 'inherit',
+                  },
+                  space: {
+                    inputPadding: '1rem',
+                    buttonPadding: '1rem',
+                  },
+                  borderWidths: {
+                    buttonBorderWidth: '1px',
+                    inputBorderWidth: '1px',
+                  },
+                  radii: {
+                    borderRadiusButton: '0.5rem',
+                    buttonBorderRadius: '0.5rem',
+                    inputBorderRadius: '0.5rem',
+                  },
                 }
+              },
+              className: {
+                container: 'w-full space-y-4',
+                button: 'w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-colors',
+                input: 'w-full bg-background border border-input hover:border-primary/50 focus:border-primary transition-colors',
+                label: 'text-sm font-medium text-foreground',
+                loader: 'animate-spin',
               }
-            },
-            className: {
-              container: 'w-full',
-              button: 'w-full',
-              anchor: 'text-primary hover:text-primary/80',
-            }
-          }}
-          providers={[]}
-          redirectTo={window.location.origin}
-        />
+            }}
+            providers={[]}
+            redirectTo={window.location.origin}
+          />
+        </div>
+
+        <div className="animate-slideUp [animation-delay:400ms] flex items-center justify-center text-sm text-muted-foreground">
+          <Loader className="w-4 h-4 mr-2 animate-spin" />
+          Connecting securely...
+        </div>
       </Card>
     </div>
   );
