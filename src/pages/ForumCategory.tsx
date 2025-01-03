@@ -25,7 +25,7 @@ export default function ForumCategory() {
       const { data, error } = await supabase
         .from("forum_categories")
         .select()
-        .eq('id', categoryId)
+        .eq("id", categoryId)
         .single();
       
       if (error) {
@@ -51,8 +51,8 @@ export default function ForumCategory() {
             avatar_url
           )
         `)
-        .eq('category_id', categoryId)
-        .order('created_at', { ascending: false });
+        .eq("category_id", categoryId)
+        .order("created_at", { ascending: false });
       
       if (error) {
         console.error("Error fetching topics:", error);
