@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -22,17 +22,21 @@ export const useAuth = () => {
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
+    console.log("AuthProvider - Current path:", location.pathname);
+    
     // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
+      console.log("AuthProvider - Initial session:", session ? "exists" : "none");
       setSession(session);
       setLoading(false);
     });
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      console.log("AuthProvider - Auth state changed:", _event);
       setSession(session);
       setLoading(false);
     });

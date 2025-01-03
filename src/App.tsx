@@ -42,10 +42,38 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/forum" element={<Forum />} />
-              <Route path="/forum/category/:categoryId" element={<ForumCategory />} />
-              <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
-              <Route path="/forum/new-topic" element={<NewTopic />} />
+              <Route
+                path="/forum"
+                element={
+                  <ProtectedRoute>
+                    <Forum />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/forum/category/:categoryId"
+                element={
+                  <ProtectedRoute>
+                    <ForumCategory />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/forum/topic/:topicId"
+                element={
+                  <ProtectedRoute>
+                    <ForumTopic />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/forum/new-topic"
+                element={
+                  <ProtectedRoute>
+                    <NewTopic />
+                  </ProtectedRoute>
+                }
+              />
               {/* Catch-all route for 404s */}
               <Route path="*" element={<Landing />} />
             </Routes>

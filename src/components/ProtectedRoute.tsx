@@ -1,16 +1,22 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "./AuthProvider";
 
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { session, loading } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
+    console.log("ProtectedRoute - Auth state:", { session, loading, path: location.pathname });
+    
     if (!loading && !session) {
-      navigate("/login");
+      // Store the attempted path to redirect back after login
+      navigate("/login", { 
+        state: { from: location.pathname }
+      });
     }
-  }, [session, loading, navigate]);
+  }, [session, loading, navigate, location]);
 
   if (loading) {
     return (
