@@ -25,7 +25,7 @@ export default function ForumTopic() {
         .from("forum_topics")
         .select(`
           *,
-          profiles!forum_topics_user_id_fkey (
+          profiles (
             full_name,
             avatar_url
           )
@@ -34,7 +34,7 @@ export default function ForumTopic() {
         .single();
       
       if (error) throw error;
-      return data as ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> };
+      return data as ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null };
     },
   });
 
@@ -45,7 +45,7 @@ export default function ForumTopic() {
         .from("forum_replies")
         .select(`
           *,
-          profiles!forum_replies_user_id_fkey (
+          profiles (
             full_name,
             avatar_url
           )
@@ -54,7 +54,7 @@ export default function ForumTopic() {
         .order("created_at");
       
       if (error) throw error;
-      return data as (ForumReply & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> })[];
+      return data as (ForumReply & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
     },
   });
 

@@ -31,7 +31,7 @@ export default function ForumCategory() {
         .from("forum_topics")
         .select(`
           *,
-          profiles!forum_topics_user_id_fkey (
+          profiles (
             full_name,
             avatar_url
           )
@@ -40,7 +40,7 @@ export default function ForumCategory() {
         .order("created_at", { ascending: false });
       
       if (error) throw error;
-      return data as (ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> })[];
+      return data as (ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
     },
   });
 
