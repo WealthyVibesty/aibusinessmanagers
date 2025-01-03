@@ -13,42 +13,41 @@ export default function ForumCategory() {
   const { data: category } = useQuery({
     queryKey: ["forumCategory", categoryId],
     queryFn: async () => {
+      if (!categoryId) throw new Error("Category ID is required");
+      
       const { data, error } = await supabase
         .from("forum_categories")
         .select("*")
         .eq("id", categoryId)
-        .single();
+        .maybeSingle();
       
       if (error) throw error;
       return data as ForumCategory;
     },
+    enabled: !!categoryId,
   });
 
   const { data: topics, isLoading } = useQuery({
     queryKey: ["forumTopics", categoryId],
     queryFn: async () => {
+      if (!categoryId) throw new Error("Category ID is required");
+
       const { data, error } = await supabase
         .from("forum_topics")
         .select(`
           *,
-          user:user_id (
-            profile:profiles (
-              full_name,
-              avatar_url
-            )
+          profiles!forum_topics_user_id_fkey (
+            full_name,
+            avatar_url
           )
         `)
         .eq("category_id", categoryId)
         .order("created_at", { ascending: false });
       
       if (error) throw error;
-      
-      // Transform the data to match our expected type
-      return data.map((topic: any) => ({
-        ...topic,
-        profiles: topic.user?.profile || null
-      })) as (ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
+      return data as (ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
     },
+    enabled: !!categoryId,
   });
 
   if (isLoading) {
