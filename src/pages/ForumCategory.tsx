@@ -8,7 +8,7 @@ import type { ForumCategory, ForumTopic, Profile } from "@/types/forum";
 
 export default function ForumCategory() {
   const navigate = useNavigate();
-  const { categoryId } = useParams<{ categoryId: string }>();
+  const { categoryId } = useParams();
 
   // Redirect if no categoryId is provided
   if (!categoryId) {
@@ -31,10 +31,7 @@ export default function ForumCategory() {
         console.error("Error fetching category:", error);
         throw error;
       }
-      if (!data) {
-        console.error("Category not found");
-        throw new Error("Category not found");
-      }
+      
       return data as ForumCategory;
     },
     enabled: Boolean(categoryId),
@@ -48,7 +45,7 @@ export default function ForumCategory() {
         .from("forum_topics")
         .select(`
           *,
-          profiles!forum_topics_user_id_fkey (
+          profiles (
             full_name,
             avatar_url
           )
