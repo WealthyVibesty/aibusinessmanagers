@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { Plus, ArrowLeft, ArrowRight, Google } from "lucide-react";
+import { Plus, ArrowLeft, ArrowRight, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { BusinessBasicsStep } from "./profile/BusinessBasicsStep";
 import { TargetAudienceStep } from "./profile/TargetAudienceStep";
@@ -35,11 +35,6 @@ export default function CreateProfileDialog() {
   const connectGoogleMyBusiness = async () => {
     setIsConnectingGMB(true);
     try {
-      // Note: In a real implementation, you would:
-      // 1. Initialize the Google Sign-In client
-      // 2. Request GMB scope permissions
-      // 3. Handle the OAuth flow
-      // 4. Get business data and auto-fill the form
       console.log("Connecting to Google My Business...");
       toast({
         title: "Demo Mode",
@@ -140,7 +135,7 @@ export default function CreateProfileDialog() {
             onClick={connectGoogleMyBusiness}
             disabled={isConnectingGMB}
           >
-            <Google className="mr-2 h-4 w-4" />
+            <Globe className="mr-2 h-4 w-4" />
             {isConnectingGMB ? "Connecting..." : "Connect Google My Business"}
           </Button>
         )}
