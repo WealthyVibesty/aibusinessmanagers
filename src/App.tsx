@@ -1,73 +1,53 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { AuthProvider } from "@/components/AuthProvider";
 import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./components/AuthProvider";
-import { ProtectedRoute } from "./components/ProtectedRoute";
-import Index from "./pages/Index";
-import Login from "./pages/Login";
-import Courses from "./pages/Courses";
-import CreateCourse from "./pages/CreateCourse";
-import CourseDetails from "./pages/CourseDetails";
-import Enrollments from "./pages/Enrollments";
+import { queryClient } from "@/lib/react-query";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
+import Login from "@/pages/Login";
+import Dashboard from "@/pages/Dashboard";
+import Profile from "@/pages/Profile";
+import Forum from "@/pages/Forum";
+import ForumCategory from "@/pages/ForumCategory";
+import ForumTopic from "@/pages/ForumTopic";
+import NewTopic from "@/pages/NewTopic";
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AuthProvider>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/"
-              element={
-                <ProtectedRoute>
-                  <Index />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/courses"
-              element={
-                <ProtectedRoute>
-                  <Courses />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/courses/new"
-              element={
-                <ProtectedRoute>
-                  <CreateCourse />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/courses/:id"
-              element={
-                <ProtectedRoute>
-                  <CourseDetails />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/enrollments"
-              element={
-                <ProtectedRoute>
-                  <Enrollments />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </AuthProvider>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <ThemeProvider>
+          <Router>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/forum" element={<Forum />} />
+              <Route path="/forum/category/:categoryId" element={<ForumCategory />} />
+              <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
+              <Route path="/forum/new-topic" element={<NewTopic />} />
+            </Routes>
+          </Router>
+          <Toaster />
+        </ThemeProvider>
+      </AuthProvider>
+    </QueryClientProvider>
+  );
+}
 
 export default App;
