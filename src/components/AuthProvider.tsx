@@ -44,12 +44,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
+  const value = {
+    session,
+    user: session?.user ?? null,
+    loading
+  };
+
+  console.log("AuthProvider - Rendering with state:", value);
+  
   return (
-    <AuthContext.Provider value={{ 
-      session, 
-      user: session?.user ?? null,
-      loading 
-    }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );

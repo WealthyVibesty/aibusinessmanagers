@@ -10,14 +10,16 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     console.log("ProtectedRoute - Auth state:", { session, loading, path: location.pathname });
     
+    // Only redirect if we're on a protected route and not loading
     if (!loading && !session) {
-      // Store the attempted path to redirect back after login
+      console.log("ProtectedRoute - Redirecting to login");
       navigate("/login", { 
         state: { from: location.pathname }
       });
     }
   }, [session, loading, navigate, location]);
 
+  // Show loading spinner while checking auth
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -26,5 +28,6 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
     );
   }
 
+  // Only render children if we have a session
   return session ? <>{children}</> : null;
 }

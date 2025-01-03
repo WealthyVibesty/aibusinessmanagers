@@ -18,68 +18,70 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <AuthProvider>
-          <ThemeProvider>
-            <Routes>
-              {/* Public routes */}
-              <Route path="/" element={<Landing />} />
-              <Route path="/login" element={<Login />} />
-              
-              {/* Protected routes */}
-              <Route
-                path="/dashboard"
-                element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/profile"
-                element={
-                  <ProtectedRoute>
-                    <Profile />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/forum"
-                element={
-                  <ProtectedRoute>
-                    <Forum />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/forum/category/:categoryId"
-                element={
-                  <ProtectedRoute>
-                    <ForumCategory />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/forum/topic/:topicId"
-                element={
-                  <ProtectedRoute>
-                    <ForumTopic />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/forum/new-topic"
-                element={
-                  <ProtectedRoute>
-                    <NewTopic />
-                  </ProtectedRoute>
-                }
-              />
-              {/* Catch-all route for 404s */}
-              <Route path="*" element={<Landing />} />
-            </Routes>
-            <Toaster />
-          </ThemeProvider>
-        </AuthProvider>
+        <ThemeProvider>
+          <Routes>
+            {/* Public routes outside AuthProvider */}
+            <Route path="/" element={<Landing />} />
+            <Route path="/login" element={<Login />} />
+            
+            {/* Protected routes wrapped in AuthProvider */}
+            <Route path="/*" element={
+              <AuthProvider>
+                <Routes>
+                  <Route
+                    path="/dashboard"
+                    element={
+                      <ProtectedRoute>
+                        <Dashboard />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/profile"
+                    element={
+                      <ProtectedRoute>
+                        <Profile />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/forum"
+                    element={
+                      <ProtectedRoute>
+                        <Forum />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/forum/category/:categoryId"
+                    element={
+                      <ProtectedRoute>
+                        <ForumCategory />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/forum/topic/:topicId"
+                    element={
+                      <ProtectedRoute>
+                        <ForumTopic />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/forum/new-topic"
+                    element={
+                      <ProtectedRoute>
+                        <NewTopic />
+                      </ProtectedRoute>
+                    }
+                  />
+                </Routes>
+              </AuthProvider>
+            } />
+          </Routes>
+          <Toaster />
+        </ThemeProvider>
       </Router>
     </QueryClientProvider>
   );
