@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Download, Share2, Star, Users } from "lucide-react";
+import { ArrowRight, CheckCircle2, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function Landing() {
@@ -10,10 +10,10 @@ export default function Landing() {
       {/* Hero Section */}
       <section className="container px-4 py-24 mx-auto text-center space-y-8 animate-fadeIn">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-          AI is Moving Fast – But Starting Doesn't Have to Be Hard.
+          AI is Moving Fast – But Starting Doesn't Have to Be Hard or Expensive.
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-          Spend 10 Minutes, Save Months of Work. Let Our AI Agents Do the Heavy Lifting for You – For Free.
+          Try Us for Free. If You Like What We Create, We'll Help You Implement It – No Pressure, No Regrets.
         </p>
         <Button
           size="lg"
@@ -47,6 +47,12 @@ export default function Landing() {
               </div>
             ))}
           </div>
+          <p className="text-center text-xl mt-8">
+            With <span className="font-bold">AI Marketing Profile</span>, you can start for free, see what we create for you, and decide if it makes sense for your business.
+          </p>
+          <p className="text-center text-xl italic">
+            It's like having a team of AI experts working for you – without the risk or upfront cost.
+          </p>
         </div>
       </section>
 
@@ -64,11 +70,11 @@ export default function Landing() {
               {
                 title: "Your competitors are already using AI",
                 desc: "Don't let them get ahead.",
-                icon: Users,
+                icon: CheckCircle2,
               },
               {
                 title: "It's easier than you think",
-                desc: "Just fill out the free form, and we'll handle the rest.",
+                desc: "Just fill out the free form, and we'll show you what's possible.",
                 icon: CheckCircle2,
               },
             ].map(({ title, desc, icon: Icon }, i) => (
@@ -86,72 +92,98 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* How It Works Section */}
       <section className="container px-4 py-16 mx-auto">
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h2 className="text-3xl font-bold">Want to Share Your AI Marketing Profile?</h2>
-          <div className="p-8 bg-card rounded-lg shadow-lg">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <Download className="h-6 w-6 text-primary" />
-              <Share2 className="h-6 w-6 text-primary" />
+          <h2 className="text-3xl font-bold">Get Started in 3 Easy Steps</h2>
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              {
+                title: "Fill Out the Free Form",
+                desc: "Answer a few simple questions about your business.",
+              },
+              {
+                title: "We Create Your Profile",
+                desc: "Our AI agents will do all the work and show you what's possible.",
+              },
+              {
+                title: "You Decide",
+                desc: "If you love it, we'll help you implement it. If not, no worries – it's free to try.",
+              },
+            ].map(({ title, desc }, i) => (
+              <div key={i} className="p-6 bg-card rounded-lg shadow-lg">
+                <div className="text-4xl font-bold text-primary mb-4">{i + 1}</div>
+                <h3 className="text-xl font-semibold mb-2">{title}</h3>
+                <p className="text-muted-foreground">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="bg-secondary/5 py-16">
+        <div className="container px-4 mx-auto">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <h2 className="text-3xl font-bold">What Does It Cost to Implement?</h2>
+            <div className="p-8 bg-card rounded-lg shadow-lg">
+              <div className="space-y-6 max-w-2xl mx-auto">
+                <p className="text-lg">
+                  We get it – pricing matters. That's why we don't charge you a dime until you see what we create for you.
+                </p>
+                <ul className="space-y-4 text-left">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
+                    <span>Start for Free: Fill out the form, and we'll create your AI Marketing Profile at no cost.</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
+                    <span>See the Value: Review your profile and decide if it makes sense for your business.</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
+                    <span>Pay for Implementation: If you love it, we'll help you implement it. Our pricing is affordable for small businesses.</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <p className="text-2xl font-bold mb-4">$29/month</p>
-            <ul className="space-y-4 mb-8 text-left max-w-md mx-auto">
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-                <span>Export Your Profile as PDF or CSV</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-                <span>Send Collaboration Emails</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-                <span>Invite Others to View and Collaborate</span>
-              </li>
-            </ul>
-            <Button size="lg" onClick={() => navigate("/login")}>
-              Get Started
-            </Button>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="bg-secondary/5 py-16">
-        <div className="container px-4 mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Don't Just Take Our Word for It
-          </h2>
-          <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
-            {[
-              {
-                text: "I was nervous about AI, but AI Marketing Profile made it so easy. I filled out the free form, and they did the rest. My business has never been better!",
-                author: "Sarah T., Small Business Owner",
-              },
-              {
-                text: "I thought AI would be complicated, but this platform handled everything. It's like magic – and it didn't cost me a thing to start!",
-                author: "James L., Marketing Director",
-              },
-              {
-                text: "This is the easiest way to get started with AI. I didn't have to do a thing – just fill out the free form and watch the results.",
-                author: "Emily R., Entrepreneur",
-              },
-            ].map(({ text, author }, i) => (
-              <div
-                key={i}
-                className="p-6 bg-background rounded-lg shadow-lg"
-              >
-                <div className="mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="inline h-5 w-5 text-primary" />
-                  ))}
-                </div>
-                <p className="mb-4 italic">{text}</p>
-                <p className="font-semibold">{author}</p>
+      <section className="container px-4 py-16 mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Don't Just Take Our Word for It
+        </h2>
+        <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
+          {[
+            {
+              text: "I was nervous about AI, but AI Marketing Profile made it so easy. I filled out the free form, and they created an amazing plan for me. I decided to implement it, and my business has never been better!",
+              author: "Sarah T., Small Business Owner",
+            },
+            {
+              text: "I thought AI would be complicated, but this platform handled everything. I tried it for free, loved it, and the implementation was totally worth it!",
+              author: "James L., Marketing Director",
+            },
+            {
+              text: "This is the easiest way to get started with AI. I didn't have to do a thing – just fill out the free form and see the results. I'm so glad I gave it a try!",
+              author: "Emily R., Entrepreneur",
+            },
+          ].map(({ text, author }, i) => (
+            <div
+              key={i}
+              className="p-6 bg-card rounded-lg shadow-lg"
+            >
+              <div className="mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="inline h-5 w-5 text-primary" />
+                ))}
               </div>
-            ))}
-          </div>
+              <p className="mb-4 italic">{text}</p>
+              <p className="font-semibold">{author}</p>
+            </div>
+          ))}
         </div>
       </section>
 
