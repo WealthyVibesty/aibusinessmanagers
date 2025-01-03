@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
@@ -8,6 +8,7 @@ import { LogIn } from "lucide-react";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [view, setView] = useState<'sign_in' | 'sign_up'>('sign_up');
 
   useEffect(() => {
     const checkUser = async () => {
@@ -41,17 +42,20 @@ export default function Login() {
             <LogIn className="w-16 h-16 text-primary relative animate-slideUp" />
           </div>
           <h1 className="text-3xl font-bold tracking-tight animate-slideUp [animation-delay:100ms]">
-            Create an Account
+            {view === 'sign_up' ? 'Sign Up' : 'Sign In'}
           </h1>
           <p className="text-muted-foreground text-lg animate-slideUp [animation-delay:200ms]">
-            Sign up to get started or sign in if you already have an account
+            {view === 'sign_up' 
+              ? 'Sign up to get started or sign in if you already have an account'
+              : 'Welcome back! Please sign in to your account'
+            }
           </p>
         </div>
 
         <div className="animate-slideUp [animation-delay:300ms]">
           <Auth
             supabaseClient={supabase}
-            view="sign_up"
+            view={view}
             appearance={{
               theme: ThemeSupa,
               variables: {
@@ -87,6 +91,7 @@ export default function Login() {
             }}
             providers={[]}
             redirectTo={redirectTo}
+            onViewChange={view => setView(view as 'sign_in' | 'sign_up')}
           />
         </div>
       </Card>
