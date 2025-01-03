@@ -5,6 +5,7 @@ import { AuthProvider } from "@/components/AuthProvider";
 import { Toaster } from "@/components/ui/toaster";
 import { queryClient } from "@/lib/react-query";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
+import Landing from "@/pages/Landing";
 import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
 import Profile from "@/pages/Profile";
@@ -20,9 +21,10 @@ function App() {
         <AuthProvider>
           <ThemeProvider>
             <Routes>
+              <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
               <Route
-                path="/"
+                path="/dashboard"
                 element={
                   <ProtectedRoute>
                     <Dashboard />
@@ -42,7 +44,7 @@ function App() {
               <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
               <Route path="/forum/new-topic" element={<NewTopic />} />
               {/* Catch-all route for 404s */}
-              <Route path="*" element={<Login />} />
+              <Route path="*" element={<Landing />} />
             </Routes>
             <Toaster />
           </ThemeProvider>
