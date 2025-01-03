@@ -21,8 +21,11 @@ function App() {
         <AuthProvider>
           <ThemeProvider>
             <Routes>
+              {/* Public routes */}
               <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
+              
+              {/* Protected routes */}
               <Route
                 path="/dashboard"
                 element={
