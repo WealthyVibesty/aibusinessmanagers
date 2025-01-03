@@ -28,6 +28,10 @@ export default function Login() {
     return () => subscription.unsubscribe();
   }, [navigate]);
 
+  // Get the current URL for redirect
+  const redirectTo = `${window.location.origin}/`;
+  console.log("Redirect URL:", redirectTo); // Debug log
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 flex items-center justify-center p-4">
       <Card className="w-full max-w-md p-8 space-y-8 shadow-lg animate-fadeIn">
@@ -81,7 +85,10 @@ export default function Login() {
               }
             }}
             providers={[]}
-            redirectTo={window.location.origin}
+            redirectTo={redirectTo}
+            onError={(error) => {
+              console.error("Auth error:", error); // Debug log
+            }}
           />
         </div>
 
