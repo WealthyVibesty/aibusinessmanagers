@@ -41,6 +41,8 @@ function App() {
               <Route path="/forum/category/:categoryId" element={<ForumCategory />} />
               <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
               <Route path="/forum/new-topic" element={<NewTopic />} />
+              {/* Catch-all route for 404s */}
+              <Route path="*" element={<Login />} />
             </Routes>
             <Toaster />
           </ThemeProvider>
