@@ -7,9 +7,8 @@ import { supabase } from "@/integrations/supabase/client";
 import type { ForumCategory, ForumTopic, Profile } from "@/types/forum";
 
 export default function ForumCategory() {
-  const params = useParams<{ categoryId: string }>();
-  const categoryId = params.categoryId;
   const navigate = useNavigate();
+  const { categoryId } = useParams<{ categoryId: string }>();
 
   // Redirect if no categoryId is provided
   if (!categoryId) {
@@ -38,6 +37,7 @@ export default function ForumCategory() {
       }
       return data as ForumCategory;
     },
+    enabled: !!categoryId, // Only run query if categoryId exists
   });
 
   const { data: topics, isLoading, isError: isTopicsError } = useQuery({
@@ -62,6 +62,7 @@ export default function ForumCategory() {
       }
       return data as (ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
     },
+    enabled: !!categoryId, // Only run query if categoryId exists
   });
 
   if (isLoading) {
