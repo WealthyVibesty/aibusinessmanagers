@@ -13,7 +13,7 @@ export default function HeroSection() {
       {/* Main content */}
       <div className="max-w-4xl mx-auto text-center space-y-8">
         {/* Statistic */}
-        <div className="mb-12 animate-fade-in">
+        <div className="mb-12 animate-fadeIn">
           <span className="block text-5xl md:text-6xl font-bold text-primary mb-2">
             272,299+
           </span>

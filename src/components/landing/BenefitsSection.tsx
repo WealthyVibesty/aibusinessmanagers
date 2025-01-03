@@ -10,7 +10,7 @@ export default function BenefitsSection() {
   return (
     <section className="container px-4 py-16 mx-auto">
       <div className="max-w-4xl mx-auto space-y-8">
-        <h2 className="text-3xl font-bold text-center mb-12">
+        <h2 className="text-3xl font-bold text-center mb-12 animate-fadeIn">
           AI is Everywhere – But You Don't Have to Figure It Out Alone
         </h2>
         <div className="grid gap-8 md:grid-cols-3">

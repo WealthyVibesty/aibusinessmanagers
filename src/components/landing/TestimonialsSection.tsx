@@ -18,15 +18,23 @@ export default function TestimonialsSection() {
 
   return (
     <section className="container px-4 py-16 mx-auto">
-      <h2 className="text-3xl font-bold text-center mb-12">
+      <h2 className="text-3xl font-bold text-center mb-12 animate-fadeIn">
         Don't Just Take Our Word for It
       </h2>
       <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
         {testimonials.map(({ text, author }, i) => (
-          <div key={i} className="p-6 bg-card rounded-lg shadow-lg">
+          <div 
+            key={i} 
+            className="p-6 bg-card rounded-lg shadow-lg animate-slideUp"
+            style={{ animationDelay: `${i * 100}ms` }}
+          >
             <div className="mb-4">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="inline h-5 w-5 text-primary" />
+              {[...Array(5)].map((_, j) => (
+                <Star 
+                  key={j} 
+                  className="inline h-5 w-5 text-primary animate-fadeIn"
+                  style={{ animationDelay: `${(i * 100) + (j * 50)}ms` }}
+                />
               ))}
             </div>
             <p className="mb-4 italic">{text}</p>

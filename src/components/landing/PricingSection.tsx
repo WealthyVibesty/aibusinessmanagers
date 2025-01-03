@@ -25,22 +25,22 @@ export default function PricingSection() {
       <div className="container px-4 mx-auto">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-4">
-            <h2 className="text-3xl font-bold tracking-tight">
+            <h2 className="text-3xl font-bold tracking-tight animate-fadeIn">
               What Does It Cost to Implement?
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-slideUp" style={{ animationDelay: "100ms" }}>
               We get it – pricing matters. That's why we don't charge you a dime until you see what we create for you.
             </p>
           </div>
 
-          <Card className="border-2 border-primary/10 animate-fadeIn">
+          <Card className="border-2 border-primary/10 animate-fadeIn" style={{ animationDelay: "200ms" }}>
             <CardContent className="p-8">
               <div className="grid gap-6">
                 {steps.map((step, index) => (
                   <div
                     key={index}
                     className="flex items-start gap-4 p-4 rounded-lg bg-background/50 animate-slideUp"
-                    style={{ animationDelay: `${index * 100}ms` }}
+                    style={{ animationDelay: `${300 + (index * 100)}ms` }}
                   >
                     <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                       {step.icon}
@@ -54,7 +54,7 @@ export default function PricingSection() {
               </div>
 
               <div className="mt-8 pt-6 border-t">
-                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground animate-fadeIn" style={{ animationDelay: "600ms" }}>
                   <Check className="h-4 w-4 text-primary" />
                   <span>No credit card required</span>
                 </div>
