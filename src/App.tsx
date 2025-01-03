@@ -5,7 +5,7 @@ import { AuthProvider } from "@/components/AuthProvider";
 import { Toaster } from "@/components/ui/toaster";
 import { queryClient } from "@/lib/react-query";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
-import Landing from "@/pages/Landing";
+import Index from "@/pages/Index";
 import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
 import Profile from "@/pages/Profile";
@@ -18,11 +18,14 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <AuthProvider>
-          <ThemeProvider>
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/login" element={<Login />} />
+        <ThemeProvider>
+          <Routes>
+            {/* Public routes */}
+            <Route path="/" element={<Index />} />
+            <Route path="/login" element={<Login />} />
+            
+            {/* Protected routes */}
+            <Route element={<AuthProvider />}>
               <Route
                 path="/dashboard"
                 element={
@@ -43,12 +46,13 @@ function App() {
               <Route path="/forum/category/:categoryId" element={<ForumCategory />} />
               <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
               <Route path="/forum/new-topic" element={<NewTopic />} />
-              {/* Catch-all route for 404s */}
-              <Route path="*" element={<Landing />} />
-            </Routes>
-            <Toaster />
-          </ThemeProvider>
-        </AuthProvider>
+            </Route>
+            
+            {/* Catch-all route redirects to Index */}
+            <Route path="*" element={<Index />} />
+          </Routes>
+          <Toaster />
+        </ThemeProvider>
       </Router>
     </QueryClientProvider>
   );
