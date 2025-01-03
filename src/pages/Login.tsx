@@ -91,7 +91,6 @@ export default function Login() {
             }}
             providers={[]}
             redirectTo={redirectTo}
-            onViewChange={view => setView(view as 'sign_in' | 'sign_up')}
           />
         </div>
       </Card>
