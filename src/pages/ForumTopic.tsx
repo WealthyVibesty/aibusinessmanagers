@@ -10,6 +10,14 @@ import { useToast } from "@/hooks/use-toast";
 import type { ForumTopic, ForumReply, Profile } from "@/types/forum";
 import { useState } from "react";
 
+interface TopicWithProfile extends ForumTopic {
+  user: Pick<Profile, 'full_name' | 'avatar_url'> | null;
+}
+
+interface ReplyWithProfile extends ForumReply {
+  user: Pick<Profile, 'full_name' | 'avatar_url'> | null;
+}
+
 export default function ForumTopic() {
   const { topicId } = useParams();
   const navigate = useNavigate();
@@ -25,7 +33,7 @@ export default function ForumTopic() {
         .from("forum_topics")
         .select(`
           *,
-          user:profiles!forum_topics_user_id_fkey (
+          user:profiles(
             full_name,
             avatar_url
           )
@@ -34,11 +42,7 @@ export default function ForumTopic() {
         .single();
       
       if (error) throw error;
-      
-      return {
-        ...data,
-        profiles: data.user as Pick<Profile, 'full_name' | 'avatar_url'> | null
-      } as ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null };
+      return data as TopicWithProfile;
     },
   });
 
@@ -49,7 +53,7 @@ export default function ForumTopic() {
         .from("forum_replies")
         .select(`
           *,
-          user:profiles!forum_replies_user_id_fkey (
+          user:profiles(
             full_name,
             avatar_url
           )
@@ -58,11 +62,7 @@ export default function ForumTopic() {
         .order("created_at");
       
       if (error) throw error;
-      
-      return data.map((reply) => ({
-        ...reply,
-        profiles: reply.user as Pick<Profile, 'full_name' | 'avatar_url'> | null
-      })) as (ForumReply & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
+      return data as ReplyWithProfile[];
     },
   });
 
@@ -117,7 +117,7 @@ export default function ForumTopic() {
       <Card className="p-6 mb-8">
         <h1 className="text-3xl font-bold mb-4">{topic?.title}</h1>
         <p className="text-sm text-muted-foreground mb-4">
-          Posted by {topic?.profiles?.full_name || "Anonymous"} on{" "}
+          Posted by {topic?.user?.full_name || "Anonymous"} on{" "}
           {topic?.created_at && new Date(topic.created_at).toLocaleDateString()}
         </p>
         <p className="whitespace-pre-wrap">{topic?.content}</p>
@@ -130,7 +130,7 @@ export default function ForumTopic() {
           <Card key={reply.id} className="p-6">
             <div className="flex justify-between items-start mb-4">
               <p className="text-sm text-muted-foreground">
-                {reply.profiles?.full_name || "Anonymous"} replied on{" "}
+                {reply.user?.full_name || "Anonymous"} replied on{" "}
                 {new Date(reply.created_at).toLocaleDateString()}
               </p>
             </div>
