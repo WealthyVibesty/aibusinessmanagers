@@ -86,9 +86,6 @@ export default function Login() {
             }}
             providers={[]}
             redirectTo={redirectTo}
-            onError={(error) => {
-              console.error("Auth error:", error); // Debug log
-            }}
           />
         </div>
 
