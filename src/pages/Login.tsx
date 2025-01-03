@@ -4,7 +4,7 @@ import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
-import { LogIn, Loader } from "lucide-react";
+import { LogIn } from "lucide-react";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -41,16 +41,17 @@ export default function Login() {
             <LogIn className="w-16 h-16 text-primary relative animate-slideUp" />
           </div>
           <h1 className="text-3xl font-bold tracking-tight animate-slideUp [animation-delay:100ms]">
-            Welcome Back
+            Create an Account
           </h1>
           <p className="text-muted-foreground text-lg animate-slideUp [animation-delay:200ms]">
-            Sign in to your account to continue
+            Sign up to get started or sign in if you already have an account
           </p>
         </div>
 
         <div className="animate-slideUp [animation-delay:300ms]">
           <Auth
             supabaseClient={supabase}
+            view="sign_up"
             appearance={{
               theme: ThemeSupa,
               variables: {
@@ -87,11 +88,6 @@ export default function Login() {
             providers={[]}
             redirectTo={redirectTo}
           />
-        </div>
-
-        <div className="animate-slideUp [animation-delay:400ms] flex items-center justify-center text-sm text-muted-foreground">
-          <Loader className="w-4 h-4 mr-2 animate-spin" />
-          Connecting securely...
         </div>
       </Card>
     </div>
