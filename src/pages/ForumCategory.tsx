@@ -7,14 +7,20 @@ import { supabase } from "@/integrations/supabase/client";
 import type { ForumCategory, ForumTopic, Profile } from "@/types/forum";
 
 export default function ForumCategory() {
-  const { categoryId } = useParams<{ categoryId: string }>();
+  const params = useParams<{ categoryId: string }>();
+  const categoryId = params.categoryId;
   const navigate = useNavigate();
+
+  // Redirect if no categoryId is provided
+  if (!categoryId) {
+    console.error("No category ID provided");
+    navigate("/forum");
+    return null;
+  }
 
   const { data: category, isError: isCategoryError } = useQuery({
     queryKey: ["forumCategory", categoryId],
     queryFn: async () => {
-      if (!categoryId) throw new Error("Category ID is required");
-      
       console.log("Fetching category with ID:", categoryId);
       const { data, error } = await supabase
         .from("forum_categories")
@@ -26,17 +32,17 @@ export default function ForumCategory() {
         console.error("Error fetching category:", error);
         throw error;
       }
-      if (!data) throw new Error("Category not found");
+      if (!data) {
+        console.error("Category not found");
+        throw new Error("Category not found");
+      }
       return data as ForumCategory;
     },
-    enabled: !!categoryId,
   });
 
   const { data: topics, isLoading, isError: isTopicsError } = useQuery({
     queryKey: ["forumTopics", categoryId],
     queryFn: async () => {
-      if (!categoryId) throw new Error("Category ID is required");
-
       console.log("Fetching topics for category:", categoryId);
       const { data, error } = await supabase
         .from("forum_topics")
@@ -56,7 +62,6 @@ export default function ForumCategory() {
       }
       return data as (ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
     },
-    enabled: !!categoryId,
   });
 
   if (isLoading) {
