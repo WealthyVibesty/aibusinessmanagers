@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Settings, Trash2 } from "lucide-react";
+import { Settings, Trash2, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -34,6 +34,38 @@ export default function Dashboard() {
       title: "Profile deleted",
       description: "The profile has been successfully deleted.",
     });
+  };
+
+  const handleExportProfile = (profile: Profile) => {
+    try {
+      // Convert profile to CSV format
+      const headers = Object.keys(profile).join(',');
+      const values = Object.values(profile).map(value => `"${value}"`).join(',');
+      const csv = `${headers}\n${values}`;
+
+      // Create blob and download
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `profile-${profile.name}-${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      toast({
+        title: "Profile exported",
+        description: "The profile has been exported successfully.",
+      });
+    } catch (error) {
+      console.error('Export error:', error);
+      toast({
+        title: "Export failed",
+        description: "Failed to export the profile. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -81,6 +113,16 @@ export default function Dashboard() {
                     <p className="text-secondary text-sm">{profile.industry}</p>
                   </div>
                   <div className="flex gap-2">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleExportProfile(profile);
+                      }}
+                    >
+                      <Download className="h-4 w-4" />
+                    </Button>
                     <Button
                       variant="ghost"
                       size="icon"
