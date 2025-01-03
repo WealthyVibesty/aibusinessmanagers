@@ -16,9 +16,9 @@ import NewTopic from "@/pages/NewTopic";
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <ThemeProvider>
-          <Router>
+      <Router>
+        <AuthProvider>
+          <ThemeProvider>
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route
@@ -42,10 +42,10 @@ function App() {
               <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
               <Route path="/forum/new-topic" element={<NewTopic />} />
             </Routes>
-          </Router>
-          <Toaster />
-        </ThemeProvider>
-      </AuthProvider>
+            <Toaster />
+          </ThemeProvider>
+        </AuthProvider>
+      </Router>
     </QueryClientProvider>
   );
 }
