@@ -37,7 +37,7 @@ export default function ForumCategory() {
       }
       return data as ForumCategory;
     },
-    enabled: !!categoryId, // Only run query if categoryId exists
+    enabled: Boolean(categoryId), // Only run query if categoryId exists
   });
 
   const { data: topics, isLoading, isError: isTopicsError } = useQuery({
@@ -48,7 +48,7 @@ export default function ForumCategory() {
         .from("forum_topics")
         .select(`
           *,
-          profiles!forum_topics_user_id_fkey (
+          profiles (
             full_name,
             avatar_url
           )
@@ -62,7 +62,7 @@ export default function ForumCategory() {
       }
       return data as (ForumTopic & { profiles: Pick<Profile, 'full_name' | 'avatar_url'> | null })[];
     },
-    enabled: !!categoryId, // Only run query if categoryId exists
+    enabled: Boolean(categoryId), // Only run query if categoryId exists
   });
 
   if (isLoading) {
