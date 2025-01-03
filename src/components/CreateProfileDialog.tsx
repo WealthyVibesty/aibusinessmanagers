@@ -1,43 +1,27 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Plus, ArrowLeft, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
-interface ProfileFormData {
-  // Business Basics
-  name: string;
-  industry: string;
-  companySize: string;
-  website: string;
-  
-  // Target Audience
-  targetAge: string;
-  targetLocation: string;
-  targetInterests: string;
-  
-  // Marketing Details
-  currentChannels: string;
-  marketingBudget: string;
-  marketingGoals: string;
-}
+import { BusinessBasicsStep } from "./profile/BusinessBasicsStep";
+import { TargetAudienceStep } from "./profile/TargetAudienceStep";
+import { MarketingDetailsStep } from "./profile/MarketingDetailsStep";
+import { ProfileFormData } from "./profile/types";
 
 const steps = [
   {
     title: "Business Basics",
-    description: "Tell us about your business",
+    description: "Tell us about your business fundamentals to help us understand your organization better.",
   },
   {
     title: "Target Audience",
-    description: "Define your ideal customer",
+    description: "Define your ideal customer profile to create more targeted marketing strategies.",
   },
   {
     title: "Marketing Details",
-    description: "Share your marketing goals",
+    description: "Share your current marketing efforts and goals to receive tailored recommendations.",
   },
 ];
 
@@ -98,193 +82,11 @@ export default function CreateProfileDialog() {
   const renderStepContent = (step: number) => {
     switch (step) {
       case 0:
-        return (
-          <>
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Business Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your business name" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="industry"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Industry</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select your industry" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="technology">Technology</SelectItem>
-                      <SelectItem value="retail">Retail</SelectItem>
-                      <SelectItem value="healthcare">Healthcare</SelectItem>
-                      <SelectItem value="finance">Finance</SelectItem>
-                      <SelectItem value="education">Education</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="companySize"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Company Size</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select company size" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="1-10">1-10 employees</SelectItem>
-                      <SelectItem value="11-50">11-50 employees</SelectItem>
-                      <SelectItem value="51-200">51-200 employees</SelectItem>
-                      <SelectItem value="201-500">201-500 employees</SelectItem>
-                      <SelectItem value="500+">500+ employees</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="website"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Website</FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://example.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        );
+        return <BusinessBasicsStep form={form} />;
       case 1:
-        return (
-          <>
-            <FormField
-              control={form.control}
-              name="targetAge"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Target Age Range</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select target age range" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="18-24">18-24</SelectItem>
-                      <SelectItem value="25-34">25-34</SelectItem>
-                      <SelectItem value="35-44">35-44</SelectItem>
-                      <SelectItem value="45-54">45-54</SelectItem>
-                      <SelectItem value="55+">55+</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="targetLocation"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Target Location</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter target location" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="targetInterests"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Target Interests</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter target interests" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        );
+        return <TargetAudienceStep form={form} />;
       case 2:
-        return (
-          <>
-            <FormField
-              control={form.control}
-              name="currentChannels"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Current Marketing Channels</FormLabel>
-                  <FormControl>
-                    <Input placeholder="e.g., Social Media, Email, SEO" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="marketingBudget"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Monthly Marketing Budget</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select budget range" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="0-1000">$0 - $1,000</SelectItem>
-                      <SelectItem value="1001-5000">$1,001 - $5,000</SelectItem>
-                      <SelectItem value="5001-10000">$5,001 - $10,000</SelectItem>
-                      <SelectItem value="10001+">$10,001+</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="marketingGoals"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Marketing Goals</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your marketing goals" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        );
+        return <MarketingDetailsStep form={form} />;
       default:
         return null;
     }
