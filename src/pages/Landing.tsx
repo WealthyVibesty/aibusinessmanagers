@@ -8,6 +8,7 @@ import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import PricingSection from "@/components/landing/PricingSection";
 import PricingDetailsSection from "@/components/landing/PricingDetailsSection";
 import LifetimeAccessSection from "@/components/landing/LifetimeAccessSection";
+import CaseStudiesSection from "@/components/landing/CaseStudiesSection";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ export default function Landing() {
       <HeroSection />
       <BenefitsSection />
       <LifetimeAccessSection />
+      <CaseStudiesSection />
       <StepsSection />
       <PricingSection />
       <PricingDetailsSection />
