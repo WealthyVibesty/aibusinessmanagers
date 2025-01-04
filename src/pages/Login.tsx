@@ -6,16 +6,18 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { LogIn, Home } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Login() {
   const navigate = useNavigate();
   const [view, setView] = useState<'sign_in' | 'sign_up'>('sign_up');
+  const { toast } = useToast();
 
   useEffect(() => {
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        navigate("/");
+        navigate("/dashboard");
       }
     };
 
@@ -23,16 +25,20 @@ export default function Login() {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session) {
-        navigate("/");
+        console.log("Auth state changed - user logged in");
+        toast({
+          title: "Welcome!",
+          description: "Successfully signed in. Redirecting to dashboard...",
+        });
+        navigate("/dashboard");
       }
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate]);
+  }, [navigate, toast]);
 
-  // Get the current URL for redirect
-  const redirectTo = `${window.location.origin}/`;
-  console.log("Redirect URL:", redirectTo); // Debug log
+  const redirectTo = `${window.location.origin}/dashboard`;
+  console.log("Redirect URL:", redirectTo);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 flex items-center justify-center p-4">
