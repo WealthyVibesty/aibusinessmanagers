@@ -64,14 +64,14 @@ export default function PricingDetailsSection() {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-background to-secondary/10 py-8 sm:py-16">
-      <div className="container px-4 mx-auto">
-        <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center animate-fadeIn px-4">
+    <section className="bg-gradient-to-b from-background to-secondary/10 py-6 sm:py-16">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto space-y-6 sm:space-y-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center animate-fadeIn">
             What You'll Get for Just $247:
           </h2>
 
-          <div className="grid gap-6 sm:gap-8">
+          <div className="grid gap-4 sm:gap-8">
             {offerings.map((offering, i) => (
               <Card 
                 key={i} 
@@ -87,7 +87,7 @@ export default function PricingDetailsSection() {
                       Value: ${offering.value.toLocaleString()}
                     </p>
                   </div>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2.5">
                     {offering.features.map((feature, j) => (
                       <li key={j} className="flex items-start gap-2 text-sm sm:text-base">
                         <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
@@ -99,7 +99,7 @@ export default function PricingDetailsSection() {
               </Card>
             ))}
 
-            <div className="space-y-4 sm:space-y-6">
+            <div className="space-y-4">
               {bonuses.map((bonus, i) => (
                 <Card 
                   key={i} 
@@ -117,8 +117,8 @@ export default function PricingDetailsSection() {
               ))}
             </div>
 
-            <Card className="p-6 sm:p-8 border-2 border-primary animate-fadeIn" style={{ animationDelay: "800ms" }}>
-              <div className="text-center space-y-6">
+            <Card className="p-5 sm:p-8 border-2 border-primary animate-fadeIn mt-4" style={{ animationDelay: "800ms" }}>
+              <div className="text-center space-y-5">
                 <div className="space-y-2">
                   <p className="text-xl sm:text-2xl font-bold">Total Value: $2,500+</p>
                   <p className="text-2xl sm:text-3xl font-bold text-primary">
@@ -128,7 +128,7 @@ export default function PricingDetailsSection() {
 
                 <div className="max-w-2xl mx-auto space-y-4">
                   <h3 className="text-lg sm:text-xl font-semibold">Why This Deal is Unbeatable:</h3>
-                  <ul className="space-y-3 text-left text-sm sm:text-base">
+                  <ul className="space-y-4 text-left text-sm sm:text-base">
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                       <span>No Guesswork: We handle everything—from roadmap creation to AI agent deployment.</span>
@@ -144,9 +144,9 @@ export default function PricingDetailsSection() {
                   </ul>
                 </div>
 
-                <div className="pt-4 sm:pt-6">
-                  <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Limited-Time Offer: Act Now!</h3>
-                  <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base px-4">
+                <div className="pt-4">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3">Limited-Time Offer: Act Now!</h3>
+                  <p className="text-muted-foreground mb-4 text-sm sm:text-base">
                     This offer won't last forever. The price goes up to $497 soon.
                     Don't miss your chance to transform your business with AI!
                   </p>
@@ -163,7 +163,7 @@ export default function PricingDetailsSection() {
               </div>
             </Card>
 
-            <div className="text-center space-y-6 animate-fadeIn px-4" style={{ animationDelay: "900ms" }}>
+            <div className="text-center space-y-5 animate-fadeIn py-4" style={{ animationDelay: "900ms" }}>
               <div>
                 <h3 className="text-lg sm:text-xl font-semibold mb-2">Got Questions?</h3>
                 <p className="text-muted-foreground text-sm sm:text-base">
