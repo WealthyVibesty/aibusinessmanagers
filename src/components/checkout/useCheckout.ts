@@ -37,12 +37,8 @@ export function useCheckout() {
 
       console.log('Checkout response:', { data, error });
 
-      if (error) {
-        throw new Error(error.message || 'Failed to create checkout session');
-      }
-
-      if (!data?.url) {
-        throw new Error('No checkout URL received from server');
+      if (error || !data?.url) {
+        throw new Error(error?.message || 'Failed to create checkout session');
       }
 
       // Redirect to Stripe checkout

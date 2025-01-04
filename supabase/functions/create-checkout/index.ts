@@ -38,7 +38,6 @@ serve(async (req) => {
     console.log('Initializing Stripe...');
     const stripe = new Stripe(stripeKey, {
       apiVersion: '2023-10-16',
-      httpClient: Stripe.createFetchHttpClient(), // Explicitly use fetch client
     });
 
     // Prepare line items
