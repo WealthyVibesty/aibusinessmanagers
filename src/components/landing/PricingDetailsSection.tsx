@@ -88,7 +88,7 @@ export default function PricingDetailsSection() {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-background to-secondary/10 py-8 sm:py-16">
+    <section className="bg-white/90 backdrop-blur-md py-8 sm:py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-center animate-fadeIn">

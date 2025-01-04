@@ -17,7 +17,7 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section className="container px-4 sm:px-6 lg:px-8 py-12 sm:py-16 mx-auto">
+    <section className="container px-4 sm:px-6 lg:px-8 py-12 sm:py-16 mx-auto bg-white/90 backdrop-blur-md">
       <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12">
         <h2 className="text-2xl sm:text-3xl font-bold text-center animate-fadeIn">
           Don't Just Take Our Word for It

@@ -21,7 +21,7 @@ export default function LifetimeAccessSection() {
   ];
 
   return (
-    <section className="container px-4 py-16 mx-auto bg-muted/50">
+    <section className="container px-4 py-16 mx-auto bg-white/90 backdrop-blur-md">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-4">
           <h2 className="text-3xl font-bold tracking-tight animate-fadeIn">
