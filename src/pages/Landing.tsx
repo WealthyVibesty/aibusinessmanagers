@@ -6,6 +6,7 @@ import BenefitsSection from "@/components/landing/BenefitsSection";
 import StepsSection from "@/components/landing/StepsSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import PricingSection from "@/components/landing/PricingSection";
+import PricingDetailsSection from "@/components/landing/PricingDetailsSection";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export default function Landing() {
       <BenefitsSection />
       <StepsSection />
       <PricingSection />
+      <PricingDetailsSection />
       <TestimonialsSection />
 
       {/* Final CTA */}
