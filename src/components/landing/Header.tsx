@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Header() {
@@ -17,7 +17,7 @@ export default function Header() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80; // Height of the fixed header
+      const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -55,19 +55,24 @@ export default function Header() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-gray-600 hover:text-primary transition-colors"
+                className="text-gray-600 hover:text-primary transition-colors flex items-center gap-1 group"
               >
                 {item.label}
+                <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
               </button>
             ))}
-            <Button onClick={() => scrollToSection("pricing-details")}>
+            <Button 
+              onClick={() => scrollToSection("pricing-details")}
+              size="lg"
+              className="shadow-lg hover:shadow-xl transition-shadow"
+            >
               Get Started
             </Button>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
@@ -80,7 +85,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 px-2 space-y-4 bg-white">
+          <nav className="md:hidden py-4 px-2 space-y-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg animate-fadeIn">
             {[
               { id: "benefits", label: "Benefits" },
               { id: "lifetime-access", label: "Courses" },
@@ -90,18 +95,22 @@ export default function Header() {
               <div key={item.id}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className="w-full text-left py-2 text-gray-600 hover:text-primary transition-colors"
+                  className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors flex items-center justify-between group"
                 >
                   {item.label}
+                  <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
                 </button>
               </div>
             ))}
-            <Button 
-              onClick={() => scrollToSection("pricing-details")}
-              className="w-full"
-            >
-              Get Started
-            </Button>
+            <div className="pt-2 px-2">
+              <Button 
+                onClick={() => scrollToSection("pricing-details")}
+                className="w-full shadow-lg"
+                size="lg"
+              >
+                Get Started
+              </Button>
+            </div>
           </nav>
         )}
       </div>

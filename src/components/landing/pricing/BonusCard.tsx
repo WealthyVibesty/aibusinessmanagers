@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Check } from "lucide-react";
+import { Check, Gift } from "lucide-react";
 
 interface BonusProps {
   index: number;
@@ -12,26 +12,31 @@ interface BonusProps {
 export default function BonusCard({ index, title, value, description, features }: BonusProps) {
   return (
     <Card 
-      className="p-4 sm:p-6 animate-slideUp bg-background"
+      className="p-6 sm:p-8 animate-slideUp hover:shadow-lg transition-shadow"
       style={{ animationDelay: `${index * 100}ms` }}
     >
-      <h3 className="text-base sm:text-lg font-semibold mb-2">
-        Bonus #{index + 1}: {title}
-      </h3>
-      <p className="text-primary font-semibold mb-2 text-sm sm:text-base">
-        Value: ${value}
-      </p>
-      <p className="text-muted-foreground mb-3 text-sm sm:text-base">{description}</p>
-      {features && (
-        <ul className="space-y-2">
-          {features.map((feature, j) => (
-            <li key={j} className="flex items-start gap-2">
-              <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-              <span className="text-sm sm:text-base">{feature}</span>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="flex items-start gap-4">
+        <Gift className="h-8 w-8 text-primary flex-shrink-0 mt-1" />
+        <div>
+          <h3 className="text-lg sm:text-xl font-semibold mb-2">
+            Bonus #{index + 1}: {title}
+          </h3>
+          <p className="text-primary font-semibold mb-3 text-base sm:text-lg">
+            Value: ${value}
+          </p>
+          <p className="text-muted-foreground mb-4 text-base">{description}</p>
+          {features && (
+            <ul className="space-y-3">
+              {features.map((feature, j) => (
+                <li key={j} className="flex items-start gap-3">
+                  <Check className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <span className="text-base">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
     </Card>
   );
 }
