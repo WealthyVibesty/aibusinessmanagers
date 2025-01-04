@@ -1,4 +1,4 @@
-import { Clock, DollarSign, ChartBarHorizontal, Users, Bot } from "lucide-react";
+import { Clock, DollarSign, BarChartHorizontal, Users, Bot } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 export default function CaseStudiesSection() {
@@ -56,7 +56,7 @@ export default function CaseStudiesSection() {
         "Reduced missed deadlines by 90%",
         "Improved customer satisfaction with real-time updates"
       ],
-      icon: <ChartBarHorizontal className="h-8 w-8 text-primary" />
+      icon: <BarChartHorizontal className="h-8 w-8 text-primary" />
     }
   ];
 
