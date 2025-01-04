@@ -12,19 +12,9 @@ export default function HeroSection() {
       
       {/* Main content */}
       <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
-        {/* Statistic */}
-        <div className="mb-8 sm:mb-12 animate-fadeIn">
-          <span className="block text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-white to-primary bg-clip-text text-transparent bg-[length:200%_100%] animate-[slide_2s_linear_infinite] mb-2">
-            376+
-          </span>
-          <span className="text-lg sm:text-xl text-muted-foreground">
-            Businesses Integrated
-          </span>
-        </div>
-
         {/* Headline */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary animate-slideUp px-4">
-          Turn Your Business into an AI-Powered Machine – Save Hours, Increase Revenue, and Scale Faster.
+          Turn Your Business into an <span className="bg-gradient-to-r from-primary via-white to-primary bg-clip-text text-transparent bg-[length:200%_100%] animate-[slide_2s_linear_infinite]">AI-Powered Machine</span> – Save Hours, Increase Revenue, and Scale Faster.
         </h1>
 
         {/* Subheadline */}
