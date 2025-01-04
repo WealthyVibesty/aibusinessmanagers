@@ -91,24 +91,24 @@ export default function BusinessComparisonSection() {
   };
 
   return (
-    <section className="relative pt-12 pb-16 px-4">
+    <section className="relative py-8 sm:py-12 px-4">
       <div className="container mx-auto">
-        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight mb-12">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight mb-8 sm:mb-12">
           See How Much You Can Save
         </h2>
         <div className="w-full max-w-6xl mx-auto">
           <Card className="mb-4 md:mb-8">
-            <CardHeader className="p-3 md:p-6 bg-white relative z-10">
-              <CardTitle className="text-xl md:text-2xl text-center">Select Your Industry</CardTitle>
+            <CardHeader className="p-4 sm:p-6 bg-white relative z-10 border-b">
+              <CardTitle className="text-xl sm:text-2xl text-center">Select Your Industry</CardTitle>
             </CardHeader>
-            <CardContent className="p-2 md:p-6">
+            <CardContent className="p-4 sm:p-6">
               <Tabs value={selectedBusiness} onValueChange={setSelectedBusiness} className="w-full">
-                <TabsList className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 relative z-10 bg-gray-50 p-2">
+                <TabsList className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 relative z-10 bg-gray-50 p-4">
                   {Object.keys(businesses).map(business => (
                     <TabsTrigger 
                       key={business} 
                       value={business} 
-                      className="p-3 sm:p-4 text-base sm:text-lg bg-white hover:bg-blue-50 data-[state=active]:bg-blue-100 shadow-sm border rounded-lg transition-all duration-200 font-medium"
+                      className="px-4 py-3 sm:py-4 text-base sm:text-lg bg-white hover:bg-blue-50 data-[state=active]:bg-blue-100 shadow-sm border rounded-lg transition-all duration-200 font-medium"
                     >
                       {business}
                     </TabsTrigger>
@@ -116,14 +116,14 @@ export default function BusinessComparisonSection() {
                 </TabsList>
 
                 {Object.entries(businesses).map(([business, data]) => (
-                  <TabsContent key={business} value={business} className="mt-2 md:mt-6">
-                    <div className="grid gap-3 md:gap-6">
+                  <TabsContent key={business} value={business} className="mt-4 sm:mt-6">
+                    <div className="grid gap-4 sm:gap-6">
                       <Card className="w-full overflow-hidden">
-                        <CardHeader className="p-3 md:p-6 bg-white relative z-10 border-b">
-                          <CardTitle className="text-lg md:text-2xl text-center">Cost Comparison - {business}</CardTitle>
+                        <CardHeader className="p-4 sm:p-6 bg-white relative z-10 border-b">
+                          <CardTitle className="text-lg sm:text-xl lg:text-2xl text-center">Cost Comparison - {business}</CardTitle>
                         </CardHeader>
-                        <CardContent className="p-2 md:p-6 pt-4">
-                          <div className="h-48 md:h-72">
+                        <CardContent className="p-4 sm:p-6">
+                          <div className="h-48 sm:h-64 lg:h-72">
                             <ResponsiveContainer width="100%" height="100%">
                               <BarChart data={[
                                 { name: 'Monthly Costs', noAI: data.noAI, yourAI: data.yourAI, competitors: data.competitors }
@@ -143,11 +143,11 @@ export default function BusinessComparisonSection() {
                       </Card>
 
                       <Card className="w-full overflow-hidden">
-                        <CardHeader className="p-3 md:p-6 bg-white relative z-10 border-b">
-                          <CardTitle className="text-lg md:text-2xl text-center">12-Month Cost Projection</CardTitle>
+                        <CardHeader className="p-4 sm:p-6 bg-white relative z-10 border-b">
+                          <CardTitle className="text-lg sm:text-xl lg:text-2xl text-center">12-Month Cost Projection</CardTitle>
                         </CardHeader>
-                        <CardContent className="p-2 md:p-6 pt-4">
-                          <div className="h-48 md:h-72">
+                        <CardContent className="p-4 sm:p-6">
+                          <div className="h-48 sm:h-64 lg:h-72">
                             <ResponsiveContainer width="100%" height="100%">
                               <LineChart 
                                 data={generateMonthlyData(business)} 
@@ -177,15 +177,15 @@ export default function BusinessComparisonSection() {
                       </Card>
 
                       <Card className="bg-blue-50 w-full">
-                        <CardContent className="p-4 md:py-6">
+                        <CardContent className="p-4 sm:p-6">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <div className="text-center">
-                              <p className="text-base md:text-lg font-semibold">Monthly Savings with AI Marketing Profile</p>
-                              <p className="text-2xl md:text-3xl font-bold text-blue-600">{formatDollar(data.monthlySavings)}</p>
+                              <p className="text-base sm:text-lg font-semibold">Monthly Savings with AI Marketing Profile</p>
+                              <p className="text-2xl sm:text-3xl font-bold text-blue-600">{formatDollar(data.monthlySavings)}</p>
                             </div>
                             <div className="text-center">
-                              <p className="text-base md:text-lg font-semibold">Annual Savings with AI Marketing Profile</p>
-                              <p className="text-2xl md:text-3xl font-bold text-blue-600">{formatDollar(data.monthlySavings * 12)}</p>
+                              <p className="text-base sm:text-lg font-semibold">Annual Savings with AI Marketing Profile</p>
+                              <p className="text-2xl sm:text-3xl font-bold text-blue-600">{formatDollar(data.monthlySavings * 12)}</p>
                             </div>
                           </div>
                         </CardContent>
