@@ -11,6 +11,7 @@ interface UpsellItemProps {
   isSelected: boolean;
   onToggle: (priceId: string) => void;
   animationDelay?: string;
+  disabled?: boolean;
 }
 
 export function UpsellItem({ 
@@ -21,7 +22,8 @@ export function UpsellItem({
   priceId, 
   isSelected, 
   onToggle,
-  animationDelay 
+  animationDelay,
+  disabled = false
 }: UpsellItemProps) {
   return (
     <Card 
@@ -50,6 +52,7 @@ export function UpsellItem({
         <Button
           variant={isSelected ? "default" : "outline"}
           onClick={() => onToggle(priceId)}
+          disabled={disabled}
           className="min-w-[120px]"
         >
           {isSelected ? 'Added' : 'Add This'}

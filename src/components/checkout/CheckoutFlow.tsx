@@ -17,6 +17,7 @@ export default function CheckoutFlow() {
           variant="ghost"
           onClick={() => navigate('/')}
           className="mb-4 group"
+          disabled={isLoading}
         >
           <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
           Back to Home
@@ -49,6 +50,7 @@ export default function CheckoutFlow() {
           isSelected={selectedUpsells.includes('price_1QdYnvGineWW4dYE5nh8CnHC')}
           onToggle={toggleUpsell}
           animationDelay="100ms"
+          disabled={isLoading}
         />
 
         <UpsellItem 
@@ -64,6 +66,7 @@ export default function CheckoutFlow() {
           isSelected={selectedUpsells.includes('price_1QdYo7GineWW4dYE6hMDnATH')}
           onToggle={toggleUpsell}
           animationDelay="200ms"
+          disabled={isLoading}
         />
 
         {/* Checkout Button */}
@@ -72,18 +75,18 @@ export default function CheckoutFlow() {
             size="lg"
             onClick={handleCheckout}
             disabled={isLoading}
-            className="text-lg group relative"
+            className="text-lg group relative min-w-[200px] h-12"
           >
             {isLoading ? (
-              <span className="flex items-center">
-                <span className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></span>
+              <div className="flex items-center justify-center">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
                 Processing...
-              </span>
+              </div>
             ) : (
-              <>
+              <span className="flex items-center">
                 Proceed to Checkout
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </>
+              </span>
             )}
           </Button>
         </div>

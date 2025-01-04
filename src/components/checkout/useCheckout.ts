@@ -26,61 +26,45 @@ export function useCheckout() {
       
       if (sessionError) {
         console.error('Session error:', sessionError);
-        throw new Error('Authentication error');
+        throw new Error('Please sign in to continue with checkout');
       }
 
       if (!session?.access_token) {
         console.error('No access token found');
-        throw new Error('No authentication token found');
+        throw new Error('Please sign in to continue with checkout');
       }
 
       console.log('Creating checkout session with upsells:', selectedUpsells);
-      const response = await fetch(
-        'https://ypmtcuqbndkcezjupwxj.supabase.co/functions/v1/create-checkout',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${session.access_token}`,
-          },
-          body: JSON.stringify({
-            priceId: 'price_1QdYndGineWW4dYE2pij53XE', // Main product price ID
-            upsellPriceIds: selectedUpsells,
-          }),
+      const response = await supabase.functions.invoke('create-checkout', {
+        body: {
+          priceId: 'price_1QdYndGineWW4dYE2pij53XE', // Main product price ID
+          upsellPriceIds: selectedUpsells,
         }
-      );
+      });
 
-      if (!response.ok) {
-        console.error('Checkout API error:', response.status, response.statusText);
-        const errorData = await response.json().catch(() => ({}));
-        console.error('Error details:', errorData);
-        throw new Error(`Checkout API error: ${response.statusText}`);
+      if (response.error) {
+        console.error('Checkout API error:', response.error);
+        throw new Error(response.error.message || 'Failed to create checkout session');
       }
 
-      const { url, error } = await response.json();
-      console.log('Checkout session created, redirecting to:', url);
+      const { data } = response;
+      console.log('Checkout session created, redirecting to:', data.url);
       
-      if (error) {
-        console.error('Checkout error from API:', error);
-        throw new Error(error);
-      }
-      
-      if (!url) {
+      if (!data?.url) {
         console.error('No checkout URL received');
         throw new Error('No checkout URL received from server');
       }
 
-      window.location.href = url;
+      window.location.href = data.url;
       
     } catch (error) {
       console.error('Checkout error:', error);
+      setIsLoading(false);
       toast({
         title: "Checkout Error",
         description: error instanceof Error ? error.message : "There was a problem initiating checkout. Please try again.",
         variant: "destructive",
       });
-    } finally {
-      setIsLoading(false);
     }
   };
 
