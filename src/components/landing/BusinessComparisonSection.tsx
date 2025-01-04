@@ -82,12 +82,12 @@ export default function BusinessComparisonSection() {
 
   return (
     <section className="relative py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-blue-50">
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto max-w-7xl"> {/* Increased from max-w-6xl to max-w-7xl */}
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-center animate-fadeIn leading-tight mb-12 sm:mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800">
           See How Much You Can Save
         </h2>
         
-        <div className="w-full">
+        <div className="w-full">  {/* Removed max-w-6xl constraint */}
           <Card className="bg-white/80 backdrop-blur-sm shadow-xl border-0">
             <CardContent className="p-6 sm:p-8">
               {/* Tabs */}
@@ -112,7 +112,7 @@ export default function BusinessComparisonSection() {
                 {/* Cost Comparison Chart */}
                 <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
                   <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">Cost Comparison</h3>
-                  <div className="aspect-square w-full max-w-4xl mx-auto">
+                  <div className="h-[500px]"> {/* Increased height from 400px to 500px */}
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={costComparisonData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
@@ -131,7 +131,7 @@ export default function BusinessComparisonSection() {
                 {/* 12-Month Projection Chart */}
                 <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
                   <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">12-Month Cost Projection</h3>
-                  <div className="aspect-square w-full max-w-4xl mx-auto">
+                  <div className="h-[500px]"> {/* Increased height from 400px to 500px */}
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={monthlyData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
