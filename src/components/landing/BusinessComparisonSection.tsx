@@ -50,19 +50,19 @@ export default function BusinessComparisonSection() {
   const [selectedBusiness, setSelectedBusiness] = useState('Hospitals');
 
   return (
-    <section className="relative py-8 sm:py-12 px-4">
+    <section className="relative py-8 sm:py-12 px-4 sm:px-6">
       <div className="container mx-auto">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight mb-8 sm:mb-12">
           See How Much You Can Save
         </h2>
-        <div className="w-full max-w-6xl mx-auto">
+        <div className="w-full max-w-3xl mx-auto">
           <Card className="mb-4 md:mb-8">
-            <CardHeader className="p-4 sm:p-6 bg-white relative z-10 border-b">
-              <CardTitle className="text-xl sm:text-2xl text-center">Select Your Industry</CardTitle>
+            <CardHeader className="p-6 bg-white relative z-10 border-b">
+              <CardTitle className="text-2xl text-center">Select Your Industry</CardTitle>
             </CardHeader>
-            <CardContent className="p-4 sm:p-6">
+            <CardContent className="p-6">
               <Tabs value={selectedBusiness} onValueChange={setSelectedBusiness} className="w-full">
-                <div className="relative z-10 bg-gray-50 p-4">
+                <div className="relative z-10 bg-gray-50 p-6 rounded-xl">
                   <IndustrySelector 
                     businesses={Object.keys(businesses)} 
                     selectedBusiness={selectedBusiness} 
@@ -70,8 +70,8 @@ export default function BusinessComparisonSection() {
                 </div>
 
                 {Object.entries(businesses).map(([business, data]) => (
-                  <TabsContent key={business} value={business} className="mt-4 sm:mt-6">
-                    <div className="grid gap-4 sm:gap-6">
+                  <TabsContent key={business} value={business} className="mt-6">
+                    <div className="grid gap-6">
                       <CostChart business={business} data={data} />
                       <ProjectionChart business={business} data={data} />
                       <SavingsDisplay data={data} />
