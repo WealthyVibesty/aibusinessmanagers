@@ -14,11 +14,11 @@ export default function HeroSection() {
   };
   
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-white/90 backdrop-blur-md">
+    <section className="relative min-h-[80vh] flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-white/90 backdrop-blur-md">
       <div className="absolute inset-x-0 top-0 h-[70vh] bg-gradient-to-b from-blue-200/50 to-white -z-10" />
       
-      <div className="max-w-2xl mx-auto text-center space-y-12">
-        <div className="space-y-10">
+      <div className="max-w-2xl mx-auto text-center space-y-8">
+        <div className="space-y-6">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary animate-slideUp leading-tight">
             Integrate AI Into Your Business
           </h1>
