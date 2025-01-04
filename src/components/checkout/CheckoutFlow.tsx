@@ -24,7 +24,7 @@ export default function CheckoutFlow() {
             'Authorization': `Bearer ${session?.access_token}`,
           },
           body: JSON.stringify({
-            priceId: 'YOUR_MAIN_PRODUCT_PRICE_ID', // Replace with your Stripe price ID
+            priceId: 'price_1QdYndGineWW4dYE2pij53XE', // Main product price ID
             upsellPriceIds: selectedUpsells,
           }),
         }
@@ -113,11 +113,11 @@ export default function CheckoutFlow() {
             </div>
 
             <Button
-              variant={selectedUpsells.includes('YOUR_TRAINING_PRICE_ID') ? "default" : "outline"}
-              onClick={() => toggleUpsell('YOUR_TRAINING_PRICE_ID')}
+              variant={selectedUpsells.includes('price_1QdYnvGineWW4dYE5nh8CnHC') ? "default" : "outline"}
+              onClick={() => toggleUpsell('price_1QdYnvGineWW4dYE5nh8CnHC')}
               className="min-w-[120px]"
             >
-              {selectedUpsells.includes('YOUR_TRAINING_PRICE_ID') ? 'Added' : 'Add This'}
+              {selectedUpsells.includes('price_1QdYnvGineWW4dYE5nh8CnHC') ? 'Added' : 'Add This'}
             </Button>
           </div>
         </Card>
@@ -148,11 +148,11 @@ export default function CheckoutFlow() {
             </div>
 
             <Button
-              variant={selectedUpsells.includes('YOUR_SUPPORT_PRICE_ID') ? "default" : "outline"}
-              onClick={() => toggleUpsell('YOUR_SUPPORT_PRICE_ID')}
+              variant={selectedUpsells.includes('price_1QdYo7GineWW4dYE6hMDnATH') ? "default" : "outline"}
+              onClick={() => toggleUpsell('price_1QdYo7GineWW4dYE6hMDnATH')}
               className="min-w-[120px]"
             >
-              {selectedUpsells.includes('YOUR_SUPPORT_PRICE_ID') ? 'Added' : 'Add This'}
+              {selectedUpsells.includes('price_1QdYo7GineWW4dYE6hMDnATH') ? 'Added' : 'Add This'}
             </Button>
           </div>
         </Card>
