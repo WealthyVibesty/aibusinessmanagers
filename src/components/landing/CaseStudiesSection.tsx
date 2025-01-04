@@ -149,30 +149,30 @@ export default function CaseStudiesSection() {
             {caseStudies.map((study, index) => (
               <Card 
                 key={index} 
-                className="p-6 animate-slideUp aspect-square overflow-y-auto"
+                className="p-6 animate-slideUp aspect-square overflow-y-auto hover:shadow-lg transition-shadow"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="flex flex-col h-full">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="flex-shrink-0">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="flex-shrink-0 bg-primary/10 p-2 rounded-lg">
                       {study.icon}
                     </div>
-                    <h3 className="text-lg font-semibold leading-tight">{study.title}</h3>
+                    <h3 className="text-lg font-bold leading-tight text-foreground">{study.title}</h3>
                   </div>
-                  <div className="space-y-3 overflow-y-auto">
+                  <div className="space-y-4 overflow-y-auto pr-2">
                     <div>
-                      <h4 className="font-semibold text-sm text-primary mb-1">Problem:</h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{study.problem}</p>
+                      <h4 className="font-bold text-base text-primary mb-2">Problem:</h4>
+                      <p className="text-base text-foreground/90 leading-relaxed">{study.problem}</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-sm text-primary mb-1">Solution:</h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{study.solution}</p>
+                      <h4 className="font-bold text-base text-primary mb-2">Solution:</h4>
+                      <p className="text-base text-foreground/90 leading-relaxed">{study.solution}</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-sm text-primary mb-1">Results:</h4>
-                      <ul className="list-disc list-inside text-sm text-muted-foreground leading-relaxed">
+                      <h4 className="font-bold text-base text-primary mb-2">Results:</h4>
+                      <ul className="list-disc list-inside text-base text-foreground/90 leading-relaxed space-y-1">
                         {study.results.map((result, i) => (
-                          <li key={i} className="mb-1">{result}</li>
+                          <li key={i}>{result}</li>
                         ))}
                       </ul>
                     </div>
