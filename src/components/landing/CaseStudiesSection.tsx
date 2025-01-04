@@ -1,30 +1,8 @@
-import { Clock, DollarSign, BarChartHorizontal, Users, Bot } from "lucide-react";
+import { Clock, DollarSign, BarChartHorizontal, Users, Bot, Phone, Wrench, Scissors, Spa, GraduationCap, Store, Home, Hotel } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 export default function CaseStudiesSection() {
   const caseStudies = [
-    {
-      title: "High-Ticket Consultant: Automating Lead Follow-Ups",
-      problem: "The consultant missed 30% of potential clients due to manual follow-ups and scheduling conflicts.",
-      solution: "We implemented an AI-powered CRM integration to automate lead follow-ups and schedule consultations.",
-      results: [
-        "Increased client conversions by 25%",
-        "Saved 20+ hours per week on manual tasks",
-        "Boosted revenue by $50,000 in the first quarter"
-      ],
-      icon: <Users className="h-8 w-8 text-primary" />
-    },
-    {
-      title: "High-Ticket Coach: Streamlining Client Onboarding",
-      problem: "The coach struggled with time-consuming client onboarding and missed deadlines.",
-      solution: "We set up an AI-powered onboarding system with automated contracts, payment reminders, and scheduling.",
-      results: [
-        "Reduced onboarding time by 50%",
-        "Improved client satisfaction with seamless processes",
-        "Increased monthly revenue by 30%"
-      ],
-      icon: <Bot className="h-8 w-8 text-primary" />
-    },
     {
       title: "Doctor's Office: Managing Patient Appointments",
       problem: "The office faced high no-show rates and overbooked schedules, leading to lost revenue.",
@@ -48,15 +26,114 @@ export default function CaseStudiesSection() {
       icon: <DollarSign className="h-8 w-8 text-primary" />
     },
     {
-      title: "Case Study: Quick Prints—Boosting Profits and Efficiency with AI Automation",
+      title: "Quick Prints: Boosting Profits with AI Automation",
       problem: "Quick Prints faced outdated pricing models leading to lost profits and overwhelmed staff spending time on repetitive tasks.",
-      solution: "We implemented AI-powered dynamic pricing automation with supplier data integration, AI voice agent & SMS alerts through Twilio and WhatsApp for instant updates, and automated project management with Monday.com.",
+      solution: "We implemented AI-powered dynamic pricing automation with supplier data integration, AI voice agent & SMS alerts through Twilio and WhatsApp for instant updates.",
       results: [
         "15% increase in profit margins through automated pricing adjustments",
         "Improved customer satisfaction with real-time updates",
         "Saved 20+ hours weekly for staff to focus on growth"
       ],
       icon: <BarChartHorizontal className="h-8 w-8 text-primary" />
+    },
+    {
+      title: "Call Center: Enhancing Customer Support",
+      problem: "A call center struggled with long wait times and inconsistent customer service quality.",
+      solution: "Implemented AI voice agents for initial customer screening and common inquiries, with smart routing to human agents.",
+      results: [
+        "Reduced average wait time by 65%",
+        "Increased customer satisfaction scores by 40%",
+        "Handled 70% of routine inquiries automatically"
+      ],
+      icon: <Phone className="h-8 w-8 text-primary" />
+    },
+    {
+      title: "Auto Shop: Streamlining Operations",
+      problem: "Local auto shop faced challenges with appointment scheduling and parts inventory management.",
+      solution: "Deployed AI system for automated scheduling, inventory forecasting, and customer communications.",
+      results: [
+        "Reduced parts ordering errors by 80%",
+        "Increased service bay utilization by 35%",
+        "Improved customer retention by 25%"
+      ],
+      icon: <Wrench className="h-8 w-8 text-primary" />
+    },
+    {
+      title: "Beauty Salon: Appointment Management",
+      problem: "Salon struggled with scheduling conflicts and last-minute cancellations.",
+      solution: "Implemented AI booking system with automated reminders and waitlist management.",
+      results: [
+        "Reduced no-shows by 50%",
+        "Increased booking efficiency by 40%",
+        "Improved stylist utilization by 30%"
+      ],
+      icon: <Scissors className="h-8 w-8 text-primary" />
+    },
+    {
+      title: "Med Spa: Client Experience Enhancement",
+      problem: "Med spa needed better client tracking and treatment planning.",
+      solution: "Integrated AI-powered client management system with treatment tracking and automated follow-ups.",
+      results: [
+        "Increased repeat bookings by 45%",
+        "Improved treatment plan adherence by 60%",
+        "Boosted revenue per client by 35%"
+      ],
+      icon: <Spa className="h-8 w-8 text-primary" />
+    },
+    {
+      title: "University: Administrative Automation",
+      problem: "Large university faced administrative bottlenecks in student services.",
+      solution: "Implemented AI chatbots for student inquiries and automated document processing system.",
+      results: [
+        "Reduced administrative workload by 50%",
+        "Decreased response time to student queries by 80%",
+        "Processed enrollment documents 3x faster"
+      ],
+      icon: <GraduationCap className="h-8 w-8 text-primary" />
+    },
+    {
+      title: "Small College: Resource Optimization",
+      problem: "Small college struggled with resource allocation and student support.",
+      solution: "Deployed AI system for course scheduling, resource management, and student support.",
+      results: [
+        "Optimized classroom utilization by 40%",
+        "Reduced scheduling conflicts by 75%",
+        "Improved student satisfaction scores by 30%"
+      ],
+      icon: <GraduationCap className="h-8 w-8 text-primary" />
+    },
+    {
+      title: "Local Business: Customer Engagement",
+      problem: "Local retail store needed better customer engagement and inventory management.",
+      solution: "Implemented AI-powered CRM and inventory management system with predictive analytics.",
+      results: [
+        "Increased customer retention by 35%",
+        "Reduced inventory costs by 25%",
+        "Boosted sales through personalized marketing by 30%"
+      ],
+      icon: <Store className="h-8 w-8 text-primary" />
+    },
+    {
+      title: "Real Estate Agency: Lead Management",
+      problem: "Agency struggled with lead follow-up and property matching.",
+      solution: "Integrated AI-powered lead nurturing and property matching system.",
+      results: [
+        "Increased lead conversion rate by 45%",
+        "Reduced property search time by 60%",
+        "Improved agent productivity by 40%"
+      ],
+      icon: <Home className="h-8 w-8 text-primary" />
+    },
+    {
+      title: "Hotel Chain: Guest Experience",
+      problem: "Hotel chain faced challenges with guest services and operational efficiency.",
+      solution: "Implemented AI concierge service and automated operational management system.",
+      results: [
+        "Improved guest satisfaction scores by 50%",
+        "Reduced operational costs by 30%",
+        "Increased repeat bookings by 40%"
+      ],
+      icon: <Hotel className="h-8 w-8 text-primary" />
     }
   ];
 
