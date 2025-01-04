@@ -1,7 +1,7 @@
 export default function StepsSection() {
   const steps = [
     {
-      title: "Fill Out the Free Form",
+      title: "Fill Out The Form",
       desc: "Answer a few simple questions about your business.",
     },
     {
