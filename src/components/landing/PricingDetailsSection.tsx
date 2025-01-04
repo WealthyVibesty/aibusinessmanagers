@@ -97,26 +97,31 @@ export default function PricingDetailsSection() {
   ];
 
   return (
-    <section className="bg-white/90 backdrop-blur-md py-8 sm:py-12">
+    <section className="bg-gradient-to-b from-white/90 to-primary/5 backdrop-blur-md py-16 sm:py-24">
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center animate-fadeIn leading-tight">
-            What You'll Get for Just $247:
-          </h2>
+        <div className="max-w-4xl mx-auto space-y-12 sm:space-y-16">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold animate-fadeIn leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              What You'll Get for Just $247:
+            </h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto animate-slideUp">
+              Transform your business with our comprehensive AI implementation package
+            </p>
+          </div>
 
-          <div className="grid gap-6">
+          <div className="grid gap-6 sm:gap-8">
             {offerings.map((offering, i) => (
               <OfferingCard key={i} index={i} {...offering} />
             ))}
 
             {/* Bonuses Section */}
-            <div className="pt-4">
-              <Card className="border-2 border-primary/20 bg-primary/5 overflow-hidden">
-                <div className="p-6 sm:p-8">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 leading-tight">
+            <div className="pt-8">
+              <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5 overflow-hidden">
+                <div className="p-8 sm:p-10">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                     🎁 Exclusive Bonuses (Total Value: $1,694+)
                   </h2>
-                  <div className="grid gap-4">
+                  <div className="grid gap-6">
                     {bonuses.map((bonus, i) => (
                       <BonusCard key={i} index={i} {...bonus} />
                     ))}
@@ -125,12 +130,12 @@ export default function PricingDetailsSection() {
               </Card>
             </div>
 
-            {/* Lifetime Access Section - Now directly under Bonuses */}
-            <div>
-              <Card className="border-2 border-primary/20 bg-primary/5 overflow-hidden">
-                <div className="p-6 sm:p-8 space-y-8">
+            {/* Lifetime Access Section */}
+            <div className="pt-8">
+              <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5 overflow-hidden">
+                <div className="p-8 sm:p-10 space-y-10">
                   <div className="text-center space-y-4">
-                    <h2 className="text-2xl sm:text-3xl font-bold leading-tight">
+                    <h2 className="text-2xl sm:text-3xl font-bold leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                       Lifetime Access to AI Training Courses
                     </h2>
                     <p className="text-xl text-primary font-semibold">
@@ -142,19 +147,23 @@ export default function PricingDetailsSection() {
                     {courses.map((course, i) => (
                       <Card 
                         key={i} 
-                        className="p-6 animate-slideUp bg-white"
+                        className="group p-6 animate-slideUp hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-primary/5"
                         style={{ animationDelay: `${i * 100}ms` }}
                       >
-                        <div className="mb-4">
+                        <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
                           {course.icon}
                         </div>
-                        <h3 className="text-xl font-semibold mb-3 leading-tight">{course.title}</h3>
-                        <p className="text-lg text-muted-foreground leading-relaxed">{course.description}</p>
+                        <h3 className="text-xl font-semibold mb-3 leading-tight group-hover:text-primary transition-colors">
+                          {course.title}
+                        </h3>
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                          {course.description}
+                        </p>
                       </Card>
                     ))}
                   </div>
 
-                  <Card className="p-6 text-center bg-white animate-fadeIn" style={{ animationDelay: "400ms" }}>
+                  <Card className="p-6 text-center bg-gradient-to-r from-primary/5 to-accent/5 animate-fadeIn hover:shadow-lg transition-all duration-300" style={{ animationDelay: "400ms" }}>
                     <p className="text-xl font-semibold leading-relaxed">
                       And here's the best part: You'll get all future courses for free to train your team and stay ahead of the curve.
                     </p>
@@ -165,7 +174,7 @@ export default function PricingDetailsSection() {
 
             <PricingSummary />
 
-            <div className="text-center space-y-6 animate-fadeIn py-4" style={{ animationDelay: "900ms" }}>
+            <div className="text-center space-y-8 animate-fadeIn py-8" style={{ animationDelay: "900ms" }}>
               <div className="px-4">
                 <h3 className="text-xl font-bold mb-3">Got Questions?</h3>
                 <p className="text-muted-foreground text-lg">
@@ -177,7 +186,7 @@ export default function PricingDetailsSection() {
                 <h3 className="text-xl font-bold mb-3">
                   Why Wait? Your Business Can't Afford to Fall Behind.
                 </h3>
-                <p className="text-muted-foreground text-lg leading-relaxed">
+                <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
                   AI is the future—and it's moving fast. Don't let your competitors outpace you. 
                   Let's transform your business together.
                 </p>
