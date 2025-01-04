@@ -20,7 +20,7 @@ export default function BenefitsSection() {
     <section className="container px-4 pt-8 pb-16 mx-auto">
       <div className="max-w-4xl mx-auto space-y-12">
         <h2 className="text-3xl font-bold text-center animate-fadeIn">
-          Your Business Can't Afford to Wait – AI is Moving Faster Than Ever, and Your Competitors Are Already Ahead. For Just $1, Let Us Help You Catch Up Before It's Too Late.
+          Your Business Can't Afford to Wait – AI is Moving Faster Than Ever, and Your Competitors Are Already Ahead. For Just $247, Let Us Help You Catch Up and Stay Ahead.
         </h2>
         <div className="grid gap-8 md:grid-cols-3">
           {benefits.map(({ title, text }, i) => (

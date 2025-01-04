@@ -25,14 +25,14 @@ export default function Landing() {
         </h2>
         <div className="max-w-3xl mx-auto space-y-8">
           <p className="text-xl text-muted-foreground text-center">
-            Just $1 to Get Started. No Risk. Just Results.
+            Just $247 to Get Started. No Risk. Just Results.
           </p>
           <Button
             size="lg"
             className="mt-8 text-lg group w-full sm:w-auto"
             onClick={() => navigate("/login")}
           >
-            Get Started Now – Only $1
+            Get Started Now – Only $247
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>

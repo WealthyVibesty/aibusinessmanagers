@@ -1,7 +1,7 @@
 export default function StepsSection() {
   const steps = [
     {
-      title: "Pay $1 and Fill Out the Form",
+      title: "Pay $247 and Fill Out the Form",
       desc: "Answer a few simple questions about your business.",
     },
     {
@@ -10,7 +10,7 @@ export default function StepsSection() {
     },
     {
       title: "You Decide",
-      desc: "If you love it, we'll help you implement it. If not, no worries – you've only spent $1 to try.",
+      desc: "If you love it, we'll help you implement it. If not, no worries – you've only spent $247 to try.",
     },
   ];
 

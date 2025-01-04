@@ -30,7 +30,7 @@ export default function HeroSection() {
         {/* Subheadline */}
         <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-slideUp" 
            style={{ animationDelay: "100ms" }}>
-          AI is Moving Faster Than Ever – Don't Get Left Behind. Try Us for Just $1 and See What's Possible.
+          AI is Moving Faster Than Ever – Don't Get Left Behind. For Just $247, Let Us Help You Transform Your Business.
         </p>
 
         {/* CTA Button */}
@@ -40,7 +40,7 @@ export default function HeroSection() {
           style={{ animationDelay: "200ms" }}
           onClick={() => navigate("/login")}
         >
-          Get Started Now – Only $1
+          Get Started Now – Only $247
           <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
         </Button>
       </div>

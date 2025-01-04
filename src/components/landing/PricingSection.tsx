@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 export default function PricingSection() {
   const steps = [
     {
-      title: "Pay $1 and Fill Out the Form",
+      title: "Pay $247 and Fill Out the Form",
       description: "Answer a few simple questions about your business.",
       icon: <ArrowRight className="h-5 w-5 text-primary" />,
     },
@@ -28,7 +28,7 @@ export default function PricingSection() {
             What Does It Cost to Get Started?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center animate-slideUp" style={{ animationDelay: "100ms" }}>
-            We get it – pricing matters. That's why we're only charging $1 to create your AI Marketing Profile.
+            We get it – pricing matters. That's why we're only charging $247 to create your AI Marketing Profile.
           </p>
 
           <Card className="border-2 border-primary/10 animate-fadeIn" style={{ animationDelay: "200ms" }}>
