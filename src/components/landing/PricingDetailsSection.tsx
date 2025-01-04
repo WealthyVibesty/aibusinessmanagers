@@ -64,71 +64,71 @@ export default function PricingDetailsSection() {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-background to-secondary/10 py-16">
+    <section className="bg-gradient-to-b from-background to-secondary/10 py-8 sm:py-16">
       <div className="container px-4 mx-auto">
-        <div className="max-w-4xl mx-auto space-y-12">
-          <h2 className="text-3xl font-bold text-center animate-fadeIn">
+        <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center animate-fadeIn px-4">
             What You'll Get for Just $247:
           </h2>
 
-          <div className="grid gap-8">
+          <div className="grid gap-6 sm:gap-8">
             {offerings.map((offering, i) => (
               <Card 
                 key={i} 
-                className="p-6 animate-slideUp"
+                className="p-4 sm:p-6 animate-slideUp"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
-                <div className="flex flex-col md:flex-row md:items-start gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-2">
+                <div className="flex flex-col gap-3">
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-semibold mb-2">
                       {i + 1}. {offering.title}
                     </h3>
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-muted-foreground mb-3">
                       Value: ${offering.value.toLocaleString()}
                     </p>
-                    <ul className="space-y-2">
-                      {offering.features.map((feature, j) => (
-                        <li key={j} className="flex items-start gap-2">
-                          <Check className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
+                  <ul className="space-y-2">
+                    {offering.features.map((feature, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm sm:text-base">
+                        <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </Card>
             ))}
 
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {bonuses.map((bonus, i) => (
                 <Card 
                   key={i} 
-                  className="p-6 border-primary/20 animate-slideUp"
+                  className="p-4 sm:p-6 border-primary/20 animate-slideUp"
                   style={{ animationDelay: `${(offerings.length + i) * 100}ms` }}
                 >
-                  <h3 className="text-xl font-semibold mb-2">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-2">
                     Bonus #{i + 1}: {bonus.title}
                   </h3>
-                  <p className="text-muted-foreground mb-2">
+                  <p className="text-muted-foreground mb-2 text-sm sm:text-base">
                     Value: ${bonus.value.toLocaleString()}
                   </p>
-                  <p>{bonus.description}</p>
+                  <p className="text-sm sm:text-base">{bonus.description}</p>
                 </Card>
               ))}
             </div>
 
-            <Card className="p-8 border-2 border-primary animate-fadeIn" style={{ animationDelay: "800ms" }}>
-              <div className="text-center space-y-4">
+            <Card className="p-6 sm:p-8 border-2 border-primary animate-fadeIn" style={{ animationDelay: "800ms" }}>
+              <div className="text-center space-y-6">
                 <div className="space-y-2">
-                  <p className="text-2xl font-bold">Total Value: $2,500+</p>
-                  <p className="text-3xl font-bold text-primary">
+                  <p className="text-xl sm:text-2xl font-bold">Total Value: $2,500+</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-primary">
                     Your Price Today: Just $247!
                   </p>
                 </div>
 
                 <div className="max-w-2xl mx-auto space-y-4">
-                  <h3 className="text-xl font-semibold">Why This Deal is Unbeatable:</h3>
-                  <ul className="space-y-2 text-left">
+                  <h3 className="text-lg sm:text-xl font-semibold">Why This Deal is Unbeatable:</h3>
+                  <ul className="space-y-3 text-left text-sm sm:text-base">
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                       <span>No Guesswork: We handle everything—from roadmap creation to AI agent deployment.</span>
@@ -144,16 +144,16 @@ export default function PricingDetailsSection() {
                   </ul>
                 </div>
 
-                <div className="pt-6">
-                  <h3 className="text-xl font-semibold mb-4">Limited-Time Offer: Act Now!</h3>
-                  <p className="text-muted-foreground mb-6">
+                <div className="pt-4 sm:pt-6">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Limited-Time Offer: Act Now!</h3>
+                  <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base px-4">
                     This offer won't last forever. The price goes up to $497 soon.
                     Don't miss your chance to transform your business with AI!
                   </p>
                   
                   <Button
                     size="lg"
-                    className="text-lg group"
+                    className="text-base sm:text-lg group w-full sm:w-auto"
                     onClick={() => navigate("/login")}
                   >
                     Get Started Now for Just $247
@@ -163,19 +163,19 @@ export default function PricingDetailsSection() {
               </div>
             </Card>
 
-            <div className="text-center space-y-6 animate-fadeIn" style={{ animationDelay: "900ms" }}>
+            <div className="text-center space-y-6 animate-fadeIn px-4" style={{ animationDelay: "900ms" }}>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Got Questions?</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">Got Questions?</h3>
+                <p className="text-muted-foreground text-sm sm:text-base">
                   Contact us at support@aiautomation.com
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold mb-2">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">
                   Why Wait? Your Business Can't Afford to Fall Behind.
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-sm sm:text-base">
                   AI is the future—and it's moving fast. Don't let your competitors outpace you. 
                   Let's transform your business together.
                 </p>
