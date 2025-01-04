@@ -22,7 +22,7 @@ export default function HeroSection() {
         <div className="px-4">
           <Button
             size="lg"
-            className="mt-8 sm:mt-12 text-lg sm:text-xl w-full sm:w-auto group animate-slideUp"
+            className="mt-4 sm:mt-6 text-lg sm:text-xl w-full sm:w-auto group animate-slideUp" // Reduced top margin from mt-8/mt-12 to mt-4/mt-6
             style={{ animationDelay: "200ms" }}
             onClick={() => navigate("/login")}
           >
