@@ -20,12 +20,12 @@ export default function HeroSection() {
       <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10">
         <div className="space-y-6">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary animate-slideUp leading-tight">
-            Integrate AI Into Your Customer Service, Automate Billing, & So Much More!
+            Integrate AI Into Your Business
           </h1>
 
           <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground max-w-3xl mx-auto animate-slideUp leading-relaxed" 
              style={{ animationDelay: "100ms" }}>
-            AI is Moving Faster Than Ever – Don't Get Left Behind. For Just $247, Let Us Integrate AI Into Your Business.
+            Enhance Customer Service, Automate Billing, and More! AI is advancing faster than ever - don't get left behind.
           </p>
         </div>
 
@@ -36,7 +36,7 @@ export default function HeroSection() {
             className="text-lg sm:text-xl w-full sm:w-auto group"
             onClick={() => navigate("/login")}
           >
-            Get Started Now – Only $247
+            Get Started Now - Only $247
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
           
@@ -46,7 +46,7 @@ export default function HeroSection() {
             className="text-lg sm:text-xl w-full sm:w-auto group"
             onClick={handleTalkToAI}
           >
-            Talk to AI Assistant
+            Talk to Our AI Assistant
             <Mic className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform" />
           </Button>
         </div>
