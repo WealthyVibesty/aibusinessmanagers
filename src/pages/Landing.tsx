@@ -19,15 +19,17 @@ export default function Landing() {
       <TestimonialsSection />
 
       {/* Final CTA */}
-      <section className="container px-4 py-24 mx-auto text-center">
+      <section className="container px-4 py-24 mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-8">
+          Start for Free Today – Let Our AI Experts Do the Heavy Lifting for You
+        </h2>
         <div className="max-w-3xl mx-auto space-y-8">
-          <h2 className="text-3xl font-bold">Start for Free Today – Let Our AI Experts Do the Heavy Lifting for You</h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-xl text-muted-foreground text-center">
             No Risk. No Commitment. Just Results.
           </p>
           <Button
             size="lg"
-            className="mt-8 text-lg group"
+            className="mt-8 text-lg group w-full sm:w-auto"
             onClick={() => navigate("/login")}
           >
             Get Started Now – Free
