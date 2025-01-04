@@ -75,24 +75,24 @@ export default function CaseStudiesSection() {
                 className="p-6 animate-slideUp"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
+                <div className="flex gap-4 items-center">
+                  <div className="flex-shrink-0 flex items-center justify-center">
                     {study.icon}
                   </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl sm:text-2xl font-semibold leading-tight">{study.title}</h3>
+                  <div className="space-y-4 flex-grow">
+                    <h3 className="text-xl sm:text-2xl font-semibold leading-tight text-center">{study.title}</h3>
                     <div className="space-y-3">
-                      <div>
+                      <div className="text-center">
                         <h4 className="font-semibold text-lg text-primary mb-1">Problem:</h4>
                         <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{study.problem}</p>
                       </div>
-                      <div>
+                      <div className="text-center">
                         <h4 className="font-semibold text-lg text-primary mb-1">Solution:</h4>
                         <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{study.solution}</p>
                       </div>
-                      <div>
+                      <div className="text-center">
                         <h4 className="font-semibold text-lg text-primary mb-1">Results:</h4>
-                        <ul className="list-disc list-inside text-base sm:text-lg text-muted-foreground leading-relaxed">
+                        <ul className="list-none text-base sm:text-lg text-muted-foreground leading-relaxed">
                           {study.results.map((result, i) => (
                             <li key={i} className="mb-1">{result}</li>
                           ))}

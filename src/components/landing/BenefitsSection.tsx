@@ -26,7 +26,7 @@ export default function BenefitsSection() {
           {benefits.map(({ title, text }, i) => (
             <div
               key={i}
-              className="p-6 bg-card rounded-lg shadow-lg animate-slideUp"
+              className="p-6 bg-card rounded-lg shadow-lg animate-slideUp text-center flex flex-col items-center"
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <CheckCircle2 className="h-8 w-8 text-primary mb-4" />
