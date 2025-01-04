@@ -7,6 +7,7 @@ import StepsSection from "@/components/landing/StepsSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import PricingSection from "@/components/landing/PricingSection";
 import PricingDetailsSection from "@/components/landing/PricingDetailsSection";
+import LifetimeAccessSection from "@/components/landing/LifetimeAccessSection";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function Landing() {
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10">
       <HeroSection />
       <BenefitsSection />
+      <LifetimeAccessSection />
       <StepsSection />
       <PricingSection />
       <PricingDetailsSection />
@@ -22,11 +24,11 @@ export default function Landing() {
 
       {/* Final CTA */}
       <section className="container px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">
-          Don't Wait – Let's Make AI Your Competitive Edge, Starting Now.
-        </h2>
-        <div className="max-w-3xl mx-auto space-y-6 sm:space-y-8">
-          <p className="text-lg sm:text-xl text-muted-foreground text-center px-4">
+        <div className="max-w-3xl mx-auto space-y-6 sm:space-y-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
+            Don't Wait – Let's Make AI Your Competitive Edge, Starting Now.
+          </h2>
+          <p className="text-lg sm:text-xl text-muted-foreground">
             Just $247 to Get Started. No Risk. Just Results.
           </p>
           <div className="flex justify-center px-4">
@@ -39,6 +41,9 @@ export default function Landing() {
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
+          <p className="text-sm text-muted-foreground">
+            30-Day Money-Back Guarantee | Secure Checkout
+          </p>
         </div>
       </section>
     </div>
