@@ -102,11 +102,11 @@ export default function PricingDetailsSection() {
 
             {/* Bonuses Section */}
             <div className="pt-4 sm:pt-8">
-              <Card className="p-4 sm:p-8 border-2 border-primary/20 bg-primary/5">
+              <Card className="p-4 sm:p-6 md:p-8 border-2 border-primary/20 bg-primary/5">
                 <h2 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6">
                   🎁 Exclusive Bonuses (Total Value: $1,694+)
                 </h2>
-                <div className="grid gap-4 sm:gap-6">
+                <div className="grid gap-3 sm:gap-4 md:gap-6">
                   {bonuses.map((bonus, i) => (
                     <BonusCard key={i} index={i} {...bonus} />
                   ))}
