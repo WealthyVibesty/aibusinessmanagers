@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import React, { useState, useMemo } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
 
 export default function BusinessComparisonSection() {
   const businesses = {
@@ -45,6 +46,40 @@ export default function BusinessComparisonSection() {
   const [selectedBusiness, setSelectedBusiness] = useState('Hospitals');
   const currentBusiness = businesses[selectedBusiness];
 
+  const monthlyData = useMemo(() => {
+    return Array.from({ length: 12 }, (_, month) => ({
+      month: month + 1,
+      noAI: currentBusiness.noAI * (month + 1),
+      yourAI: currentBusiness.yourAI * (month + 1),
+      competitors: currentBusiness.competitors * (month + 1),
+    }));
+  }, [currentBusiness]);
+
+  const costComparisonData = [{
+    name: 'Monthly Costs',
+    noAI: currentBusiness.noAI,
+    yourAI: currentBusiness.yourAI,
+    competitors: currentBusiness.competitors,
+  }];
+
+  const formatDollar = (value: number) => `$${value.toLocaleString()}`;
+
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white p-4 border rounded shadow-lg">
+          <p className="font-bold mb-2">{typeof label === 'number' ? `Month ${label}` : label}</p>
+          {payload.map((entry: any, index: number) => (
+            <p key={index} style={{ color: entry.color }} className="text-sm">
+              {entry.name}: {formatDollar(entry.value)}
+            </p>
+          ))}
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <section className="relative py-8 sm:py-12 px-4 sm:px-6">
       <div className="container mx-auto">
@@ -74,16 +109,41 @@ export default function BusinessComparisonSection() {
                 {/* Cost Comparison Chart */}
                 <Card className="p-4">
                   <h3 className="text-lg font-semibold text-center mb-4">Cost Comparison</h3>
-                  <div className="h-48 md:h-72 bg-gray-50 rounded-lg flex items-center justify-center">
-                    Chart Placeholder
+                  <div className="h-48 md:h-72">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={costComparisonData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis tickFormatter={formatDollar} />
+                        <Tooltip content={<CustomTooltip />} />
+                        <Legend />
+                        <Bar dataKey="noAI" name="Current Cost (No AI)" fill="#ff4444" />
+                        <Bar dataKey="competitors" name="Competitor" fill="#4CAF50" />
+                        <Bar dataKey="yourAI" name="AI Marketing Profile" fill="#2196F3" />
+                      </BarChart>
+                    </ResponsiveContainer>
                   </div>
                 </Card>
 
                 {/* 12-Month Projection Chart */}
                 <Card className="p-4">
                   <h3 className="text-lg font-semibold text-center mb-4">12-Month Cost Projection</h3>
-                  <div className="h-48 md:h-72 bg-gray-50 rounded-lg flex items-center justify-center">
-                    Chart Placeholder
+                  <div className="h-48 md:h-72">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart data={monthlyData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis 
+                          dataKey="month" 
+                          label={{ value: 'Month', position: 'bottom', offset: 0 }}
+                        />
+                        <YAxis tickFormatter={formatDollar} />
+                        <Tooltip content={<CustomTooltip />} />
+                        <Legend />
+                        <Line type="monotone" dataKey="noAI" name="Current Cost (No AI)" stroke="#ff4444" strokeWidth={2} />
+                        <Line type="monotone" dataKey="competitors" name="Competitor" stroke="#4CAF50" strokeWidth={2} />
+                        <Line type="monotone" dataKey="yourAI" name="AI Marketing Profile" stroke="#2196F3" strokeWidth={2} />
+                      </LineChart>
+                    </ResponsiveContainer>
                   </div>
                 </Card>
 
