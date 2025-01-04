@@ -140,41 +140,41 @@ export default function CaseStudiesSection() {
   return (
     <section className="bg-secondary/5 py-16">
       <div className="container px-4 mx-auto">
-        <div className="max-w-4xl mx-auto space-y-12">
+        <div className="max-w-7xl mx-auto space-y-12">
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight">
             See What We've Done Before
           </h2>
 
-          <div className="grid gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {caseStudies.map((study, index) => (
               <Card 
                 key={index} 
-                className="p-6 animate-slideUp"
+                className="p-6 animate-slideUp aspect-square overflow-y-auto"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    {study.icon}
+                <div className="flex flex-col h-full">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="flex-shrink-0">
+                      {study.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold leading-tight">{study.title}</h3>
                   </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl sm:text-2xl font-semibold leading-tight">{study.title}</h3>
-                    <div className="space-y-3">
-                      <div>
-                        <h4 className="font-semibold text-lg text-primary mb-1">Problem:</h4>
-                        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{study.problem}</p>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-lg text-primary mb-1">Solution:</h4>
-                        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{study.solution}</p>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-lg text-primary mb-1">Results:</h4>
-                        <ul className="list-disc list-inside text-base sm:text-lg text-muted-foreground leading-relaxed">
-                          {study.results.map((result, i) => (
-                            <li key={i} className="mb-1">{result}</li>
-                          ))}
-                        </ul>
-                      </div>
+                  <div className="space-y-3 overflow-y-auto">
+                    <div>
+                      <h4 className="font-semibold text-sm text-primary mb-1">Problem:</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{study.problem}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-sm text-primary mb-1">Solution:</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{study.solution}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-sm text-primary mb-1">Results:</h4>
+                      <ul className="list-disc list-inside text-sm text-muted-foreground leading-relaxed">
+                        {study.results.map((result, i) => (
+                          <li key={i} className="mb-1">{result}</li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>
