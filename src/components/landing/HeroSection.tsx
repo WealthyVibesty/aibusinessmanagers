@@ -43,7 +43,7 @@ export default function HeroSection() {
           <Button
             size="lg"
             variant="outline"
-            className="text-lg sm:text-xl w-full sm:w-auto px-12 py-7 rounded-full bg-white hover:bg-gray-50 border-2 shadow-sm hover:shadow-md transition-all group"
+            className="text-lg sm:text-xl w-full sm:w-auto px-12 py-7 rounded-full bg-white hover:bg-primary hover:text-white border-2 shadow-sm hover:shadow-md transition-all group"
             onClick={handleTalkToAI}
           >
             Talk to Our AI Assistant
