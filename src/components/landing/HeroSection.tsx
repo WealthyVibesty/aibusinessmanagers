@@ -13,7 +13,7 @@ export default function HeroSection() {
       {/* Main content */}
       <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
         {/* Sliding bar */}
-        <div className="w-full h-1 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-[slide_2s_linear_infinite] mb-8" />
+        <div className="w-full h-1 bg-gradient-to-r from-primary via-white to-primary bg-[length:200%_100%] animate-[slide_2s_linear_infinite] mb-8" />
         
         {/* Statistic */}
         <div className="mb-8 sm:mb-12 animate-fadeIn">
