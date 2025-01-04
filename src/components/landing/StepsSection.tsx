@@ -15,9 +15,11 @@ export default function StepsSection() {
   ];
 
   return (
-    <section className="container px-4 py-16 mx-auto">
-      <div className="max-w-4xl mx-auto text-center space-y-8">
-        <h2 className="text-3xl font-bold animate-fadeIn">Get Started in 3 Easy Steps</h2>
+    <section className="container px-4 pt-8 pb-16 mx-auto">
+      <div className="max-w-4xl mx-auto space-y-12">
+        <h2 className="text-3xl font-bold text-center animate-fadeIn">
+          Get Started in 3 Easy Steps
+        </h2>
         <div className="grid gap-8 md:grid-cols-3">
           {steps.map(({ title, desc }, i) => (
             <div 
