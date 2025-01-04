@@ -3,8 +3,25 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
 
+interface BusinessData {
+  noAI: number;
+  yourAI: number;
+  monthlySavings: number;
+  competitors: number;
+}
+
+interface Businesses {
+  [key: string]: BusinessData;
+}
+
+interface TooltipProps {
+  active?: boolean;
+  payload?: any[];
+  label?: string;
+}
+
 export default function BusinessComparisonSection() {
-  const businesses = {
+  const businesses: Businesses = {
     'Hospitals': {
       noAI: 35500,
       yourAI: 18997,
@@ -57,7 +74,7 @@ export default function BusinessComparisonSection() {
 
   const formatDollar = (value: number) => `$${value.toLocaleString()}`;
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-white p-2 text-sm md:p-4 md:text-base border rounded shadow-lg">
@@ -79,7 +96,7 @@ export default function BusinessComparisonSection() {
         <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight mb-12">
           See How Much You Can Save
         </h2>
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full max-w-6xl mx-auto p-2 md:p-4">
           <Card className="mb-4 md:mb-8">
             <CardHeader className="p-3 md:p-6 bg-white relative z-10">
               <CardTitle className="text-xl md:text-2xl text-center">Select Your Industry</CardTitle>
