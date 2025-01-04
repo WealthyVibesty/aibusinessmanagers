@@ -22,12 +22,12 @@ export default function LifetimeAccessSection() {
 
   return (
     <section className="container px-4 py-16 mx-auto bg-white/90 backdrop-blur-md">
-      <div className="max-w-4xl mx-auto space-y-8">
-        <div className="text-center space-y-4">
-          <h2 className="text-3xl font-bold tracking-tight animate-fadeIn">
+      <div className="max-w-4xl mx-auto space-y-10">
+        <div className="text-center space-y-6">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight animate-fadeIn leading-tight">
             Lifetime Access to AI Training Courses
           </h2>
-          <p className="text-xl text-muted-foreground animate-slideUp" style={{ animationDelay: "100ms" }}>
+          <p className="text-2xl text-muted-foreground animate-slideUp leading-relaxed" style={{ animationDelay: "100ms" }}>
             Value: $497+ (Included Free with Your Purchase)
           </p>
         </div>
@@ -42,14 +42,14 @@ export default function LifetimeAccessSection() {
               <div className="mb-4">
                 {course.icon}
               </div>
-              <h3 className="text-lg font-semibold mb-2">{course.title}</h3>
-              <p className="text-muted-foreground">{course.description}</p>
+              <h3 className="text-xl font-semibold mb-3 leading-tight">{course.title}</h3>
+              <p className="text-lg text-muted-foreground leading-relaxed">{course.description}</p>
             </Card>
           ))}
         </div>
 
         <Card className="p-6 text-center bg-primary/5 border-primary/20 animate-fadeIn" style={{ animationDelay: "400ms" }}>
-          <p className="text-lg font-semibold">
+          <p className="text-xl font-semibold leading-relaxed">
             And here's the best part: You'll get all future courses for free to train your team and stay ahead of the curve.
           </p>
         </Card>

@@ -64,8 +64,8 @@ export default function CaseStudiesSection() {
     <section className="bg-secondary/5 py-16">
       <div className="container px-4 mx-auto">
         <div className="max-w-4xl mx-auto space-y-12">
-          <h2 className="text-3xl font-bold tracking-tight text-center animate-fadeIn">
-            This Could Be You
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight">
+            See What We've Done Before
           </h2>
 
           <div className="grid gap-8">
@@ -80,21 +80,21 @@ export default function CaseStudiesSection() {
                     {study.icon}
                   </div>
                   <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">{study.title}</h3>
-                    <div className="space-y-2">
+                    <h3 className="text-xl sm:text-2xl font-semibold leading-tight">{study.title}</h3>
+                    <div className="space-y-3">
                       <div>
-                        <h4 className="font-semibold text-primary">Problem:</h4>
-                        <p className="text-muted-foreground">{study.problem}</p>
+                        <h4 className="font-semibold text-lg text-primary mb-1">Problem:</h4>
+                        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{study.problem}</p>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-primary">Solution:</h4>
-                        <p className="text-muted-foreground">{study.solution}</p>
+                        <h4 className="font-semibold text-lg text-primary mb-1">Solution:</h4>
+                        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{study.solution}</p>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-primary">Results:</h4>
-                        <ul className="list-disc list-inside text-muted-foreground">
+                        <h4 className="font-semibold text-lg text-primary mb-1">Results:</h4>
+                        <ul className="list-disc list-inside text-base sm:text-lg text-muted-foreground leading-relaxed">
                           {study.results.map((result, i) => (
-                            <li key={i}>{result}</li>
+                            <li key={i} className="mb-1">{result}</li>
                           ))}
                         </ul>
                       </div>

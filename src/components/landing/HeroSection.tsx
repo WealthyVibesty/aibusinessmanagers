@@ -7,27 +7,22 @@ export default function HeroSection() {
   
   return (
     <section className="relative pt-12 min-h-[60vh] flex flex-col items-center justify-start px-4 sm:px-6 lg:px-8 overflow-hidden bg-white/90 backdrop-blur-md">
-      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-blue-200/50 to-white -z-10" />
       
-      {/* Main content */}
-      <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
-        {/* Headline */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary animate-slideUp px-4">
+      <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary animate-slideUp leading-tight">
           Turn Your Business into an AI-Powered Machine – Save Hours, Increase Revenue, and Scale Faster.
         </h1>
 
-        {/* Subheadline */}
-        <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-slideUp px-4" 
+        <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground max-w-3xl mx-auto animate-slideUp leading-relaxed" 
            style={{ animationDelay: "100ms" }}>
           AI is Moving Faster Than Ever – Don't Get Left Behind. For Just $247, Let Us Integrate AI Into Your Business.
         </p>
 
-        {/* CTA Button */}
         <div className="px-4">
           <Button
             size="lg"
-            className="mt-8 sm:mt-12 text-base sm:text-lg w-full sm:w-auto group animate-slideUp"
+            className="mt-8 sm:mt-12 text-lg sm:text-xl w-full sm:w-auto group animate-slideUp"
             style={{ animationDelay: "200ms" }}
             onClick={() => navigate("/login")}
           >
