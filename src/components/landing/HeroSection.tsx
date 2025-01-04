@@ -30,7 +30,7 @@ export default function HeroSection() {
         {/* Subheadline */}
         <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-slideUp px-4" 
            style={{ animationDelay: "100ms" }}>
-          AI is Moving Faster Than Ever – Don't Get Left Behind. For Just $247, Let Us Help You Transform Your Business.
+          AI is Moving Faster Than Ever – Don't Get Left Behind. For Just $247, Let Us Help You Integrate AI Into Your Business.
         </p>
 
         {/* CTA Button */}
