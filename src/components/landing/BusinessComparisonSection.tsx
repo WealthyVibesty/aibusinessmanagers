@@ -3,46 +3,46 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
 
-const businesses = {
-  'Hospitals': {
-    noAI: 35500,
-    yourAI: 18997,
-    monthlySavings: 16503,
-    competitors: 24500,
-  },
-  'Universities': {
-    noAI: 49000,
-    yourAI: 25747,
-    monthlySavings: 23253,
-    competitors: 33500,
-  },
-  'Real Estate': {
-    noAI: 22000,
-    yourAI: 12247,
-    monthlySavings: 9753,
-    competitors: 15500,
-  },
-  'Hotels': {
-    noAI: 95000,
-    yourAI: 58747,
-    monthlySavings: 36253,
-    competitors: 70000,
-  },
-  'Doctors': {
-    noAI: 7100,
-    yourAI: 3997,
-    monthlySavings: 3103,
-    competitors: 4800,
-  },
-  'Med Spa': {
-    noAI: 11900,
-    yourAI: 6397,
-    monthlySavings: 5503,
-    competitors: 8000,
-  }
-};
-
 export default function BusinessComparisonSection() {
+  const businesses = {
+    'Hospitals': {
+      noAI: 35500,
+      yourAI: 18997,
+      monthlySavings: 16503,
+      competitors: 24500,
+    },
+    'Universities': {
+      noAI: 49000,
+      yourAI: 25747,
+      monthlySavings: 23253,
+      competitors: 33500,
+    },
+    'Real Estate': {
+      noAI: 22000,
+      yourAI: 12247,
+      monthlySavings: 9753,
+      competitors: 15500,
+    },
+    'Hotels': {
+      noAI: 95000,
+      yourAI: 58747,
+      monthlySavings: 36253,
+      competitors: 70000,
+    },
+    'Doctors': {
+      noAI: 7100,
+      yourAI: 3997,
+      monthlySavings: 3103,
+      competitors: 4800,
+    },
+    'Med Spa': {
+      noAI: 11900,
+      yourAI: 6397,
+      monthlySavings: 5503,
+      competitors: 8000,
+    }
+  };
+
   const [selectedBusiness, setSelectedBusiness] = useState('Hospitals');
 
   const generateMonthlyData = (business: string) => {
@@ -81,12 +81,12 @@ export default function BusinessComparisonSection() {
         </h2>
         <div className="max-w-7xl mx-auto">
           <Card className="mb-4 md:mb-8">
-            <CardHeader className="p-3 md:p-6">
+            <CardHeader className="p-3 md:p-6 bg-white relative z-10">
               <CardTitle className="text-xl md:text-2xl text-center">Select Your Industry</CardTitle>
             </CardHeader>
             <CardContent className="p-2 md:p-6">
               <Tabs value={selectedBusiness} onValueChange={setSelectedBusiness} className="w-full">
-                <TabsList className="flex flex-wrap justify-center gap-1 md:gap-2 mb-2 overflow-x-auto">
+                <TabsList className="flex flex-wrap justify-center gap-1 md:gap-2 mb-2 overflow-x-auto relative z-10 bg-gray-50">
                   {Object.keys(businesses).map(business => (
                     <TabsTrigger 
                       key={business} 
@@ -101,16 +101,16 @@ export default function BusinessComparisonSection() {
                 {Object.entries(businesses).map(([business, data]) => (
                   <TabsContent key={business} value={business} className="mt-2 md:mt-6">
                     <div className="grid gap-3 md:gap-6">
-                      <Card className="w-full">
-                        <CardHeader className="p-3 md:p-6">
+                      <Card className="w-full overflow-hidden">
+                        <CardHeader className="p-3 md:p-6 bg-white relative z-10 border-b">
                           <CardTitle className="text-lg md:text-2xl text-center">Cost Comparison - {business}</CardTitle>
                         </CardHeader>
-                        <CardContent className="p-2 md:p-6">
+                        <CardContent className="p-2 md:p-6 pt-4">
                           <div className="h-48 md:h-72">
                             <ResponsiveContainer width="100%" height="100%">
                               <BarChart data={[
                                 { name: 'Monthly Costs', noAI: data.noAI, yourAI: data.yourAI, competitors: data.competitors }
-                              ]} margin={{ top: 5, right: 5, left: 5, bottom: 5 }}>
+                              ]} margin={{ top: 20, right: 5, left: 5, bottom: 5 }}>
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis dataKey="name" tick={{ fontSize: 12 }} />
                                 <YAxis tickFormatter={formatDollar} tick={{ fontSize: 12 }} />
@@ -125,16 +125,16 @@ export default function BusinessComparisonSection() {
                         </CardContent>
                       </Card>
 
-                      <Card className="w-full">
-                        <CardHeader className="p-3 md:p-6">
+                      <Card className="w-full overflow-hidden">
+                        <CardHeader className="p-3 md:p-6 bg-white relative z-10 border-b">
                           <CardTitle className="text-lg md:text-2xl text-center">12-Month Cost Projection</CardTitle>
                         </CardHeader>
-                        <CardContent className="p-2 md:p-6">
+                        <CardContent className="p-2 md:p-6 pt-4">
                           <div className="h-48 md:h-72">
                             <ResponsiveContainer width="100%" height="100%">
                               <LineChart 
                                 data={generateMonthlyData(business)} 
-                                margin={{ top: 5, right: 5, left: 5, bottom: 20 }}
+                                margin={{ top: 20, right: 5, left: 5, bottom: 20 }}
                               >
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis 
