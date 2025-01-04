@@ -76,11 +76,10 @@ export default function BusinessComparisonSection() {
   return (
     <section className="py-16 bg-background">
       <div className="container px-4 mx-auto">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight">
-            See How Much You Can Save
-          </h2>
-
+        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight mb-12">
+          See How Much You Can Save
+        </h2>
+        <div className="max-w-7xl mx-auto">
           <Card className="mb-8">
             <CardHeader>
               <CardTitle className="text-2xl text-center">Select Your Industry</CardTitle>
