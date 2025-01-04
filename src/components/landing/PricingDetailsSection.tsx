@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import OfferingCard from "./pricing/OfferingCard";
 import BonusCard from "./pricing/BonusCard";
 import PricingSummary from "./pricing/PricingSummary";
+import { Book, Cpu, Bot } from "lucide-react";
 
 export default function PricingDetailsSection() {
   const offerings = [
@@ -56,16 +57,6 @@ export default function PricingDetailsSection() {
       ]
     },
     {
-      title: "Lifetime Access to AI Training Courses",
-      value: 497,
-      description: "Access all current and future AI training courses",
-      features: [
-        "Course: Using AI to create websites and software",
-        "Course: Creating AI voice agents and CRM integration",
-        "Course: Using basic AI tools to automate everything"
-      ]
-    },
-    {
       title: "Custom AI Workflow Blueprint",
       value: 150,
       description: "Step-by-step implementation guide for your business"
@@ -85,6 +76,24 @@ export default function PricingDetailsSection() {
       value: 250,
       description: "Fast-track setup and implementation support"
     }
+  ];
+
+  const courses = [
+    {
+      title: "Using AI to Create Websites and Software",
+      description: "Learn how to build websites and software using AI tools—no coding required.",
+      icon: <Cpu className="h-8 w-8 text-primary" />,
+    },
+    {
+      title: "Creating AI Voice Agents and Connecting Them to Your CRM",
+      description: "Master the art of building and integrating AI voice agents into your business workflows.",
+      icon: <Bot className="h-8 w-8 text-primary" />,
+    },
+    {
+      title: "Using Basic AI Tools to Automate Everything",
+      description: "Discover how to use AI tools to handle repetitive tasks, analyze data, and explain complex concepts.",
+      icon: <Book className="h-8 w-8 text-primary" />,
+    },
   ];
 
   return (
@@ -112,6 +121,44 @@ export default function PricingDetailsSection() {
                       <BonusCard key={i} index={i} {...bonus} />
                     ))}
                   </div>
+                </div>
+              </Card>
+            </div>
+
+            {/* Lifetime Access Section */}
+            <div className="pt-4">
+              <Card className="border-2 border-primary/20 bg-primary/5 overflow-hidden">
+                <div className="p-6 sm:p-8 space-y-8">
+                  <div className="text-center space-y-4">
+                    <h2 className="text-2xl sm:text-3xl font-bold leading-tight">
+                      Lifetime Access to AI Training Courses
+                    </h2>
+                    <p className="text-xl text-primary font-semibold">
+                      Value: $497+ (Included Free with Your Purchase)
+                    </p>
+                  </div>
+
+                  <div className="grid gap-6 md:grid-cols-3">
+                    {courses.map((course, i) => (
+                      <Card 
+                        key={i} 
+                        className="p-6 animate-slideUp bg-white"
+                        style={{ animationDelay: `${i * 100}ms` }}
+                      >
+                        <div className="mb-4">
+                          {course.icon}
+                        </div>
+                        <h3 className="text-xl font-semibold mb-3 leading-tight">{course.title}</h3>
+                        <p className="text-lg text-muted-foreground leading-relaxed">{course.description}</p>
+                      </Card>
+                    ))}
+                  </div>
+
+                  <Card className="p-6 text-center bg-white animate-fadeIn" style={{ animationDelay: "400ms" }}>
+                    <p className="text-xl font-semibold leading-relaxed">
+                      And here's the best part: You'll get all future courses for free to train your team and stay ahead of the curve.
+                    </p>
+                  </Card>
                 </div>
               </Card>
             </div>
