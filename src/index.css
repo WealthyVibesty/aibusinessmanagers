@@ -41,7 +41,33 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-to-br from-background to-secondary/5 text-foreground min-h-screen;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-primary/80 to-accent bg-clip-text text-transparent;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-[1.02];
+  }
+
+  .gradient-border {
+    @apply border border-transparent bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 bg-clip-border;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5;
+  }
+
+  .section-padding {
+    @apply px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16;
   }
 }
