@@ -16,40 +16,38 @@ serve(async (req) => {
   }
 
   try {
-    // Validate request body
-    const { priceId, upsellPriceIds = [] } = await req.json();
-    console.log('Request payload:', { priceId, upsellPriceIds });
+    // Parse and validate request body
+    const body = await req.json();
+    console.log('Request body:', body);
+    
+    const { priceId, upsellPriceIds = [] } = body;
+    console.log('Parsed payload:', { priceId, upsellPriceIds });
 
     if (!priceId) {
       console.error('No priceId provided');
       throw new Error('Price ID is required');
     }
 
-    // Initialize Stripe
+    // Initialize Stripe with error handling
     const stripeKey = Deno.env.get('STRIPE_SECRET_KEY');
     if (!stripeKey) {
       console.error('Stripe secret key not found');
       throw new Error('Stripe configuration error');
     }
 
+    console.log('Initializing Stripe...');
     const stripe = new Stripe(stripeKey, {
       apiVersion: '2023-10-16',
     });
 
-    // Create line items array
-    console.log('Creating line items...');
+    // Prepare line items
     const lineItems = [
-      {
-        price: priceId,
-        quantity: 1,
-      },
-      ...upsellPriceIds.map(price => ({
-        price,
-        quantity: 1,
-      }))
+      { price: priceId, quantity: 1 },
+      ...upsellPriceIds.map(price => ({ price, quantity: 1 }))
     ];
+    console.log('Line items prepared:', lineItems);
 
-    // Create checkout session
+    // Create checkout session with proper error handling
     console.log('Creating checkout session...');
     const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
@@ -60,33 +58,24 @@ serve(async (req) => {
       billing_address_collection: 'required',
     });
 
-    console.log('Checkout session created:', session.id);
+    console.log('Checkout session created successfully:', session.id);
     
+    // Return success response
     return new Response(
-      JSON.stringify({ 
-        url: session.url,
-        sessionId: session.id 
-      }),
+      JSON.stringify({ url: session.url }),
       { 
-        headers: { 
-          ...corsHeaders, 
-          'Content-Type': 'application/json' 
-        },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 200,
       }
     );
   } catch (error) {
     console.error('Error in checkout process:', error);
     
+    // Return error response
     return new Response(
-      JSON.stringify({ 
-        error: error.message || 'An error occurred during checkout' 
-      }),
+      JSON.stringify({ error: error.message || 'An error occurred during checkout' }),
       { 
-        headers: { 
-          ...corsHeaders, 
-          'Content-Type': 'application/json' 
-        },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 400,
       }
     );
