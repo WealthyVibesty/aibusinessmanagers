@@ -72,6 +72,14 @@
   color: transparent;
 }
 
+/* Style for ElevenLabs Convai Widget */
+elevenlabs-convai {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
 @media (min-width: 768px) {
   #root {
     padding: 2rem;
