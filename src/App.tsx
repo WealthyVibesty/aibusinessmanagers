@@ -13,11 +13,13 @@ import Forum from "@/pages/Forum";
 import ForumCategory from "@/pages/ForumCategory";
 import ForumTopic from "@/pages/ForumTopic";
 import NewTopic from "@/pages/NewTopic";
+import ScrollToTop from "@/components/ScrollToTop";
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
