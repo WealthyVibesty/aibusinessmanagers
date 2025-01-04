@@ -6,6 +6,13 @@ import CheckoutFlow from "@/components/checkout/CheckoutFlow";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
+import Courses from "@/pages/Courses";
+import CourseDetails from "@/pages/CourseDetails";
+import CreateCourse from "@/pages/CreateCourse";
+import Forum from "@/pages/Forum";
+import ForumCategory from "@/pages/ForumCategory";
+import ForumTopic from "@/pages/ForumTopic";
+import NewTopic from "@/pages/NewTopic";
 
 function App() {
   return (
@@ -15,8 +22,21 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/checkout" element={<CheckoutFlow />} />
+          
+          {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            
+            {/* Course Routes */}
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/courses/:id" element={<CourseDetails />} />
+            <Route path="/courses/new" element={<CreateCourse />} />
+            
+            {/* Forum Routes */}
+            <Route path="/forum" element={<Forum />} />
+            <Route path="/forum/category/:categoryId" element={<ForumCategory />} />
+            <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
+            <Route path="/forum/new-topic" element={<NewTopic />} />
           </Route>
         </Routes>
       </Router>
