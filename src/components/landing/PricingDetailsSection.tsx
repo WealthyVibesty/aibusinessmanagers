@@ -167,7 +167,7 @@ export default function PricingDetailsSection() {
               <div>
                 <h3 className="text-sm sm:text-xl font-semibold mb-1 sm:mb-2">Got Questions?</h3>
                 <p className="text-muted-foreground text-xs sm:text-sm">
-                  Contact us at support@aiautomation.com
+                  Contact us at Support@aimarketingprofile.com
                 </p>
               </div>
 
