@@ -14,11 +14,11 @@ export default function Landing() {
         <div id="benefits">
           <BenefitsSection />
         </div>
-        <div id="lifetime-access">
-          <LifetimeAccessSection />
-        </div>
         <div id="case-studies">
           <CaseStudiesSection />
+        </div>
+        <div id="lifetime-access">
+          <LifetimeAccessSection />
         </div>
         <div id="pricing-details">
           <PricingDetailsSection />
