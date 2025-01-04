@@ -103,12 +103,12 @@ export default function BusinessComparisonSection() {
             </CardHeader>
             <CardContent className="p-2 md:p-6">
               <Tabs value={selectedBusiness} onValueChange={setSelectedBusiness} className="w-full">
-                <TabsList className="flex flex-wrap justify-center gap-1 md:gap-2 mb-2 overflow-x-auto relative z-10 bg-gray-50">
+                <TabsList className="grid grid-cols-2 sm:grid-cols-3 gap-2 relative z-10 bg-gray-50 p-2">
                   {Object.keys(businesses).map(business => (
                     <TabsTrigger 
                       key={business} 
                       value={business} 
-                      className="min-w-[120px] md:min-w-[150px] p-2 md:p-3 text-sm md:text-base bg-white hover:bg-blue-50 data-[state=active]:bg-blue-100 shadow-sm border rounded-lg transition-all duration-200 font-medium whitespace-nowrap"
+                      className="p-2 md:p-3 text-sm md:text-base bg-white hover:bg-blue-50 data-[state=active]:bg-blue-100 shadow-sm border rounded-lg transition-all duration-200 font-medium"
                     >
                       {business}
                     </TabsTrigger>
