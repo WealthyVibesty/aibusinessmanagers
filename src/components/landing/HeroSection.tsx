@@ -14,8 +14,8 @@ export default function HeroSection() {
   };
   
   return (
-    <section className="relative min-h-[80vh] flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-white/90 backdrop-blur-md">
-      <div className="absolute inset-x-0 top-0 h-[70vh] bg-gradient-to-b from-blue-200/50 to-white -z-10" />
+    <section className="relative min-h-[100vh] flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-white/90 backdrop-blur-md">
+      <div className="absolute inset-x-0 top-0 h-[100vh] bg-gradient-to-b from-blue-200/50 to-white -z-10" />
       
       <div className="max-w-2xl mx-auto text-center space-y-8">
         <div className="space-y-6">
