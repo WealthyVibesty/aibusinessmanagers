@@ -1,9 +1,11 @@
 import { Mail, MessageSquare } from "lucide-react";
 
 export default function ContactSection() {
-  const handleChatToggle = () => {
-    if (typeof window !== 'undefined' && window.Tawk_API) {
-      window.Tawk_API.toggle();
+  const handleTalkToAI = () => {
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
+      widget.classList.toggle('hidden');
+      console.log('Toggling AI assistant widget from contact section');
     }
   };
 
@@ -21,7 +23,7 @@ export default function ContactSection() {
           </a>
         </p>
         <button 
-          onClick={handleChatToggle}
+          onClick={handleTalkToAI}
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
         >
           <MessageSquare className="h-5 w-5" />
