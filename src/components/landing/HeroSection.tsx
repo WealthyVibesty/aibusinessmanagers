@@ -24,7 +24,7 @@ export default function HeroSection() {
 
         {/* Headline */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary animate-slideUp px-4">
-          Your Business is Falling Behind – AI is the Answer. Let's Fix That, Starting Today.
+          Turn Your Business into an AI-Powered Machine – Save Hours, Increase Revenue, and Scale Faster.
         </h1>
 
         {/* Subheadline */}
