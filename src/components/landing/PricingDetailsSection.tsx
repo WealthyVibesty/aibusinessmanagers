@@ -125,8 +125,8 @@ export default function PricingDetailsSection() {
               </Card>
             </div>
 
-            {/* Lifetime Access Section */}
-            <div className="pt-4">
+            {/* Lifetime Access Section - Now directly under Bonuses */}
+            <div>
               <Card className="border-2 border-primary/20 bg-primary/5 overflow-hidden">
                 <div className="p-6 sm:p-8 space-y-8">
                   <div className="text-center space-y-4">
