@@ -23,15 +23,13 @@ export default function PricingSection() {
   return (
     <section className="bg-secondary/5 py-16">
       <div className="container px-4 mx-auto">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-3xl font-bold tracking-tight animate-fadeIn">
-              What Does It Cost to Implement?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-slideUp" style={{ animationDelay: "100ms" }}>
-              We get it – pricing matters. That's why we don't charge you a dime until you see what we create for you.
-            </p>
-          </div>
+        <div className="max-w-4xl mx-auto space-y-12">
+          <h2 className="text-3xl font-bold tracking-tight text-center animate-fadeIn">
+            What Does It Cost to Implement?
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center animate-slideUp" style={{ animationDelay: "100ms" }}>
+            We get it – pricing matters. That's why we don't charge you a dime until you see what we create for you.
+          </p>
 
           <Card className="border-2 border-primary/10 animate-fadeIn" style={{ animationDelay: "200ms" }}>
             <CardContent className="p-8">
