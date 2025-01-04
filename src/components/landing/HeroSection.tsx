@@ -23,7 +23,7 @@ export default function HeroSection() {
         </div>
 
         {/* Headline */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary via-white to-primary bg-clip-text text-transparent bg-[length:200%_100%] animate-[slide_2s_linear_infinite] animate-slideUp px-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary animate-slideUp px-4">
           Turn Your Business into an AI-Powered Machine – Save Hours, Increase Revenue, and Scale Faster.
         </h1>
 
