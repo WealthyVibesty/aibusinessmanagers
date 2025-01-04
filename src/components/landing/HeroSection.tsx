@@ -6,7 +6,11 @@ export default function HeroSection() {
   const navigate = useNavigate();
   
   const handleTalkToAI = () => {
-    window.open("https://elevenlabs.io/app/talk-to?agent_id=B6WMT12NTS3pKTWrpUaI", "_blank");
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
+      widget.classList.toggle('hidden');
+      console.log('Toggling AI assistant widget');
+    }
   };
   
   return (
