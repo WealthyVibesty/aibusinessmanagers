@@ -17,7 +17,7 @@ export default function Login() {
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        navigate("/dashboard");
+        navigate("/checkout");
       }
     };
 
@@ -28,16 +28,16 @@ export default function Login() {
         console.log("Auth state changed - user logged in");
         toast({
           title: "Welcome!",
-          description: "Successfully signed in. Redirecting to dashboard...",
+          description: "Successfully signed in. Redirecting to checkout...",
         });
-        navigate("/dashboard");
+        navigate("/checkout");
       }
     });
 
     return () => subscription.unsubscribe();
   }, [navigate, toast]);
 
-  const redirectTo = `${window.location.origin}/dashboard`;
+  const redirectTo = `${window.location.origin}/checkout`;
   console.log("Redirect URL:", redirectTo);
 
   return (
