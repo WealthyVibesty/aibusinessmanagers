@@ -1,6 +1,5 @@
 import HeroSection from "@/components/landing/HeroSection";
 import BenefitsSection from "@/components/landing/BenefitsSection";
-import LifetimeAccessSection from "@/components/landing/LifetimeAccessSection";
 import CaseStudiesSection from "@/components/landing/CaseStudiesSection";
 import PricingDetailsSection from "@/components/landing/PricingDetailsSection";
 import Header from "@/components/landing/Header";
@@ -16,9 +15,6 @@ export default function Landing() {
         </div>
         <div id="case-studies">
           <CaseStudiesSection />
-        </div>
-        <div id="lifetime-access">
-          <LifetimeAccessSection />
         </div>
         <div id="pricing-details">
           <PricingDetailsSection />
