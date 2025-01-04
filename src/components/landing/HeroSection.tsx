@@ -11,7 +11,7 @@ export default function HeroSection() {
       
       <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary animate-slideUp leading-tight">
-          Turn Your Business into an AI-Powered Machine – Save Hours, Increase Revenue, and Scale Faster.
+          Integrate AI Into Your Customer Service, Automate Billing, & So Much More!
         </h1>
 
         <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground max-w-3xl mx-auto animate-slideUp leading-relaxed" 
@@ -22,7 +22,7 @@ export default function HeroSection() {
         <div className="px-4">
           <Button
             size="lg"
-            className="mt-4 sm:mt-6 text-lg sm:text-xl w-full sm:w-auto group animate-slideUp" // Reduced top margin from mt-8/mt-12 to mt-4/mt-6
+            className="mt-4 sm:mt-6 text-lg sm:text-xl w-full sm:w-auto group animate-slideUp"
             style={{ animationDelay: "200ms" }}
             onClick={() => navigate("/login")}
           >
