@@ -3,15 +3,15 @@ import { Star } from "lucide-react";
 export default function TestimonialsSection() {
   const testimonials = [
     {
-      text: "I was nervous about AI, but AI Marketing Profile made it so easy. I filled out the free form, and they created an amazing plan for me. I decided to implement it, and my business has never been better!",
+      text: "I was nervous about AI, but AI Marketing Profile made it so easy. I paid $1, filled out the form, and they created an amazing plan for me. I decided to implement it, and my business has never been better!",
       author: "Sarah T., Small Business Owner",
     },
     {
-      text: "I thought AI would be complicated, but this platform handled everything. I tried it for free, loved it, and the implementation was totally worth it!",
+      text: "I thought AI would be complicated, but this platform handled everything. I paid $1 to try it, loved it, and the implementation was totally worth it!",
       author: "James L., Marketing Director",
     },
     {
-      text: "This is the easiest way to get started with AI. I didn't have to do a thing – just fill out the free form and see the results. I'm so glad I gave it a try!",
+      text: "This is the easiest way to get started with AI. I paid $1, filled out the form, and saw the results. I'm so glad I gave it a try!",
       author: "Emily R., Entrepreneur",
     },
   ];

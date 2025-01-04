@@ -4,17 +4,17 @@ import { Card, CardContent } from "@/components/ui/card";
 export default function PricingSection() {
   const steps = [
     {
-      title: "Start for Free",
-      description: "Fill out the form, and we'll create your AI Marketing Profile at no cost.",
+      title: "Pay $1 and Fill Out the Form",
+      description: "Answer a few simple questions about your business.",
       icon: <ArrowRight className="h-5 w-5 text-primary" />,
     },
     {
-      title: "See the Value",
-      description: "Review your profile and decide if it makes sense for your business.",
+      title: "We Create Your Profile",
+      description: "Our AI experts will analyze your business and create a custom plan.",
       icon: <ArrowRight className="h-5 w-5 text-primary" />,
     },
     {
-      title: "Pay for Implementation",
+      title: "You Decide",
       description: "If you love it, we'll help you implement it. Our pricing is affordable for small businesses.",
       icon: <ArrowRight className="h-5 w-5 text-primary" />,
     },
@@ -25,10 +25,10 @@ export default function PricingSection() {
       <div className="container px-4 mx-auto">
         <div className="max-w-4xl mx-auto space-y-12">
           <h2 className="text-3xl font-bold tracking-tight text-center animate-fadeIn">
-            What Does It Cost to Implement?
+            What Does It Cost to Get Started?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center animate-slideUp" style={{ animationDelay: "100ms" }}>
-            We get it – pricing matters. That's why we don't charge you a dime until you see what we create for you.
+            We get it – pricing matters. That's why we're only charging $1 to create your AI Marketing Profile.
           </p>
 
           <Card className="border-2 border-primary/10 animate-fadeIn" style={{ animationDelay: "200ms" }}>
@@ -54,7 +54,7 @@ export default function PricingSection() {
               <div className="mt-8 pt-6 border-t">
                 <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground animate-fadeIn" style={{ animationDelay: "600ms" }}>
                   <Check className="h-4 w-4 text-primary" />
-                  <span>No credit card required</span>
+                  <span>Implementation costs are affordable for small businesses</span>
                 </div>
               </div>
             </CardContent>

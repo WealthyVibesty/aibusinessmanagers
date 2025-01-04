@@ -24,13 +24,13 @@ export default function HeroSection() {
 
         {/* Headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary animate-slideUp">
-          AI is Moving Fast – But Starting Doesn't Have to Be Hard or Expensive.
+          You Run a Business – But Do You Have AI? Let's Change That, Starting Today.
         </h1>
 
         {/* Subheadline */}
         <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-slideUp" 
            style={{ animationDelay: "100ms" }}>
-          Try Us for Free. If You Like What We Create, We'll Help You Implement It – No Pressure, No Regrets.
+          AI is Moving Faster Than Ever – Don't Get Left Behind. Try Us for Just $1 and See What's Possible.
         </p>
 
         {/* CTA Button */}
@@ -40,7 +40,7 @@ export default function HeroSection() {
           style={{ animationDelay: "200ms" }}
           onClick={() => navigate("/login")}
         >
-          Get Started Now – Free
+          Get Started Now – Only $1
           <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
         </Button>
       </div>

@@ -1,16 +1,16 @@
 export default function StepsSection() {
   const steps = [
     {
-      title: "Fill Out The Form",
+      title: "Pay $1 and Fill Out the Form",
       desc: "Answer a few simple questions about your business.",
     },
     {
       title: "We Create Your Profile",
-      desc: "Our AI agents will do all the work and show you what's possible.",
+      desc: "Our AI experts will analyze your business and create a custom plan.",
     },
     {
       title: "You Decide",
-      desc: "If you love it, we'll help you implement it. If not, no worries – it's free to try.",
+      desc: "If you love it, we'll help you implement it. If not, no worries – you've only spent $1 to try.",
     },
   ];
 
