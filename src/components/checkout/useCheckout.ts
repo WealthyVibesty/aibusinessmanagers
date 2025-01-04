@@ -21,40 +21,25 @@ export function useCheckout() {
     console.log('Starting checkout process...');
     
     try {
-      console.log('Getting Supabase session...');
-      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-      
-      if (sessionError) {
-        console.error('Session error:', sessionError);
-        throw new Error('Please sign in to continue with checkout');
-      }
-
-      if (!session?.access_token) {
-        console.error('No access token found');
-        throw new Error('Please sign in to continue with checkout');
-      }
-
       console.log('Creating checkout session with upsells:', selectedUpsells);
-      const response = await supabase.functions.invoke('create-checkout', {
+      const { data, error } = await supabase.functions.invoke('create-checkout', {
         body: {
           priceId: 'price_1QdYndGineWW4dYE2pij53XE', // Main product price ID
           upsellPriceIds: selectedUpsells,
         }
       });
 
-      if (response.error) {
-        console.error('Checkout API error:', response.error);
-        throw new Error(response.error.message || 'Failed to create checkout session');
+      if (error) {
+        console.error('Checkout API error:', error);
+        throw new Error(error.message || 'Failed to create checkout session');
       }
 
-      const { data } = response;
-      console.log('Checkout session created, redirecting to:', data.url);
-      
       if (!data?.url) {
         console.error('No checkout URL received');
         throw new Error('No checkout URL received from server');
       }
 
+      console.log('Redirecting to checkout:', data.url);
       window.location.href = data.url;
       
     } catch (error) {
