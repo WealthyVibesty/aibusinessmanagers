@@ -78,13 +78,28 @@
 /* ElevenLabs Widget Styling */
 elevenlabs-convai {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 40px;
+  right: 40px;
   z-index: 1000;
-  transition: opacity 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  transform-origin: bottom right;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  max-width: calc(100vw - 80px);
+  max-height: calc(100vh - 80px);
 }
 
 elevenlabs-convai.hidden {
   opacity: 0;
   pointer-events: none;
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  elevenlabs-convai {
+    bottom: 20px;
+    right: 20px;
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 40px);
+  }
 }
