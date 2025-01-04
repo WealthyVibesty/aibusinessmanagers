@@ -17,13 +17,13 @@ export default function HeroSection() {
     <section className="relative pt-12 min-h-[60vh] flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-white/90 backdrop-blur-md">
       <div className="absolute inset-0 bg-gradient-to-b from-blue-200/50 to-white -z-10" />
       
-      <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10">
-        <div className="space-y-6">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary animate-slideUp leading-tight">
+      <div className="max-w-3xl mx-auto text-center space-y-8 sm:space-y-10">
+        <div className="space-y-8">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary animate-slideUp leading-tight mx-auto">
             Integrate AI Into Your Business
           </h1>
 
-          <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground max-w-3xl mx-auto animate-slideUp leading-relaxed" 
+          <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mx-auto animate-slideUp leading-relaxed" 
              style={{ animationDelay: "100ms" }}>
             Enhance Customer Service, Automate Billing, and More! AI is advancing faster than ever - don't get left behind.
           </p>
