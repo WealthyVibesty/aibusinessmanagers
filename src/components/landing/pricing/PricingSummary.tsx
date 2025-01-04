@@ -61,13 +61,13 @@ export default function PricingSummary() {
             </p>
           </div>
           
-          <Button
-            size="lg"
-            className="text-lg sm:text-xl px-8 sm:px-10 py-6 sm:py-7 h-auto group shadow-lg hover:shadow-xl transition-all w-full sm:w-auto"
+          <Button 
             onClick={() => navigate("/login")}
+            size="lg"
+            className="shadow-lg hover:shadow-xl transition-shadow"
           >
             Get Started Now for Just $247
-            <ArrowRight className="ml-2 h-6 w-6 sm:h-7 sm:w-7 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
