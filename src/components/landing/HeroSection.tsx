@@ -17,7 +17,7 @@ export default function HeroSection() {
         
         {/* Statistic */}
         <div className="mb-8 sm:mb-12 animate-fadeIn">
-          <span className="block text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-2">
+          <span className="block text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-white to-primary bg-clip-text text-transparent bg-[length:200%_100%] animate-[slide_2s_linear_infinite] mb-2">
             272,299+
           </span>
           <span className="text-lg sm:text-xl text-muted-foreground">
