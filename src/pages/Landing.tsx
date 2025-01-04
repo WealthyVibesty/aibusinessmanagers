@@ -2,6 +2,7 @@ import HeroSection from "@/components/landing/HeroSection";
 import BenefitsSection from "@/components/landing/BenefitsSection";
 import CaseStudiesSection from "@/components/landing/CaseStudiesSection";
 import PricingDetailsSection from "@/components/landing/PricingDetailsSection";
+import BusinessComparisonSection from "@/components/landing/BusinessComparisonSection";
 import Header from "@/components/landing/Header";
 
 export default function Landing() {
@@ -12,6 +13,9 @@ export default function Landing() {
         <HeroSection />
         <div id="benefits">
           <BenefitsSection />
+        </div>
+        <div id="business-comparison">
+          <BusinessComparisonSection />
         </div>
         <div id="case-studies">
           <CaseStudiesSection />
