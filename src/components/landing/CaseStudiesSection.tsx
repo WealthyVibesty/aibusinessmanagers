@@ -1,4 +1,4 @@
-import { Clock, DollarSign, BarChartHorizontal, Users, Bot, Phone, Wrench, Scissors, Spa, GraduationCap, Store, Home, Hotel } from "lucide-react";
+import { Clock, DollarSign, BarChartHorizontal, Users, Bot, Phone, Wrench, Scissors, Heart, GraduationCap, Store, Home, Hotel } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 export default function CaseStudiesSection() {
@@ -78,7 +78,7 @@ export default function CaseStudiesSection() {
         "Improved treatment plan adherence by 60%",
         "Boosted revenue per client by 35%"
       ],
-      icon: <Spa className="h-8 w-8 text-primary" />
+      icon: <Heart className="h-8 w-8 text-primary" />
     },
     {
       title: "University: Administrative Automation",
