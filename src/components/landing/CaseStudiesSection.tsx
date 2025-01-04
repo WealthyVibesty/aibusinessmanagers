@@ -48,13 +48,14 @@ export default function CaseStudiesSection() {
       icon: <DollarSign className="h-8 w-8 text-primary" />
     },
     {
-      title: "Print Shop: Dynamic Pricing and Order Updates",
-      problem: "The print shop lost profits due to outdated pricing and missed deadlines.",
-      solution: "We implemented dynamic pricing updates and AI-powered order tracking with real-time customer updates.",
+      title: "Case Study: Quick Prints—Boosting Profits and Efficiency with AI Automation",
+      problem: "Quick Prints faced outdated pricing models leading to lost profits, missed deadlines due to manual order tracking, and overwhelmed staff spending time on repetitive tasks.",
+      solution: "We implemented AI-powered dynamic pricing automation with supplier data integration, AI voice agent & SMS alerts through Twilio and WhatsApp for instant updates, and automated project management with Monday.com.",
       results: [
-        "Increased profit margins by 15%",
-        "Reduced missed deadlines by 90%",
-        "Improved customer satisfaction with real-time updates"
+        "15% increase in profit margins through automated pricing adjustments",
+        "90% reduction in missed deadlines with automated workflows",
+        "Improved customer satisfaction with real-time updates",
+        "Saved 20+ hours weekly for staff to focus on growth"
       ],
       icon: <BarChartHorizontal className="h-8 w-8 text-primary" />
     }
