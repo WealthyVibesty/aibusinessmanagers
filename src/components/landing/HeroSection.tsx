@@ -18,7 +18,7 @@ export default function HeroSection() {
             376+
           </span>
           <span className="text-lg sm:text-xl text-muted-foreground">
-            Businesses Transformed
+            Businesses Integrated
           </span>
         </div>
 
