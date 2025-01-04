@@ -21,7 +21,7 @@ export default function Landing() {
       {/* Final CTA */}
       <section className="container px-4 py-24 mx-auto text-center">
         <div className="max-w-3xl mx-auto space-y-8">
-          <h2 className="text-3xl font-bold">Don't Wait – Let's Make AI Easy Together</h2>
+          <h2 className="text-3xl font-bold">Start for Free Today – Let Our AI Experts Do the Heavy Lifting for You</h2>
           <p className="text-xl text-muted-foreground">
             No Risk. No Commitment. Just Results.
           </p>
