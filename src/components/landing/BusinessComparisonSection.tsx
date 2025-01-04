@@ -82,22 +82,22 @@ export default function BusinessComparisonSection() {
 
   return (
     <section className="relative py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-blue-50">
-      <div className="container mx-auto max-w-7xl"> {/* Increased from max-w-6xl to max-w-7xl */}
+      <div className="container mx-auto"> {/* Removed max-w constraint */}
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-center animate-fadeIn leading-tight mb-12 sm:mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800">
           See How Much You Can Save
         </h2>
         
-        <div className="w-full">  {/* Removed max-w-6xl constraint */}
+        <div className="w-full">
           <Card className="bg-white/80 backdrop-blur-sm shadow-xl border-0">
             <CardContent className="p-6 sm:p-8">
-              {/* Tabs */}
+              {/* Business Type Selector */}
               <div className="flex overflow-x-auto mb-8 gap-3 pb-2 scrollbar-hide">
                 {Object.keys(businesses).map((business) => (
                   <Button
                     key={business}
                     variant={selectedBusiness === business ? "default" : "outline"}
                     className={`
-                      min-w-[140px] py-6 text-base font-medium rounded-xl transition-all duration-300
+                      whitespace-nowrap px-8 py-6 text-base font-medium rounded-xl transition-all duration-300
                       ${selectedBusiness === business ? 'shadow-lg scale-105' : 'hover:scale-105'}
                     `}
                     onClick={() => setSelectedBusiness(business)}
@@ -107,22 +107,56 @@ export default function BusinessComparisonSection() {
                 ))}
               </div>
 
-              {/* Content */}
+              {/* Charts Grid */}
               <div className="space-y-8">
                 {/* Cost Comparison Chart */}
                 <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
                   <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">Cost Comparison</h3>
-                  <div className="h-[500px]"> {/* Increased height from 400px to 500px */}
+                  <div className="w-full h-[600px]"> {/* Increased height and made full width */}
                     <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={costComparisonData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                      <BarChart 
+                        data={costComparisonData} 
+                        margin={{ top: 20, right: 30, left: 40, bottom: 20 }} // Adjusted margins
+                      >
                         <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-                        <XAxis dataKey="name" tick={{ fill: '#4B5563' }} />
-                        <YAxis tickFormatter={formatDollar} tick={{ fill: '#4B5563' }} />
+                        <XAxis 
+                          dataKey="name" 
+                          tick={{ fill: '#4B5563', fontSize: 14 }} 
+                          tickMargin={10}
+                        />
+                        <YAxis 
+                          tickFormatter={formatDollar} 
+                          tick={{ fill: '#4B5563', fontSize: 14 }}
+                          tickMargin={10}
+                        />
                         <Tooltip content={<CustomTooltip />} />
-                        <Legend wrapperStyle={{ paddingTop: '20px' }} />
-                        <Bar dataKey="noAI" name="Current Cost (No AI)" fill="#FF6B6B" radius={[4, 4, 0, 0]} />
-                        <Bar dataKey="competitors" name="Competitor" fill="#4ADE80" radius={[4, 4, 0, 0]} />
-                        <Bar dataKey="yourAI" name="AI Marketing Profile" fill="#60A5FA" radius={[4, 4, 0, 0]} />
+                        <Legend 
+                          wrapperStyle={{ 
+                            paddingTop: '20px',
+                            fontSize: '14px'
+                          }} 
+                        />
+                        <Bar 
+                          dataKey="noAI" 
+                          name="Current Cost (No AI)" 
+                          fill="#FF6B6B" 
+                          radius={[4, 4, 0, 0]}
+                          maxBarSize={120} // Control maximum bar width
+                        />
+                        <Bar 
+                          dataKey="competitors" 
+                          name="Competitor" 
+                          fill="#4ADE80" 
+                          radius={[4, 4, 0, 0]}
+                          maxBarSize={120}
+                        />
+                        <Bar 
+                          dataKey="yourAI" 
+                          name="AI Marketing Profile" 
+                          fill="#60A5FA" 
+                          radius={[4, 4, 0, 0]}
+                          maxBarSize={120}
+                        />
                       </BarChart>
                     </ResponsiveContainer>
                   </div>
@@ -131,18 +165,37 @@ export default function BusinessComparisonSection() {
                 {/* 12-Month Projection Chart */}
                 <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
                   <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">12-Month Cost Projection</h3>
-                  <div className="h-[500px]"> {/* Increased height from 400px to 500px */}
+                  <div className="w-full h-[600px]"> {/* Increased height and made full width */}
                     <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={monthlyData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                      <LineChart 
+                        data={monthlyData} 
+                        margin={{ top: 20, right: 30, left: 40, bottom: 20 }} // Adjusted margins
+                      >
                         <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                         <XAxis 
                           dataKey="month" 
-                          label={{ value: 'Month', position: 'bottom', offset: 0, fill: '#4B5563' }}
-                          tick={{ fill: '#4B5563' }}
+                          label={{ 
+                            value: 'Month', 
+                            position: 'bottom', 
+                            offset: 0, 
+                            fill: '#4B5563',
+                            fontSize: 14
+                          }}
+                          tick={{ fill: '#4B5563', fontSize: 14 }}
+                          tickMargin={10}
                         />
-                        <YAxis tickFormatter={formatDollar} tick={{ fill: '#4B5563' }} />
+                        <YAxis 
+                          tickFormatter={formatDollar} 
+                          tick={{ fill: '#4B5563', fontSize: 14 }}
+                          tickMargin={10}
+                        />
                         <Tooltip content={<CustomTooltip />} />
-                        <Legend wrapperStyle={{ paddingTop: '20px' }} />
+                        <Legend 
+                          wrapperStyle={{ 
+                            paddingTop: '20px',
+                            fontSize: '14px'
+                          }} 
+                        />
                         <Line 
                           type="monotone" 
                           dataKey="noAI" 
