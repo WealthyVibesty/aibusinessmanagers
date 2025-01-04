@@ -96,6 +96,12 @@ export default function PricingDetailsSection() {
     },
   ];
 
+  const handleChatToggle = () => {
+    if (typeof window !== 'undefined' && window.Tawk_API) {
+      window.Tawk_API.toggle();
+    }
+  };
+
   return (
     <section className="bg-gradient-to-b from-white/90 to-primary/5 backdrop-blur-md py-16 sm:py-24">
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
@@ -187,7 +193,7 @@ export default function PricingDetailsSection() {
                   </a>
                 </p>
                 <button 
-                  onClick={() => window.Tawk_API?.toggle()} 
+                  onClick={handleChatToggle}
                   className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                 >
                   <MessageSquare className="h-5 w-5" />
