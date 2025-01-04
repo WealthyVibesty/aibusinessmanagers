@@ -1,14 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Check, DollarSign, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function PricingSummary() {
+  const navigate = useNavigate();
+  
   const handleTalkToAI = () => {
     const widget = document.querySelector('elevenlabs-convai');
     if (widget) {
       widget.classList.toggle('hidden');
       console.log('Toggling AI assistant widget from pricing summary');
     }
+  };
+
+  const handleGetStarted = () => {
+    console.log('Navigating to checkout flow');
+    navigate('/checkout');
   };
   
   return (
@@ -72,7 +80,7 @@ export default function PricingSummary() {
           
           <div className="flex justify-center w-full">
             <Button 
-              onClick={handleTalkToAI}
+              onClick={handleGetStarted}
               size="lg"
               className="w-full sm:w-auto min-w-[300px] bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-6 h-auto"
             >
