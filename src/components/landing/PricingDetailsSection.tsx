@@ -88,26 +88,26 @@ export default function PricingDetailsSection() {
   ];
 
   return (
-    <section className="bg-white/90 backdrop-blur-md py-8 sm:py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12">
+    <section className="bg-white/90 backdrop-blur-md py-8">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="max-w-4xl mx-auto space-y-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-center animate-fadeIn">
             What You'll Get for Just $247:
           </h2>
 
-          <div className="grid gap-4 sm:gap-8">
+          <div className="grid gap-4">
             {offerings.map((offering, i) => (
               <OfferingCard key={i} index={i} {...offering} />
             ))}
 
             {/* Bonuses Section */}
-            <div className="pt-4 sm:pt-8">
-              <Card className="border-2 border-primary/20 bg-primary/5">
-                <div className="p-4 sm:p-6 md:p-8">
-                  <h2 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6">
+            <div className="pt-4">
+              <Card className="border-2 border-primary/20 bg-primary/5 overflow-hidden">
+                <div className="p-4 sm:p-6">
+                  <h2 className="text-xl sm:text-2xl font-bold text-center mb-4">
                     🎁 Exclusive Bonuses (Total Value: $1,694+)
                   </h2>
-                  <div className="grid gap-3 sm:gap-4 md:gap-6">
+                  <div className="grid gap-3">
                     {bonuses.map((bonus, i) => (
                       <BonusCard key={i} index={i} {...bonus} />
                     ))}
@@ -118,19 +118,19 @@ export default function PricingDetailsSection() {
 
             <PricingSummary />
 
-            <div className="text-center space-y-4 sm:space-y-5 animate-fadeIn py-4" style={{ animationDelay: "900ms" }}>
-              <div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-2">Got Questions?</h3>
-                <p className="text-muted-foreground text-sm sm:text-base">
+            <div className="text-center space-y-4 animate-fadeIn py-4" style={{ animationDelay: "900ms" }}>
+              <div className="px-4">
+                <h3 className="text-lg font-semibold mb-2">Got Questions?</h3>
+                <p className="text-muted-foreground text-sm">
                   Contact us at Support@aimarketingprofile.com
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-2">
+              <div className="px-4">
+                <h3 className="text-lg font-semibold mb-2">
                   Why Wait? Your Business Can't Afford to Fall Behind.
                 </h3>
-                <p className="text-muted-foreground text-sm sm:text-base">
+                <p className="text-muted-foreground text-sm">
                   AI is the future—and it's moving fast. Don't let your competitors outpace you. 
                   Let's transform your business together.
                 </p>
