@@ -21,24 +21,29 @@ export function useCheckout() {
     console.log('Starting checkout process...');
     
     try {
-      console.log('Creating checkout session with upsells:', selectedUpsells);
+      // Create the request payload
+      const payload = {
+        priceId: 'price_1QdYndGineWW4dYE2pij53XE', // Main product price ID
+        upsellPriceIds: selectedUpsells,
+      };
+      
+      console.log('Sending checkout request with payload:', payload);
+      
       const { data, error } = await supabase.functions.invoke('create-checkout', {
-        body: {
-          priceId: 'price_1QdYndGineWW4dYE2pij53XE', // Main product price ID
-          upsellPriceIds: selectedUpsells,
-        }
+        body: payload,
       });
 
+      console.log('Checkout response:', { data, error });
+
       if (error) {
-        console.error('Checkout API error:', error);
         throw new Error(error.message || 'Failed to create checkout session');
       }
 
       if (!data?.url) {
-        console.error('No checkout URL received');
         throw new Error('No checkout URL received from server');
       }
 
+      // Redirect to Stripe checkout
       console.log('Redirecting to checkout:', data.url);
       window.location.href = data.url;
       
