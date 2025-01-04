@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutFlow() {
   const [selectedUpsells, setSelectedUpsells] = useState<string[]>([]);
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleCheckout = async () => {
     setIsLoading(true);
@@ -58,6 +60,16 @@ export default function CheckoutFlow() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
+        {/* Back Button */}
+        <Button
+          variant="ghost"
+          onClick={() => navigate('/')}
+          className="mb-4 group"
+        >
+          <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
+          Back to Home
+        </Button>
+
         {/* Main Offer */}
         <Card className="p-6 space-y-6 animate-fadeIn">
           <div className="space-y-4">
