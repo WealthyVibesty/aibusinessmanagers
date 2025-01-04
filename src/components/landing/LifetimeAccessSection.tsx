@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Book, Cpu, Robot } from "lucide-react";
+import { Book, Cpu, Bot } from "lucide-react";
 
 export default function LifetimeAccessSection() {
   const courses = [
@@ -11,7 +11,7 @@ export default function LifetimeAccessSection() {
     {
       title: "Creating AI Voice Agents and Connecting Them to Your CRM",
       description: "Master the art of building and integrating AI voice agents into your business workflows.",
-      icon: <Robot className="h-8 w-8 text-primary" />,
+      icon: <Bot className="h-8 w-8 text-primary" />,
     },
     {
       title: "Using Basic AI Tools to Automate Everything",
