@@ -1,24 +1,11 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
-
-interface BusinessData {
-  noAI: number;
-  yourAI: number;
-  monthlySavings: number;
-  competitors: number;
-}
-
-interface Businesses {
-  [key: string]: BusinessData;
-}
-
-interface TooltipProps {
-  active?: boolean;
-  payload?: any[];
-  label?: string;
-}
+import { Tabs, TabsContent } from '@/components/ui/tabs';
+import { IndustrySelector } from './comparison/IndustrySelector';
+import { CostChart } from './comparison/CostChart';
+import { ProjectionChart } from './comparison/ProjectionChart';
+import { SavingsDisplay } from './comparison/SavingsDisplay';
+import { Businesses } from './comparison/types';
 
 export default function BusinessComparisonSection() {
   const businesses: Businesses = {
@@ -62,34 +49,6 @@ export default function BusinessComparisonSection() {
 
   const [selectedBusiness, setSelectedBusiness] = useState('Hospitals');
 
-  const generateMonthlyData = (business: string) => {
-    return Array.from({ length: 12 }, (_, month) => ({
-      month: month + 1,
-      noAI: businesses[business].noAI * (month + 1),
-      yourAI: businesses[business].yourAI * (month + 1),
-      competitors: businesses[business].competitors * (month + 1),
-      savings: businesses[business].monthlySavings * (month + 1)
-    }));
-  };
-
-  const formatDollar = (value: number) => `$${value.toLocaleString()}`;
-
-  const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="bg-white p-2 text-sm md:p-4 md:text-base border rounded shadow-lg">
-          <p className="font-bold">Month {label}</p>
-          {payload.map((entry: any, index: number) => (
-            <p key={index} style={{ color: entry.color }}>
-              {entry.name}: {formatDollar(entry.value)}
-            </p>
-          ))}
-        </div>
-      );
-    }
-    return null;
-  };
-
   return (
     <section className="relative py-8 sm:py-12 px-4">
       <div className="container mx-auto">
@@ -103,93 +62,19 @@ export default function BusinessComparisonSection() {
             </CardHeader>
             <CardContent className="p-4 sm:p-6">
               <Tabs value={selectedBusiness} onValueChange={setSelectedBusiness} className="w-full">
-                <TabsList className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 relative z-10 bg-gray-50 p-4">
-                  {Object.keys(businesses).map(business => (
-                    <TabsTrigger 
-                      key={business} 
-                      value={business} 
-                      className="px-4 py-3 sm:py-4 text-base sm:text-lg bg-white hover:bg-blue-50 data-[state=active]:bg-blue-100 shadow-sm border rounded-lg transition-all duration-200 font-medium"
-                    >
-                      {business}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
+                <div className="relative z-10 bg-gray-50 p-4">
+                  <IndustrySelector 
+                    businesses={Object.keys(businesses)} 
+                    selectedBusiness={selectedBusiness} 
+                  />
+                </div>
 
                 {Object.entries(businesses).map(([business, data]) => (
                   <TabsContent key={business} value={business} className="mt-4 sm:mt-6">
                     <div className="grid gap-4 sm:gap-6">
-                      <Card className="w-full overflow-hidden">
-                        <CardHeader className="p-4 sm:p-6 bg-white relative z-10 border-b">
-                          <CardTitle className="text-lg sm:text-xl lg:text-2xl text-center">Cost Comparison - {business}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-4 sm:p-6">
-                          <div className="h-48 sm:h-64 lg:h-72">
-                            <ResponsiveContainer width="100%" height="100%">
-                              <BarChart data={[
-                                { name: 'Monthly Costs', noAI: data.noAI, yourAI: data.yourAI, competitors: data.competitors }
-                              ]} margin={{ top: 20, right: 5, left: 5, bottom: 5 }}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                                <YAxis tickFormatter={formatDollar} tick={{ fontSize: 12 }} />
-                                <Tooltip content={<CustomTooltip />} />
-                                <Legend wrapperStyle={{ fontSize: '12px' }} />
-                                <Bar dataKey="noAI" name="Current Cost (No AI)" fill="#ff4444" />
-                                <Bar dataKey="competitors" name="Competitor" fill="#4CAF50" />
-                                <Bar dataKey="yourAI" name="AI Marketing Profile" fill="#2196F3" />
-                              </BarChart>
-                            </ResponsiveContainer>
-                          </div>
-                        </CardContent>
-                      </Card>
-
-                      <Card className="w-full overflow-hidden">
-                        <CardHeader className="p-4 sm:p-6 bg-white relative z-10 border-b">
-                          <CardTitle className="text-lg sm:text-xl lg:text-2xl text-center">12-Month Cost Projection</CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-4 sm:p-6">
-                          <div className="h-48 sm:h-64 lg:h-72">
-                            <ResponsiveContainer width="100%" height="100%">
-                              <LineChart 
-                                data={generateMonthlyData(business)} 
-                                margin={{ top: 20, right: 5, left: 5, bottom: 20 }}
-                              >
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis 
-                                  dataKey="month" 
-                                  tick={{ fontSize: 12 }}
-                                  label={{ 
-                                    value: 'Month', 
-                                    position: 'bottom', 
-                                    offset: 10,
-                                    fontSize: 12
-                                  }} 
-                                />
-                                <YAxis tickFormatter={formatDollar} tick={{ fontSize: 12 }} />
-                                <Tooltip content={<CustomTooltip />} />
-                                <Legend wrapperStyle={{ fontSize: '12px' }} />
-                                <Line type="monotone" dataKey="noAI" name="Current Cost (No AI)" stroke="#ff4444" strokeWidth={2} />
-                                <Line type="monotone" dataKey="competitors" name="Competitor" stroke="#4CAF50" strokeWidth={2} />
-                                <Line type="monotone" dataKey="yourAI" name="AI Marketing Profile" stroke="#2196F3" strokeWidth={2} />
-                              </LineChart>
-                            </ResponsiveContainer>
-                          </div>
-                        </CardContent>
-                      </Card>
-
-                      <Card className="bg-blue-50 w-full">
-                        <CardContent className="p-4 sm:p-6">
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                            <div className="text-center">
-                              <p className="text-base sm:text-lg font-semibold">Monthly Savings with AI Marketing Profile</p>
-                              <p className="text-2xl sm:text-3xl font-bold text-blue-600">{formatDollar(data.monthlySavings)}</p>
-                            </div>
-                            <div className="text-center">
-                              <p className="text-base sm:text-lg font-semibold">Annual Savings with AI Marketing Profile</p>
-                              <p className="text-2xl sm:text-3xl font-bold text-blue-600">{formatDollar(data.monthlySavings * 12)}</p>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
+                      <CostChart business={business} data={data} />
+                      <ProjectionChart business={business} data={data} />
+                      <SavingsDisplay data={data} />
                     </div>
                   </TabsContent>
                 ))}
