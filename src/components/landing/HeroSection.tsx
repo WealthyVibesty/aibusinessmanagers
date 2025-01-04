@@ -6,7 +6,7 @@ export default function HeroSection() {
   const navigate = useNavigate();
   
   return (
-    <section className="relative min-h-[80vh] flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-white/90 backdrop-blur-md">
+    <section className="relative pt-20 min-h-[80vh] flex flex-col items-center justify-start px-4 sm:px-6 lg:px-8 overflow-hidden bg-white/90 backdrop-blur-md">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-blue-200/50 to-white -z-10" />
       
