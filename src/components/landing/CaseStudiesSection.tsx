@@ -65,7 +65,7 @@ export default function CaseStudiesSection() {
       <div className="container px-4 mx-auto">
         <div className="max-w-4xl mx-auto space-y-12">
           <h2 className="text-3xl font-bold tracking-tight text-center animate-fadeIn">
-            This Could Be You: Real-World Examples of AI Transformation
+            This Could Be You
           </h2>
 
           <div className="grid gap-8">
