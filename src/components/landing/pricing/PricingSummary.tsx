@@ -70,14 +70,16 @@ export default function PricingSummary() {
             </p>
           </div>
           
-          <Button 
-            onClick={handleTalkToAI}
-            size="lg"
-            className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-6 h-auto"
-          >
-            Get Started Now for Just $247
-            <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <div className="flex justify-center w-full">
+            <Button 
+              onClick={handleTalkToAI}
+              size="lg"
+              className="w-full sm:w-auto min-w-[300px] bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white shadow-lg hover:shadow-xl transition-all duration-300 text-lg px-8 py-6 h-auto"
+            >
+              Get Started Now for Just $247
+              <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
         </div>
       </div>
     </Card>
