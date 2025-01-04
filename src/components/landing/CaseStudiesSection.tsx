@@ -49,11 +49,10 @@ export default function CaseStudiesSection() {
     },
     {
       title: "Case Study: Quick Prints—Boosting Profits and Efficiency with AI Automation",
-      problem: "Quick Prints faced outdated pricing models leading to lost profits, missed deadlines due to manual order tracking, and overwhelmed staff spending time on repetitive tasks.",
+      problem: "Quick Prints faced outdated pricing models leading to lost profits and overwhelmed staff spending time on repetitive tasks.",
       solution: "We implemented AI-powered dynamic pricing automation with supplier data integration, AI voice agent & SMS alerts through Twilio and WhatsApp for instant updates, and automated project management with Monday.com.",
       results: [
         "15% increase in profit margins through automated pricing adjustments",
-        "90% reduction in missed deadlines with automated workflows",
         "Improved customer satisfaction with real-time updates",
         "Saved 20+ hours weekly for staff to focus on growth"
       ],
