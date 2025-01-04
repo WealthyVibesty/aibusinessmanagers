@@ -91,24 +91,24 @@ export default function BusinessComparisonSection() {
   };
 
   return (
-    <section className="py-16 bg-background">
-      <div className="container px-4 mx-auto">
+    <section className="relative pt-12 pb-16 px-4">
+      <div className="container mx-auto">
         <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight mb-12">
           See How Much You Can Save
         </h2>
-        <div className="w-full max-w-6xl mx-auto p-2 md:p-4">
+        <div className="w-full max-w-6xl mx-auto">
           <Card className="mb-4 md:mb-8">
             <CardHeader className="p-3 md:p-6 bg-white relative z-10">
               <CardTitle className="text-xl md:text-2xl text-center">Select Your Industry</CardTitle>
             </CardHeader>
             <CardContent className="p-2 md:p-6">
               <Tabs value={selectedBusiness} onValueChange={setSelectedBusiness} className="w-full">
-                <TabsList className="grid grid-cols-2 sm:grid-cols-3 gap-2 relative z-10 bg-gray-50 p-2">
+                <TabsList className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 relative z-10 bg-gray-50 p-2">
                   {Object.keys(businesses).map(business => (
                     <TabsTrigger 
                       key={business} 
                       value={business} 
-                      className="p-2 md:p-3 text-sm md:text-base bg-white hover:bg-blue-50 data-[state=active]:bg-blue-100 shadow-sm border rounded-lg transition-all duration-200 font-medium"
+                      className="p-3 sm:p-4 text-base sm:text-lg bg-white hover:bg-blue-50 data-[state=active]:bg-blue-100 shadow-sm border rounded-lg transition-all duration-200 font-medium"
                     >
                       {business}
                     </TabsTrigger>
