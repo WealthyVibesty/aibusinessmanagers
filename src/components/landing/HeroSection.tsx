@@ -25,7 +25,7 @@ export default function HeroSection() {
 
           <p className="text-xl sm:text-2xl text-gray-600 animate-slideUp mb-12 leading-relaxed max-w-2xl mx-auto px-4" 
              style={{ animationDelay: "100ms" }}>
-            Enhance Customer Service, Automate Billing, and More! AI is advancing businesses faster than ever - stay ahead of the competition.
+            Enhance Customer Service, Automate Billing, and More! AI is advancing everyday businesses faster than ever - stay ahead of the competition.
           </p>
         </div>
 
