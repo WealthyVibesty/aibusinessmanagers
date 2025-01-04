@@ -38,6 +38,7 @@ serve(async (req) => {
     console.log('Initializing Stripe...');
     const stripe = new Stripe(stripeKey, {
       apiVersion: '2023-10-16',
+      httpClient: Stripe.createFetchHttpClient(), // Explicitly use fetch client
     });
 
     // Prepare line items
@@ -73,7 +74,9 @@ serve(async (req) => {
     
     // Return error response
     return new Response(
-      JSON.stringify({ error: error.message || 'An error occurred during checkout' }),
+      JSON.stringify({ 
+        error: error instanceof Error ? error.message : 'An error occurred during checkout'
+      }),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 400,

@@ -8,6 +8,7 @@ export function useCheckout() {
   const { toast } = useToast();
 
   const toggleUpsell = (priceId: string) => {
+    if (isLoading) return; // Prevent toggling while loading
     console.log('Toggling upsell:', priceId);
     setSelectedUpsells(prev => 
       prev.includes(priceId) 
@@ -17,6 +18,7 @@ export function useCheckout() {
   };
 
   const handleCheckout = async () => {
+    if (isLoading) return; // Prevent multiple clicks
     setIsLoading(true);
     console.log('Starting checkout process...');
     
@@ -49,7 +51,7 @@ export function useCheckout() {
       
     } catch (error) {
       console.error('Checkout error:', error);
-      setIsLoading(false);
+      setIsLoading(false); // Reset loading state on error
       toast({
         title: "Checkout Error",
         description: error instanceof Error ? error.message : "There was a problem initiating checkout. Please try again.",
