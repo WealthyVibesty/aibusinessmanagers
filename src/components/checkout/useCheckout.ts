@@ -18,7 +18,11 @@ export function useCheckout() {
   };
 
   const handleCheckout = async () => {
-    if (isLoading) return; // Prevent multiple clicks
+    if (isLoading) {
+      console.log('Checkout already in progress, preventing duplicate submission');
+      return;
+    }
+    
     setIsLoading(true);
     console.log('Starting checkout process...');
     

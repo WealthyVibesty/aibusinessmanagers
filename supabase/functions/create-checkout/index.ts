@@ -61,14 +61,19 @@ serve(async (req) => {
 
     console.log('Checkout session created successfully:', session.id);
     
-    // Return success response
+    // Return success response with no-cache headers
     return new Response(
-      JSON.stringify({ url: session.url }),
+      JSON.stringify({ 
+        url: session.url,
+        sessionId: session.id 
+      }),
       { 
         headers: { 
           ...corsHeaders, 
           'Content-Type': 'application/json',
-          'Cache-Control': 'no-store, no-cache, must-revalidate',
+          'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+          'Pragma': 'no-cache',
+          'Expires': '0',
         },
         status: 200,
       }
@@ -76,16 +81,19 @@ serve(async (req) => {
   } catch (error) {
     console.error('Error in checkout process:', error);
     
-    // Return error response
+    // Return error response with no-cache headers
     return new Response(
       JSON.stringify({ 
-        error: error instanceof Error ? error.message : 'An error occurred during checkout'
+        error: error instanceof Error ? error.message : 'An error occurred during checkout',
+        timestamp: new Date().toISOString(),
       }),
       { 
         headers: { 
           ...corsHeaders, 
           'Content-Type': 'application/json',
-          'Cache-Control': 'no-store, no-cache, must-revalidate',
+          'Cache-Control': 'no-store, no-cache, must-revalidate, private',
+          'Pragma': 'no-cache',
+          'Expires': '0',
         },
         status: 400,
       }
