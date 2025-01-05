@@ -38,18 +38,6 @@ export default function HeroSection() {
              style={{ animationDelay: "100ms" }}>
             Enhance Customer Service, Automate Billing, and More! AI is advancing everyday businesses faster than ever - stay ahead of the competition.
           </p>
-
-          {/* Mid-section AI Assistant Button */}
-          <Button
-            variant="outline"
-            size="lg"
-            className="mb-8 text-lg rounded-full hover:bg-primary hover:text-white transition-all group animate-slideUp"
-            onClick={handleTalkToAI}
-            style={{ animationDelay: "150ms" }}
-          >
-            Learn More From Our AI Assistant
-            <Mic className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-          </Button>
         </div>
 
         <div className="flex flex-col items-center gap-6 animate-slideUp px-4" 
