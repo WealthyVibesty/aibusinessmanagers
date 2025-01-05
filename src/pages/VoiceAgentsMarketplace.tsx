@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
-  Stethoscope, Brain, Heart, Pills, Building2, Hospital, 
+  Stethoscope, Brain, Heart, Pill, Building2, Hospital, 
   Activity, Dumbbell, BookOpen, Home, Baby, Smile, Apple, 
   PhoneCall, GraduationCap, MessageSquare, Code, BookOpen as Learn,
   ShoppingCart, Users, HeadphonesIcon
@@ -16,7 +16,7 @@ const industries = [
     description: 'Therapeutic conversation agents and crisis intervention tools.' },
   { id: 'chronic-disease', name: 'Chronic Disease', icon: <Heart className="h-6 w-6" />,
     description: 'Patient education and medication adherence.' },
-  { id: 'pharmaceuticals', name: 'Pharmaceuticals', icon: <Pills className="h-6 w-6" />,
+  { id: 'pharmaceuticals', name: 'Pharmaceuticals', icon: <Pill className="h-6 w-6" />,
     description: 'Customer support and clinical trial assistance.' },
   { id: 'hospital', name: 'Hospital Operations', icon: <Hospital className="h-6 w-6" />,
     description: 'Patient intake and staff coordination.' },
