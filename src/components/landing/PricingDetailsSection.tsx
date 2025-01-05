@@ -40,6 +40,7 @@ export default function PricingDetailsSection() {
     {
       title: "AI Voice Customer Service Agent for Your Website",
       description: "24/7 customer support, lead capture, and seamless CRM integration",
+      value: 497,
       features: [
         "24/7 Customer Support with FAQs and product details",
         "Automated lead capture system",
@@ -49,6 +50,7 @@ export default function PricingDetailsSection() {
     {
       title: "AI Content Creation Toolkit",
       description: "Generate high-quality content and optimize for SEO",
+      value: 297,
       features: [
         "AI Writing Assistant for blogs and social media",
         "Content Calendar Automation",
@@ -57,19 +59,23 @@ export default function PricingDetailsSection() {
     },
     {
       title: "Custom AI Workflow Blueprint",
-      description: "Step-by-step implementation guide for your business"
+      description: "Step-by-step implementation guide for your business",
+      value: 197
     },
     {
       title: "AI-Powered Marketing Audit",
-      description: "Comprehensive analysis and optimization recommendations"
+      description: "Comprehensive analysis and optimization recommendations",
+      value: 297
     },
     {
       title: "Exclusive Access to AI Tools Library",
-      description: "Curated collection of premium AI tools and resources"
+      description: "Curated collection of premium AI tools and resources",
+      value: 197
     },
     {
       title: "Priority Implementation Assistance",
-      description: "Fast-track setup and implementation support"
+      description: "Fast-track setup and implementation support",
+      value: 247
     }
   ];
 
