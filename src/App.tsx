@@ -17,6 +17,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
 import TelemedicineLanding from "@/pages/TelemedicineLanding";
 import ElderlyCare from "@/pages/ElderlyCare";
+import MentalHealthLanding from "@/pages/MentalHealthLanding";
 import { useEffect } from "react";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/voice-agents" element={<VoiceAgentsMarketplace />} />
           <Route path="/telemedicine" element={<TelemedicineLanding />} />
+          <Route path="/mental-health" element={<MentalHealthLanding />} />
           <Route path="/elderly-care" element={<ElderlyCare />} />
           <Route path="/login" element={<Login />} />
           <Route path="/checkout" element={<CheckoutFlow />} />
