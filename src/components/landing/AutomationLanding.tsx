@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { CheckCircle2, Rocket, Tooth } from "lucide-react";
+import { CheckCircle2, Rocket, MedicalCross } from "lucide-react";
 
 export default function AutomationLanding() {
   return (
@@ -58,7 +58,7 @@ export default function AutomationLanding() {
               "Multi-Location Coordination – Automated systems ensure consistent patient care across all practice locations."
             ].map((solution, i) => (
               <Card key={i} className="p-6 animate-slideUp" style={{ animationDelay: `${i * 100}ms` }}>
-                <Tooth className="h-8 w-8 text-primary mb-4" />
+                <MedicalCross className="h-8 w-8 text-primary mb-4" />
                 <p className="text-lg">{solution}</p>
               </Card>
             ))}
