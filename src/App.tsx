@@ -18,7 +18,7 @@ import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
 import TelemedicineLanding from "@/pages/TelemedicineLanding";
 import ElderlyCare from "@/pages/ElderlyCare";
 import MentalHealthLanding from "@/pages/MentalHealthLanding";
-import { useEffect } from "react";
+import ChronicDiseaseLanding from "@/pages/ChronicDiseaseLanding";
 
 function App() {
   useEffect(() => {
@@ -44,6 +44,7 @@ function App() {
           <Route path="/telemedicine" element={<TelemedicineLanding />} />
           <Route path="/mental-health" element={<MentalHealthLanding />} />
           <Route path="/elderly-care" element={<ElderlyCare />} />
+          <Route path="/chronic-disease" element={<ChronicDiseaseLanding />} />
           <Route path="/login" element={<Login />} />
           <Route path="/checkout" element={<CheckoutFlow />} />
           
