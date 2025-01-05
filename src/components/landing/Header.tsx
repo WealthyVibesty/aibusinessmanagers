@@ -57,12 +57,12 @@ export default function Header() {
               Benefits
               <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
             </button>
-            <Link
-              to="/courses"
+            <button
+              onClick={() => scrollToSection("courses")}
               className="text-gray-600 hover:text-primary transition-colors"
             >
               Courses
-            </Link>
+            </button>
             <button
               onClick={() => scrollToSection("case-studies")}
               className="text-gray-600 hover:text-primary transition-colors flex items-center gap-1 group"
@@ -108,13 +108,12 @@ export default function Header() {
             >
               Benefits
             </button>
-            <Link
-              to="/courses"
-              className="block w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+            <button
+              onClick={() => scrollToSection("courses")}
+              className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
             >
               Courses
-            </Link>
+            </button>
             <button
               onClick={() => scrollToSection("case-studies")}
               className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
