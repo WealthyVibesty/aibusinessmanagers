@@ -20,6 +20,17 @@ import TelemedicineLanding from "@/pages/TelemedicineLanding";
 import ElderlyCare from "@/pages/ElderlyCare";
 import MentalHealthLanding from "@/pages/MentalHealthLanding";
 import ChronicDiseaseLanding from "@/pages/ChronicDiseaseLanding";
+import PharmaceuticalsLanding from "@/pages/PharmaceuticalsLanding";
+import HealthInsuranceLanding from "@/pages/HealthInsuranceLanding";
+import HospitalOperationsLanding from "@/pages/HospitalOperationsLanding";
+import PublicHealthLanding from "@/pages/PublicHealthLanding";
+import RehabilitationLanding from "@/pages/RehabilitationLanding";
+import MedicalResearchLanding from "@/pages/MedicalResearchLanding";
+import HomeHealthcareLanding from "@/pages/HomeHealthcareLanding";
+import PediatricsLanding from "@/pages/PediatricsLanding";
+import DentalCareLanding from "@/pages/DentalCareLanding";
+import NutritionWellnessLanding from "@/pages/NutritionWellnessLanding";
+import EmergencyServicesLanding from "@/pages/EmergencyServicesLanding";
 
 function App() {
   useEffect(() => {
@@ -46,6 +57,17 @@ function App() {
           <Route path="/mental-health" element={<MentalHealthLanding />} />
           <Route path="/elderly-care" element={<ElderlyCare />} />
           <Route path="/chronic-disease" element={<ChronicDiseaseLanding />} />
+          <Route path="/pharmaceuticals" element={<PharmaceuticalsLanding />} />
+          <Route path="/health-insurance" element={<HealthInsuranceLanding />} />
+          <Route path="/hospital-operations" element={<HospitalOperationsLanding />} />
+          <Route path="/public-health" element={<PublicHealthLanding />} />
+          <Route path="/rehabilitation" element={<RehabilitationLanding />} />
+          <Route path="/medical-research" element={<MedicalResearchLanding />} />
+          <Route path="/home-healthcare" element={<HomeHealthcareLanding />} />
+          <Route path="/pediatrics" element={<PediatricsLanding />} />
+          <Route path="/dental-care" element={<DentalCareLanding />} />
+          <Route path="/nutrition-wellness" element={<NutritionWellnessLanding />} />
+          <Route path="/emergency-services" element={<EmergencyServicesLanding />} />
           <Route path="/login" element={<Login />} />
           <Route path="/checkout" element={<CheckoutFlow />} />
           
