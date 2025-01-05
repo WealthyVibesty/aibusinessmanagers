@@ -31,6 +31,7 @@ import PediatricsLanding from "@/pages/PediatricsLanding";
 import DentalCareLanding from "@/pages/DentalCareLanding";
 import NutritionWellnessLanding from "@/pages/NutritionWellnessLanding";
 import EmergencyServicesLanding from "@/pages/EmergencyServicesLanding";
+import PrimaryCare from "@/pages/PrimaryCare";
 
 function App() {
   useEffect(() => {
@@ -56,6 +57,7 @@ function App() {
           <Route path="/telemedicine" element={<TelemedicineLanding />} />
           <Route path="/mental-health" element={<MentalHealthLanding />} />
           <Route path="/elderly-care" element={<ElderlyCare />} />
+          <Route path="/primary-care" element={<PrimaryCare />} />
           <Route path="/chronic-disease" element={<ChronicDiseaseLanding />} />
           <Route path="/pharmaceuticals" element={<PharmaceuticalsLanding />} />
           <Route path="/health-insurance" element={<HealthInsuranceLanding />} />
