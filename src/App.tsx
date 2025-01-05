@@ -33,6 +33,8 @@ import NutritionWellnessLanding from "@/pages/NutritionWellnessLanding";
 import EmergencyServicesLanding from "@/pages/EmergencyServicesLanding";
 import PrimaryCare from "@/pages/PrimaryCare";
 import DermatologyLanding from "@/pages/DermatologyLanding";
+import SurgicalPracticesLanding from "@/pages/SurgicalPracticesLanding";
+import DiagnosticImagingLanding from "@/pages/DiagnosticImagingLanding";
 
 function App() {
   useEffect(() => {
@@ -90,6 +92,8 @@ function App() {
             <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
             <Route path="/forum/new-topic" element={<NewTopic />} />
           </Route>
+          <Route path="/surgical-practices" element={<SurgicalPracticesLanding />} />
+          <Route path="/diagnostic-imaging" element={<DiagnosticImagingLanding />} />
         </Routes>
       </Router>
       <Toaster />
