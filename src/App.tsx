@@ -35,6 +35,8 @@ import PrimaryCare from "@/pages/PrimaryCare";
 import DermatologyLanding from "@/pages/DermatologyLanding";
 import SurgicalPracticesLanding from "@/pages/SurgicalPracticesLanding";
 import DiagnosticImagingLanding from "@/pages/DiagnosticImagingLanding";
+import CardiologyLanding from "@/pages/CardiologyLanding";
+import ObGynLanding from "@/pages/ObGynLanding";
 
 function App() {
   useEffect(() => {
@@ -59,6 +61,8 @@ function App() {
           <Route path="/voice-agents" element={<VoiceAgentsMarketplace />} />
           <Route path="/telemedicine" element={<TelemedicineLanding />} />
           <Route path="/dermatology" element={<DermatologyLanding />} />
+          <Route path="/cardiology" element={<CardiologyLanding />} />
+          <Route path="/obgyn" element={<ObGynLanding />} />
           <Route path="/mental-health" element={<MentalHealthLanding />} />
           <Route path="/elderly-care" element={<ElderlyCare />} />
           <Route path="/primary-care" element={<PrimaryCare />} />
