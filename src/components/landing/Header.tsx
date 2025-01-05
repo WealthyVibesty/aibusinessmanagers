@@ -39,11 +39,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <img 
-              src="/lovable-uploads/ab5a6229-a3bb-476d-9eb2-5452bf6f7a52.png" 
-              alt="AI Marketing Profile" 
-              className="h-12 w-auto"
-            />
+            <Link to="/">
+              <img 
+                src="/lovable-uploads/ab5a6229-a3bb-476d-9eb2-5452bf6f7a52.png" 
+                alt="AI Marketing Profile" 
+                className="h-12 w-auto"
+              />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -58,7 +60,6 @@ export default function Header() {
             <Link
               to="/courses"
               className="text-gray-600 hover:text-primary transition-colors"
-              onClick={() => navigate('/courses')}
             >
               Courses
             </Link>
@@ -110,10 +111,7 @@ export default function Header() {
             <Link
               to="/courses"
               className="block w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
-              onClick={() => {
-                setIsMenuOpen(false);
-                navigate('/courses');
-              }}
+              onClick={() => setIsMenuOpen(false)}
             >
               Courses
             </Link>

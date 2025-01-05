@@ -15,8 +15,22 @@ import ForumTopic from "@/pages/ForumTopic";
 import NewTopic from "@/pages/NewTopic";
 import ScrollToTop from "@/components/ScrollToTop";
 import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    // Add close button to ElevenLabs widget
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'elevenlabs-close-btn';
+      closeBtn.onclick = () => {
+        widget.classList.add('hidden');
+      };
+      widget.appendChild(closeBtn);
+    }
+  }, []);
+
   return (
     <ThemeProvider>
       <Router>

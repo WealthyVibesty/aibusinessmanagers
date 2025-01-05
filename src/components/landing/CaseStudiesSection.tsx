@@ -58,7 +58,7 @@ export default function CaseStudiesSection() {
     <section className="bg-gradient-to-b from-white to-primary/5 py-16" id="case-studies">
       <div className="container px-4 mx-auto">
         <div className="max-w-3xl mx-auto space-y-8">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight text-primary">
             Real Results, Real Businesses
           </h2>
           

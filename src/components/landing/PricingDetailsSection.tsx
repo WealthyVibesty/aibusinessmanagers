@@ -8,21 +8,21 @@ import { Book, Cpu, Bot } from "lucide-react";
 export default function PricingDetailsSection() {
   const offerings = [
     {
-      title: "Personalized AI Agent Workforce Implementation Roadmap",
-      value: 1000,
-      features: [
-        "AI Voice Agent Profile Creation",
-        "Workflow Automation Plan",
-        "Task Delegation Strategy"
-      ]
-    },
-    {
       title: "AI Voice Agent Profile Creation",
       value: 500,
       features: [
         "Custom Scripts",
         "Integration with Your Systems",
         "Training and Testing"
+      ]
+    },
+    {
+      title: "Personalized AI Agent Workforce Implementation Roadmap",
+      value: 1000,
+      features: [
+        "AI Voice Agent Profile Creation",
+        "Workflow Automation Plan",
+        "Task Delegation Strategy"
       ]
     },
     {
@@ -39,7 +39,6 @@ export default function PricingDetailsSection() {
   const bonuses = [
     {
       title: "AI Voice Customer Service Agent for Your Website",
-      value: 250,
       description: "24/7 customer support, lead capture, and seamless CRM integration",
       features: [
         "24/7 Customer Support with FAQs and product details",
@@ -49,7 +48,6 @@ export default function PricingDetailsSection() {
     },
     {
       title: "AI Content Creation Toolkit",
-      value: 300,
       description: "Generate high-quality content and optimize for SEO",
       features: [
         "AI Writing Assistant for blogs and social media",
@@ -59,22 +57,18 @@ export default function PricingDetailsSection() {
     },
     {
       title: "Custom AI Workflow Blueprint",
-      value: 150,
       description: "Step-by-step implementation guide for your business"
     },
     {
       title: "AI-Powered Marketing Audit",
-      value: 197,
       description: "Comprehensive analysis and optimization recommendations"
     },
     {
       title: "Exclusive Access to AI Tools Library",
-      value: 100,
       description: "Curated collection of premium AI tools and resources"
     },
     {
       title: "Priority Implementation Assistance",
-      value: 250,
       description: "Fast-track setup and implementation support"
     }
   ];
@@ -102,7 +96,7 @@ export default function PricingDetailsSection() {
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <div className="max-w-4xl mx-auto space-y-12 sm:space-y-16">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold animate-fadeIn leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold animate-fadeIn leading-tight text-primary">
               What You'll Get for Just $247:
             </h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto animate-slideUp">
@@ -117,10 +111,10 @@ export default function PricingDetailsSection() {
 
             {/* Bonuses Section */}
             <div className="pt-8">
-              <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5 overflow-hidden">
+              <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 overflow-hidden">
                 <div className="p-8 sm:p-10">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    🎁 Exclusive Bonuses (Total Value: $1,694+)
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 leading-tight text-primary">
+                    🎁 Exclusive Bonuses (Total Value: $1,700+)
                   </h2>
                   <div className="grid gap-6">
                     {bonuses.map((bonus, i) => (
@@ -133,14 +127,14 @@ export default function PricingDetailsSection() {
 
             {/* Lifetime Access Section */}
             <div className="pt-8">
-              <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5 overflow-hidden">
+              <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 overflow-hidden">
                 <div className="p-8 sm:p-10 space-y-10">
                   <div className="text-center space-y-4">
-                    <h2 className="text-2xl sm:text-3xl font-bold leading-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    <h2 className="text-2xl sm:text-3xl font-bold leading-tight text-primary">
                       Lifetime Access to AI Training Courses
                     </h2>
                     <p className="text-xl text-primary font-semibold">
-                      Value: $497+ (Included Free with Your Purchase)
+                      Value: $500+ (Included Free with Your Purchase)
                     </p>
                   </div>
 
