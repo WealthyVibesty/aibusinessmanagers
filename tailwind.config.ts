@@ -41,7 +41,7 @@ export default {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "#F59E0B",
+          DEFAULT: "#3B82F6",
           foreground: "#FFFFFF",
         },
         popover: {
@@ -83,10 +83,6 @@ export default {
           "0%": { transform: "scale(0.95)", opacity: "0" },
           "100%": { transform: "scale(1)", opacity: "1" },
         },
-        shine: {
-          "0%": { backgroundPosition: "200% center" },
-          "100%": { backgroundPosition: "-200% center" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -95,12 +91,10 @@ export default {
         slideUp: "slideUp 0.5s ease-out",
         slideRight: "slideRight 0.5s ease-out",
         scale: "scale 0.3s ease-out",
-        shine: "shine 8s ease infinite",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'gradient-shine': 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
       },
     },
   },

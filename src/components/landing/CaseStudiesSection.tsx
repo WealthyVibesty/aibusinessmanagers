@@ -9,146 +9,62 @@ import {
 export default function CaseStudiesSection() {
   const caseStudies = [
     {
-      title: "Doctor's Office: Managing Patient Appointments",
-      problem: "The office faced high no-show rates and overbooked schedules, leading to lost revenue.",
-      solution: "We implemented an AI voice agent to handle appointment scheduling, reminders, and rescheduling.",
+      title: "Healthcare: Streamlining Patient Care",
+      problem: "Multiple healthcare providers struggled with appointment scheduling and patient communication.",
+      solution: "Implemented AI voice agents for appointment management and automated follow-ups.",
       results: [
-        "Reduced no-show rates by 40%",
-        "Saved 15+ hours per week for staff",
-        "Increased patient satisfaction with timely reminders"
+        "40% reduction in no-show rates",
+        "15+ hours saved weekly per staff member",
+        "60% improvement in patient satisfaction scores"
       ],
       icon: <Clock className="h-6 w-6 text-primary" />
     },
     {
-      title: "Health Center: Automating Billing and Claims",
-      problem: "The health center struggled with delayed billing and claim rejections, leading to cash flow issues.",
-      solution: "We set up an AI-powered billing system to automate claims submission and track payments.",
+      title: "Education: Administrative Efficiency",
+      problem: "Educational institutions faced challenges with student services and documentation.",
+      solution: "Deployed AI-powered administrative systems and automated response systems.",
       results: [
-        "Reduced claim rejections by 60%",
-        "Improved cash flow with faster payments",
-        "Saved 25+ hours per week for the billing team"
+        "50% reduction in administrative workload",
+        "80% faster response times to student queries",
+        "3x faster document processing"
       ],
-      icon: <DollarSign className="h-8 w-8 text-primary" />
+      icon: <GraduationCap className="h-6 w-6 text-primary" />
     },
     {
-      title: "Quick Prints: Boosting Profits with AI Automation",
-      problem: "Quick Prints faced outdated pricing models leading to lost profits and overwhelmed staff spending time on repetitive tasks.",
-      solution: "We implemented AI-powered dynamic pricing automation with supplier data integration, AI voice agent & SMS alerts through Twilio and WhatsApp for instant updates.",
+      title: "Retail: Customer Experience Enhancement",
+      problem: "Retail businesses struggled with customer engagement and inventory management.",
+      solution: "Integrated AI-powered CRM and inventory systems with predictive analytics.",
       results: [
-        "15% increase in profit margins through automated pricing adjustments",
-        "Improved customer satisfaction with real-time updates",
-        "Saved 20+ hours weekly for staff to focus on growth"
+        "35% increase in customer retention",
+        "25% reduction in inventory costs",
+        "30% boost in sales through personalized marketing"
       ],
-      icon: <BarChartHorizontal className="h-8 w-8 text-primary" />
+      icon: <Store className="h-6 w-6 text-primary" />
     },
     {
-      title: "Call Center: Enhancing Customer Support",
-      problem: "A call center struggled with long wait times and inconsistent customer service quality.",
-      solution: "Implemented AI voice agents for initial customer screening and common inquiries, with smart routing to human agents.",
+      title: "Professional Services: Business Operations",
+      problem: "Service providers faced efficiency and client communication challenges.",
+      solution: "Implemented AI workflow automation and client communication systems.",
       results: [
-        "Reduced average wait time by 65%",
-        "Increased customer satisfaction scores by 40%",
-        "Handled 70% of routine inquiries automatically"
+        "45% improvement in operational efficiency",
+        "60% faster client response times",
+        "40% increase in client satisfaction"
       ],
-      icon: <Phone className="h-8 w-8 text-primary" />
-    },
-    {
-      title: "Auto Shop: Streamlining Operations",
-      problem: "Local auto shop faced challenges with appointment scheduling and parts inventory management.",
-      solution: "Deployed AI system for automated scheduling, inventory forecasting, and customer communications.",
-      results: [
-        "Reduced parts ordering errors by 80%",
-        "Increased service bay utilization by 35%",
-        "Improved customer retention by 25%"
-      ],
-      icon: <Wrench className="h-8 w-8 text-primary" />
-    },
-    {
-      title: "Beauty Salon: Appointment Management",
-      problem: "Salon struggled with scheduling conflicts and last-minute cancellations.",
-      solution: "Implemented AI booking system with automated reminders and waitlist management.",
-      results: [
-        "Reduced no-shows by 50%",
-        "Increased booking efficiency by 40%",
-        "Improved stylist utilization by 30%"
-      ],
-      icon: <Scissors className="h-8 w-8 text-primary" />
-    },
-    {
-      title: "Med Spa: Client Experience Enhancement",
-      problem: "Med spa needed better client tracking and treatment planning.",
-      solution: "Integrated AI-powered client management system with treatment tracking and automated follow-ups.",
-      results: [
-        "Increased repeat bookings by 45%",
-        "Improved treatment plan adherence by 60%",
-        "Boosted revenue per client by 35%"
-      ],
-      icon: <Heart className="h-8 w-8 text-primary" />
-    },
-    {
-      title: "University: Administrative Automation",
-      problem: "Large university faced administrative bottlenecks in student services.",
-      solution: "Implemented AI chatbots for student inquiries and automated document processing system.",
-      results: [
-        "Reduced administrative workload by 50%",
-        "Decreased response time to student queries by 80%",
-        "Processed enrollment documents 3x faster"
-      ],
-      icon: <GraduationCap className="h-8 w-8 text-primary" />
-    },
-    {
-      title: "Small College: Resource Optimization",
-      problem: "Small college struggled with resource allocation and student support.",
-      solution: "Deployed AI system for course scheduling, resource management, and student support.",
-      results: [
-        "Optimized classroom utilization by 40%",
-        "Reduced scheduling conflicts by 75%",
-        "Improved student satisfaction scores by 30%"
-      ],
-      icon: <GraduationCap className="h-8 w-8 text-primary" />
-    },
-    {
-      title: "Local Business: Customer Engagement",
-      problem: "Local retail store needed better customer engagement and inventory management.",
-      solution: "Implemented AI-powered CRM and inventory management system with predictive analytics.",
-      results: [
-        "Increased customer retention by 35%",
-        "Reduced inventory costs by 25%",
-        "Boosted sales through personalized marketing by 30%"
-      ],
-      icon: <Store className="h-8 w-8 text-primary" />
-    },
-    {
-      title: "Real Estate Agency: Lead Management",
-      problem: "Agency struggled with lead follow-up and property matching.",
-      solution: "Integrated AI-powered lead nurturing and property matching system.",
-      results: [
-        "Increased lead conversion rate by 45%",
-        "Reduced property search time by 60%",
-        "Improved agent productivity by 40%"
-      ],
-      icon: <Home className="h-8 w-8 text-primary" />
-    },
-    {
-      title: "Hotel Chain: Guest Experience",
-      problem: "Hotel chain faced challenges with guest services and operational efficiency.",
-      solution: "Implemented AI concierge service and automated operational management system.",
-      results: [
-        "Improved guest satisfaction scores by 50%",
-        "Reduced operational costs by 30%",
-        "Increased repeat bookings by 40%"
-      ],
-      icon: <Hotel className="h-8 w-8 text-primary" />
+      icon: <BarChartHorizontal className="h-6 w-6 text-primary" />
     }
   ];
 
   return (
-    <section className="bg-secondary/5 py-16" id="case-studies">
+    <section className="bg-gradient-to-b from-white to-primary/5 py-16" id="case-studies">
       <div className="container px-4 mx-auto">
         <div className="max-w-3xl mx-auto space-y-8">
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight">
-            See What We've Done Before
+            Real Results, Real Businesses
           </h2>
+          
+          <p className="text-lg text-center text-muted-foreground mb-8">
+            See how businesses like yours are transforming with AI
+          </p>
 
           <Accordion type="single" collapsible className="w-full space-y-4">
             {caseStudies.map((study, index) => (
@@ -167,7 +83,7 @@ export default function CaseStudiesSection() {
                 </AccordionTrigger>
                 <AccordionContent className="pt-4 space-y-4">
                   <div>
-                    <h4 className="font-bold text-base text-primary mb-2">Problem:</h4>
+                    <h4 className="font-bold text-base text-primary mb-2">Challenge:</h4>
                     <p className="text-base text-foreground/90 leading-relaxed">{study.problem}</p>
                   </div>
                   <div>

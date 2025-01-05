@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,6 +58,7 @@ export default function Header() {
             <Link
               to="/courses"
               className="text-gray-600 hover:text-primary transition-colors"
+              onClick={() => navigate('/courses')}
             >
               Courses
             </Link>
@@ -108,6 +110,10 @@ export default function Header() {
             <Link
               to="/courses"
               className="block w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+              onClick={() => {
+                setIsMenuOpen(false);
+                navigate('/courses');
+              }}
             >
               Courses
             </Link>
