@@ -4,7 +4,7 @@ import {
   Activity, 
   Calendar, 
   HeartPulse, 
-  Pills, 
+  Pill, 
   Clock, 
   Shield,
   ArrowRight,
@@ -58,7 +58,7 @@ export default function ChronicDiseaseLanding() {
                 description: "Early detection of potential complications"
               },
               {
-                icon: <Pills className="h-8 w-8 text-primary" />,
+                icon: <Pill className="h-8 w-8 text-primary" />,
                 title: "Medication Management",
                 description: "Smart reminders and adherence tracking"
               },
