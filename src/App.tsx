@@ -23,11 +23,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/checkout" element={<CheckoutFlow />} />
           
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/checkout" element={<CheckoutFlow />} />
             
             {/* Course Routes */}
             <Route path="/courses" element={<Courses />} />
