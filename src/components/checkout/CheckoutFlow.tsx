@@ -25,25 +25,25 @@ export default function CheckoutFlow() {
 
         {/* Main Offer */}
         <CheckoutProduct 
-          title="AI Dental Practice Management Suite"
-          description="Transform your dental practice with AI-powered automation and patient engagement"
+          title="AI Marketing Profile Setup"
+          description="Get started with your AI-powered marketing transformation"
           features={[
-            "24/7 AI Patient Scheduling Assistant",
-            "Automated Insurance Verification",
-            "Smart Treatment Plan Follow-ups",
-            "1-Hour Practice Assessment"
+            "Custom AI Marketing Profile",
+            "AI Voice Agent Setup",
+            "Workflow Automation",
+            "1-Hour Strategy Consultation"
           ]}
           price="$247"
         />
 
         {/* Upsells */}
         <UpsellItem 
-          title="Staff AI Training Program"
-          description="Empower your dental team with AI capabilities"
+          title="AI Training for Your Team"
+          description="Maximize your team's AI capabilities"
           features={[
-            "Front Desk AI Integration Training",
-            "Treatment Coordinator AI Tools",
-            "Hygienist Workflow Automation"
+            "Custom Training Sessions",
+            "Hands-On Workshops",
+            "Ongoing Support"
           ]}
           price="$197"
           priceId="price_1QdYnvGineWW4dYE5nh8CnHC"
@@ -54,12 +54,12 @@ export default function CheckoutFlow() {
         />
 
         <UpsellItem 
-          title="30-Day Implementation Support"
-          description="Get expert guidance for your dental practice transformation"
+          title="30 Days of Premium Support"
+          description="Get expert guidance every step of the way"
           features={[
-            "Daily Implementation Support",
-            "Custom Workflow Setup",
-            "Staff Training Sessions"
+            "Unlimited Email and Chat Support",
+            "Priority Assistance",
+            "Implementation Guidance"
           ]}
           price="$147"
           priceId="price_1QdYo7GineWW4dYE6hMDnATH"
