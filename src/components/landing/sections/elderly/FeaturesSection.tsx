@@ -52,8 +52,7 @@ export default function ElderlyFeaturesSection() {
           {features.map((feature, index) => (
             <Card 
               key={index} 
-              className="p-6 hover:shadow-lg transition-shadow animate-slideUp"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="p-6 hover:shadow-lg transition-shadow"
             >
               <div className="flex flex-col items-center text-center">
                 <div className="mb-4 p-3 bg-primary/10 rounded-full">
