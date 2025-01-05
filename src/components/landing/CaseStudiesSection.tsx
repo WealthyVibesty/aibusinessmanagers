@@ -1,5 +1,10 @@
 import { Clock, DollarSign, BarChartHorizontal, Users, Bot, Phone, Wrench, Scissors, Heart, GraduationCap, Store, Home, Hotel } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function CaseStudiesSection() {
   const caseStudies = [
@@ -12,7 +17,7 @@ export default function CaseStudiesSection() {
         "Saved 15+ hours per week for staff",
         "Increased patient satisfaction with timely reminders"
       ],
-      icon: <Clock className="h-8 w-8 text-primary" />
+      icon: <Clock className="h-6 w-6 text-primary" />
     },
     {
       title: "Health Center: Automating Billing and Claims",
@@ -138,49 +143,49 @@ export default function CaseStudiesSection() {
   ];
 
   return (
-    <section className="bg-secondary/5 py-16">
+    <section className="bg-secondary/5 py-16" id="case-studies">
       <div className="container px-4 mx-auto">
-        <div className="max-w-7xl mx-auto space-y-12">
+        <div className="max-w-3xl mx-auto space-y-8">
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center animate-fadeIn leading-tight">
             See What We've Done Before
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <Accordion type="single" collapsible className="w-full space-y-4">
             {caseStudies.map((study, index) => (
-              <Card 
+              <AccordionItem 
                 key={index} 
-                className="p-6 animate-slideUp aspect-square overflow-y-auto hover:shadow-lg transition-shadow"
-                style={{ animationDelay: `${index * 100}ms` }}
+                value={`item-${index}`}
+                className="bg-white rounded-lg shadow-sm border px-4"
               >
-                <div className="flex flex-col h-full">
-                  <div className="flex items-start gap-4 mb-6">
+                <AccordionTrigger className="hover:no-underline">
+                  <div className="flex items-center gap-4">
                     <div className="flex-shrink-0 bg-primary/10 p-2 rounded-lg">
                       {study.icon}
                     </div>
-                    <h3 className="text-lg font-bold leading-tight text-foreground">{study.title}</h3>
+                    <h3 className="text-lg font-semibold text-left">{study.title}</h3>
                   </div>
-                  <div className="space-y-4 overflow-y-auto pr-2">
-                    <div>
-                      <h4 className="font-bold text-base text-primary mb-2">Problem:</h4>
-                      <p className="text-base text-foreground/90 leading-relaxed">{study.problem}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-base text-primary mb-2">Solution:</h4>
-                      <p className="text-base text-foreground/90 leading-relaxed">{study.solution}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-base text-primary mb-2">Results:</h4>
-                      <ul className="list-disc list-inside text-base text-foreground/90 leading-relaxed space-y-1">
-                        {study.results.map((result, i) => (
-                          <li key={i}>{result}</li>
-                        ))}
-                      </ul>
-                    </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-4 space-y-4">
+                  <div>
+                    <h4 className="font-bold text-base text-primary mb-2">Problem:</h4>
+                    <p className="text-base text-foreground/90 leading-relaxed">{study.problem}</p>
                   </div>
-                </div>
-              </Card>
+                  <div>
+                    <h4 className="font-bold text-base text-primary mb-2">Solution:</h4>
+                    <p className="text-base text-foreground/90 leading-relaxed">{study.solution}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-base text-primary mb-2">Results:</h4>
+                    <ul className="list-disc list-inside text-base text-foreground/90 leading-relaxed space-y-1">
+                      {study.results.map((result, i) => (
+                        <li key={i}>{result}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </div>
       </div>
     </section>

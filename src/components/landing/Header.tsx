@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,21 +47,33 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {[
-              { id: "benefits", label: "Benefits" },
-              { id: "lifetime-access", label: "Courses" },
-              { id: "case-studies", label: "Case Studies" },
-              { id: "pricing-details", label: "Pricing" },
-            ].map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-gray-600 hover:text-primary transition-colors flex items-center gap-1 group"
-              >
-                {item.label}
-                <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
-              </button>
-            ))}
+            <button
+              onClick={() => scrollToSection("benefits")}
+              className="text-gray-600 hover:text-primary transition-colors flex items-center gap-1 group"
+            >
+              Benefits
+              <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
+            </button>
+            <Link
+              to="/courses"
+              className="text-gray-600 hover:text-primary transition-colors"
+            >
+              Courses
+            </Link>
+            <button
+              onClick={() => scrollToSection("case-studies")}
+              className="text-gray-600 hover:text-primary transition-colors flex items-center gap-1 group"
+            >
+              Case Studies
+              <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
+            </button>
+            <button
+              onClick={() => scrollToSection("pricing-details")}
+              className="text-gray-600 hover:text-primary transition-colors flex items-center gap-1 group"
+            >
+              Pricing
+              <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
+            </button>
             <Button 
               onClick={() => scrollToSection("pricing-details")}
               size="lg"
@@ -86,22 +99,30 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className="md:hidden py-4 px-2 space-y-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg animate-fadeIn">
-            {[
-              { id: "benefits", label: "Benefits" },
-              { id: "lifetime-access", label: "Courses" },
-              { id: "case-studies", label: "Case Studies" },
-              { id: "pricing-details", label: "Pricing" },
-            ].map((item) => (
-              <div key={item.id}>
-                <button
-                  onClick={() => scrollToSection(item.id)}
-                  className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors flex items-center justify-between group"
-                >
-                  {item.label}
-                  <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
-                </button>
-              </div>
-            ))}
+            <button
+              onClick={() => scrollToSection("benefits")}
+              className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+            >
+              Benefits
+            </button>
+            <Link
+              to="/courses"
+              className="block w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+            >
+              Courses
+            </Link>
+            <button
+              onClick={() => scrollToSection("case-studies")}
+              className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+            >
+              Case Studies
+            </button>
+            <button
+              onClick={() => scrollToSection("pricing-details")}
+              className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+            >
+              Pricing
+            </button>
             <div className="pt-2 px-2">
               <Button 
                 onClick={() => scrollToSection("pricing-details")}
