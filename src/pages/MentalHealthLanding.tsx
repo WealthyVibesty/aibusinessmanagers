@@ -1,110 +1,69 @@
-import HeroSection from "@/components/landing/sections/HeroSection";
-import ProblemSection from "@/components/landing/sections/ProblemSection";
-import BenefitsSection from "@/components/landing/sections/BenefitsSection";
-import FAQSection from "@/components/landing/sections/FAQSection";
-import FooterSection from "@/components/landing/sections/FooterSection";
-import { Brain, Heart, MessageCircle } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import HeroSection from "@/components/landing/sections/specialty/HeroSection";
+import UseCasesSection from "@/components/landing/sections/specialty/UseCasesSection";
+import BenefitsSection from "@/components/landing/sections/specialty/BenefitsSection";
 import { Button } from "@/components/ui/button";
+import { ArrowRight, Clock, Heart, MessageSquare } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function MentalHealthLanding() {
-  const problems = [
-    { icon: <MessageCircle className="h-8 w-8" />, text: "Long wait times for therapy appointments leave individuals struggling alone" },
-    { icon: <Heart className="h-8 w-8" />, text: "Stigma and cost prevent many from seeking help" },
-    { icon: <Brain className="h-8 w-8" />, text: "Crisis situations often escalate without immediate intervention" },
+  const navigate = useNavigate();
+
+  const useCases = [
+    {
+      title: "24/7 Crisis Support",
+      description: "Provide immediate support and resources to patients in crisis, with seamless escalation to mental health professionals when needed."
+    },
+    {
+      title: "Therapy Session Management",
+      description: "Schedule appointments, send reminders, and share post-session resources to keep patients engaged in their mental health journey."
+    }
   ];
 
   const benefits = [
-    { text: "24/7 Support: Immediate access to help, anytime, anywhere" },
-    { text: "Evidence-Based Techniques: Built on proven therapeutic methods" },
-    { text: "Crisis Prevention: Detect and intervene in high-risk situations" },
-    { text: "Confidential and Secure: HIPAA-compliant and encrypted" },
-    { text: "Scalable Support: Extend your reach without overburdening staff" },
-  ];
-
-  const faqs = [
-    {
-      question: "Is the AI agent a replacement for human therapists?",
-      answer: "No, it's a complement to traditional therapy, providing support between sessions or for those who can't access a therapist."
-    },
-    {
-      question: "How does the AI handle crisis situations?",
-      answer: "It detects distress signals, provides immediate coping strategies, and connects users to emergency resources or human professionals."
-    },
-    {
-      question: "Is my data secure?",
-      answer: "Absolutely. Our platform is HIPAA-compliant and uses end-to-end encryption to protect your privacy."
-    },
+    { text: "Reduced No-Shows and Better Continuity of Care" },
+    { text: "Enhanced Patient Support Between Sessions" },
+    { text: "Improved Patient Engagement" },
+    { text: "24/7 Access to Resources and Support" }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
+    <div className="min-h-screen">
       <HeroSection 
-        title="Revolutionize Mental Health Support with AI Therapeutic Agents"
-        subtitle="Break down barriers to mental health care with AI-powered tools that provide immediate support, therapeutic conversations, and crisis intervention—anytime, anywhere."
-        ctaText="Try It Free"
+        title="Transform Mental Health Care with AI Voice Agents"
+        subtitle="Provide compassionate, always-available support while reducing administrative burden on your staff."
       />
-
-      <ProblemSection
-        title="Mental Health Care Should Be Accessible to Everyone"
-        problems={problems}
+      
+      <UseCasesSection 
+        title="How AI Voice Agents Transform Mental Health Practices"
+        useCases={useCases}
       />
-
-      {/* Solution Section */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Your AI Mental Health Companion
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Therapeutic Conversations",
-                description: "Engage in empathetic, evidence-based conversations for support and coping strategies."
-              },
-              {
-                title: "Crisis Intervention",
-                description: "Detect distress signals and connect users to immediate help or resources."
-              },
-              {
-                title: "Personalized Plans",
-                description: "Tailored recommendations based on user interactions and needs."
-              }
-            ].map((item, i) => (
-              <Card key={i} className="p-6 hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <BenefitsSection
-        title="Why Choose Our AI Mental Health Solutions?"
+      
+      <BenefitsSection 
+        title="Benefits for Your Practice"
         benefits={benefits}
       />
 
-      <FAQSection faqs={faqs} />
-
-      {/* Final CTA */}
+      {/* CTA Section */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h2 className="text-3xl sm:text-4xl font-bold">
-            Break Down Barriers to Mental Health Care
+            Ready to Transform Your Mental Health Practice?
           </h2>
           <p className="text-xl text-gray-600">
-            Provide Compassionate, Immediate Support with AI-Powered Tools
+            Join leading mental health practices in delivering exceptional care with AI support
           </p>
           <div className="pt-4">
-            <Button size="lg" className="text-lg px-8 py-6 h-auto">
-              Start Your Free Trial
+            <Button 
+              size="lg"
+              onClick={() => navigate("/checkout")}
+              className="text-lg px-8 py-6 h-auto"
+            >
+              Get Started Now
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
       </section>
-
-      <FooterSection />
     </div>
   );
 }
