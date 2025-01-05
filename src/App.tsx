@@ -15,6 +15,7 @@ import ForumTopic from "@/pages/ForumTopic";
 import NewTopic from "@/pages/NewTopic";
 import ScrollToTop from "@/components/ScrollToTop";
 import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
+import TelemedicineLanding from "@/pages/TelemedicineLanding";
 import { useEffect } from "react";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/voice-agents" element={<VoiceAgentsMarketplace />} />
+          <Route path="/telemedicine" element={<TelemedicineLanding />} />
           <Route path="/login" element={<Login />} />
           <Route path="/checkout" element={<CheckoutFlow />} />
           
