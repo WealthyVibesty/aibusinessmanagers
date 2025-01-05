@@ -14,6 +14,7 @@ import ForumCategory from "@/pages/ForumCategory";
 import ForumTopic from "@/pages/ForumTopic";
 import NewTopic from "@/pages/NewTopic";
 import ScrollToTop from "@/components/ScrollToTop";
+import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/voice-agents" element={<VoiceAgentsMarketplace />} />
           <Route path="/login" element={<Login />} />
           <Route path="/checkout" element={<CheckoutFlow />} />
           
