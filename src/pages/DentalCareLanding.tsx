@@ -1,86 +1,79 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { 
-  ArrowRight,
-  Brain,
-  Clock, 
-  Heart,
-  Shield,
-  Stethoscope
-} from "lucide-react";
+import { ArrowRight, Brain, Clock, Heart, Shield, Stethoscope, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function DentalCareLanding() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="container px-4 pt-20 pb-16 mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary mb-6 animate-slideUp">
-          AI-Powered Dental Care Solutions
-        </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-slideUp max-w-3xl mx-auto" style={{ animationDelay: "100ms" }}>
-          Transform your dental practice with intelligent scheduling, treatment planning, and patient care optimization
-        </p>
-        <Button 
-          size="lg" 
-          className="animate-slideUp" 
-          style={{ animationDelay: "200ms" }}
-          onClick={() => navigate("/checkout")}
-        >
-          Enhance Your Practice Today
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
+      <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeIn">
+            Transform Your Dental Practice with AI Innovation
+          </h1>
+          <p className="text-xl sm:text-2xl text-gray-600 mb-12 animate-slideUp">
+            Enhance your dental practice with AI-powered tools that support better diagnoses, 
+            streamline communication, and improve patient outcomes.
+          </p>
+          <Button 
+            size="lg"
+            className="animate-slideUp text-lg px-8 py-6 h-auto"
+            onClick={() => navigate("/checkout")}
+          >
+            Start Free Trial
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+        </div>
       </section>
 
-      {/* Key Features */}
+      {/* Features Section */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Advanced Dental Practice Features
+            Comprehensive Dental Care Solutions
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: <Brain className="h-8 w-8 text-primary" />,
-                title: "Smart Treatment Planning",
-                description: "AI-powered treatment plan optimization and recommendations"
+                icon: <Brain className="h-8 w-8" />,
+                title: "Smart Diagnostics",
+                description: "AI-assisted diagnosis support for complex dental cases"
               },
               {
-                icon: <Clock className="h-8 w-8 text-primary" />,
-                title: "Intelligent Scheduling",
-                description: "Automated appointment management and reminders"
+                icon: <Heart className="h-8 w-8" />,
+                title: "Patient Engagement",
+                description: "Interactive tools to keep patients engaged in their dental health"
               },
               {
-                icon: <Stethoscope className="h-8 w-8 text-primary" />,
-                title: "Patient Care Analysis",
-                description: "Advanced diagnostics and treatment tracking"
+                icon: <Shield className="h-8 w-8" />,
+                title: "Treatment Planning",
+                description: "AI-powered treatment plan optimization"
               },
               {
-                icon: <Heart className="h-8 w-8 text-primary" />,
+                icon: <Clock className="h-8 w-8" />,
+                title: "Scheduling",
+                description: "Intelligent appointment management system"
+              },
+              {
+                icon: <Star className="h-8 w-8" />,
                 title: "Patient Experience",
-                description: "Personalized care and communication"
+                description: "Enhanced communication and care coordination"
               },
               {
-                icon: <Shield className="h-8 w-8 text-primary" />,
-                title: "Compliance Management",
-                description: "Automated regulatory compliance and documentation"
-              },
-              {
-                icon: <Brain className="h-8 w-8 text-primary" />,
-                title: "AI Diagnostics",
-                description: "Advanced imaging analysis and detection"
+                icon: <Stethoscope className="h-8 w-8" />,
+                title: "Clinical Efficiency",
+                description: "Streamlined workflows and documentation"
               }
-            ].map((feature, index) => (
-              <Card 
-                key={index} 
-                className="p-6 hover:shadow-lg transition-all animate-slideUp" 
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="mb-4">{feature.icon}</div>
+            ].map((feature, i) => (
+              <Card key={i} className="p-6 hover:shadow-lg transition-shadow">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                  {feature.icon}
+                </div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <p className="text-gray-600">{feature.description}</p>
               </Card>
             ))}
           </div>
@@ -101,9 +94,9 @@ export default function DentalCareLanding() {
               "Enhanced treatment outcomes",
               "Better resource allocation",
               "Comprehensive practice management"
-            ].map((benefit, index) => (
+            ].map((benefit, i) => (
               <div 
-                key={index} 
+                key={i} 
                 className="flex items-start gap-4 p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
               >
                 <Shield className="h-6 w-6 text-primary flex-shrink-0" />
