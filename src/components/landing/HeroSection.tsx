@@ -15,13 +15,13 @@ export default function HeroSection() {
   
   return (
     <section className="relative flex flex-col items-center px-6 sm:px-8 lg:px-12 overflow-hidden bg-white/90 backdrop-blur-md">
-      <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-blue-200/50 to-white -z-10" />
+      <div className="absolute inset-x-0 top-0 h-full bg-gradient-enterprise opacity-5 -z-10" />
       
       {/* Top AI Assistant Button */}
       <Button
         variant="outline"
         size="sm"
-        className="mt-6 text-sm rounded-full hover:bg-primary hover:text-white transition-all group"
+        className="mt-6 text-sm rounded-full hover:bg-primary hover:text-white transition-all group border-primary/20"
         onClick={handleTalkToAI}
       >
         Have Questions? Talk to AI
@@ -34,7 +34,7 @@ export default function HeroSection() {
             Integrate AI Into Your Business
           </h1>
 
-          <p className="text-xl sm:text-2xl text-gray-600 animate-slideUp mb-12 leading-relaxed max-w-2xl mx-auto px-4" 
+          <p className="text-xl sm:text-2xl text-muted animate-slideUp mb-12 leading-relaxed max-w-2xl mx-auto px-4" 
              style={{ animationDelay: "100ms" }}>
             Enhance Customer Service, Automate Billing, and More! AI is advancing everyday businesses faster than ever - stay ahead of the competition.
           </p>
@@ -54,7 +54,7 @@ export default function HeroSection() {
           <Button
             size="lg"
             variant="outline"
-            className="text-lg sm:text-xl w-full sm:w-auto px-12 py-7 rounded-full bg-white hover:bg-primary hover:text-white border-2 shadow-sm hover:shadow-md transition-all group"
+            className="text-lg sm:text-xl w-full sm:w-auto px-12 py-7 rounded-full bg-white hover:bg-primary hover:text-white border-2 border-primary/20 shadow-sm hover:shadow-md transition-all group"
             onClick={handleTalkToAI}
           >
             Talk to Our AI Assistant

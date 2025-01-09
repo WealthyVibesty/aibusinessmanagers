@@ -9,7 +9,7 @@
 
 .glass-morphism {
   backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.92);
   border-radius: 12px;
   border: 1px solid rgba(209, 213, 219, 0.3);
 }
@@ -17,7 +17,7 @@
 .gradient-border {
   position: relative;
   border-radius: 0.5rem;
-  background: linear-gradient(to right, #2563EB, #F59E0B);
+  background: linear-gradient(90deg, #9b87f5, #7E69AB);
   padding: 1px;
 }
 
@@ -62,11 +62,11 @@
 
 .hover-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(155, 135, 245, 0.1);
 }
 
 .text-gradient {
-  background: linear-gradient(to right, #2563EB, #F59E0B);
+  background: linear-gradient(90deg, #9b87f5, #7E69AB);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
