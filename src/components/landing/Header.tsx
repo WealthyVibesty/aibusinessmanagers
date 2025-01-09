@@ -33,7 +33,7 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? "bg-white/95 backdrop-blur-md shadow-md" : "bg-transparent"
+      isScrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-transparent"
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
@@ -52,27 +52,27 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("benefits")}
-              className="text-muted hover:text-primary transition-colors flex items-center gap-1 group"
+              className="text-gray-600 hover:text-primary transition-colors flex items-center gap-1 group"
             >
               Benefits
               <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
             </button>
             <button
               onClick={() => scrollToSection("courses")}
-              className="text-muted hover:text-primary transition-colors"
+              className="text-gray-600 hover:text-primary transition-colors"
             >
               Courses
             </button>
             <button
               onClick={() => scrollToSection("case-studies")}
-              className="text-muted hover:text-primary transition-colors flex items-center gap-1 group"
+              className="text-gray-600 hover:text-primary transition-colors flex items-center gap-1 group"
             >
               Case Studies
               <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
             </button>
             <button
               onClick={() => scrollToSection("pricing-details")}
-              className="text-muted hover:text-primary transition-colors flex items-center gap-1 group"
+              className="text-gray-600 hover:text-primary transition-colors flex items-center gap-1 group"
             >
               Pricing
               <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
@@ -80,7 +80,7 @@ export default function Header() {
             <Button 
               onClick={() => scrollToSection("pricing-details")}
               size="lg"
-              className="shadow-lg hover:shadow-xl transition-shadow bg-primary hover:bg-primary/90"
+              className="shadow-lg hover:shadow-xl transition-shadow"
             >
               Get Started
             </Button>
@@ -88,13 +88,13 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 hover:bg-primary/5 rounded-full transition-colors"
+            className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6 text-primary" />
+              <X className="h-6 w-6 text-gray-600" />
             ) : (
-              <Menu className="h-6 w-6 text-primary" />
+              <Menu className="h-6 w-6 text-gray-600" />
             )}
           </button>
         </div>
@@ -104,32 +104,32 @@ export default function Header() {
           <nav className="md:hidden py-4 px-2 space-y-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg animate-fadeIn">
             <button
               onClick={() => scrollToSection("benefits")}
-              className="w-full text-left py-3 px-4 text-muted hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+              className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
             >
               Benefits
             </button>
             <button
               onClick={() => scrollToSection("courses")}
-              className="w-full text-left py-3 px-4 text-muted hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+              className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
             >
               Courses
             </button>
             <button
               onClick={() => scrollToSection("case-studies")}
-              className="w-full text-left py-3 px-4 text-muted hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+              className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
             >
               Case Studies
             </button>
             <button
               onClick={() => scrollToSection("pricing-details")}
-              className="w-full text-left py-3 px-4 text-muted hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+              className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
             >
               Pricing
             </button>
             <div className="pt-2 px-2">
               <Button 
                 onClick={() => scrollToSection("pricing-details")}
-                className="w-full shadow-lg bg-primary hover:bg-primary/90"
+                className="w-full shadow-lg"
                 size="lg"
               >
                 Get Started
