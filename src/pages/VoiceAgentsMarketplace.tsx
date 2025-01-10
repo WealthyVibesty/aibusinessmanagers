@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { 
   Stethoscope, Brain, Heart, Pill, Hospital, 
   Dumbbell, BookOpen, Home, Baby, Smile, Apple, 
-  Ambulance
+  Ambulance, ArrowRight
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -97,38 +97,55 @@ const industries = [
 
 export default function VoiceAgentsMarketplace() {
   const navigate = useNavigate();
+  
+  const handleTalkToAI = () => {
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
+      widget.classList.toggle('hidden');
+      console.log('Toggling AI assistant widget');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      {/* Hero Section */}
-      <section className="py-20 px-6">
+      {/* Hero Section with reduced spacing */}
+      <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeIn">
-            Industry Solutions
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">
+            Transforming Healthcare with Conversational AI and Customer Service Solutions
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto animate-slideUp">
-            Discover intelligent voice solutions tailored for your industry. 
-            Transform operations and streamline workflows with cutting-edge AI technology.
+          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Revolutionize patient care and streamline operations with voice AI solutions tailored for healthcare providers.
           </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button 
+              size="lg"
+              onClick={handleTalkToAI}
+              className="text-lg px-8 py-6 h-auto w-full sm:w-auto bg-primary hover:bg-primary/90 transition-all"
+            >
+              Schedule a Free Demo
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Industries Grid */}
-      <section className="py-16 px-6 bg-white">
+      {/* Industries Grid with optimized spacing */}
+      <section className="py-12 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {industries.map((industry) => (
               <Card 
                 key={industry.id}
-                className="p-6 hover:shadow-lg transition-all cursor-pointer animate-scale group"
+                className="p-4 hover:shadow-lg transition-all cursor-pointer animate-scale group"
                 onClick={() => navigate(industry.route)}
               >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-blue-50 rounded-xl group-hover:bg-blue-100 transition-colors">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
                     {industry.icon}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="font-semibold text-lg mb-1 group-hover:text-blue-600 transition-colors">
                       {industry.name}
                     </h3>
                     <p className="text-gray-600 text-sm">{industry.description}</p>
@@ -140,12 +157,12 @@ export default function VoiceAgentsMarketplace() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
+      {/* Call to Action with reduced spacing */}
+      <section className="py-12 px-6 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Industry?</h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Join industry leaders who are revolutionizing their operations with AI voice technology.
+          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Healthcare Practice?</h2>
+          <p className="text-xl text-gray-600 mb-6">
+            Join healthcare leaders who are revolutionizing patient care with AI voice technology.
           </p>
           <Button 
             size="lg"
@@ -153,6 +170,7 @@ export default function VoiceAgentsMarketplace() {
             className="text-lg px-8 py-6 h-auto"
           >
             Get Started Now
+            <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
       </section>
