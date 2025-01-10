@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Home, Phone, BookOpen, Users, MessageSquare, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronDown, Home, Phone, BookOpen, Users, MessageSquare, ArrowRight, Building2, Stethoscope, Brain, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -18,58 +18,44 @@ export default function Header() {
 
   const menuItems = [
     {
-      label: "Home",
-      path: "/",
-      icon: <Home className="w-4 h-4" />,
-    },
-    {
-      label: "Voice Agents",
-      path: "#voice-agents",
-      icon: <MessageSquare className="w-4 h-4" />,
-      isSection: true,
-    },
-    {
       label: "Solutions",
-      path: "#solutions",
+      icon: <Building2 className="w-4 h-4" />,
+      submenu: [
+        { label: "Patient Support", path: "/patient-support" },
+        { label: "Telemedicine", path: "/telemedicine" },
+        { label: "Primary Care", path: "/primary-care" },
+        { label: "Mental Health", path: "/mental-health" },
+      ]
+    },
+    {
+      label: "Specialties",
+      icon: <Stethoscope className="w-4 h-4" />,
+      submenu: [
+        { label: "Cardiology", path: "/cardiology" },
+        { label: "Dermatology", path: "/dermatology" },
+        { label: "OB/GYN", path: "/obgyn" },
+        { label: "Pediatrics", path: "/pediatrics" },
+      ]
+    },
+    {
+      label: "Resources",
       icon: <BookOpen className="w-4 h-4" />,
-      isSection: true,
+      submenu: [
+        { label: "Case Studies", path: "/case-studies" },
+        { label: "Content Library", path: "/content-library" },
+        { label: "Support Center", path: "/support" },
+      ]
     },
     {
-      label: "Case Studies",
-      path: "#case-studies",
+      label: "Company",
       icon: <Users className="w-4 h-4" />,
-      isSection: true,
-    },
-    {
-      label: "Contact",
-      path: "/contact",
-      icon: <Phone className="w-4 h-4" />,
+      submenu: [
+        { label: "About Us", path: "/about" },
+        { label: "Contact", path: "/contact" },
+        { label: "Careers", path: "/careers" },
+      ]
     },
   ];
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-    setIsMenuOpen(false);
-  };
-
-  const handleNavigation = (item: { path: string; isSection?: boolean }) => {
-    if (item.isSection) {
-      scrollToSection(item.path.substring(1));
-    } else {
-      navigate(item.path);
-      setIsMenuOpen(false);
-    }
-  };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -79,32 +65,47 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/">
+            <Link to="/" className="flex items-center space-x-2">
               <img 
                 src="/lovable-uploads/ab5a6229-a3bb-476d-9eb2-5452bf6f7a52.png" 
-                alt="AI Marketing Profile" 
+                alt="AI Business Managers" 
                 className="h-12 w-auto"
               />
+              <span className="font-semibold text-xl hidden sm:inline">AI Business Managers</span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             {menuItems.map((item, index) => (
-              <button
-                key={index}
-                onClick={() => handleNavigation(item)}
-                className="text-gray-600 hover:text-primary transition-colors flex items-center gap-2 group"
-              >
-                {item.icon}
-                {item.label}
-                {item.isSection && (
+              <div key={index} className="relative group">
+                <button
+                  className="text-gray-600 hover:text-primary transition-colors flex items-center gap-2 group py-2"
+                  aria-expanded={isMenuOpen}
+                  aria-haspopup="true"
+                >
+                  {item.icon}
+                  {item.label}
                   <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
-                )}
-              </button>
+                </button>
+                <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div className="py-1" role="menu" aria-orientation="vertical">
+                    {item.submenu.map((subItem, subIndex) => (
+                      <Link
+                        key={subIndex}
+                        to={subItem.path}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+                        role="menuitem"
+                      >
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
             ))}
             <Button 
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/checkout")}
               size="lg"
               className="shadow-lg hover:shadow-xl transition-shadow ml-4"
             >
@@ -117,7 +118,7 @@ export default function Header() {
           <button
             className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? (
               <X className="h-6 w-6 text-gray-600" />
@@ -131,18 +132,29 @@ export default function Header() {
         {isMenuOpen && (
           <nav className="md:hidden py-4 px-2 space-y-2 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg animate-fadeIn">
             {menuItems.map((item, index) => (
-              <button
-                key={index}
-                onClick={() => handleNavigation(item)}
-                className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors flex items-center gap-3"
-              >
-                {item.icon}
-                {item.label}
-              </button>
+              <div key={index} className="space-y-2">
+                <div className="px-4 py-2 text-sm font-semibold text-gray-900 flex items-center gap-2">
+                  {item.icon}
+                  {item.label}
+                </div>
+                {item.submenu.map((subItem, subIndex) => (
+                  <Link
+                    key={subIndex}
+                    to={subItem.path}
+                    className="block px-8 py-2 text-sm text-gray-600 hover:bg-gray-100 hover:text-primary transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {subItem.label}
+                  </Link>
+                ))}
+              </div>
             ))}
             <div className="pt-2 px-2">
               <Button 
-                onClick={() => navigate("/")}
+                onClick={() => {
+                  navigate("/checkout");
+                  setIsMenuOpen(false);
+                }}
                 className="w-full shadow-lg flex items-center justify-center"
                 size="lg"
               >

@@ -51,6 +51,7 @@ import Careers from "@/pages/Careers";
 import Mission from "@/pages/Mission";
 import Partners from "@/pages/Partners";
 import Press from "@/pages/Press";
+import PatientSupport from "@/pages/PatientSupport";
 
 function App() {
   useEffect(() => {
@@ -76,6 +77,7 @@ function App() {
               <Route path="/" element={<VoiceAgentsMarketplace />} />
               <Route path="/landing" element={<Landing />} />
               <Route path="/voice-agents" element={<VoiceAgentsMarketplace />} />
+              <Route path="/patient-support" element={<PatientSupport />} />
               <Route path="/telemedicine" element={<TelemedicineLanding />} />
               <Route path="/dermatology" element={<DermatologyLanding />} />
               <Route path="/cardiology" element={<CardiologyLanding />} />
