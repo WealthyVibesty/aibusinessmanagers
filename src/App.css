@@ -5,6 +5,7 @@
   min-height: 100vh;
   position: relative;
   z-index: 1;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .glass-morphism {
@@ -72,19 +73,20 @@
   color: transparent;
 }
 
-/* Add responsive page content spacing */
+/* Improved responsive page content spacing */
 .page-content {
   padding: 1rem;
-  padding-top: calc(5rem + 16px);
+  padding-top: calc(4rem + 16px);
   max-width: 100%;
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
-/* Responsive container widths */
+/* Enhanced responsive container widths */
 @media (min-width: 640px) {
   .page-content {
     padding: 1.5rem;
-    padding-top: calc(5rem + 24px);
+    padding-top: calc(4rem + 24px);
   }
 }
 
@@ -95,7 +97,7 @@
   
   .page-content {
     padding: 2rem;
-    padding-top: calc(5rem + 32px);
+    padding-top: calc(4rem + 32px);
     max-width: 768px;
   }
 }
@@ -103,7 +105,7 @@
 @media (min-width: 1024px) {
   .page-content {
     padding: 2.5rem;
-    padding-top: calc(5rem + 40px);
+    padding-top: calc(4rem + 40px);
     max-width: 1024px;
   }
 }
@@ -111,63 +113,91 @@
 @media (min-width: 1280px) {
   .page-content {
     padding: 3rem;
-    padding-top: calc(5rem + 48px);
+    padding-top: calc(4rem + 48px);
     max-width: 1280px;
   }
 }
 
-/* Add responsive typography */
+/* Enhanced responsive typography */
 @media (max-width: 640px) {
   h1 {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
+    font-size: 1.75rem !important;
+    line-height: 2rem !important;
   }
   
   h2 {
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 1.375rem !important;
+    line-height: 1.75rem !important;
   }
   
   h3 {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem !important;
+    line-height: 1.625rem !important;
   }
   
   p {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+  }
+
+  .mobile-text-sm {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+  }
+
+  .mobile-stack {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  .mobile-full-width {
+    width: 100% !important;
+  }
+
+  .mobile-p-4 {
+    padding: 1rem !important;
+  }
+
+  .mobile-my-2 {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
   }
 }
 
-/* Add responsive spacing utilities */
+/* Improved responsive grid */
 .responsive-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  padding: 1rem;
 }
 
+/* Enhanced responsive flex */
 .responsive-flex {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  padding: 0.5rem;
 }
 
-/* Add responsive padding and margin utilities */
+/* Mobile-first padding and margin */
 .responsive-p {
-  padding: clamp(1rem, 5vw, 3rem);
+  padding: clamp(0.75rem, 3vw, 2rem);
 }
 
 .responsive-m {
-  margin: clamp(1rem, 5vw, 3rem);
+  margin: clamp(0.75rem, 3vw, 2rem);
 }
 
-/* Add responsive container */
+/* Mobile-optimized container */
 .container-responsive {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem;
   padding-right: 1rem;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 @media (min-width: 640px) {
@@ -191,5 +221,51 @@
 @media (min-width: 1280px) {
   .container-responsive {
     max-width: 1280px;
+  }
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 768px) {
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+  }
+
+  .mobile-menu {
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .mobile-hidden {
+    display: none !important;
+  }
+
+  .mobile-block {
+    display: block !important;
+  }
+
+  .mobile-stack-vertical > * {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0.75rem;
+  }
+
+  .mobile-stack-vertical > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ElevenLabs Widget Mobile Optimization */
+@media (max-width: 768px) {
+  elevenlabs-convai {
+    bottom: 20px;
+    right: 20px;
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 40px);
   }
 }
