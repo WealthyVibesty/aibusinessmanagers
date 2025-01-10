@@ -74,7 +74,7 @@
 
 /* Add page content spacing */
 .page-content {
-  padding-top: calc(5rem + 32px); /* Increased top padding to account for fixed header */
+  padding-top: calc(4rem + 16px); /* Reduced top padding */
 }
 
 @media (min-width: 768px) {
@@ -83,6 +83,6 @@
   }
   
   .page-content {
-    padding-top: calc(5rem + 48px); /* Slightly more space on desktop */
+    padding-top: calc(4rem + 24px); /* Reduced padding on desktop */
   }
 }
