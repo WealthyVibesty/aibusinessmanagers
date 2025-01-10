@@ -6,6 +6,7 @@ import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
 import CheckoutFlow from "@/components/checkout/CheckoutFlow";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
 import Courses from "@/pages/Courses";
 import CourseDetails from "@/pages/CourseDetails";
@@ -72,14 +73,15 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <div className="flex-grow page-content">
-          <Routes>
-            <Route path="/" element={<VoiceAgentsMarketplace />} />
-            <Route path="/landing" element={<Landing />} />
+    <ThemeProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <div className="flex-grow page-content">
+            <Routes>
+              <Route path="/" element={<VoiceAgentsMarketplace />} />
+              <Route path="/landing" element={<Landing />} />
               <Route path="/voice-agents" element={<VoiceAgents />} />
               <Route path="/call-routing" element={<CallRouting />} />
               <Route path="/task-automation" element={<TaskAutomation />} />
@@ -141,12 +143,13 @@ function App() {
               <Route path="/surgical-practices" element={<SurgicalPracticesLanding />} />
               <Route path="/diagnostic-imaging" element={<DiagnosticImagingLanding />} />
               <Route path="/book-demo" element={<BookDemo />} />
-          </Routes>
+            </Routes>
+          </div>
+          <FooterSection />
         </div>
-        <FooterSection />
-      </div>
+      </Router>
       <Toaster />
-    </Router>
+    </ThemeProvider>
   );
 }
 
