@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Header from "@/components/landing/Header";
 import ScrollToTop from "@/components/ScrollToTop";
-import Landing from "@/pages/Landing";
+import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
 import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
 import CheckoutFlow from "@/components/checkout/CheckoutFlow";
@@ -62,7 +62,7 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
-              <Route path="/" element={<Landing />} />
+              <Route path="/" element={<VoiceAgentsMarketplace />} />
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
               

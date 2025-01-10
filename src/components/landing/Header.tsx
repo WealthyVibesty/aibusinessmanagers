@@ -68,12 +68,38 @@ export default function Header() {
     setActiveSubmenu(activeSubmenu === label ? null : label);
   };
 
+  const handleJoinTeam = () => {
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
+      widget.classList.remove('hidden');
+      console.log('Opening AI assistant from Join Team button');
+    }
+  };
+
+  const handleAIAssistant = () => {
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
+      widget.classList.toggle('hidden');
+      console.log('Toggling AI assistant from header button');
+    }
+  };
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-transparent"
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
+          <Button
+            variant="outline"
+            size="sm"
+            className="absolute top-2 left-1/2 transform -translate-x-1/2 text-sm rounded-full hover:bg-primary hover:text-white transition-all group"
+            onClick={handleAIAssistant}
+          >
+            Have Questions? Talk to AI
+            <Mic className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+          </Button>
+
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
@@ -116,11 +142,11 @@ export default function Header() {
               </div>
             ))}
             <Button 
-              onClick={() => navigate("/checkout")}
+              onClick={handleJoinTeam}
               size="lg"
               className="shadow-lg hover:shadow-xl transition-shadow ml-4"
             >
-              Schedule Demo
+              Join Team
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </nav>
@@ -177,14 +203,11 @@ export default function Header() {
               ))}
               <div className="p-4">
                 <Button 
-                  onClick={() => {
-                    navigate("/checkout");
-                    setIsMenuOpen(false);
-                  }}
+                  onClick={handleJoinTeam}
                   className="w-full shadow-lg"
                   size="lg"
                 >
-                  Schedule Demo
+                  Join Team
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
