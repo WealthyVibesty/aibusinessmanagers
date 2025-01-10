@@ -25,21 +25,21 @@ export default function Header() {
         { label: "AI-Powered Voice Agents", path: "/voice-agents" },
         { label: "Intelligent Call Routing", path: "/call-routing" },
         { label: "Task Automation", path: "/task-automation" },
-        { label: "Actionable Insights", path: "/insights" },
-        { label: "Cost-Effective Call Centers", path: "/call-centers" },
-        { label: "HIPAA-Compliant Solutions", path: "/hipaa-solutions" },
-        { label: "Proactive Patient Engagement", path: "/patient-engagement" },
+        { label: "Actionable Insights", path: "/actionable-insights" },
+        { label: "Cost-Effective Call Centers", path: "/cost-effective-call-centers" },
+        { label: "HIPAA-Compliant Solutions", path: "/hipaa-compliant" },
+        { label: "Proactive Patient Engagement", path: "/proactive-engagement" },
       ]
     },
     {
       label: "Industries",
       icon: <Stethoscope className="w-4 h-4" />,
       submenu: [
-        { label: "Hospitals & Health Systems", path: "/hospitals" },
-        { label: "Clinics & Private Practices", path: "/clinics" },
-        { label: "Telehealth Providers", path: "/telemedicine" },
-        { label: "Specialty Care Providers", path: "/specialty-care" },
-        { label: "Pharmaceuticals", path: "/pharmaceuticals" },
+        { label: "Hospitals & Health Systems", path: "/industries/hospitals-health-systems" },
+        { label: "Clinics & Private Practices", path: "/industries/clinics-private-practices" },
+        { label: "Telehealth Providers", path: "/industries/telehealth-providers" },
+        { label: "Specialty Care Providers", path: "/industries/specialty-care" },
+        { label: "Pharmaceuticals", path: "/industries/pharmaceuticals" },
       ]
     },
     {
@@ -139,7 +139,7 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Navigation - Simplified */}
+        {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className="md:hidden fixed inset-x-0 top-20 bg-white border-t border-gray-200 shadow-lg animate-slideDown">
             <div className="max-h-[calc(100vh-5rem)] overflow-y-auto">
