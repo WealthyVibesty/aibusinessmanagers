@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Brain, MessageSquare, Zap } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/landing/Header";
-import FooterSection from "@/components/landing/sections/FooterSection";
 
 export default function WhyHealthAI() {
+  const navigate = useNavigate();
+
   const benefits = [
     {
       icon: <Brain className="w-12 h-12 text-primary" />,
@@ -46,15 +47,16 @@ export default function WhyHealthAI() {
         </div>
 
         <div className="text-center">
-          <Button asChild size="lg">
-            <Link to="/technology" className="inline-flex items-center">
-              Explore Our Technology
-              <ArrowRight className="ml-2" />
-            </Link>
+          <Button 
+            size="lg"
+            onClick={() => navigate("/")}
+            className="inline-flex items-center"
+          >
+            Get Started Now
+            <ArrowRight className="ml-2" />
           </Button>
         </div>
       </div>
-      <FooterSection />
     </div>
   );
 }
