@@ -74,7 +74,7 @@
 
 /* Add page content spacing */
 .page-content {
-  padding-top: calc(4rem + 46px); /* Increased by 30px from original 16px */
+  padding-top: calc(4rem + 16px); /* Reduced top padding */
 }
 
 @media (min-width: 768px) {
@@ -83,6 +83,6 @@
   }
   
   .page-content {
-    padding-top: calc(4rem + 54px); /* Increased by 30px from original 24px */
+    padding-top: calc(4rem + 24px); /* Reduced padding on desktop */
   }
 }
