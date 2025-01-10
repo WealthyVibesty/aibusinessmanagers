@@ -53,6 +53,7 @@ import Mission from "@/pages/Mission";
 import Partners from "@/pages/Partners";
 import Press from "@/pages/Press";
 import PatientSupport from "@/pages/PatientSupport";
+import VoiceAgents from "@/pages/solutions/VoiceAgents";
 
 function App() {
   useEffect(() => {
@@ -78,7 +79,7 @@ function App() {
             <Routes>
               <Route path="/" element={<VoiceAgentsMarketplace />} />
               <Route path="/landing" element={<Landing />} />
-              <Route path="/voice-agents" element={<VoiceAgentsMarketplace />} />
+              <Route path="/voice-agents" element={<VoiceAgents />} />
               <Route path="/patient-support" element={<PatientSupport />} />
               <Route path="/telemedicine" element={<TelemedicineLanding />} />
               <Route path="/dermatology" element={<DermatologyLanding />} />
