@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Robot, Clock, ChartBar, Users } from "lucide-react";
+import { ArrowRight, Bot, Clock, ChartBar, Users } from "lucide-react";
 
 export default function TaskAutomation() {
   return (
@@ -82,7 +82,7 @@ export default function TaskAutomation() {
         <h2 className="text-3xl font-bold mb-8 text-center">Benefits</h2>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="p-6 border rounded-lg">
-            <Robot className="w-8 h-8 text-primary mb-4" />
+            <Bot className="w-8 h-8 text-primary mb-4" />
             <h3 className="font-semibold mb-2">50% Workload Reduction</h3>
             <p className="text-gray-600">
               Reduces staff workload by automating routine tasks.
