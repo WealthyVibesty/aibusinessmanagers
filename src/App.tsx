@@ -25,6 +25,22 @@ import ClinicsPrivatePractices from "@/pages/industries/ClinicsPrivatePractices"
 import TelehealthProviders from "@/pages/industries/TelehealthProviders";
 import SpecialtyCare from "@/pages/industries/SpecialtyCare";
 import Pharmaceuticals from "@/pages/industries/Pharmaceuticals";
+import TelemedicineLanding from "@/pages/TelemedicineLanding";
+import MentalHealthLanding from "@/pages/MentalHealthLanding";
+import ElderlyCare from "@/pages/ElderlyCare";
+import PrimaryCare from "@/pages/PrimaryCare";
+import DentalCareLanding from "@/pages/DentalCareLanding";
+import DiagnosticImagingLanding from "@/pages/DiagnosticImagingLanding";
+import EmergencyServicesLanding from "@/pages/EmergencyServicesLanding";
+import HomeHealthcareLanding from "@/pages/HomeHealthcareLanding";
+import HospitalOperationsLanding from "@/pages/HospitalOperationsLanding";
+import NutritionWellnessLanding from "@/pages/NutritionWellnessLanding";
+import ObGynLanding from "@/pages/ObGynLanding";
+import OncologyLanding from "@/pages/OncologyLanding";
+import PediatricsLanding from "@/pages/PediatricsLanding";
+import PublicHealthLanding from "@/pages/PublicHealthLanding";
+import RehabilitationLanding from "@/pages/RehabilitationLanding";
+import SurgicalPracticesLanding from "@/pages/SurgicalPracticesLanding";
 
 // Resources
 import CaseStudies from "@/pages/CaseStudies";
@@ -93,6 +109,24 @@ function App() {
               <Route path="/industries/telehealth-providers" element={<TelehealthProviders />} />
               <Route path="/industries/specialty-care" element={<SpecialtyCare />} />
               <Route path="/industries/pharmaceuticals" element={<Pharmaceuticals />} />
+              
+              {/* Additional Industry Routes */}
+              <Route path="/telemedicine" element={<TelemedicineLanding />} />
+              <Route path="/mental-health" element={<MentalHealthLanding />} />
+              <Route path="/elderly-care" element={<ElderlyCare />} />
+              <Route path="/primary-care" element={<PrimaryCare />} />
+              <Route path="/dental-care" element={<DentalCareLanding />} />
+              <Route path="/diagnostic-imaging" element={<DiagnosticImagingLanding />} />
+              <Route path="/emergency-services" element={<EmergencyServicesLanding />} />
+              <Route path="/home-healthcare" element={<HomeHealthcareLanding />} />
+              <Route path="/hospital-operations" element={<HospitalOperationsLanding />} />
+              <Route path="/nutrition-wellness" element={<NutritionWellnessLanding />} />
+              <Route path="/obgyn" element={<ObGynLanding />} />
+              <Route path="/oncology" element={<OncologyLanding />} />
+              <Route path="/pediatrics" element={<PediatricsLanding />} />
+              <Route path="/public-health" element={<PublicHealthLanding />} />
+              <Route path="/rehabilitation" element={<RehabilitationLanding />} />
+              <Route path="/surgical-practices" element={<SurgicalPracticesLanding />} />
               
               {/* Resources Routes */}
               <Route path="/case-studies" element={<CaseStudies />} />
