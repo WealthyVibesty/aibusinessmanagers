@@ -2,32 +2,34 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Brain, Clock, Heart, Shield, Stethoscope, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import FooterSection from "@/components/landing/sections/FooterSection";
 
 export default function DentalCareLanding() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeIn">
-            Transform Your Dental Practice with AI Innovation
-          </h1>
-          <p className="text-xl sm:text-2xl text-gray-600 mb-12 animate-slideUp">
-            Enhance your dental practice with AI-powered tools that support better diagnoses, 
-            streamline communication, and improve patient outcomes.
-          </p>
-          <Button 
-            size="lg"
-            className="animate-slideUp text-lg px-8 py-6 h-auto"
-            onClick={() => navigate("/checkout")}
-          >
-            Start Free Trial
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </div>
-      </section>
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-grow">
+        {/* Hero Section */}
+        <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeIn">
+              Transform Your Dental Practice with AI Innovation
+            </h1>
+            <p className="text-xl sm:text-2xl text-gray-600 mb-12 animate-slideUp">
+              Enhance your dental practice with AI-powered tools that support better diagnoses, 
+              streamline communication, and improve patient outcomes.
+            </p>
+            <Button 
+              size="lg"
+              className="animate-slideUp text-lg px-8 py-6 h-auto"
+              onClick={() => navigate("/voice-agents")}
+            >
+              Explore Voice Agents
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </section>
 
       {/* Features Section */}
       <section className="py-16 px-6 bg-white">
@@ -107,36 +109,38 @@ export default function DentalCareLanding() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <Card className="p-8 bg-primary text-white">
-            <h2 className="text-3xl font-bold mb-4">
-              Ready to Transform Your Dental Practice?
-            </h2>
-            <p className="text-xl mb-8 opacity-90">
-              Join leading dental practices using AI to enhance patient care
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                variant="secondary"
-                onClick={() => navigate("/checkout")}
-              >
-                Get Started Now
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="bg-white text-primary hover:bg-white/90"
-              >
-                Schedule Demo
-              </Button>
-            </div>
-          </Card>
-        </div>
-      </section>
+        {/* CTA Section */}
+        <section className="py-20 px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <Card className="p-8 bg-primary text-white">
+              <h2 className="text-3xl font-bold mb-4">
+                Ready to Transform Your Dental Practice?
+              </h2>
+              <p className="text-xl mb-8 opacity-90">
+                Join leading dental practices using AI to enhance patient care
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  size="lg" 
+                  variant="secondary"
+                  onClick={() => navigate("/voice-agents")}
+                >
+                  Explore Voice Agents
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="bg-white text-primary hover:bg-white/90"
+                >
+                  Schedule Demo
+                </Button>
+              </div>
+            </Card>
+          </div>
+        </section>
+      </div>
+      <FooterSection />
     </div>
   );
 }

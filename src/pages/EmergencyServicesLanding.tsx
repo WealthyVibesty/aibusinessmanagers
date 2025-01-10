@@ -12,32 +12,35 @@ import {
   Stethoscope
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import FooterSection from "@/components/landing/sections/FooterSection";
 
 export default function EmergencyServicesLanding() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-red-50 to-white">
-      {/* Hero Section */}
-      <section className="container px-4 pt-20 pb-16 mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-red-600 mb-6 animate-slideUp">
-          AI-Enhanced Emergency Response Services
-        </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-slideUp max-w-3xl mx-auto" style={{ animationDelay: "100ms" }}>
-          Revolutionizing emergency response with intelligent dispatch, real-time coordination, and predictive analytics
-        </p>
-        <Button 
-          size="lg" 
-          className="animate-slideUp bg-red-600 hover:bg-red-700" 
-          style={{ animationDelay: "200ms" }}
-          onClick={() => navigate("/checkout")}
-        >
-          Learn More
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
-      </section>
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-grow">
+        {/* Hero Section */}
+        <section className="container px-4 pt-20 pb-16 mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-red-600 mb-6 animate-slideUp">
+            AI-Enhanced Emergency Response Services
+          </h1>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-slideUp max-w-3xl mx-auto" style={{ animationDelay: "100ms" }}>
+            Revolutionizing emergency response with intelligent voice agents, real-time coordination, and predictive analytics
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button 
+              size="lg" 
+              className="animate-slideUp bg-red-600 hover:bg-red-700" 
+              style={{ animationDelay: "200ms" }}
+              onClick={() => navigate("/voice-agents")}
+            >
+              Explore Voice Agents
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </section>
 
-      {/* Key Features */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">
@@ -117,36 +120,29 @@ export default function EmergencyServicesLanding() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <Card className="p-8 bg-red-600 text-white">
-            <h2 className="text-3xl font-bold mb-4">
-              Ready to Transform Your Emergency Services?
+        {/* Final CTA */}
+        <section className="py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <h2 className="text-3xl sm:text-4xl font-bold">
+              Transform Your Emergency Services with AI
             </h2>
-            <p className="text-xl mb-8 opacity-90">
-              Join leading emergency response teams using AI to save more lives
+            <p className="text-xl text-gray-600">
+              Enhance Response Times and Save More Lives with Voice Agents
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="pt-4">
               <Button 
-                size="lg" 
-                variant="secondary"
-                onClick={() => navigate("/checkout")}
+                size="lg"
+                onClick={() => navigate("/voice-agents")}
+                className="text-lg px-8 py-6 h-auto"
               >
-                Get Started Now
+                Explore Voice Agents
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="bg-white text-red-600 hover:bg-white/90"
-              >
-                Schedule Demo
-              </Button>
             </div>
-          </Card>
-        </div>
-      </section>
+          </div>
+        </section>
+      </div>
+      <FooterSection />
     </div>
   );
 }
