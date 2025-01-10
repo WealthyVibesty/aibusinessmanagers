@@ -9,6 +9,8 @@ import CheckoutFlow from "@/components/checkout/CheckoutFlow";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
+
+// Solutions
 import AIVoiceAgents from "@/pages/solutions/AIVoiceAgents";
 import CallRouting from "@/pages/solutions/CallRouting";
 import TaskAutomation from "@/pages/solutions/TaskAutomation";
@@ -16,12 +18,26 @@ import ActionableInsights from "@/pages/solutions/ActionableInsights";
 import CostEffectiveCallCenters from "@/pages/solutions/CostEffectiveCallCenters";
 import HIPAACompliant from "@/pages/solutions/HIPAACompliant";
 import ProactiveEngagement from "@/pages/solutions/ProactiveEngagement";
-import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
+
+// Industries
 import HospitalsHealthSystems from "@/pages/industries/HospitalsHealthSystems";
 import ClinicsPrivatePractices from "@/pages/industries/ClinicsPrivatePractices";
 import TelehealthProviders from "@/pages/industries/TelehealthProviders";
 import SpecialtyCare from "@/pages/industries/SpecialtyCare";
 import Pharmaceuticals from "@/pages/industries/Pharmaceuticals";
+
+// Resources
+import CaseStudies from "@/pages/CaseStudies";
+import Whitepapers from "@/pages/Whitepapers";
+import Blog from "@/pages/Blog";
+import FAQs from "@/pages/FAQs";
+
+// Company
+import AboutUs from "@/pages/AboutUs";
+import WhyChooseUs from "@/pages/WhyChooseUs";
+import OurTeam from "@/pages/OurTeam";
+import Contact from "@/pages/Contact";
+
 import FooterSection from "@/components/landing/sections/FooterSection";
 
 function App() {
@@ -46,8 +62,11 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
-              <Route path="/" element={<VoiceAgentsMarketplace />} />
-              <Route path="/landing" element={<Landing />} />
+              <Route path="/" element={<Landing />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/checkout" element={<CheckoutFlow />} />
+              
+              {/* Solutions Routes */}
               <Route path="/voice-agents" element={<AIVoiceAgents />} />
               <Route path="/call-routing" element={<CallRouting />} />
               <Route path="/task-automation" element={<TaskAutomation />} />
@@ -63,8 +82,17 @@ function App() {
               <Route path="/industries/specialty-care" element={<SpecialtyCare />} />
               <Route path="/industries/pharmaceuticals" element={<Pharmaceuticals />} />
               
-              <Route path="/login" element={<Login />} />
-              <Route path="/checkout" element={<CheckoutFlow />} />
+              {/* Resources Routes */}
+              <Route path="/case-studies" element={<CaseStudies />} />
+              <Route path="/whitepapers" element={<Whitepapers />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/faqs" element={<FAQs />} />
+              
+              {/* Company Routes */}
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/why-us" element={<WhyChooseUs />} />
+              <Route path="/team" element={<OurTeam />} />
+              <Route path="/contact" element={<Contact />} />
               
               {/* Protected Routes */}
               <Route element={<ProtectedRoute />}>

@@ -74,15 +74,15 @@
 
 /* Add page content spacing */
 .page-content {
-  padding-top: calc(4rem + 16px); /* Reduced top padding */
+  padding-top: calc(5rem + 32px); /* Increased top padding */
 }
 
 @media (min-width: 768px) {
   #root {
-    padding: 0; /* Remove default padding */
+    padding: 0;
   }
   
   .page-content {
-    padding-top: calc(4rem + 24px); /* Reduced padding on desktop */
+    padding-top: calc(5rem + 48px); /* Increased padding on desktop */
   }
 }
