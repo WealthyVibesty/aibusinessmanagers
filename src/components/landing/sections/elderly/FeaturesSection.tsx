@@ -1,43 +1,43 @@
 import { Card } from "@/components/ui/card";
 import { 
-  HeartPulse, 
-  Brain, 
+  Mic, 
   Bell, 
   Clock, 
-  Activity,
-  Stethoscope 
+  Shield,
+  Phone,
+  MessageSquare
 } from "lucide-react";
 
 const features = [
   {
-    icon: <HeartPulse className="h-8 w-8 text-primary" />,
-    title: "Health Monitoring",
-    description: "24/7 vital signs tracking and health status updates"
-  },
-  {
-    icon: <Brain className="h-8 w-8 text-primary" />,
-    title: "Cognitive Support",
-    description: "AI-powered activities for mental wellness"
+    icon: <Mic className="h-8 w-8 text-primary" />,
+    title: "Voice-Activated Assistance",
+    description: "Natural language interactions for seniors to request help, information, or emergency services"
   },
   {
     icon: <Bell className="h-8 w-8 text-primary" />,
-    title: "Smart Alerts",
-    description: "Immediate notifications for caregivers"
+    title: "Smart Reminders",
+    description: "AI-powered medication and appointment reminders with voice confirmation"
   },
   {
     icon: <Clock className="h-8 w-8 text-primary" />,
-    title: "Medication Management",
-    description: "Automated reminders and tracking"
+    title: "24/7 Availability",
+    description: "Round-the-clock voice support for seniors and caregivers"
   },
   {
-    icon: <Activity className="h-8 w-8 text-primary" />,
-    title: "Activity Monitoring",
-    description: "Real-time tracking of daily activities"
+    icon: <Shield className="h-8 w-8 text-primary" />,
+    title: "Emergency Response",
+    description: "Voice-activated emergency alerts with instant caregiver notification"
   },
   {
-    icon: <Stethoscope className="h-8 w-8 text-primary" />,
-    title: "Remote Care",
-    description: "Virtual health check-ins and consultations"
+    icon: <Phone className="h-8 w-8 text-primary" />,
+    title: "Family Connection",
+    description: "Easy voice commands to connect with family members and caregivers"
+  },
+  {
+    icon: <MessageSquare className="h-8 w-8 text-primary" />,
+    title: "Multilingual Support",
+    description: "Voice assistance in multiple languages for diverse care environments"
   }
 ];
 
@@ -46,7 +46,7 @@ export default function ElderlyFeaturesSection() {
     <section className="py-16 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12">
-          Comprehensive Senior Care Solutions
+          Voice AI Solutions for Elder Care
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (

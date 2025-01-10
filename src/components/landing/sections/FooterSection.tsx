@@ -2,44 +2,47 @@ import { Link } from "react-router-dom";
 import { Twitter, Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
 
 const FooterSection = () => {
-  const products = [
-    { name: "Voice Agents", path: "/voice-agents" },
+  const industries = [
     { name: "Telemedicine", path: "/telemedicine" },
+    { name: "Mental Health", path: "/mental-health" },
+    { name: "Elderly Care", path: "/elderly-care" },
     { name: "Primary Care", path: "/primary-care" },
-    { name: "Education Platform", path: "/courses" },
-    { name: "Community Forum", path: "/forum" },
-  ];
-
-  const specialties = [
+    { name: "Chronic Disease", path: "/chronic-disease" },
+    { name: "Pharmaceuticals", path: "/pharmaceuticals" },
+    { name: "Health Insurance", path: "/health-insurance" },
+    { name: "Hospital Operations", path: "/hospital-operations" },
+    { name: "Public Health", path: "/public-health" },
+    { name: "Rehabilitation", path: "/rehabilitation" },
+    { name: "Medical Research", path: "/medical-research" },
+    { name: "Home Healthcare", path: "/home-healthcare" },
+    { name: "Pediatrics", path: "/pediatrics" },
+    { name: "Dental Care", path: "/dental-care" },
+    { name: "Nutrition & Wellness", path: "/nutrition-wellness" },
+    { name: "Emergency Services", path: "/emergency-services" },
+    { name: "Surgical Practices", path: "/surgical-practices" },
+    { name: "Diagnostic Imaging", path: "/diagnostic-imaging" },
     { name: "Cardiology", path: "/cardiology" },
     { name: "Dermatology", path: "/dermatology" },
-    { name: "OB/GYN", path: "/obgyn" },
-    { name: "Emergency Services", path: "/emergency-services" },
-    { name: "Hospital Operations", path: "/hospital-operations" },
-    { name: "Medical Research", path: "/medical-research" },
-    { name: "Rehabilitation", path: "/rehabilitation" },
-    { name: "Dental Care", path: "/dental-care" },
-    { name: "Diagnostic Imaging", path: "/diagnostic-imaging" },
-  ];
-
-  const about = [
-    { name: "Why AI Marketing Profile", path: "/" },
-    { name: "Our Technology", path: "/technology" },
-    { name: "AI's Future in Business", path: "/future" },
-    { name: "Careers", path: "/careers" },
-    { name: "Mission", path: "/mission" },
-    { name: "Partners", path: "/partners" },
-    { name: "Press", path: "/press" },
-    { name: "AI Marketplace", path: "/voice-agents", isNew: true },
+    { name: "OB/GYN", path: "/obgyn" }
   ];
 
   const resources = [
-    { name: "Content Library", path: "/resources" },
+    { name: "Content Library", path: "/content-library" },
     { name: "Support Center", path: "/support" },
     { name: "Contact", path: "/contact" },
-    { name: "Privacy Policy", path: "/privacy" },
-    { name: "Terms of Use", path: "/terms" },
+    { name: "Privacy Policy", path: "/privacy-policy" },
+    { name: "Terms of Use", path: "/terms-of-use" },
     { name: "Site Map", path: "/sitemap" },
+  ];
+
+  const company = [
+    { name: "Why AI Marketing Profile", path: "/why-healthai" },
+    { name: "Our Technology", path: "/technology" },
+    { name: "AI's Future in Healthcare", path: "/ai-future" },
+    { name: "Careers", path: "/careers" },
+    { name: "Mission", path: "/mission" },
+    { name: "Partners", path: "/partners" },
+    { name: "Press", path: "/press" }
   ];
 
   const socialLinks = [
@@ -54,28 +57,27 @@ const FooterSection = () => {
     <footer className="bg-black text-gray-300 py-16 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Products Column */}
-          <div>
-            <h3 className="text-white font-semibold mb-6">Products</h3>
-            <ul className="space-y-4">
-              {products.map((item) => (
-                <li key={item.path}>
-                  <Link 
-                    to={item.path}
-                    className="hover:text-white transition-colors duration-200"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Specialties Column */}
-          <div>
+          {/* Industries Column */}
+          <div className="lg:col-span-2">
             <h3 className="text-white font-semibold mb-6">Industries</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {industries.map((item) => (
+                <Link 
+                  key={item.path}
+                  to={item.path}
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Company Column */}
+          <div>
+            <h3 className="text-white font-semibold mb-6">Company</h3>
             <ul className="space-y-4">
-              {specialties.map((item) => (
+              {company.map((item) => (
                 <li key={item.path}>
                   <Link 
                     to={item.path}
@@ -83,28 +85,6 @@ const FooterSection = () => {
                   >
                     {item.name}
                   </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* About Column */}
-          <div>
-            <h3 className="text-white font-semibold mb-6">About</h3>
-            <ul className="space-y-4">
-              {about.map((item) => (
-                <li key={item.path} className="flex items-center gap-2">
-                  <Link 
-                    to={item.path}
-                    className="hover:text-white transition-colors duration-200"
-                  >
-                    {item.name}
-                  </Link>
-                  {item.isNew && (
-                    <span className="bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full">
-                      New
-                    </span>
-                  )}
                 </li>
               ))}
             </ul>
