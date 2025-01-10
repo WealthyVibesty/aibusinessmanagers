@@ -8,56 +8,8 @@ import CheckoutFlow from "@/components/checkout/CheckoutFlow";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
-import Courses from "@/pages/Courses";
-import CourseDetails from "@/pages/CourseDetails";
-import CreateCourse from "@/pages/CreateCourse";
-import Forum from "@/pages/Forum";
-import ForumCategory from "@/pages/ForumCategory";
-import ForumTopic from "@/pages/ForumTopic";
-import NewTopic from "@/pages/NewTopic";
-import ScrollToTop from "@/components/ScrollToTop";
-import FooterSection from "@/components/landing/sections/FooterSection";
+import AIVoiceAgents from "@/pages/solutions/AIVoiceAgents";
 import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
-import TelemedicineLanding from "@/pages/TelemedicineLanding";
-import ElderlyCare from "@/pages/ElderlyCare";
-import MentalHealthLanding from "@/pages/MentalHealthLanding";
-import ChronicDiseaseLanding from "@/pages/ChronicDiseaseLanding";
-import PharmaceuticalsLanding from "@/pages/PharmaceuticalsLanding";
-import HealthInsuranceLanding from "@/pages/HealthInsuranceLanding";
-import HospitalOperationsLanding from "@/pages/HospitalOperationsLanding";
-import PublicHealthLanding from "@/pages/PublicHealthLanding";
-import RehabilitationLanding from "@/pages/RehabilitationLanding";
-import MedicalResearchLanding from "@/pages/MedicalResearchLanding";
-import HomeHealthcareLanding from "@/pages/HomeHealthcareLanding";
-import PediatricsLanding from "@/pages/PediatricsLanding";
-import DentalCareLanding from "@/pages/DentalCareLanding";
-import NutritionWellnessLanding from "@/pages/NutritionWellnessLanding";
-import EmergencyServicesLanding from "@/pages/EmergencyServicesLanding";
-import PrimaryCare from "@/pages/PrimaryCare";
-import DermatologyLanding from "@/pages/DermatologyLanding";
-import SurgicalPracticesLanding from "@/pages/SurgicalPracticesLanding";
-import DiagnosticImagingLanding from "@/pages/DiagnosticImagingLanding";
-import CardiologyLanding from "@/pages/CardiologyLanding";
-import ObGynLanding from "@/pages/ObGynLanding";
-import OncologyLanding from "@/pages/OncologyLanding";
-import RadiologyLanding from "@/pages/RadiologyLanding";
-import VoiceAgents from "@/pages/solutions/VoiceAgents";
-import CallRouting from "@/pages/solutions/CallRouting";
-import TaskAutomation from "@/pages/solutions/TaskAutomation";
-import PatientSupport from "@/pages/PatientSupport";
-import WhyHealthAI from "@/pages/WhyHealthAI";
-import OurTechnology from "@/pages/OurTechnology";
-import AIFutureHealthcare from "@/pages/AIFutureHealthcare";
-import Careers from "@/pages/Careers";
-import Mission from "@/pages/Mission";
-import Partners from "@/pages/Partners";
-import Press from "@/pages/Press";
-import ContentLibrary from "@/pages/ContentLibrary";
-import SupportCenter from "@/pages/SupportCenter";
-import Contact from "@/pages/Contact";
-import PrivacyPolicy from "@/pages/PrivacyPolicy";
-import TermsOfUse from "@/pages/TermsOfUse";
-import SiteMap from "@/pages/SiteMap";
 
 function App() {
   useEffect(() => {
@@ -83,7 +35,7 @@ function App() {
             <Routes>
               <Route path="/" element={<VoiceAgentsMarketplace />} />
               <Route path="/landing" element={<Landing />} />
-              <Route path="/voice-agents" element={<VoiceAgents />} />
+              <Route path="/voice-agents" element={<AIVoiceAgents />} />
               <Route path="/call-routing" element={<CallRouting />} />
               <Route path="/task-automation" element={<TaskAutomation />} />
               <Route path="/patient-support" element={<PatientSupport />} />
