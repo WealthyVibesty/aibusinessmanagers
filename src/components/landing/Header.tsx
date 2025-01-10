@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -62,6 +63,10 @@ export default function Header() {
       ]
     },
   ];
+
+  const toggleSubmenu = (label: string) => {
+    setActiveSubmenu(activeSubmenu === label ? null : label);
+  };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -134,39 +139,55 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - Simplified */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 px-2 space-y-2 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg animate-fadeIn">
-            {menuItems.map((item, index) => (
-              <div key={index} className="space-y-2">
-                <div className="px-4 py-2 text-sm font-semibold text-gray-900 flex items-center gap-2">
-                  {item.icon}
-                  {item.label}
-                </div>
-                {item.submenu.map((subItem, subIndex) => (
-                  <Link
-                    key={subIndex}
-                    to={subItem.path}
-                    className="block px-8 py-2 text-sm text-gray-600 hover:bg-gray-100 hover:text-primary transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
+          <nav className="md:hidden fixed inset-x-0 top-20 bg-white border-t border-gray-200 shadow-lg animate-slideDown">
+            <div className="max-h-[calc(100vh-5rem)] overflow-y-auto">
+              {menuItems.map((item, index) => (
+                <div key={index} className="border-b border-gray-100">
+                  <button
+                    onClick={() => toggleSubmenu(item.label)}
+                    className="flex items-center justify-between w-full p-4 text-left text-gray-700 hover:bg-gray-50"
                   >
-                    {subItem.label}
-                  </Link>
-                ))}
+                    <span className="flex items-center gap-2">
+                      {item.icon}
+                      {item.label}
+                    </span>
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform ${
+                        activeSubmenu === item.label ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  {activeSubmenu === item.label && (
+                    <div className="bg-gray-50 px-4 py-2">
+                      {item.submenu.map((subItem, subIndex) => (
+                        <Link
+                          key={subIndex}
+                          to={subItem.path}
+                          className="block py-2 px-4 text-sm text-gray-600 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <div className="p-4">
+                <Button 
+                  onClick={() => {
+                    navigate("/checkout");
+                    setIsMenuOpen(false);
+                  }}
+                  className="w-full shadow-lg"
+                  size="lg"
+                >
+                  Schedule Demo
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </div>
-            ))}
-            <div className="pt-2 px-2">
-              <Button 
-                onClick={() => {
-                  navigate("/checkout");
-                  setIsMenuOpen(false);
-                }}
-                className="w-full shadow-lg flex items-center justify-center"
-                size="lg"
-              >
-                Schedule Demo
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
             </div>
           </nav>
         )}
