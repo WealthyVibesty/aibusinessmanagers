@@ -97,6 +97,15 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
               
+              {/* Public Forum Routes */}
+              <Route path="/forum" element={<Forum />} />
+              <Route path="/forum/category/:categoryId" element={<ForumCategory />} />
+              <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
+              
+              {/* Public Course Routes */}
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/courses/:id" element={<CourseDetails />} />
+              
               {/* Company Pages */}
               <Route path="/why-healthai" element={<WhyHealthAI />} />
               <Route path="/technology" element={<OurTechnology />} />
@@ -117,16 +126,7 @@ function App() {
               {/* Protected Routes */}
               <Route element={<ProtectedRoute />}>
                 <Route path="/dashboard" element={<Dashboard />} />
-                
-                {/* Course Routes */}
-                <Route path="/courses" element={<Courses />} />
-                <Route path="/courses/:id" element={<CourseDetails />} />
                 <Route path="/courses/new" element={<CreateCourse />} />
-                
-                {/* Forum Routes */}
-                <Route path="/forum" element={<Forum />} />
-                <Route path="/forum/category/:categoryId" element={<ForumCategory />} />
-                <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
                 <Route path="/forum/new-topic" element={<NewTopic />} />
               </Route>
               <Route path="/surgical-practices" element={<SurgicalPracticesLanding />} />

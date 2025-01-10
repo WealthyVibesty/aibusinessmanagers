@@ -6,10 +6,13 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Course } from "@/types/course";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/components/AuthProvider";
+import { LogIn } from "lucide-react";
 
 export default function Courses() {
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { session } = useAuth();
 
   const { data: courses, isLoading } = useQuery({
     queryKey: ["courses"],
@@ -59,8 +62,27 @@ export default function Courses() {
     <div className="container py-8 space-y-4">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">Available Courses</h1>
-        <Button onClick={() => navigate("/courses/new")}>Create Course</Button>
+        {session && (
+          <Button onClick={() => navigate("/courses/new")}>Create Course</Button>
+        )}
       </div>
+
+      {!session && (
+        <Card className="p-6 mb-6 bg-muted/50">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-center sm:text-left">
+              <h2 className="text-lg font-semibold mb-2">Start Learning Today</h2>
+              <p className="text-muted-foreground">
+                Sign in to enroll in courses and track your progress.
+              </p>
+            </div>
+            <Button onClick={() => navigate("/login")}>
+              <LogIn className="mr-2 h-4 w-4" />
+              Sign In
+            </Button>
+          </div>
+        </Card>
+      )}
       
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {courses?.map((course) => (
