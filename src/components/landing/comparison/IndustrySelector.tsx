@@ -2,11 +2,11 @@ import React from 'react';
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface IndustrySelectorProps {
-  businesses: string[];
   selectedBusiness: string;
 }
 
-export const IndustrySelector = ({ businesses, selectedBusiness }: IndustrySelectorProps) => {
+export const IndustrySelector = ({ selectedBusiness }: IndustrySelectorProps) => {
+  const businesses = ["Microsoft", "IDM", "Google", "AWS"];
   return (
     <TabsList className="w-full flex flex-col gap-4 bg-transparent p-0">
       {businesses.map(business => (
