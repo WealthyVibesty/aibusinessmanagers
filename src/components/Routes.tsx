@@ -9,6 +9,7 @@ import ActionableInsights from "@/pages/solutions/ActionableInsights";
 import CostEffectiveCallCenters from "@/pages/solutions/CostEffectiveCallCenters";
 import HIPAACompliant from "@/pages/solutions/HIPAACompliant";
 import ProactiveEngagement from "@/pages/solutions/ProactiveEngagement";
+import CallRouting from "@/pages/solutions/CallRouting";
 import HospitalsHealthSystems from "@/pages/industries/HospitalsHealthSystems";
 import ClinicsPrivatePractices from "@/pages/industries/ClinicsPrivatePractices";
 import TelehealthProviders from "@/pages/industries/TelehealthProviders";
@@ -32,6 +33,7 @@ export default function Routes() {
           <Route path="/solutions/cost-effective-call-centers" element={<CostEffectiveCallCenters />} />
           <Route path="/solutions/hipaa-compliant" element={<HIPAACompliant />} />
           <Route path="/solutions/proactive-engagement" element={<ProactiveEngagement />} />
+          <Route path="/call-routing" element={<CallRouting />} />
           
           {/* Industry Routes */}
           <Route path="/industries/hospitals-health-systems" element={<HospitalsHealthSystems />} />
