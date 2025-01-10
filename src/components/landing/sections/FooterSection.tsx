@@ -36,7 +36,7 @@ const FooterSection = () => {
   ];
 
   const company = [
-    { name: "Why AI Marketing Profile", path: "/why-healthai" },
+    { name: "Why AI Business Manager", path: "/why-healthai" },
     { name: "Our Technology", path: "/technology" },
     { name: "AI's Future in Healthcare", path: "/ai-future" },
     { name: "Careers", path: "/careers" },
@@ -46,11 +46,11 @@ const FooterSection = () => {
   ];
 
   const socialLinks = [
-    { Icon: Twitter, href: "https://twitter.com/aimarketingprofile" },
-    { Icon: Instagram, href: "https://instagram.com/aimarketingprofile" },
-    { Icon: Facebook, href: "https://facebook.com/aimarketingprofile" },
-    { Icon: Linkedin, href: "https://linkedin.com/company/aimarketingprofile" },
-    { Icon: Youtube, href: "https://youtube.com/aimarketingprofile" },
+    { Icon: Twitter, href: "https://twitter.com/aibusinessmanager" },
+    { Icon: Instagram, href: "https://instagram.com/aibusinessmanager" },
+    { Icon: Facebook, href: "https://facebook.com/aibusinessmanager" },
+    { Icon: Linkedin, href: "https://linkedin.com/company/aibusinessmanager" },
+    { Icon: Youtube, href: "https://youtube.com/aibusinessmanager" },
   ];
 
   return (
@@ -112,7 +112,7 @@ const FooterSection = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm">
-              © {new Date().getFullYear()} AI Marketing Profile. All rights reserved.
+              © {new Date().getFullYear()} AI Business Manager. All rights reserved.
             </div>
             
             <div className="flex items-center space-x-6">

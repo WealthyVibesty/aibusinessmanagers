@@ -25,7 +25,7 @@ export default function CheckoutFlow() {
 
         {/* Main Offer */}
         <CheckoutProduct 
-          title="AI Marketing Profile Setup"
+          title="AI Business Manager Setup"
           description="Get started with your AI-powered marketing transformation"
           features={[
             "Custom AI Marketing Profile",
