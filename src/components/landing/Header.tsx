@@ -27,27 +27,55 @@ export default function Header() {
     {
       label: "Solutions",
       submenu: [
-        { label: "AI-Powered Voice Agents", path: "/voice-agents" },
-        { label: "Intelligent Call Routing", path: "/call-routing" },
+        { label: "AI Voice Agents", path: "/voice-agents" },
+        { label: "Call Routing", path: "/call-routing" },
         { label: "Task Automation", path: "/task-automation" },
+        { label: "Actionable Insights", path: "/actionable-insights" },
+        { label: "Cost-Effective Call Centers", path: "/cost-effective-call-centers" },
+        { label: "HIPAA Compliant", path: "/hipaa-compliant" },
+        { label: "Proactive Engagement", path: "/proactive-engagement" }
       ]
     },
     {
       label: "Industries",
       submenu: [
-        { label: "Healthcare", path: "/industries/healthcare" },
-        { label: "Professional Services", path: "/industries/professional-services" },
-        { label: "Retail & E-commerce", path: "/industries/retail" },
+        { label: "Hospitals & Health Systems", path: "/industries/hospitals-health-systems" },
+        { label: "Clinics & Private Practices", path: "/industries/clinics-private-practices" },
+        { label: "Telehealth Providers", path: "/industries/telehealth-providers" },
+        { label: "Specialty Care", path: "/industries/specialty-care" },
+        { label: "Pharmaceuticals", path: "/industries/pharmaceuticals" },
+        { label: "Mental Health", path: "/mental-health" },
+        { label: "Primary Care", path: "/primary-care" },
+        { label: "Elderly Care", path: "/elderly-care" },
+        { label: "Dental Care", path: "/dental-care" },
+        { label: "Emergency Services", path: "/emergency-services" },
+        { label: "Home Healthcare", path: "/home-healthcare" },
+        { label: "Hospital Operations", path: "/hospital-operations" },
+        { label: "OB/GYN", path: "/obgyn" },
+        { label: "Oncology", path: "/oncology" },
+        { label: "Pediatrics", path: "/pediatrics" },
+        { label: "Rehabilitation", path: "/rehabilitation" },
+        { label: "Surgical Practices", path: "/surgical-practices" }
       ]
     },
     {
       label: "Resources",
       submenu: [
         { label: "Case Studies", path: "/case-studies" },
+        { label: "Whitepapers", path: "/whitepapers" },
         { label: "Blog", path: "/blog" },
-        { label: "FAQs", path: "/faqs" },
+        { label: "FAQs", path: "/faqs" }
       ]
     },
+    {
+      label: "Company",
+      submenu: [
+        { label: "About Us", path: "/about" },
+        { label: "Why Choose Us", path: "/why-us" },
+        { label: "Our Team", path: "/team" },
+        { label: "Contact", path: "/contact" }
+      ]
+    }
   ];
 
   return (
@@ -118,10 +146,10 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden fixed inset-x-0 top-16 bg-white border-t shadow-lg animate-slideDown">
-            <div className="max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <nav className="md:hidden fixed inset-x-0 top-16 bg-white border-t shadow-lg animate-slideDown max-h-[80vh] overflow-y-auto">
+            <div className="divide-y">
               {menuItems.map((item, index) => (
-                <div key={index} className="border-b">
+                <div key={index}>
                   <button
                     onClick={() => setActiveSubmenu(activeSubmenu === item.label ? null : item.label)}
                     className="flex items-center justify-between w-full p-4"
@@ -136,7 +164,7 @@ export default function Header() {
                       {item.submenu.map((subItem, subIndex) => (
                         <button
                           key={subIndex}
-                          className="block w-full text-left py-2 px-4 text-sm"
+                          className="block w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded"
                           onClick={() => handleNavigation(subItem.path)}
                         >
                           {subItem.label}
