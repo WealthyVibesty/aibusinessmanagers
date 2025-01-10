@@ -45,6 +45,19 @@ import VoiceAgents from "@/pages/solutions/VoiceAgents";
 import CallRouting from "@/pages/solutions/CallRouting";
 import TaskAutomation from "@/pages/solutions/TaskAutomation";
 import PatientSupport from "@/pages/PatientSupport";
+import WhyHealthAI from "@/pages/WhyHealthAI";
+import OurTechnology from "@/pages/OurTechnology";
+import AIFutureHealthcare from "@/pages/AIFutureHealthcare";
+import Careers from "@/pages/Careers";
+import Mission from "@/pages/Mission";
+import Partners from "@/pages/Partners";
+import Press from "@/pages/Press";
+import ContentLibrary from "@/pages/ContentLibrary";
+import SupportCenter from "@/pages/SupportCenter";
+import Contact from "@/pages/Contact";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import TermsOfUse from "@/pages/TermsOfUse";
+import SiteMap from "@/pages/SiteMap";
 
 function App() {
   useEffect(() => {
