@@ -21,6 +21,12 @@ export default function VoiceAgentDemo() {
     onDisconnect: () => {
       console.log("Disconnected from ElevenLabs");
       setIsStarted(false);
+      
+      // Reset call started attribute
+      const widget = document.querySelector('elevenlabs-convai');
+      if (widget) {
+        widget.setAttribute('data-call-started', 'false');
+      }
     },
     onError: (error) => {
       console.error("ElevenLabs error:", error);
@@ -51,10 +57,16 @@ export default function VoiceAgentDemo() {
       
       // Start the conversation
       await conversation.startSession({
-        agentId: "default_medical_assistant", // Replace with your actual agent ID
+        agentId: "default_medical_assistant",
       });
       
       setIsStarted(true);
+
+      // Set call started attribute
+      const widget = document.querySelector('elevenlabs-convai');
+      if (widget) {
+        widget.setAttribute('data-call-started', 'true');
+      }
     } catch (error) {
       console.error("Failed to start conversation:", error);
       toast({

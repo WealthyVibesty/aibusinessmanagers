@@ -51,6 +51,18 @@ function App() {
         widget.classList.add('hidden');
       };
       widget.appendChild(closeBtn);
+
+      // Auto-hide widget after 7 seconds if call not started
+      const hideTimeout = setTimeout(() => {
+        const isCallStarted = widget.getAttribute('data-call-started') === 'true';
+        if (!isCallStarted) {
+          console.log('Auto-hiding AI assistant after 7 seconds of inactivity');
+          widget.classList.add('hidden');
+        }
+      }, 7000);
+
+      // Cleanup timeout on unmount
+      return () => clearTimeout(hideTimeout);
     }
   }, []);
 
