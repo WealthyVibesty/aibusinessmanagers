@@ -54,7 +54,7 @@ export default function SupportCenter() {
             <p className="mb-4">Our support team is available 24/7 to help you with any questions or issues.</p>
             <div className="space-y-2">
               <p className="text-sm">Email: support@example.com</p>
-              <p className="text-sm">Phone: 1-800-SUPPORT</p>
+              <p className="text-sm">Phone: 1-954-604-0909</p>
               <p className="text-sm">Hours: 24/7</p>
             </div>
           </CardContent>

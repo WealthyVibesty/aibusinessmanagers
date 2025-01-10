@@ -68,7 +68,7 @@ export default function Contact() {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-muted-foreground" />
-                <span>1-800-SUPPORT</span>
+                <span>1-954-604-0909</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MessageSquare className="h-5 w-5 text-muted-foreground" />
