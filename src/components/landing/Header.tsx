@@ -90,16 +90,6 @@ export default function Header() {
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Button
-            variant="outline"
-            size="sm"
-            className="absolute top-2 left-1/2 transform -translate-x-1/2 text-sm rounded-full hover:bg-primary hover:text-white transition-all group"
-            onClick={handleAIAssistant}
-          >
-            Have Questions? Talk to AI
-            <Mic className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-          </Button>
-
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
@@ -141,6 +131,18 @@ export default function Header() {
                 </div>
               </div>
             ))}
+            
+            {/* AI Assistant Button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-sm hover:bg-primary/10 rounded-full"
+              onClick={handleAIAssistant}
+            >
+              Have Questions? Talk to AI
+              <Mic className="ml-2 h-4 w-4" />
+            </Button>
+
             <Button 
               onClick={handleJoinTeam}
               size="lg"
