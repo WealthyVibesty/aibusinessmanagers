@@ -9,19 +9,22 @@ interface SEOProps {
 export default function SEO({ title, description, path = "" }: SEOProps) {
   const baseUrl = "https://your-domain.com";
   const url = `${baseUrl}${path}`;
-  const imageUrl = `${baseUrl}/lovable-uploads/ab5a6229-a3bb-476d-9eb2-5452bf6f7a52.png`;
+  const imageUrl = `${baseUrl}/lovable-uploads/cd3826ee-3df6-4947-b0b1-a5ff9f03f4cb.png`;
+
+  // Optimize title with relevant keywords
+  const formattedTitle = `${title} | AI Healthcare Solutions`;
 
   return (
     <Helmet>
-      <title>{`${title} | Healthcare AI Solutions`}</title>
+      <title>{formattedTitle}</title>
       <meta name="description" content={description} />
       
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={formattedTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageUrl} />
       <meta property="og:url" content={url} />
       
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={formattedTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
       <link rel="canonical" href={url} />

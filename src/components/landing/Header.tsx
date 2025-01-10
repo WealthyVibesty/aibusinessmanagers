@@ -90,15 +90,15 @@ export default function Header() {
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* Updated Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-3" onClick={() => setIsMenuOpen(false)}>
               <img 
-                src="/lovable-uploads/ab5a6229-a3bb-476d-9eb2-5452bf6f7a52.png" 
-                alt="AI Business Managers" 
-                className="h-10 w-auto"
+                src="/lovable-uploads/cd3826ee-3df6-4947-b0b1-a5ff9f03f4cb.png" 
+                alt="AI Healthcare Solutions" 
+                className="h-12 w-auto"
               />
-              <span className="font-semibold text-xl text-gray-900">AI Business Managers</span>
+              <span className="font-semibold text-xl text-gray-900">AI Healthcare</span>
             </Link>
           </div>
 
