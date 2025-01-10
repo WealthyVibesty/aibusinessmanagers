@@ -68,11 +68,11 @@ export default function Header() {
     setActiveSubmenu(activeSubmenu === label ? null : label);
   };
 
-  const handleJoinTeam = () => {
+  const handleGetDemo = () => {
     const widget = document.querySelector('elevenlabs-convai');
     if (widget) {
       widget.classList.remove('hidden');
-      console.log('Opening AI assistant from Join Team button');
+      console.log('Opening AI assistant for demo');
     }
   };
 
@@ -128,7 +128,7 @@ export default function Header() {
           {/* Right Side Actions */}
           <div className="hidden md:flex items-center">
             <Button 
-              onClick={handleJoinTeam}
+              onClick={handleGetDemo}
               className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-md flex items-center gap-2 transition-all"
             >
               Join Team
@@ -188,10 +188,10 @@ export default function Header() {
               ))}
               <div className="p-4">
                 <Button 
-                  onClick={handleJoinTeam}
+                  onClick={handleGetDemo}
                   className="w-full justify-center"
                 >
-                  Join Team
+                  Get Demo
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
