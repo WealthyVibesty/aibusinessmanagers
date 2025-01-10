@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Building2, Stethoscope, BookOpen, Users, MessageSquare, ArrowRight, Mic } from "lucide-react";
+import { Menu, X, ChevronDown, Building2, Stethoscope, BookOpen, Users, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -76,14 +76,6 @@ export default function Header() {
     }
   };
 
-  const handleAIAssistant = () => {
-    const widget = document.querySelector('elevenlabs-convai');
-    if (widget) {
-      widget.classList.toggle('hidden');
-      console.log('Toggling AI assistant from header button');
-    }
-  };
-
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-transparent"
@@ -134,17 +126,7 @@ export default function Header() {
           </nav>
 
           {/* Right Side Actions */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-2"
-              onClick={handleAIAssistant}
-            >
-              Have Questions? Talk to AI
-              <Mic className="h-4 w-4" />
-            </Button>
-
+          <div className="hidden md:flex items-center">
             <Button 
               onClick={handleJoinTeam}
               className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-md flex items-center gap-2 transition-all"
@@ -204,15 +186,7 @@ export default function Header() {
                   )}
                 </div>
               ))}
-              <div className="p-4 space-y-4">
-                <Button
-                  variant="ghost"
-                  className="w-full justify-center"
-                  onClick={handleAIAssistant}
-                >
-                  Have Questions? Talk to AI
-                  <Mic className="ml-2 h-4 w-4" />
-                </Button>
+              <div className="p-4">
                 <Button 
                   onClick={handleJoinTeam}
                   className="w-full justify-center"
