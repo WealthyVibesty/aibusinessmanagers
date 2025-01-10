@@ -54,6 +54,8 @@ import Partners from "@/pages/Partners";
 import Press from "@/pages/Press";
 import PatientSupport from "@/pages/PatientSupport";
 import VoiceAgents from "@/pages/solutions/VoiceAgents";
+import CallRouting from "@/pages/solutions/CallRouting";
+import TaskAutomation from "@/pages/solutions/TaskAutomation";
 
 function App() {
   useEffect(() => {
@@ -80,6 +82,8 @@ function App() {
               <Route path="/" element={<VoiceAgentsMarketplace />} />
               <Route path="/landing" element={<Landing />} />
               <Route path="/voice-agents" element={<VoiceAgents />} />
+              <Route path="/call-routing" element={<CallRouting />} />
+              <Route path="/task-automation" element={<TaskAutomation />} />
               <Route path="/patient-support" element={<PatientSupport />} />
               <Route path="/telemedicine" element={<TelemedicineLanding />} />
               <Route path="/dermatology" element={<DermatologyLanding />} />
