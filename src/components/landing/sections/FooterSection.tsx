@@ -2,47 +2,66 @@ import { Link } from "react-router-dom";
 import { Linkedin } from "lucide-react";
 
 const FooterSection = () => {
-  const company = [
-    { name: "Why AI Business Managers", path: "/why-healthai" },
-    { name: "Our Technology", path: "/technology" },
-    { name: "AI's Future in Healthcare", path: "/ai-future" },
-    { name: "Careers", path: "/careers" },
-    { name: "Mission", path: "/mission" },
-    { name: "Partners", path: "/partners" },
-    { name: "Press", path: "/press" }
+  const solutions = [
+    { name: "AI Voice Agents", path: "/voice-agents" },
+    { name: "Call Routing", path: "/call-routing" },
+    { name: "Task Automation", path: "/task-automation" },
+    { name: "Actionable Insights", path: "/actionable-insights" },
+    { name: "Cost-Effective Call Centers", path: "/cost-effective-call-centers" },
+    { name: "HIPAA Compliant", path: "/hipaa-compliant" },
+    { name: "Proactive Engagement", path: "/proactive-engagement" }
+  ];
+
+  const industries = [
+    { name: "Hospitals & Health Systems", path: "/industries/hospitals-health-systems" },
+    { name: "Clinics & Private Practices", path: "/industries/clinics-private-practices" },
+    { name: "Telehealth Providers", path: "/industries/telehealth-providers" },
+    { name: "Specialty Care", path: "/industries/specialty-care" },
+    { name: "Pharmaceuticals", path: "/industries/pharmaceuticals" }
   ];
 
   const resources = [
-    { name: "Content Library", path: "/content-library" },
-    { 
-      name: "Support Center", 
-      path: "#",
-      onClick: () => {
-        const widget = document.querySelector('elevenlabs-convai');
-        if (widget) {
-          widget.classList.remove('hidden');
-          console.log('Opening AI assistant from support center link');
-        }
-      }
-    },
-    { name: "Contact", path: "/contact" },
-    { name: "Privacy Policy", path: "/privacy-policy" },
-    { name: "Terms of Use", path: "/terms-of-use" },
-    { name: "Site Map", path: "/sitemap" }
+    { name: "Case Studies", path: "/case-studies" },
+    { name: "Whitepapers", path: "/whitepapers" },
+    { name: "Blog", path: "/blog" },
+    { name: "FAQs", path: "/faqs" }
+  ];
+
+  const company = [
+    { name: "About Us", path: "/about" },
+    { name: "Why Choose Us", path: "/why-us" },
+    { name: "Our Team", path: "/team" },
+    { name: "Contact", path: "/contact" }
   ];
 
   return (
     <footer className="bg-black text-gray-300 py-16 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div>
-            <h3 className="text-white font-semibold text-xl mb-6">Company</h3>
+            <h3 className="text-white font-semibold text-xl mb-6">Solutions</h3>
             <ul className="space-y-4">
-              {company.map((item) => (
+              {solutions.map((item) => (
                 <li key={item.path}>
                   <Link 
                     to={item.path}
-                    className="hover:text-white transition-colors duration-200 text-lg"
+                    className="hover:text-white transition-colors duration-200"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold text-xl mb-6">Industries</h3>
+            <ul className="space-y-4">
+              {industries.map((item) => (
+                <li key={item.path}>
+                  <Link 
+                    to={item.path}
+                    className="hover:text-white transition-colors duration-200"
                   >
                     {item.name}
                   </Link>
@@ -56,21 +75,28 @@ const FooterSection = () => {
             <ul className="space-y-4">
               {resources.map((item) => (
                 <li key={item.path}>
-                  {item.onClick ? (
-                    <button
-                      onClick={item.onClick}
-                      className="hover:text-white transition-colors duration-200 text-lg text-left w-full"
-                    >
-                      {item.name}
-                    </button>
-                  ) : (
-                    <Link 
-                      to={item.path}
-                      className="hover:text-white transition-colors duration-200 text-lg"
-                    >
-                      {item.name}
-                    </Link>
-                  )}
+                  <Link 
+                    to={item.path}
+                    className="hover:text-white transition-colors duration-200"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold text-xl mb-6">Company</h3>
+            <ul className="space-y-4">
+              {company.map((item) => (
+                <li key={item.path}>
+                  <Link 
+                    to={item.path}
+                    className="hover:text-white transition-colors duration-200"
+                  >
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
