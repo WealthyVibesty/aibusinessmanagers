@@ -1,88 +1,71 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Bot, Clock, ChartBar, Users } from "lucide-react";
+import SolutionHero from "@/components/solutions/SolutionHero";
+import FeatureList from "@/components/solutions/FeatureList";
+import HowItWorks from "@/components/solutions/HowItWorks";
 
 export default function TaskAutomation() {
+  const features = [
+    {
+      title: "Appointment Management",
+      description: "Automate reminders and prescription refill requests"
+    },
+    {
+      title: "Insurance Verification",
+      description: "Handle eligibility checks and billing inquiries automatically"
+    },
+    {
+      title: "Follow-up System",
+      description: "Send personalized follow-ups via multiple channels"
+    }
+  ];
+
+  const steps = [
+    {
+      title: "Task Identification",
+      description: "AI identifies repetitive tasks in your workflow"
+    },
+    {
+      title: "Automation Setup",
+      description: "Tasks are automated with precision and reliability"
+    },
+    {
+      title: "Staff Optimization",
+      description: "Your team focuses on high-value patient care"
+    }
+  ];
+
+  const benefits = [
+    {
+      title: "50% Less Workload",
+      description: "Dramatically reduce manual task burden on staff"
+    },
+    {
+      title: "Better Adherence",
+      description: "Improve patient compliance with automated reminders"
+    },
+    {
+      title: "Cost Savings",
+      description: "Save time and money by automating routine processes"
+    }
+  ];
+
   return (
-    <div className="container mx-auto px-4 pt-24 pb-16">
-      {/* Hero Section */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Task Automation: Free Your Team from Repetitive Work
-        </h1>
-        <p className="text-xl text-gray-600 mb-8">
-          Automate routine tasks like appointment reminders, insurance checks, and follow-ups.
-        </p>
-        <Button size="lg" className="gap-2">
-          See How It Works <ArrowRight className="w-4 h-4" />
-        </Button>
-      </div>
-
-      {/* Key Features */}
-      <div className="grid md:grid-cols-3 gap-8 mb-16">
-        <div className="p-6 border rounded-lg shadow-sm">
-          <Clock className="w-12 h-12 text-primary mb-4" />
-          <h3 className="text-xl font-semibold mb-2">Appointment Management</h3>
-          <p className="text-gray-600">
-            Automates appointment reminders and prescription refill requests.
-          </p>
-        </div>
-        <div className="p-6 border rounded-lg shadow-sm">
-          <ChartBar className="w-12 h-12 text-primary mb-4" />
-          <h3 className="text-xl font-semibold mb-2">Insurance Processing</h3>
-          <p className="text-gray-600">
-            Handles insurance eligibility checks and billing inquiries.
-          </p>
-        </div>
-        <div className="p-6 border rounded-lg shadow-sm">
-          <Users className="w-12 h-12 text-primary mb-4" />
-          <h3 className="text-xl font-semibold mb-2">Patient Follow-ups</h3>
-          <p className="text-gray-600">
-            Sends personalized follow-ups via voice, SMS, or email.
-          </p>
-        </div>
-      </div>
-
-      {/* Benefits */}
-      <div className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">Benefits</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="p-6 border rounded-lg">
-            <Bot className="w-8 h-8 text-primary mb-4" />
-            <h3 className="font-semibold mb-2">50% Workload Reduction</h3>
-            <p className="text-gray-600">
-              Reduces staff workload by automating routine tasks.
-            </p>
-          </div>
-          <div className="p-6 border rounded-lg">
-            <Users className="w-8 h-8 text-primary mb-4" />
-            <h3 className="font-semibold mb-2">Improved Adherence</h3>
-            <p className="text-gray-600">
-              Improves patient adherence with timely reminders.
-            </p>
-          </div>
-          <div className="p-6 border rounded-lg">
-            <Clock className="w-8 h-8 text-primary mb-4" />
-            <h3 className="font-semibold mb-2">Time & Cost Savings</h3>
-            <p className="text-gray-600">
-              Saves time and money by automating manual processes.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="text-center bg-primary/5 rounded-xl p-12">
-        <h2 className="text-3xl font-bold mb-4">
-          Ready to Automate Your Routine Tasks?
-        </h2>
-        <p className="text-xl text-gray-600 mb-8">
-          See how our task automation can transform your healthcare operations.
-        </p>
-        <Button size="lg" className="gap-2">
-          See How It Works <ArrowRight className="w-4 h-4" />
-        </Button>
-      </div>
+    <div className="min-h-screen">
+      <SolutionHero 
+        title="Task Automation: Free Your Team from Repetitive Work"
+        subtitle="Automate routine tasks like appointment reminders, insurance checks, and follow-ups."
+      />
+      
+      <FeatureList 
+        title="Key Features"
+        features={features}
+      />
+      
+      <HowItWorks steps={steps} />
+      
+      <FeatureList 
+        title="Benefits"
+        features={benefits}
+      />
     </div>
   );
 }

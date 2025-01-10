@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "@/components/landing/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import Landing from "@/pages/Landing";
@@ -10,6 +10,8 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
 import AIVoiceAgents from "@/pages/solutions/AIVoiceAgents";
+import CallRouting from "@/pages/solutions/CallRouting";
+import TaskAutomation from "@/pages/solutions/TaskAutomation";
 import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
 import FooterSection from "@/components/landing/sections/FooterSection";
 
@@ -38,6 +40,8 @@ function App() {
               <Route path="/" element={<VoiceAgentsMarketplace />} />
               <Route path="/landing" element={<Landing />} />
               <Route path="/voice-agents" element={<AIVoiceAgents />} />
+              <Route path="/call-routing" element={<CallRouting />} />
+              <Route path="/task-automation" element={<TaskAutomation />} />
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
               
