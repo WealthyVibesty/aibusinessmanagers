@@ -1,16 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, ArrowRight, Phone, Calendar, Clock, Users, Shield, ChevronDown } from "lucide-react";
+import Header from "@/components/landing/Header";
+import VoiceAgentDemo from "@/components/landing/sections/telemedicine/VoiceAgentDemo";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Check, ArrowRight, Phone, Calendar, Clock, Users, Shield } from "lucide-react";
 
 export default function TelemedicineLanding() {
   return (
     <div className="min-h-screen">
+      <Header />
+      
       {/* Hero Section */}
       <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto">
@@ -57,6 +61,9 @@ export default function TelemedicineLanding() {
           </div>
         </div>
       </section>
+
+      {/* Voice Agent Demo Section */}
+      <VoiceAgentDemo />
 
       {/* Solution Section */}
       <section className="py-16 px-6 bg-gradient-to-b from-white to-blue-50">
