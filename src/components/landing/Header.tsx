@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, Building2, Stethoscope, BookOpen, Users, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
+import ContactCaptureDialog from "@/components/ContactCaptureDialog";
+import { useContactCapture } from "@/hooks/useContactCapture";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { isDialogOpen, handleButtonClick, handleDialogClose, handleSuccess } = useContactCapture();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,6 +72,7 @@ export default function Header() {
   };
 
   const handleGetDemo = () => {
+    navigate("/checkout");
     const widget = document.querySelector('elevenlabs-convai');
     if (widget) {
       widget.classList.remove('hidden');
@@ -100,8 +104,7 @@ export default function Header() {
               <div key={index} className="relative group">
                 <button
                   className="text-gray-600 hover:text-primary transition-colors flex items-center gap-2 group py-2 text-sm font-medium"
-                  aria-expanded={isMenuOpen}
-                  aria-haspopup="true"
+                  onClick={() => handleButtonClick(`/${item.label.toLowerCase()}`)}
                 >
                   {item.icon}
                   {item.label}
@@ -110,14 +113,13 @@ export default function Header() {
                 <div className="absolute left-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <div className="py-1" role="menu" aria-orientation="vertical">
                     {item.submenu.map((subItem, subIndex) => (
-                      <Link
+                      <button
                         key={subIndex}
-                        to={subItem.path}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
-                        role="menuitem"
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                        onClick={() => handleButtonClick(subItem.path)}
                       >
                         {subItem.label}
-                      </Link>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -131,7 +133,7 @@ export default function Header() {
               onClick={handleGetDemo}
               className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-md flex items-center gap-2 transition-all"
             >
-              Join Team
+              Pay Now
               <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
@@ -173,14 +175,16 @@ export default function Header() {
                   {activeSubmenu === item.label && (
                     <div className="bg-gray-50 px-4 py-2">
                       {item.submenu.map((subItem, subIndex) => (
-                        <Link
+                        <button
                           key={subIndex}
-                          to={subItem.path}
-                          className="block py-2 px-4 text-sm text-gray-600 hover:text-primary"
-                          onClick={() => setIsMenuOpen(false)}
+                          className="block w-full text-left py-2 px-4 text-sm text-gray-600 hover:text-primary"
+                          onClick={() => {
+                            setIsMenuOpen(false);
+                            handleButtonClick(subItem.path);
+                          }}
                         >
                           {subItem.label}
-                        </Link>
+                        </button>
                       ))}
                     </div>
                   )}
@@ -191,7 +195,7 @@ export default function Header() {
                   onClick={handleGetDemo}
                   className="w-full justify-center"
                 >
-                  Get Demo
+                  Pay Now
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -199,6 +203,12 @@ export default function Header() {
           </nav>
         )}
       </div>
+
+      <ContactCaptureDialog 
+        isOpen={isDialogOpen}
+        onClose={handleDialogClose}
+        onSuccess={handleSuccess}
+      />
     </header>
   );
 }
