@@ -28,7 +28,7 @@ export default function CheckoutFlow() {
           title="AI Business Managers Setup"
           description="Get started with your AI-powered marketing transformation"
           features={[
-            "Custom AI Marketing Profile",
+            "Custom AI Business Profile",
             "AI Voice Agent Setup",
             "Workflow Automation",
             "1-Hour Strategy Consultation"

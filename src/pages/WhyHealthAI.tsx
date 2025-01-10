@@ -30,7 +30,7 @@ export default function WhyHealthAI() {
       <Header />
       <div className="container px-4 py-16 mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h1 className="text-4xl font-bold tracking-tight mb-4">Why Choose AI Marketing Profile?</h1>
+          <h1 className="text-4xl font-bold tracking-tight mb-4">Why Choose AI Business Managers?</h1>
           <p className="text-xl text-muted-foreground">
             We're revolutionizing business communication through artificial intelligence, making it more efficient, effective, and accessible for companies of all sizes.
           </p>
