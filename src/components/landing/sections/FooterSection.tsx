@@ -3,31 +3,18 @@ import { Linkedin } from "lucide-react";
 
 const FooterSection = () => {
   const industries = [
-    { name: "Telemedicine", path: "/telemedicine" },
-    { name: "Mental Health", path: "/mental-health" },
-    { name: "Elderly Care", path: "/elderly-care" },
-    { name: "Primary Care", path: "/primary-care" },
-    { name: "Chronic Disease", path: "/chronic-disease" },
-    { name: "Pharmaceuticals", path: "/pharmaceuticals" },
-    { name: "Health Insurance", path: "/health-insurance" },
-    { name: "Hospital Operations", path: "/hospital-operations" },
-    { name: "Public Health", path: "/public-health" },
-    { name: "Rehabilitation", path: "/rehabilitation" },
-    { name: "Medical Research", path: "/medical-research" },
-    { name: "Home Healthcare", path: "/home-healthcare" },
-    { name: "Pediatrics", path: "/pediatrics" },
-    { name: "Dental Care", path: "/dental-care" },
-    { name: "Nutrition & Wellness", path: "/nutrition-wellness" },
-    { name: "Emergency Services", path: "/emergency-services" },
-    { name: "Surgical Practices", path: "/surgical-practices" },
-    { name: "Diagnostic Imaging", path: "/diagnostic-imaging" },
-    { name: "Cardiology", path: "/cardiology" },
-    { name: "Dermatology", path: "/dermatology" },
-    { name: "OB/GYN", path: "/obgyn" }
+    { name: "Hospitals & Health Systems", path: "/industries/hospitals-health-systems" },
+    { name: "Clinics & Private Practices", path: "/industries/clinics-private-practices" },
+    { name: "Telehealth Providers", path: "/industries/telehealth-providers" },
+    { name: "Specialty Care", path: "/industries/specialty-care" },
+    { name: "Pharmaceuticals", path: "/industries/pharmaceuticals" }
   ];
 
   const resources = [
-    { name: "Content Library", path: "/content-library" },
+    { name: "Case Studies", path: "/case-studies" },
+    { name: "Whitepapers", path: "/whitepapers" },
+    { name: "Blog", path: "/blog" },
+    { name: "FAQs", path: "/faqs" },
     { 
       name: "Support Center", 
       path: "#",
@@ -39,20 +26,14 @@ const FooterSection = () => {
         }
       }
     },
-    { name: "Contact", path: "/contact" },
-    { name: "Privacy Policy", path: "/privacy-policy" },
-    { name: "Terms of Use", path: "/terms-of-use" },
-    { name: "Site Map", path: "/sitemap" },
+    { name: "Contact", path: "/contact" }
   ];
 
   const company = [
-    { name: "Why AI Business Managers", path: "/why-healthai" },
-    { name: "Our Technology", path: "/technology" },
-    { name: "AI's Future in Healthcare", path: "/ai-future" },
-    { name: "Careers", path: "/careers" },
-    { name: "Mission", path: "/mission" },
-    { name: "Partners", path: "/partners" },
-    { name: "Press", path: "/press" }
+    { name: "About Us", path: "/about" },
+    { name: "Why Choose Us", path: "/why-us" },
+    { name: "Our Team", path: "/team" },
+    { name: "Contact", path: "/contact" }
   ];
 
   return (
