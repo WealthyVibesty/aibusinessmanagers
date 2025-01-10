@@ -72,8 +72,17 @@
   color: transparent;
 }
 
+/* Add page content spacing */
+.page-content {
+  padding-top: calc(5rem + 32px); /* Increased top padding to account for fixed header */
+}
+
 @media (min-width: 768px) {
   #root {
-    padding: 2rem;
+    padding: 0; /* Remove default padding */
+  }
+  
+  .page-content {
+    padding-top: calc(5rem + 48px); /* Slightly more space on desktop */
   }
 }
