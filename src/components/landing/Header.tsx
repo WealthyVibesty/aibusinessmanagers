@@ -2,15 +2,12 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, Building2, Stethoscope, BookOpen, Users, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
-import ContactCaptureDialog from "@/components/ContactCaptureDialog";
-import { useContactCapture } from "@/hooks/useContactCapture";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const navigate = useNavigate();
-  const { isDialogOpen, handleButtonClick, handleDialogClose, handleSuccess } = useContactCapture();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -104,7 +101,7 @@ export default function Header() {
               <div key={index} className="relative group">
                 <button
                   className="text-gray-600 hover:text-primary transition-colors flex items-center gap-2 group py-2 text-sm font-medium"
-                  onClick={() => handleButtonClick(`/${item.label.toLowerCase()}`)}
+                  onClick={() => navigate(item.submenu[0].path)}
                 >
                   {item.icon}
                   {item.label}
@@ -116,7 +113,7 @@ export default function Header() {
                       <button
                         key={subIndex}
                         className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
-                        onClick={() => handleButtonClick(subItem.path)}
+                        onClick={() => navigate(subItem.path)}
                       >
                         {subItem.label}
                       </button>
@@ -180,7 +177,7 @@ export default function Header() {
                           className="block w-full text-left py-2 px-4 text-sm text-gray-600 hover:text-primary"
                           onClick={() => {
                             setIsMenuOpen(false);
-                            handleButtonClick(subItem.path);
+                            navigate(subItem.path);
                           }}
                         >
                           {subItem.label}
@@ -203,12 +200,6 @@ export default function Header() {
           </nav>
         )}
       </div>
-
-      <ContactCaptureDialog 
-        isOpen={isDialogOpen}
-        onClose={handleDialogClose}
-        onSuccess={handleSuccess}
-      />
     </header>
   );
 }
