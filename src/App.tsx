@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Header from "@/components/landing/Header";
 import Landing from "@/pages/Landing";
 import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
@@ -72,7 +73,8 @@ function App() {
       <Router>
         <ScrollToTop />
         <div className="flex flex-col min-h-screen">
-          <div className="flex-grow">
+          <Header />
+          <div className="flex-grow page-content">
             <Routes>
               <Route path="/" element={<VoiceAgentsMarketplace />} />
               <Route path="/landing" element={<Landing />} />
