@@ -56,6 +56,7 @@ import PatientSupport from "@/pages/PatientSupport";
 import VoiceAgents from "@/pages/solutions/VoiceAgents";
 import CallRouting from "@/pages/solutions/CallRouting";
 import TaskAutomation from "@/pages/solutions/TaskAutomation";
+import BookDemo from "@/pages/BookDemo";
 
 function App() {
   useEffect(() => {
@@ -141,6 +142,7 @@ function App() {
               </Route>
               <Route path="/surgical-practices" element={<SurgicalPracticesLanding />} />
               <Route path="/diagnostic-imaging" element={<DiagnosticImagingLanding />} />
+              <Route path="/book-demo" element={<BookDemo />} />
             </Routes>
           </div>
           <FooterSection />

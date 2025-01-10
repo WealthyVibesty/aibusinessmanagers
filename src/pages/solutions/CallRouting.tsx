@@ -1,8 +1,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, PhoneCall, Users, Clock, BarChart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function CallRouting() {
+  const navigate = useNavigate();
+
   return (
     <div className="container mx-auto px-4 pt-24 pb-16">
       {/* Hero Section */}
@@ -13,7 +16,11 @@ export default function CallRouting() {
         <p className="text-xl text-gray-600 mb-8">
           Route calls to the right person, every time, with AI-powered precision.
         </p>
-        <Button size="lg" className="gap-2">
+        <Button 
+          size="lg" 
+          className="gap-2"
+          onClick={() => navigate("/book-demo")}
+        >
           Book a Free Demo <ArrowRight className="w-4 h-4" />
         </Button>
       </div>
