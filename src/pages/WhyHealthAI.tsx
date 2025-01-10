@@ -1,34 +1,37 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Brain, Heart, Zap } from "lucide-react";
+import { ArrowRight, Brain, MessageSquare, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import Header from "@/components/landing/Header";
+import FooterSection from "@/components/landing/sections/FooterSection";
 
 export default function WhyHealthAI() {
   const benefits = [
     {
       icon: <Brain className="w-12 h-12 text-primary" />,
-      title: "Advanced AI Technology",
-      description: "Leveraging cutting-edge artificial intelligence to transform healthcare delivery and patient outcomes."
+      title: "Advanced Voice AI Technology",
+      description: "Leveraging cutting-edge artificial intelligence to transform business communication and customer service."
     },
     {
-      icon: <Heart className="w-12 h-12 text-primary" />,
-      title: "Patient-Centered Care",
-      description: "Putting patients first with personalized healthcare solutions and improved accessibility."
+      icon: <MessageSquare className="w-12 h-12 text-primary" />,
+      title: "24/7 Customer Support",
+      description: "Provide round-the-clock support with intelligent voice agents that understand and respond naturally."
     },
     {
       icon: <Zap className="w-12 h-12 text-primary" />,
-      title: "Rapid Innovation",
-      description: "Continuously evolving our technology to meet healthcare's most pressing challenges."
+      title: "Rapid Implementation",
+      description: "Get up and running quickly with our easy-to-deploy voice agent solutions."
     }
   ];
 
   return (
     <div className="min-h-screen bg-background">
+      <Header />
       <div className="container px-4 py-16 mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h1 className="text-4xl font-bold tracking-tight mb-4">Why Choose HealthAI?</h1>
+          <h1 className="text-4xl font-bold tracking-tight mb-4">Why Choose AI Marketing Profile?</h1>
           <p className="text-xl text-muted-foreground">
-            We're revolutionizing healthcare through artificial intelligence, making it more accessible, efficient, and effective for everyone.
+            We're revolutionizing business communication through artificial intelligence, making it more efficient, effective, and accessible for companies of all sizes.
           </p>
         </div>
 
@@ -51,6 +54,7 @@ export default function WhyHealthAI() {
           </Button>
         </div>
       </div>
+      <FooterSection />
     </div>
   );
 }
