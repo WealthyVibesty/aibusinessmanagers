@@ -12,6 +12,10 @@ import { Toaster } from "@/components/ui/toaster";
 import AIVoiceAgents from "@/pages/solutions/AIVoiceAgents";
 import CallRouting from "@/pages/solutions/CallRouting";
 import TaskAutomation from "@/pages/solutions/TaskAutomation";
+import ActionableInsights from "@/pages/solutions/ActionableInsights";
+import CostEffectiveCallCenters from "@/pages/solutions/CostEffectiveCallCenters";
+import HIPAACompliant from "@/pages/solutions/HIPAACompliant";
+import ProactiveEngagement from "@/pages/solutions/ProactiveEngagement";
 import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
 import FooterSection from "@/components/landing/sections/FooterSection";
 
@@ -42,6 +46,10 @@ function App() {
               <Route path="/voice-agents" element={<AIVoiceAgents />} />
               <Route path="/call-routing" element={<CallRouting />} />
               <Route path="/task-automation" element={<TaskAutomation />} />
+              <Route path="/actionable-insights" element={<ActionableInsights />} />
+              <Route path="/cost-effective-call-centers" element={<CostEffectiveCallCenters />} />
+              <Route path="/hipaa-compliant" element={<HIPAACompliant />} />
+              <Route path="/proactive-engagement" element={<ProactiveEngagement />} />
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
               
