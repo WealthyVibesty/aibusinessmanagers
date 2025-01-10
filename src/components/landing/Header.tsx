@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Home, Phone, BookOpen, Users, MessageSquare, ArrowRight, Building2, Stethoscope, Brain, Activity } from "lucide-react";
+import { Menu, X, ChevronDown, Building2, Stethoscope, BookOpen, Users, MessageSquare, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -21,20 +21,24 @@ export default function Header() {
       label: "Solutions",
       icon: <Building2 className="w-4 h-4" />,
       submenu: [
-        { label: "Patient Support", path: "/patient-support" },
-        { label: "Telemedicine", path: "/telemedicine" },
-        { label: "Primary Care", path: "/primary-care" },
-        { label: "Mental Health", path: "/mental-health" },
+        { label: "AI-Powered Voice Agents", path: "/voice-agents" },
+        { label: "Intelligent Call Routing", path: "/call-routing" },
+        { label: "Task Automation", path: "/task-automation" },
+        { label: "Actionable Insights", path: "/insights" },
+        { label: "Cost-Effective Call Centers", path: "/call-centers" },
+        { label: "HIPAA-Compliant Solutions", path: "/hipaa-solutions" },
+        { label: "Proactive Patient Engagement", path: "/patient-engagement" },
       ]
     },
     {
-      label: "Specialties",
+      label: "Industries",
       icon: <Stethoscope className="w-4 h-4" />,
       submenu: [
-        { label: "Cardiology", path: "/cardiology" },
-        { label: "Dermatology", path: "/dermatology" },
-        { label: "OB/GYN", path: "/obgyn" },
-        { label: "Pediatrics", path: "/pediatrics" },
+        { label: "Hospitals & Health Systems", path: "/hospitals" },
+        { label: "Clinics & Private Practices", path: "/clinics" },
+        { label: "Telehealth Providers", path: "/telemedicine" },
+        { label: "Specialty Care Providers", path: "/specialty-care" },
+        { label: "Pharmaceuticals", path: "/pharmaceuticals" },
       ]
     },
     {
@@ -42,8 +46,9 @@ export default function Header() {
       icon: <BookOpen className="w-4 h-4" />,
       submenu: [
         { label: "Case Studies", path: "/case-studies" },
-        { label: "Content Library", path: "/content-library" },
-        { label: "Support Center", path: "/support" },
+        { label: "Whitepapers", path: "/whitepapers" },
+        { label: "Blog", path: "/blog" },
+        { label: "FAQs", path: "/faqs" },
       ]
     },
     {
@@ -51,8 +56,9 @@ export default function Header() {
       icon: <Users className="w-4 h-4" />,
       submenu: [
         { label: "About Us", path: "/about" },
+        { label: "Why Choose Us", path: "/why-us" },
+        { label: "Our Team", path: "/team" },
         { label: "Contact", path: "/contact" },
-        { label: "Careers", path: "/careers" },
       ]
     },
   ];
@@ -88,7 +94,7 @@ export default function Header() {
                   {item.label}
                   <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
                 </button>
-                <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="absolute left-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <div className="py-1" role="menu" aria-orientation="vertical">
                     {item.submenu.map((subItem, subIndex) => (
                       <Link
@@ -109,7 +115,7 @@ export default function Header() {
               size="lg"
               className="shadow-lg hover:shadow-xl transition-shadow ml-4"
             >
-              Get Started
+              Schedule Demo
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </nav>
@@ -158,7 +164,7 @@ export default function Header() {
                 className="w-full shadow-lg flex items-center justify-center"
                 size="lg"
               >
-                Get Started
+                Schedule Demo
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
