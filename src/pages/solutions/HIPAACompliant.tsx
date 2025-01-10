@@ -1,6 +1,7 @@
 import SolutionHero from "@/components/solutions/SolutionHero";
 import FeatureList from "@/components/solutions/FeatureList";
 import HowItWorks from "@/components/solutions/HowItWorks";
+import { Shield, Lock, FileCheck } from "lucide-react";
 
 export default function HIPAACompliant() {
   const features = [
@@ -53,6 +54,7 @@ export default function HIPAACompliant() {
       <SolutionHero 
         title="HIPAA-Compliant Solutions: Secure, Trusted AI for Healthcare"
         subtitle="Protect patient data and meet strict compliance standards with our secure AI solutions."
+        ctaText="Ready to Transform Your Customer Service?"
       />
       
       <FeatureList 

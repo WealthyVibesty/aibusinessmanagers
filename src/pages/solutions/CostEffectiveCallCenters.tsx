@@ -1,6 +1,7 @@
 import SolutionHero from "@/components/solutions/SolutionHero";
 import FeatureList from "@/components/solutions/FeatureList";
 import HowItWorks from "@/components/solutions/HowItWorks";
+import { DollarSign, TrendingUp, Users } from "lucide-react";
 
 export default function CostEffectiveCallCenters() {
   const features = [
@@ -53,6 +54,7 @@ export default function CostEffectiveCallCenters() {
       <SolutionHero 
         title="Cost-Effective Call Centers: Save Up to 70% with AI"
         subtitle="Replace expensive manual call handling with fast, accurate AI automation."
+        ctaText="Ready to Transform Your Customer Service?"
       />
       
       <FeatureList 
