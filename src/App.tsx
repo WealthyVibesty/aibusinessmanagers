@@ -44,6 +44,13 @@ import Contact from "@/pages/Contact";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfUse from "@/pages/TermsOfUse";
 import SiteMap from "@/pages/SiteMap";
+import WhyHealthAI from "@/pages/WhyHealthAI";
+import OurTechnology from "@/pages/OurTechnology";
+import AIFutureHealthcare from "@/pages/AIFutureHealthcare";
+import Careers from "@/pages/Careers";
+import Mission from "@/pages/Mission";
+import Partners from "@/pages/Partners";
+import Press from "@/pages/Press";
 
 function App() {
   useEffect(() => {
@@ -89,6 +96,15 @@ function App() {
               <Route path="/emergency-services" element={<EmergencyServicesLanding />} />
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
+              
+              {/* Company Pages */}
+              <Route path="/why-healthai" element={<WhyHealthAI />} />
+              <Route path="/technology" element={<OurTechnology />} />
+              <Route path="/ai-future" element={<AIFutureHealthcare />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/mission" element={<Mission />} />
+              <Route path="/partners" element={<Partners />} />
+              <Route path="/press" element={<Press />} />
               
               {/* Resource Pages */}
               <Route path="/content-library" element={<ContentLibrary />} />
