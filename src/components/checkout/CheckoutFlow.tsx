@@ -12,29 +12,33 @@ export default function CheckoutFlow() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
-        {/* Back Button */}
-        <Button
-          variant="ghost"
-          onClick={() => navigate('/')}
-          className="mb-4 group"
-          disabled={isLoading}
-        >
-          <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </Button>
+        {/* Back Button - Added mt-8 for extra top margin */}
+        <div className="pt-8">
+          <Button
+            variant="ghost"
+            onClick={() => navigate('/')}
+            className="group"
+            disabled={isLoading}
+          >
+            <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </Button>
+        </div>
 
-        {/* Main Offer */}
-        <CheckoutProduct 
-          title="AI Business Managers Setup"
-          description="Get started with your AI-powered marketing transformation"
-          features={[
-            "Custom AI Business Profile",
-            "AI Voice Agent Setup",
-            "Workflow Automation",
-            "1-Hour Strategy Consultation"
-          ]}
-          price="$247"
-        />
+        {/* Main Offer - Added pt-4 for spacing after back button */}
+        <div className="pt-4">
+          <CheckoutProduct 
+            title="AI Business Managers Setup"
+            description="Get started with your AI-powered marketing transformation"
+            features={[
+              "Custom AI Business Profile",
+              "AI Voice Agent Setup",
+              "Workflow Automation",
+              "1-Hour Strategy Consultation"
+            ]}
+            price="$247"
+          />
+        </div>
 
         {/* Upsells */}
         <UpsellItem 
