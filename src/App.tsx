@@ -18,6 +18,10 @@ import HIPAACompliant from "@/pages/solutions/HIPAACompliant";
 import ProactiveEngagement from "@/pages/solutions/ProactiveEngagement";
 import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
 import HospitalsHealthSystems from "@/pages/industries/HospitalsHealthSystems";
+import ClinicsPrivatePractices from "@/pages/industries/ClinicsPrivatePractices";
+import TelehealthProviders from "@/pages/industries/TelehealthProviders";
+import SpecialtyCare from "@/pages/industries/SpecialtyCare";
+import Pharmaceuticals from "@/pages/industries/Pharmaceuticals";
 import FooterSection from "@/components/landing/sections/FooterSection";
 
 function App() {
@@ -51,7 +55,14 @@ function App() {
               <Route path="/cost-effective-call-centers" element={<CostEffectiveCallCenters />} />
               <Route path="/hipaa-compliant" element={<HIPAACompliant />} />
               <Route path="/proactive-engagement" element={<ProactiveEngagement />} />
+              
+              {/* Industry Routes */}
               <Route path="/industries/hospitals-health-systems" element={<HospitalsHealthSystems />} />
+              <Route path="/industries/clinics-private-practices" element={<ClinicsPrivatePractices />} />
+              <Route path="/industries/telehealth-providers" element={<TelehealthProviders />} />
+              <Route path="/industries/specialty-care" element={<SpecialtyCare />} />
+              <Route path="/industries/pharmaceuticals" element={<Pharmaceuticals />} />
+              
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
               
