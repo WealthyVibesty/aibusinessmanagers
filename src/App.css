@@ -72,9 +72,20 @@
   color: transparent;
 }
 
-/* Add page content spacing */
+/* Add responsive page content spacing */
 .page-content {
-  padding-top: calc(5rem + 32px); /* Increased top padding */
+  padding: 1rem;
+  padding-top: calc(5rem + 16px);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Responsive container widths */
+@media (min-width: 640px) {
+  .page-content {
+    padding: 1.5rem;
+    padding-top: calc(5rem + 24px);
+  }
 }
 
 @media (min-width: 768px) {
@@ -83,6 +94,102 @@
   }
   
   .page-content {
-    padding-top: calc(5rem + 48px); /* Increased padding on desktop */
+    padding: 2rem;
+    padding-top: calc(5rem + 32px);
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-content {
+    padding: 2.5rem;
+    padding-top: calc(5rem + 40px);
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .page-content {
+    padding: 3rem;
+    padding-top: calc(5rem + 48px);
+    max-width: 1280px;
+  }
+}
+
+/* Add responsive typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  
+  p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+/* Add responsive spacing utilities */
+.responsive-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+
+.responsive-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Add responsive padding and margin utilities */
+.responsive-p {
+  padding: clamp(1rem, 5vw, 3rem);
+}
+
+.responsive-m {
+  margin: clamp(1rem, 5vw, 3rem);
+}
+
+/* Add responsive container */
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-responsive {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-responsive {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-responsive {
+    max-width: 1280px;
   }
 }
