@@ -12,7 +12,7 @@ export default function CheckoutFlow() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
-        {/* Back Button - Added mt-8 for extra top margin */}
+        {/* Back Button */}
         <div className="pt-8">
           <Button
             variant="ghost"
@@ -25,7 +25,14 @@ export default function CheckoutFlow() {
           </Button>
         </div>
 
-        {/* Main Offer - Added pt-4 for spacing after back button */}
+        {/* Introductory Offer Message */}
+        <div className="text-center bg-primary/5 rounded-lg p-4 border border-primary/20">
+          <p className="text-lg font-medium text-primary">
+            🎉 Introductory Offer: Get started in the right direction with our comprehensive AI implementation package
+          </p>
+        </div>
+
+        {/* Main Offer */}
         <div className="pt-4">
           <CheckoutProduct 
             title="AI Business Managers"
@@ -46,8 +53,7 @@ export default function CheckoutFlow() {
           description="Maximize your team's AI capabilities"
           features={[
             "Custom Training Sessions",
-            "Hands-On Workshops",
-            "Ongoing Support"
+            "Hands-On Workshops"
           ]}
           price="$197"
           priceId="price_1QdYnvGineWW4dYE5nh8CnHC"
