@@ -92,22 +92,22 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-3">
               <img 
                 src="/lovable-uploads/ab5a6229-a3bb-476d-9eb2-5452bf6f7a52.png" 
                 alt="AI Business Managers" 
-                className="h-12 w-auto"
+                className="h-10 w-auto"
               />
-              <span className="font-semibold text-xl hidden sm:inline">AI Business Managers</span>
+              <span className="font-semibold text-xl text-gray-900">AI Business Managers</span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-8">
             {menuItems.map((item, index) => (
               <div key={index} className="relative group">
                 <button
-                  className="text-gray-600 hover:text-primary transition-colors flex items-center gap-2 group py-2"
+                  className="text-gray-600 hover:text-primary transition-colors flex items-center gap-2 group py-2 text-sm font-medium"
                   aria-expanded={isMenuOpen}
                   aria-haspopup="true"
                 >
@@ -121,7 +121,7 @@ export default function Header() {
                       <Link
                         key={subIndex}
                         to={subItem.path}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
                         role="menuitem"
                       >
                         {subItem.label}
@@ -131,27 +131,28 @@ export default function Header() {
                 </div>
               </div>
             ))}
-            
-            {/* AI Assistant Button */}
+          </nav>
+
+          {/* Right Side Actions */}
+          <div className="hidden md:flex items-center space-x-4">
             <Button
               variant="ghost"
               size="sm"
-              className="text-sm hover:bg-primary/10 rounded-full"
+              className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-2"
               onClick={handleAIAssistant}
             >
               Have Questions? Talk to AI
-              <Mic className="ml-2 h-4 w-4" />
+              <Mic className="h-4 w-4" />
             </Button>
 
             <Button 
               onClick={handleJoinTeam}
-              size="lg"
-              className="shadow-lg hover:shadow-xl transition-shadow ml-4"
+              className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-md flex items-center gap-2 transition-all"
             >
               Join Team
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="h-4 w-4" />
             </Button>
-          </nav>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -203,11 +204,18 @@ export default function Header() {
                   )}
                 </div>
               ))}
-              <div className="p-4">
+              <div className="p-4 space-y-4">
+                <Button
+                  variant="ghost"
+                  className="w-full justify-center"
+                  onClick={handleAIAssistant}
+                >
+                  Have Questions? Talk to AI
+                  <Mic className="ml-2 h-4 w-4" />
+                </Button>
                 <Button 
                   onClick={handleJoinTeam}
-                  className="w-full shadow-lg"
-                  size="lg"
+                  className="w-full justify-center"
                 >
                   Join Team
                   <ArrowRight className="ml-2 h-4 w-4" />
