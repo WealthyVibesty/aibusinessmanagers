@@ -2,6 +2,25 @@ import { Link } from "react-router-dom";
 import { Linkedin } from "lucide-react";
 
 const FooterSection = () => {
+  const industries = [
+    { name: "Telemedicine", path: "/telemedicine" },
+    { name: "Mental Health", path: "/mental-health" },
+    { name: "Elderly Care", path: "/elderly-care" },
+    { name: "Primary Care", path: "/primary-care" },
+    { name: "Dental Care", path: "/dental-care" },
+    { name: "Diagnostic Imaging", path: "/diagnostic-imaging" },
+    { name: "Emergency Services", path: "/emergency-services" },
+    { name: "Home Healthcare", path: "/home-healthcare" },
+    { name: "Hospital Operations", path: "/hospital-operations" },
+    { name: "Nutrition & Wellness", path: "/nutrition-wellness" },
+    { name: "OB/GYN", path: "/obgyn" },
+    { name: "Oncology", path: "/oncology" },
+    { name: "Pediatrics", path: "/pediatrics" },
+    { name: "Public Health", path: "/public-health" },
+    { name: "Rehabilitation", path: "/rehabilitation" },
+    { name: "Surgical Practices", path: "/surgical-practices" }
+  ];
+
   const solutions = [
     { name: "AI Voice Agents", path: "/voice-agents" },
     { name: "Call Routing", path: "/call-routing" },
@@ -10,14 +29,6 @@ const FooterSection = () => {
     { name: "Cost-Effective Call Centers", path: "/cost-effective-call-centers" },
     { name: "HIPAA Compliant", path: "/hipaa-compliant" },
     { name: "Proactive Engagement", path: "/proactive-engagement" }
-  ];
-
-  const industries = [
-    { name: "Hospitals & Health Systems", path: "/industries/hospitals-health-systems" },
-    { name: "Clinics & Private Practices", path: "/industries/clinics-private-practices" },
-    { name: "Telehealth Providers", path: "/industries/telehealth-providers" },
-    { name: "Specialty Care", path: "/industries/specialty-care" },
-    { name: "Pharmaceuticals", path: "/industries/pharmaceuticals" }
   ];
 
   const resources = [
