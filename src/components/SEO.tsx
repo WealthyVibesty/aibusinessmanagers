@@ -9,11 +9,11 @@ interface SEOProps {
 export default function SEO({ title, description, path = "" }: SEOProps) {
   const baseUrl = "https://your-domain.com";
   const url = `${baseUrl}${path}`;
-  const imageUrl = `${baseUrl}/lovable-uploads/07e07428-0372-4776-b862-598ba7fcb7bd.png`;
+  const imageUrl = `${baseUrl}/lovable-uploads/ab5a6229-a3bb-476d-9eb2-5452bf6f7a52.png`;
 
   return (
     <Helmet>
-      <title>{title}</title>
+      <title>{`${title} | Healthcare AI Solutions`}</title>
       <meta name="description" content={description} />
       
       <meta property="og:title" content={title} />
