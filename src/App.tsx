@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Landing from "@/pages/Landing";
 import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
@@ -73,7 +73,8 @@ function App() {
         <div className="flex flex-col min-h-screen">
           <div className="flex-grow">
             <Routes>
-              <Route path="/" element={<Landing />} />
+              <Route path="/" element={<VoiceAgentsMarketplace />} />
+              <Route path="/landing" element={<Landing />} />
               <Route path="/voice-agents" element={<VoiceAgentsMarketplace />} />
               <Route path="/telemedicine" element={<TelemedicineLanding />} />
               <Route path="/dermatology" element={<DermatologyLanding />} />

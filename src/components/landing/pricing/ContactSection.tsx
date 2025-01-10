@@ -16,10 +16,10 @@ export default function ContactSection() {
         <p className="text-muted-foreground text-lg flex items-center justify-center gap-3">
           <Mail className="h-5 w-5" />
           <a 
-            href="mailto:Support@aimarketingprofile.com" 
+            href="mailto:Team@aimarketingprofile.com" 
             className="hover:text-primary transition-colors"
           >
-            Support@aimarketingprofile.com
+            Team@aimarketingprofile.com
           </a>
         </p>
         <button 
