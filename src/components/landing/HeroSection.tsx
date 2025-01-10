@@ -31,7 +31,7 @@ export default function HeroSection() {
       <div className="w-full max-w-4xl mx-auto text-center pt-16 pb-8">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-primary animate-slideUp leading-[1.1] mb-12">
-            Transform Your Business with Voice AI
+            Transform Your Business with AI Business Managers
           </h1>
 
           <p className="text-xl sm:text-2xl text-gray-600 animate-slideUp mb-12 leading-relaxed max-w-2xl mx-auto px-4" 
