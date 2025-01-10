@@ -17,6 +17,7 @@ import CostEffectiveCallCenters from "@/pages/solutions/CostEffectiveCallCenters
 import HIPAACompliant from "@/pages/solutions/HIPAACompliant";
 import ProactiveEngagement from "@/pages/solutions/ProactiveEngagement";
 import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
+import HospitalsHealthSystems from "@/pages/industries/HospitalsHealthSystems";
 import FooterSection from "@/components/landing/sections/FooterSection";
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
               <Route path="/cost-effective-call-centers" element={<CostEffectiveCallCenters />} />
               <Route path="/hipaa-compliant" element={<HIPAACompliant />} />
               <Route path="/proactive-engagement" element={<ProactiveEngagement />} />
+              <Route path="/industries/hospitals-health-systems" element={<HospitalsHealthSystems />} />
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
               
