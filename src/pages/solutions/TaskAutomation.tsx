@@ -43,40 +43,6 @@ export default function TaskAutomation() {
         </div>
       </div>
 
-      {/* How It Works */}
-      <div className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">How It Works</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-primary font-bold">1</span>
-            </div>
-            <h3 className="font-semibold mb-2">Task Identification</h3>
-            <p className="text-gray-600">
-              AI identifies repetitive tasks in your workflow.
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-primary font-bold">2</span>
-            </div>
-            <h3 className="font-semibold mb-2">Automation Setup</h3>
-            <p className="text-gray-600">
-              Automates these tasks, ensuring they're completed accurately and on time.
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-primary font-bold">3</span>
-            </div>
-            <h3 className="font-semibold mb-2">Team Focus</h3>
-            <p className="text-gray-600">
-              Your team is freed to focus on high-value patient care.
-            </p>
-          </div>
-        </div>
-      </div>
-
       {/* Benefits */}
       <div className="mb-16">
         <h2 className="text-3xl font-bold mb-8 text-center">Benefits</h2>

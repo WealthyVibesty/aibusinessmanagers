@@ -41,6 +41,10 @@ import CardiologyLanding from "@/pages/CardiologyLanding";
 import ObGynLanding from "@/pages/ObGynLanding";
 import OncologyLanding from "@/pages/OncologyLanding";
 import RadiologyLanding from "@/pages/RadiologyLanding";
+import VoiceAgents from "@/pages/solutions/VoiceAgents";
+import CallRouting from "@/pages/solutions/CallRouting";
+import TaskAutomation from "@/pages/solutions/TaskAutomation";
+import PatientSupport from "@/pages/PatientSupport";
 
 function App() {
   useEffect(() => {

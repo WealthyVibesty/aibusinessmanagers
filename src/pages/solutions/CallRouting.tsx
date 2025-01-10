@@ -43,40 +43,6 @@ export default function CallRouting() {
         </div>
       </div>
 
-      {/* How It Works */}
-      <div className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">How It Works</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-primary font-bold">1</span>
-            </div>
-            <h3 className="font-semibold mb-2">Analysis</h3>
-            <p className="text-gray-600">
-              AI analyzes the caller's request and determines the best department or agent.
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-primary font-bold">2</span>
-            </div>
-            <h3 className="font-semibold mb-2">Instant Routing</h3>
-            <p className="text-gray-600">
-              Calls are routed instantly, with all relevant information passed to the agent.
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-primary font-bold">3</span>
-            </div>
-            <h3 className="font-semibold mb-2">Seamless Escalation</h3>
-            <p className="text-gray-600">
-              Complex issues are escalated seamlessly, ensuring no patient is left waiting.
-            </p>
-          </div>
-        </div>
-      </div>
-
       {/* Benefits */}
       <div className="mb-16">
         <h2 className="text-3xl font-bold mb-8 text-center">Benefits</h2>
