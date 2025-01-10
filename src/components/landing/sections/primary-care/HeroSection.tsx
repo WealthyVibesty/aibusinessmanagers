@@ -6,7 +6,7 @@ export default function PrimaryCareHeroSection() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
+    <section className="relative pt-32 pb-20 px-6 bg-gradient-to-b from-blue-50 to-white">
       <div className="max-w-7xl mx-auto text-center">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
           Transform Primary Care with AI Voice Agents

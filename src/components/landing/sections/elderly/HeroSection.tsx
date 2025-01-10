@@ -14,7 +14,7 @@ export default function ElderlyHeroSection() {
   };
 
   return (
-    <section className="relative py-20 px-6">
+    <section className="relative pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto text-center">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
           Transform Elderly Care with AI Voice Agents
