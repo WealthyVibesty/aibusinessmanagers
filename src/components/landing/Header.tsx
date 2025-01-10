@@ -51,17 +51,17 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <button
-              onClick={() => scrollToSection("benefits")}
+              onClick={() => scrollToSection("voice-agents")}
               className="text-gray-600 hover:text-primary transition-colors flex items-center gap-1 group"
             >
-              Benefits
+              Voice Agents
               <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
             </button>
             <button
-              onClick={() => scrollToSection("courses")}
+              onClick={() => scrollToSection("solutions")}
               className="text-gray-600 hover:text-primary transition-colors"
             >
-              Courses
+              Solutions
             </button>
             <button
               onClick={() => scrollToSection("case-studies")}
@@ -78,7 +78,7 @@ export default function Header() {
               <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
             </button>
             <Button 
-              onClick={() => scrollToSection("pricing-details")}
+              onClick={() => navigate("/checkout")}
               size="lg"
               className="shadow-lg hover:shadow-xl transition-shadow"
             >
@@ -103,16 +103,16 @@ export default function Header() {
         {isMenuOpen && (
           <nav className="md:hidden py-4 px-2 space-y-4 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg animate-fadeIn">
             <button
-              onClick={() => scrollToSection("benefits")}
+              onClick={() => scrollToSection("voice-agents")}
               className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
             >
-              Benefits
+              Voice Agents
             </button>
             <button
-              onClick={() => scrollToSection("courses")}
+              onClick={() => scrollToSection("solutions")}
               className="w-full text-left py-3 px-4 text-gray-600 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
             >
-              Courses
+              Solutions
             </button>
             <button
               onClick={() => scrollToSection("case-studies")}
@@ -128,7 +128,7 @@ export default function Header() {
             </button>
             <div className="pt-2 px-2">
               <Button 
-                onClick={() => scrollToSection("pricing-details")}
+                onClick={() => navigate("/checkout")}
                 className="w-full shadow-lg"
                 size="lg"
               >

@@ -23,9 +23,9 @@ const FooterSection = () => {
   ];
 
   const about = [
-    { name: "Why HealthAI", path: "/" },
+    { name: "Why AI Marketing Profile", path: "/" },
     { name: "Our Technology", path: "/technology" },
-    { name: "AI's Future in Healthcare", path: "/future" },
+    { name: "AI's Future in Business", path: "/future" },
     { name: "Careers", path: "/careers" },
     { name: "Mission", path: "/mission" },
     { name: "Partners", path: "/partners" },
@@ -43,11 +43,11 @@ const FooterSection = () => {
   ];
 
   const socialLinks = [
-    { Icon: Twitter, href: "https://twitter.com/healthai" },
-    { Icon: Instagram, href: "https://instagram.com/healthai" },
-    { Icon: Facebook, href: "https://facebook.com/healthai" },
-    { Icon: Linkedin, href: "https://linkedin.com/company/healthai" },
-    { Icon: Youtube, href: "https://youtube.com/healthai" },
+    { Icon: Twitter, href: "https://twitter.com/aimarketingprofile" },
+    { Icon: Instagram, href: "https://instagram.com/aimarketingprofile" },
+    { Icon: Facebook, href: "https://facebook.com/aimarketingprofile" },
+    { Icon: Linkedin, href: "https://linkedin.com/company/aimarketingprofile" },
+    { Icon: Youtube, href: "https://youtube.com/aimarketingprofile" },
   ];
 
   return (
@@ -73,7 +73,7 @@ const FooterSection = () => {
 
           {/* Specialties Column */}
           <div>
-            <h3 className="text-white font-semibold mb-6">Specialties</h3>
+            <h3 className="text-white font-semibold mb-6">Industries</h3>
             <ul className="space-y-4">
               {specialties.map((item) => (
                 <li key={item.path}>
@@ -132,7 +132,7 @@ const FooterSection = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm">
-              © {new Date().getFullYear()} HealthAI. All rights reserved.
+              © {new Date().getFullYear()} AI Marketing Profile. All rights reserved.
             </div>
             
             <div className="flex items-center space-x-6">
