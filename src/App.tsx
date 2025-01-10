@@ -39,23 +39,8 @@ import SurgicalPracticesLanding from "@/pages/SurgicalPracticesLanding";
 import DiagnosticImagingLanding from "@/pages/DiagnosticImagingLanding";
 import CardiologyLanding from "@/pages/CardiologyLanding";
 import ObGynLanding from "@/pages/ObGynLanding";
-import ContentLibrary from "@/pages/ContentLibrary";
-import SupportCenter from "@/pages/SupportCenter";
-import Contact from "@/pages/Contact";
-import PrivacyPolicy from "@/pages/PrivacyPolicy";
-import TermsOfUse from "@/pages/TermsOfUse";
-import SiteMap from "@/pages/SiteMap";
-import WhyHealthAI from "@/pages/WhyHealthAI";
-import OurTechnology from "@/pages/OurTechnology";
-import AIFutureHealthcare from "@/pages/AIFutureHealthcare";
-import Careers from "@/pages/Careers";
-import Mission from "@/pages/Mission";
-import Partners from "@/pages/Partners";
-import Press from "@/pages/Press";
-import PatientSupport from "@/pages/PatientSupport";
-import VoiceAgents from "@/pages/solutions/VoiceAgents";
-import CallRouting from "@/pages/solutions/CallRouting";
-import TaskAutomation from "@/pages/solutions/TaskAutomation";
+import OncologyLanding from "@/pages/OncologyLanding";
+import RadiologyLanding from "@/pages/RadiologyLanding";
 
 function App() {
   useEffect(() => {
@@ -89,7 +74,8 @@ function App() {
               <Route path="/dermatology" element={<DermatologyLanding />} />
               <Route path="/cardiology" element={<CardiologyLanding />} />
               <Route path="/obgyn" element={<ObGynLanding />} />
-              <Route path="/mental-health" element={<MentalHealthLanding />} />
+              <Route path="/oncology" element={<OncologyLanding />} />
+              <Route path="/radiology" element={<RadiologyLanding />} />
               <Route path="/elderly-care" element={<ElderlyCare />} />
               <Route path="/primary-care" element={<PrimaryCare />} />
               <Route path="/chronic-disease" element={<ChronicDiseaseLanding />} />
