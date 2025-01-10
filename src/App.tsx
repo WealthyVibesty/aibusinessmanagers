@@ -38,6 +38,12 @@ import SurgicalPracticesLanding from "@/pages/SurgicalPracticesLanding";
 import DiagnosticImagingLanding from "@/pages/DiagnosticImagingLanding";
 import CardiologyLanding from "@/pages/CardiologyLanding";
 import ObGynLanding from "@/pages/ObGynLanding";
+import ContentLibrary from "@/pages/ContentLibrary";
+import SupportCenter from "@/pages/SupportCenter";
+import Contact from "@/pages/Contact";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import TermsOfUse from "@/pages/TermsOfUse";
+import SiteMap from "@/pages/SiteMap";
 
 function App() {
   useEffect(() => {
@@ -83,6 +89,14 @@ function App() {
               <Route path="/emergency-services" element={<EmergencyServicesLanding />} />
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
+              
+              {/* Resource Pages */}
+              <Route path="/content-library" element={<ContentLibrary />} />
+              <Route path="/support" element={<SupportCenter />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-use" element={<TermsOfUse />} />
+              <Route path="/site-map" element={<SiteMap />} />
               
               {/* Protected Routes */}
               <Route element={<ProtectedRoute />}>
