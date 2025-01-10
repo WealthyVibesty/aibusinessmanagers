@@ -17,6 +17,12 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavigation = (path: string) => {
+    setIsMenuOpen(false); // Close mobile menu
+    setActiveSubmenu(null); // Reset active submenu
+    navigate(path);
+  };
+
   const menuItems = [
     {
       label: "Solutions",
@@ -69,6 +75,7 @@ export default function Header() {
   };
 
   const handleGetDemo = () => {
+    setIsMenuOpen(false);
     navigate("/checkout");
     const widget = document.querySelector('elevenlabs-convai');
     if (widget) {
@@ -85,7 +92,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center space-x-3" onClick={() => setIsMenuOpen(false)}>
               <img 
                 src="/lovable-uploads/ab5a6229-a3bb-476d-9eb2-5452bf6f7a52.png" 
                 alt="AI Business Managers" 
@@ -101,7 +108,7 @@ export default function Header() {
               <div key={index} className="relative group">
                 <button
                   className="text-gray-600 hover:text-primary transition-colors flex items-center gap-2 group py-2 text-sm font-medium"
-                  onClick={() => navigate(item.submenu[0].path)}
+                  onClick={() => handleNavigation(item.submenu[0].path)}
                 >
                   {item.icon}
                   {item.label}
@@ -113,7 +120,7 @@ export default function Header() {
                       <button
                         key={subIndex}
                         className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
-                        onClick={() => navigate(subItem.path)}
+                        onClick={() => handleNavigation(subItem.path)}
                       >
                         {subItem.label}
                       </button>
@@ -175,10 +182,7 @@ export default function Header() {
                         <button
                           key={subIndex}
                           className="block w-full text-left py-2 px-4 text-sm text-gray-600 hover:text-primary"
-                          onClick={() => {
-                            setIsMenuOpen(false);
-                            navigate(subItem.path);
-                          }}
+                          onClick={() => handleNavigation(subItem.path)}
                         >
                           {subItem.label}
                         </button>
