@@ -65,6 +65,21 @@ export default function ActionableInsights() {
     }
   ];
 
+  const benefits = [
+    {
+      title: "Performance Visibility",
+      description: "Provides visibility into call center performance"
+    },
+    {
+      title: "Process Optimization",
+      description: "Helps identify and address bottlenecks"
+    },
+    {
+      title: "Continuous Improvement",
+      description: "Drives continuous improvement with measurable results"
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       <SEO 
@@ -87,25 +102,10 @@ export default function ActionableInsights() {
       
       <HowItWorks steps={steps} />
       
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Benefits</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 bg-white rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Performance Visibility</h3>
-              <p className="text-gray-600">Provides visibility into call center performance</p>
-            </div>
-            <div className="p-6 bg-white rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Process Optimization</h3>
-              <p className="text-gray-600">Helps identify and address bottlenecks</p>
-            </div>
-            <div className="p-6 bg-white rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Continuous Improvement</h3>
-              <p className="text-gray-600">Drives continuous improvement with measurable results</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FeatureList 
+        title="Benefits"
+        features={benefits}
+      />
     </div>
   );
 }

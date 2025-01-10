@@ -1,5 +1,5 @@
-import { Phone, DollarSign, TrendingUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ChartBar, Phone, TrendingUp } from "lucide-react";
 import SolutionHero from "@/components/solutions/SolutionHero";
 import FeatureList from "@/components/solutions/FeatureList";
 import HowItWorks from "@/components/solutions/HowItWorks";
@@ -41,7 +41,7 @@ export default function CostEffectiveCallCenters() {
     {
       title: "Cost Reduction",
       description: "Reduces call center costs by up to 70%",
-      icon: <DollarSign className="w-6 h-6" />
+      icon: <ChartBar className="w-6 h-6" />
     },
     {
       title: "Scalable Solution",
@@ -53,15 +53,30 @@ export default function CostEffectiveCallCenters() {
   const steps = [
     {
       title: "AI Call Handling",
-      description: "AI answers calls instantly, handling routine tasks"
+      description: "AI answers calls instantly, handling routine tasks like scheduling and billing"
     },
     {
       title: "Smart Transfer",
-      description: "Complex issues are transferred to human agents with context"
+      description: "For complex issues, calls are transferred to human agents with full context"
     },
     {
       title: "Optimization",
-      description: "Your call center operates efficiently with reduced staff needs"
+      description: "Your call center operates more efficiently, with fewer staff needed for routine tasks"
+    }
+  ];
+
+  const benefits = [
+    {
+      title: "Cost Savings",
+      description: "Significant cost savings without compromising service quality"
+    },
+    {
+      title: "Better Service",
+      description: "Improved patient satisfaction with faster response times"
+    },
+    {
+      title: "Easy Scaling",
+      description: "Scalable solution that grows with your organization"
     }
   ];
 
@@ -87,25 +102,10 @@ export default function CostEffectiveCallCenters() {
       
       <HowItWorks steps={steps} />
       
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Benefits</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 bg-white rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Cost Savings</h3>
-              <p className="text-gray-600">Significant savings without compromising service quality</p>
-            </div>
-            <div className="p-6 bg-white rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Better Service</h3>
-              <p className="text-gray-600">Improved patient satisfaction with faster response times</p>
-            </div>
-            <div className="p-6 bg-white rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Easy Scaling</h3>
-              <p className="text-gray-600">Scalable solution that grows with your organization</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FeatureList 
+        title="Benefits"
+        features={benefits}
+      />
     </div>
   );
 }
