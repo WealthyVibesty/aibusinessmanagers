@@ -1,134 +1,126 @@
-import { Shield, Phone, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Twitter, Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
 
 const FooterSection = () => {
-  const healthcareServices = [
+  const products = [
+    { name: "Voice Agents", path: "/voice-agents" },
     { name: "Telemedicine", path: "/telemedicine" },
     { name: "Primary Care", path: "/primary-care" },
-    { name: "Mental Health", path: "/mental-health" },
-    { name: "Elderly Care", path: "/elderly-care" },
-    { name: "Chronic Disease", path: "/chronic-disease" },
+    { name: "Education Platform", path: "/courses" },
+    { name: "Community Forum", path: "/forum" },
   ];
 
-  const specialtyServices = [
+  const specialties = [
     { name: "Cardiology", path: "/cardiology" },
     { name: "Dermatology", path: "/dermatology" },
     { name: "OB/GYN", path: "/obgyn" },
-    { name: "Pediatrics", path: "/pediatrics" },
-    { name: "Dental Care", path: "/dental-care" },
-  ];
-
-  const additionalServices = [
-    { name: "Pharmaceuticals", path: "/pharmaceuticals" },
-    { name: "Health Insurance", path: "/health-insurance" },
-    { name: "Hospital Operations", path: "/hospital-operations" },
-    { name: "Public Health", path: "/public-health" },
-    { name: "Medical Research", path: "/medical-research" },
-  ];
-
-  const supportServices = [
-    { name: "Home Healthcare", path: "/home-healthcare" },
-    { name: "Nutrition & Wellness", path: "/nutrition-wellness" },
     { name: "Emergency Services", path: "/emergency-services" },
+    { name: "Hospital Operations", path: "/hospital-operations" },
+    { name: "Medical Research", path: "/medical-research" },
     { name: "Rehabilitation", path: "/rehabilitation" },
-    { name: "Voice Agents", path: "/voice-agents" },
+    { name: "Dental Care", path: "/dental-care" },
+    { name: "Diagnostic Imaging", path: "/diagnostic-imaging" },
+  ];
+
+  const about = [
+    { name: "Why HealthAI", path: "/" },
+    { name: "Our Technology", path: "/technology" },
+    { name: "AI's Future in Healthcare", path: "/future" },
+    { name: "Careers", path: "/careers" },
+    { name: "Mission", path: "/mission" },
+    { name: "Partners", path: "/partners" },
+    { name: "Press", path: "/press" },
+    { name: "AI Marketplace", path: "/voice-agents", isNew: true },
+  ];
+
+  const resources = [
+    { name: "Content Library", path: "/resources" },
+    { name: "Support Center", path: "/support" },
+    { name: "Contact", path: "/contact" },
+    { name: "Privacy Policy", path: "/privacy" },
+    { name: "Terms of Use", path: "/terms" },
+    { name: "Site Map", path: "/sitemap" },
+  ];
+
+  const socialLinks = [
+    { Icon: Twitter, href: "https://twitter.com/healthai" },
+    { Icon: Instagram, href: "https://instagram.com/healthai" },
+    { Icon: Facebook, href: "https://facebook.com/healthai" },
+    { Icon: Linkedin, href: "https://linkedin.com/company/healthai" },
+    { Icon: Youtube, href: "https://youtube.com/healthai" },
   ];
 
   return (
-    <footer className="bg-gray-50 border-t">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="inline-block">
-              <img 
-                src="/lovable-uploads/ab5a6229-a3bb-476d-9eb2-5452bf6f7a52.png" 
-                alt="Company Logo" 
-                className="h-12 w-auto mb-6"
-              />
-            </Link>
-            <div className="space-y-4">
-              <div className="flex items-center gap-2 text-gray-600">
-                <Phone className="h-4 w-4" />
-                <span>1-800-HEALTH-AI</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-600">
-                <Mail className="h-4 w-4" />
-                <span>support@healthai.com</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-600">
-                <MapPin className="h-4 w-4" />
-                <span>123 Health Street, CA 94105</span>
-              </div>
-              <div className="flex items-center gap-2 text-primary">
-                <Shield className="h-5 w-5" />
-                <span className="font-medium">HIPAA Compliant</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Healthcare Services */}
+    <footer className="bg-black text-gray-300 py-16 mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          {/* Products Column */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Healthcare Services</h3>
-            <ul className="space-y-3">
-              {healthcareServices.map((service) => (
-                <li key={service.path}>
+            <h3 className="text-white font-semibold mb-6">Products</h3>
+            <ul className="space-y-4">
+              {products.map((item) => (
+                <li key={item.path}>
                   <Link 
-                    to={service.path}
-                    className="text-gray-600 hover:text-primary transition-colors"
+                    to={item.path}
+                    className="hover:text-white transition-colors duration-200"
                   >
-                    {service.name}
+                    {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Specialty Services */}
+          {/* Specialties Column */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Specialty Care</h3>
-            <ul className="space-y-3">
-              {specialtyServices.map((service) => (
-                <li key={service.path}>
+            <h3 className="text-white font-semibold mb-6">Specialties</h3>
+            <ul className="space-y-4">
+              {specialties.map((item) => (
+                <li key={item.path}>
                   <Link 
-                    to={service.path}
-                    className="text-gray-600 hover:text-primary transition-colors"
+                    to={item.path}
+                    className="hover:text-white transition-colors duration-200"
                   >
-                    {service.name}
+                    {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Additional Services */}
+          {/* About Column */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Healthcare Solutions</h3>
-            <ul className="space-y-3">
-              {additionalServices.map((service) => (
-                <li key={service.path}>
+            <h3 className="text-white font-semibold mb-6">About</h3>
+            <ul className="space-y-4">
+              {about.map((item) => (
+                <li key={item.path} className="flex items-center gap-2">
                   <Link 
-                    to={service.path}
-                    className="text-gray-600 hover:text-primary transition-colors"
+                    to={item.path}
+                    className="hover:text-white transition-colors duration-200"
                   >
-                    {service.name}
+                    {item.name}
                   </Link>
+                  {item.isNew && (
+                    <span className="bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full">
+                      New
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Support Services */}
+          {/* Resources Column */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Support Services</h3>
-            <ul className="space-y-3">
-              {supportServices.map((service) => (
-                <li key={service.path}>
+            <h3 className="text-white font-semibold mb-6">Resources</h3>
+            <ul className="space-y-4">
+              {resources.map((item) => (
+                <li key={item.path}>
                   <Link 
-                    to={service.path}
-                    className="text-gray-600 hover:text-primary transition-colors"
+                    to={item.path}
+                    className="hover:text-white transition-colors duration-200"
                   >
-                    {service.name}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -136,22 +128,26 @@ const FooterSection = () => {
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-gray-600 text-sm">
+        {/* Social Links */}
+        <div className="border-t border-gray-800 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="text-sm">
               © {new Date().getFullYear()} HealthAI. All rights reserved.
             </div>
-            <div className="flex gap-6">
-              <Link to="/privacy" className="text-gray-600 hover:text-primary text-sm transition-colors">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="text-gray-600 hover:text-primary text-sm transition-colors">
-                Terms of Service
-              </Link>
-              <Link to="/accessibility" className="text-gray-600 hover:text-primary text-sm transition-colors">
-                Accessibility
-              </Link>
+            
+            <div className="flex items-center space-x-6">
+              <span className="text-sm">Follow us</span>
+              {socialLinks.map(({ Icon, href }) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
             </div>
           </div>
         </div>

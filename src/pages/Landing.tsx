@@ -4,6 +4,7 @@ import CaseStudiesSection from "@/components/landing/CaseStudiesSection";
 import PricingDetailsSection from "@/components/landing/PricingDetailsSection";
 import BusinessComparisonSection from "@/components/landing/BusinessComparisonSection";
 import Header from "@/components/landing/Header";
+import FooterSection from "@/components/landing/sections/FooterSection";
 
 export default function Landing() {
   return (
@@ -24,6 +25,7 @@ export default function Landing() {
           <PricingDetailsSection />
         </div>
       </main>
+      <FooterSection />
     </div>
   );
 }
