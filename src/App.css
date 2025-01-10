@@ -269,3 +269,20 @@
     max-height: calc(100vh - 40px);
   }
 }
+
+/* Fix for double header issue */
+.page-content {
+  padding-top: calc(4rem + 16px); /* Adjust based on header height */
+  margin-top: 0;
+}
+
+/* Ensure header is always on top */
+header {
+  z-index: 1000;
+}
+
+/* Prevent content from appearing under header */
+main {
+  position: relative;
+  z-index: 1;
+}
