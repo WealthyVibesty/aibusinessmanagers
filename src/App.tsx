@@ -15,6 +15,7 @@ import ForumCategory from "@/pages/ForumCategory";
 import ForumTopic from "@/pages/ForumTopic";
 import NewTopic from "@/pages/NewTopic";
 import ScrollToTop from "@/components/ScrollToTop";
+import FooterSection from "@/components/landing/sections/FooterSection";
 import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
 import TelemedicineLanding from "@/pages/TelemedicineLanding";
 import ElderlyCare from "@/pages/ElderlyCare";
@@ -56,49 +57,54 @@ function App() {
     <ThemeProvider>
       <Router>
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/voice-agents" element={<VoiceAgentsMarketplace />} />
-          <Route path="/telemedicine" element={<TelemedicineLanding />} />
-          <Route path="/dermatology" element={<DermatologyLanding />} />
-          <Route path="/cardiology" element={<CardiologyLanding />} />
-          <Route path="/obgyn" element={<ObGynLanding />} />
-          <Route path="/mental-health" element={<MentalHealthLanding />} />
-          <Route path="/elderly-care" element={<ElderlyCare />} />
-          <Route path="/primary-care" element={<PrimaryCare />} />
-          <Route path="/chronic-disease" element={<ChronicDiseaseLanding />} />
-          <Route path="/pharmaceuticals" element={<PharmaceuticalsLanding />} />
-          <Route path="/health-insurance" element={<HealthInsuranceLanding />} />
-          <Route path="/hospital-operations" element={<HospitalOperationsLanding />} />
-          <Route path="/public-health" element={<PublicHealthLanding />} />
-          <Route path="/rehabilitation" element={<RehabilitationLanding />} />
-          <Route path="/medical-research" element={<MedicalResearchLanding />} />
-          <Route path="/home-healthcare" element={<HomeHealthcareLanding />} />
-          <Route path="/pediatrics" element={<PediatricsLanding />} />
-          <Route path="/dental-care" element={<DentalCareLanding />} />
-          <Route path="/nutrition-wellness" element={<NutritionWellnessLanding />} />
-          <Route path="/emergency-services" element={<EmergencyServicesLanding />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/checkout" element={<CheckoutFlow />} />
-          
-          {/* Protected Routes */}
-          <Route element={<ProtectedRoute />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            
-            {/* Course Routes */}
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/courses/:id" element={<CourseDetails />} />
-            <Route path="/courses/new" element={<CreateCourse />} />
-            
-            {/* Forum Routes */}
-            <Route path="/forum" element={<Forum />} />
-            <Route path="/forum/category/:categoryId" element={<ForumCategory />} />
-            <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
-            <Route path="/forum/new-topic" element={<NewTopic />} />
-          </Route>
-          <Route path="/surgical-practices" element={<SurgicalPracticesLanding />} />
-          <Route path="/diagnostic-imaging" element={<DiagnosticImagingLanding />} />
-        </Routes>
+        <div className="flex flex-col min-h-screen">
+          <div className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/voice-agents" element={<VoiceAgentsMarketplace />} />
+              <Route path="/telemedicine" element={<TelemedicineLanding />} />
+              <Route path="/dermatology" element={<DermatologyLanding />} />
+              <Route path="/cardiology" element={<CardiologyLanding />} />
+              <Route path="/obgyn" element={<ObGynLanding />} />
+              <Route path="/mental-health" element={<MentalHealthLanding />} />
+              <Route path="/elderly-care" element={<ElderlyCare />} />
+              <Route path="/primary-care" element={<PrimaryCare />} />
+              <Route path="/chronic-disease" element={<ChronicDiseaseLanding />} />
+              <Route path="/pharmaceuticals" element={<PharmaceuticalsLanding />} />
+              <Route path="/health-insurance" element={<HealthInsuranceLanding />} />
+              <Route path="/hospital-operations" element={<HospitalOperationsLanding />} />
+              <Route path="/public-health" element={<PublicHealthLanding />} />
+              <Route path="/rehabilitation" element={<RehabilitationLanding />} />
+              <Route path="/medical-research" element={<MedicalResearchLanding />} />
+              <Route path="/home-healthcare" element={<HomeHealthcareLanding />} />
+              <Route path="/pediatrics" element={<PediatricsLanding />} />
+              <Route path="/dental-care" element={<DentalCareLanding />} />
+              <Route path="/nutrition-wellness" element={<NutritionWellnessLanding />} />
+              <Route path="/emergency-services" element={<EmergencyServicesLanding />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/checkout" element={<CheckoutFlow />} />
+              
+              {/* Protected Routes */}
+              <Route element={<ProtectedRoute />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+                
+                {/* Course Routes */}
+                <Route path="/courses" element={<Courses />} />
+                <Route path="/courses/:id" element={<CourseDetails />} />
+                <Route path="/courses/new" element={<CreateCourse />} />
+                
+                {/* Forum Routes */}
+                <Route path="/forum" element={<Forum />} />
+                <Route path="/forum/category/:categoryId" element={<ForumCategory />} />
+                <Route path="/forum/topic/:topicId" element={<ForumTopic />} />
+                <Route path="/forum/new-topic" element={<NewTopic />} />
+              </Route>
+              <Route path="/surgical-practices" element={<SurgicalPracticesLanding />} />
+              <Route path="/diagnostic-imaging" element={<DiagnosticImagingLanding />} />
+            </Routes>
+          </div>
+          <FooterSection />
+        </div>
       </Router>
       <Toaster />
     </ThemeProvider>
