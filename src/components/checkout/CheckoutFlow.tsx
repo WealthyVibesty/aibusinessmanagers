@@ -28,8 +28,8 @@ export default function CheckoutFlow() {
         {/* Main Offer - Added pt-4 for spacing after back button */}
         <div className="pt-4">
           <CheckoutProduct 
-            title="AI Business Managers Setup"
-            description="Get started with your AI-powered marketing transformation"
+            title="AI Business Managers"
+            description="Get started with your AI-powered business transformation"
             features={[
               "Custom AI Business Profile",
               "AI Voice Agent Setup",
