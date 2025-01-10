@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { 
@@ -108,13 +107,13 @@ export default function VoiceAgentsMarketplace() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      {/* Hero Section with reduced spacing */}
-      <section className="py-12 px-6">
+      {/* Hero Section with proper spacing from header */}
+      <section className="pt-32 pb-16 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Transforming Healthcare with Conversational AI and Customer Service Solutions
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
             Revolutionize patient care and streamline operations with voice AI solutions tailored for healthcare providers.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
