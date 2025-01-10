@@ -1,7 +1,7 @@
+import { Bell, Calendar, MessageSquare } from "lucide-react";
 import SolutionHero from "@/components/solutions/SolutionHero";
 import FeatureList from "@/components/solutions/FeatureList";
 import HowItWorks from "@/components/solutions/HowItWorks";
-import { Bell, Calendar, MessageSquare } from "lucide-react";
 
 export default function ProactiveEngagement() {
   const features = [
@@ -54,7 +54,7 @@ export default function ProactiveEngagement() {
       <SolutionHero 
         title="Proactive Patient Engagement: Keep Patients Informed and Engaged"
         subtitle="Automate reminders, follow-ups, and personalized communication to improve patient outcomes."
-        ctaText="Ready to Transform Your Customer Service?"
+        ctaText="Engage Your Patients Proactively"
       />
       
       <FeatureList 

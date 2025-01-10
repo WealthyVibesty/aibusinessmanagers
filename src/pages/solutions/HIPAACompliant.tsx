@@ -1,21 +1,25 @@
+import { Shield, Lock, FileCheck } from "lucide-react";
 import SolutionHero from "@/components/solutions/SolutionHero";
 import FeatureList from "@/components/solutions/FeatureList";
 import HowItWorks from "@/components/solutions/HowItWorks";
-import { Shield, Lock, FileCheck } from "lucide-react";
+import SEO from "@/components/SEO";
 
 export default function HIPAACompliant() {
   const features = [
     {
       title: "HIPAA Compliance",
-      description: "Built to meet HIPAA and other healthcare regulations"
+      description: "Built to meet HIPAA and other healthcare regulations",
+      icon: <Shield className="w-6 h-6" />
     },
     {
       title: "Data Security",
-      description: "Encrypts all data and interactions for maximum security"
+      description: "Encrypts all data and interactions for maximum security",
+      icon: <Lock className="w-6 h-6" />
     },
     {
       title: "Regular Audits",
-      description: "Regularly audited to ensure ongoing compliance"
+      description: "Regularly audited to ensure ongoing compliance",
+      icon: <FileCheck className="w-6 h-6" />
     }
   ];
 
@@ -51,10 +55,16 @@ export default function HIPAACompliant() {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="HIPAA-Compliant Solutions: Secure, Trusted AI for Healthcare"
+        description="Protect patient data and meet strict compliance standards with our secure AI solutions."
+        path="/hipaa-compliant"
+      />
+      
       <SolutionHero 
         title="HIPAA-Compliant Solutions: Secure, Trusted AI for Healthcare"
         subtitle="Protect patient data and meet strict compliance standards with our secure AI solutions."
-        ctaText="Ready to Transform Your Customer Service?"
+        ctaText="Secure Your Patient Data"
       />
       
       <FeatureList 
