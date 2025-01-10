@@ -2,11 +2,40 @@ import SolutionHero from "@/components/solutions/SolutionHero";
 import FeatureList from "@/components/solutions/FeatureList";
 import HowItWorks from "@/components/solutions/HowItWorks";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mic } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 export default function AIVoiceAgents() {
   const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleDemoClick = () => {
+    // Show AI assistant widget
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
+      widget.classList.remove('hidden');
+      console.log('Showing AI assistant for demo request');
+    }
+
+    // Show toast with pay now button
+    toast({
+      title: "Talk to our AI Assistant",
+      description: (
+        <div className="space-y-4">
+          <p>Our AI assistant is ready to help you. You can also proceed directly to purchase.</p>
+          <Button 
+            onClick={() => navigate("/checkout")}
+            className="w-full bg-primary hover:bg-primary/90"
+          >
+            Pay Now - $247
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      ),
+      duration: 10000,
+    });
+  };
 
   const features = [
     {
@@ -58,6 +87,8 @@ export default function AIVoiceAgents() {
       <SolutionHero 
         title="AI-Powered Voice Agents: Instant Support, 24/7"
         subtitle="Answer calls instantly, handle routine tasks, and free up your team to focus on patient care."
+        ctaText="Schedule a Demo"
+        ctaAction={handleDemoClick}
       />
       
       <FeatureList 
@@ -80,14 +111,14 @@ export default function AIVoiceAgents() {
           <p className="text-xl text-gray-600">
             Join leading healthcare providers using AI voice agents to deliver exceptional support
           </p>
-          <div className="pt-4">
+          <div className="pt-4 space-y-4">
             <Button 
               size="lg"
-              onClick={() => navigate("/checkout")}
-              className="text-lg px-8 py-6 h-auto"
+              onClick={handleDemoClick}
+              className="text-lg px-8 py-6 h-auto group"
             >
-              Schedule a Demo
-              <ArrowRight className="ml-2 h-5 w-5" />
+              Get a Free Demo
+              <Mic className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform" />
             </Button>
           </div>
         </div>
