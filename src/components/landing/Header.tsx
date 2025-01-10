@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Building2, Stethoscope, BookOpen, Users, MessageSquare, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronDown, Building2, Stethoscope, BookOpen, Users, MessageSquare, ArrowRight, Mic } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 
