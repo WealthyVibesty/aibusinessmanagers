@@ -18,6 +18,15 @@ export default function ContactCaptureDialog({ isOpen, onClose, onSuccess }: Con
   const { toast } = useToast();
   const navigate = useNavigate();
 
+  // Hide ElevenLabs widget on component mount
+  useState(() => {
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
+      widget.classList.add('hidden');
+      console.log('Hiding AI assistant on dialog mount');
+    }
+  });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -42,12 +51,14 @@ export default function ContactCaptureDialog({ isOpen, onClose, onSuccess }: Con
     onClose();
     onSuccess();
 
-    // Show AI assistant
-    const widget = document.querySelector('elevenlabs-convai');
-    if (widget) {
-      widget.classList.remove('hidden');
-      console.log('Opening AI assistant after contact capture');
-    }
+    // Show AI assistant after successful form submission
+    setTimeout(() => {
+      const widget = document.querySelector('elevenlabs-convai');
+      if (widget) {
+        widget.classList.remove('hidden');
+        console.log('Opening AI assistant after contact capture');
+      }
+    }, 1000); // Small delay to ensure dialog is closed first
   };
 
   return (
