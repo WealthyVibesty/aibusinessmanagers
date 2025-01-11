@@ -1,13 +1,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import ContactCaptureDialog from "@/components/ContactCaptureDialog";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SEO from "@/components/SEO";
 
 export default function SalesPage() {
   const [showContactDialog, setShowContactDialog] = useState(false);
-  const navigate = useNavigate();
 
   const handleCTAClick = () => {
     console.log("Opening contact capture dialog");
@@ -20,7 +18,6 @@ export default function SalesPage() {
 
   const handleSuccess = () => {
     console.log("Contact capture successful");
-    // Additional success handling if needed
   };
 
   return (
@@ -34,12 +31,9 @@ export default function SalesPage() {
       <section className="pt-24 pb-16 px-4 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Craft an Irresistible Offer
+            Take the First Step Toward Smarter Patient Support
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8">
-            Take the First Step Toward Smarter Patient Support
-          </p>
-          <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
             We're here to help you see the impact AI can have on your healthcare operations. 
             Choose the offer that works best for you.
           </p>
