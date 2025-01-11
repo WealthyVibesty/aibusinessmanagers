@@ -1,5 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 interface Feature {
   title: string;
@@ -12,6 +14,8 @@ interface FeatureListProps {
 }
 
 export default function FeatureList({ title, features }: FeatureListProps) {
+  const navigate = useNavigate();
+  
   return (
     <section className="py-16 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -28,6 +32,15 @@ export default function FeatureList({ title, features }: FeatureListProps) {
               </div>
             </Card>
           ))}
+        </div>
+        <div className="mt-12 text-center">
+          <Button 
+            size="lg"
+            onClick={() => navigate("/sales")}
+            className="text-lg px-8"
+          >
+            Learn More
+          </Button>
         </div>
       </div>
     </section>

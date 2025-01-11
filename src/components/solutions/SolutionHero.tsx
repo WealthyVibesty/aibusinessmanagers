@@ -6,28 +6,18 @@ interface SolutionHeroProps {
   title: string;
   subtitle: string;
   ctaText?: string;
-  ctaAction?: () => void;  // Added this prop
+  ctaAction?: () => void;
 }
 
 export default function SolutionHero({ 
   title, 
   subtitle, 
-  ctaText = "Schedule a Demo",
-  ctaAction  // Added this prop
+  ctaText = "Get Started Now",
 }: SolutionHeroProps) {
   const navigate = useNavigate();
 
-  // Use ctaAction if provided, otherwise use default navigation
-  const handleClick = () => {
-    if (ctaAction) {
-      ctaAction();
-    } else {
-      navigate("/checkout");
-    }
-  };
-
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
+    <section className="relative py-32 px-6 bg-gradient-to-b from-blue-50 to-white">
       <div className="max-w-7xl mx-auto text-center">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
           {title}
@@ -37,8 +27,8 @@ export default function SolutionHero({
         </p>
         <Button 
           size="lg"
-          onClick={handleClick}
-          className="text-lg px-8 py-6 h-auto"
+          onClick={() => navigate("/sales")}
+          className="text-lg px-8"
         >
           {ctaText}
           <ArrowRight className="ml-2 h-5 w-5" />
