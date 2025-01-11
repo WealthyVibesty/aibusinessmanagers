@@ -9,6 +9,7 @@ import CheckoutFlow from "@/components/checkout/CheckoutFlow";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
+import SalesPage from "@/pages/SalesPage";
 
 // Solutions
 import AIVoiceAgents from "@/pages/solutions/AIVoiceAgents";
@@ -90,7 +91,8 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
-              <Route path="/" element={<VoiceAgentsMarketplace />} />
+              <Route path="/" element={<Navigate to="/sales" replace />} />
+              <Route path="/sales" element={<SalesPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
               
