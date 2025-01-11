@@ -3,6 +3,13 @@ import { Linkedin } from "lucide-react";
 
 const FooterSection = () => {
   const industries = [
+    // Main industry pages
+    { name: "Hospitals & Health Systems", path: "/industries/hospitals-health-systems" },
+    { name: "Clinics & Private Practices", path: "/industries/clinics-private-practices" },
+    { name: "Telehealth Providers", path: "/industries/telehealth-providers" },
+    { name: "Specialty Care", path: "/industries/specialty-care" },
+    { name: "Pharmaceuticals", path: "/industries/pharmaceuticals" },
+    // Healthcare specialties
     { name: "Telemedicine", path: "/telemedicine" },
     { name: "Mental Health", path: "/mental-health" },
     { name: "Elderly Care", path: "/elderly-care" },
