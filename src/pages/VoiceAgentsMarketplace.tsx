@@ -6,91 +6,185 @@ import SEO from "@/components/SEO";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-const niches = [
-  {
-    id: 1,
-    title: "General Practice",
-    description: "Streamline patient communication and appointment scheduling",
-    icon: <Stethoscope className="h-8 w-8" />,
-    route: "/primary-care"
-  },
-  {
-    id: 2,
-    title: "Mental Health",
-    description: "Support patients with 24/7 care and appointment management",
-    icon: <Brain className="h-8 w-8" />,
-    route: "/mental-health"
-  },
-  {
-    id: 3,
-    title: "Cardiology",
-    description: "Monitor patient care and manage follow-ups efficiently",
-    icon: <Heart className="h-8 w-8" />,
-    route: "/cardiology"
-  },
-  {
-    id: 4,
-    title: "Pediatrics",
-    description: "Enhance parent communication and vaccination scheduling",
-    icon: <Baby className="h-8 w-8" />,
-    route: "/pediatrics"
-  },
-  {
-    id: 5,
-    title: "Pharmaceuticals",
-    description: "Automate prescription refills and medication information",
-    icon: <Pill className="h-8 w-8" />,
-    route: "/pharmaceuticals"
-  },
-  {
-    id: 6,
-    title: "Hospitals & Clinics",
-    description: "Improve patient experience and operational efficiency",
-    icon: <Hospital className="h-8 w-8" />,
-    route: "/industries/hospitals-health-systems"
-  },
-  {
-    id: 7,
-    title: "Medical Research",
-    description: "Streamline research participant communication and data collection",
-    icon: <Microscope className="h-8 w-8" />,
-    route: "/medical-research"
-  },
-  {
-    id: 8,
-    title: "Emergency Care",
-    description: "Enhance emergency response and patient triage",
-    icon: <Bandage className="h-8 w-8" />,
-    route: "/emergency-services"
-  },
-  {
-    id: 9,
-    title: "Diagnostic Services",
-    description: "Schedule imaging appointments and manage results",
-    icon: <Syringe className="h-8 w-8" />,
-    route: "/diagnostic-imaging"
-  },
-  {
-    id: 10,
-    title: "Telemedicine",
-    description: "Virtual care coordination and patient engagement",
-    icon: <Stethoscope className="h-8 w-8" />,
-    route: "/telemedicine"
-  }
-];
-
-const filterNiches = (query: string) => {
-  return niches.filter(niche =>
-    niche.title.toLowerCase().includes(query.toLowerCase()) ||
-    niche.description.toLowerCase().includes(query.toLowerCase())
-  );
-};
-
 export default function VoiceAgentsMarketplace() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredNiches = filterNiches(searchQuery);
+  const niches = [
+    {
+      id: 1,
+      title: "Primary Care",
+      description: "Streamline patient communication and appointment scheduling",
+      icon: <Stethoscope className="h-8 w-8" />,
+      route: "/primary-care"
+    },
+    {
+      id: 2,
+      title: "Mental Health",
+      description: "Support patients with 24/7 care and appointment management",
+      icon: <Brain className="h-8 w-8" />,
+      route: "/mental-health"
+    },
+    {
+      id: 3,
+      title: "Cardiology",
+      description: "Monitor patient care and manage follow-ups efficiently",
+      icon: <Heart className="h-8 w-8" />,
+      route: "/cardiology"
+    },
+    {
+      id: 4,
+      title: "Pediatrics",
+      description: "Enhance parent communication and vaccination scheduling",
+      icon: <Baby className="h-8 w-8" />,
+      route: "/pediatrics"
+    },
+    {
+      id: 5,
+      title: "Pharmaceuticals",
+      description: "Automate prescription refills and medication information",
+      icon: <Pill className="h-8 w-8" />,
+      route: "/pharmaceuticals"
+    },
+    {
+      id: 6,
+      title: "Hospitals & Health Systems",
+      description: "Improve patient experience and operational efficiency",
+      icon: <Hospital className="h-8 w-8" />,
+      route: "/industries/hospitals-health-systems"
+    },
+    {
+      id: 7,
+      title: "Medical Research",
+      description: "Streamline research participant communication",
+      icon: <Microscope className="h-8 w-8" />,
+      route: "/medical-research"
+    },
+    {
+      id: 8,
+      title: "Emergency Services",
+      description: "Enhance emergency response and patient triage",
+      icon: <Bandage className="h-8 w-8" />,
+      route: "/emergency-services"
+    },
+    {
+      id: 9,
+      title: "Diagnostic Imaging",
+      description: "Schedule imaging appointments and manage results",
+      icon: <Syringe className="h-8 w-8" />,
+      route: "/diagnostic-imaging"
+    },
+    {
+      id: 10,
+      title: "Telemedicine",
+      description: "Virtual care coordination and patient engagement",
+      icon: <Stethoscope className="h-8 w-8" />,
+      route: "/telemedicine"
+    },
+    {
+      id: 11,
+      title: "Dermatology",
+      description: "Manage cosmetic consultations and patient care",
+      icon: <Microscope className="h-8 w-8" />,
+      route: "/dermatology"
+    },
+    {
+      id: 12,
+      title: "Dental Care",
+      description: "Streamline dental practice operations",
+      icon: <Hospital className="h-8 w-8" />,
+      route: "/dental-care"
+    },
+    {
+      id: 13,
+      title: "Elderly Care",
+      description: "Coordinate senior care and support",
+      icon: <Heart className="h-8 w-8" />,
+      route: "/elderly-care"
+    },
+    {
+      id: 14,
+      title: "Rehabilitation",
+      description: "Track progress and manage therapy schedules",
+      icon: <Stethoscope className="h-8 w-8" />,
+      route: "/rehabilitation"
+    },
+    {
+      id: 15,
+      title: "Oncology",
+      description: "Coordinate cancer care and treatment plans",
+      icon: <Microscope className="h-8 w-8" />,
+      route: "/oncology"
+    },
+    {
+      id: 16,
+      title: "OB/GYN",
+      description: "Manage women's health and prenatal care",
+      icon: <Baby className="h-8 w-8" />,
+      route: "/ob-gyn"
+    },
+    {
+      id: 17,
+      title: "Radiology",
+      description: "Streamline imaging workflows and results",
+      icon: <Syringe className="h-8 w-8" />,
+      route: "/radiology"
+    },
+    {
+      id: 18,
+      title: "Public Health",
+      description: "Coordinate community health initiatives",
+      icon: <Hospital className="h-8 w-8" />,
+      route: "/public-health"
+    },
+    {
+      id: 19,
+      title: "Chronic Disease Management",
+      description: "Monitor and support long-term patient care",
+      icon: <Heart className="h-8 w-8" />,
+      route: "/chronic-disease"
+    },
+    {
+      id: 20,
+      title: "Surgical Practices",
+      description: "Optimize surgical scheduling and follow-up care",
+      icon: <Bandage className="h-8 w-8" />,
+      route: "/surgical-practices"
+    },
+    {
+      id: 21,
+      title: "Health Insurance",
+      description: "Streamline claims and member support",
+      icon: <Pill className="h-8 w-8" />,
+      route: "/health-insurance"
+    },
+    {
+      id: 22,
+      title: "Home Healthcare",
+      description: "Coordinate in-home care services",
+      icon: <Heart className="h-8 w-8" />,
+      route: "/home-healthcare"
+    },
+    {
+      id: 23,
+      title: "Patient Support",
+      description: "Enhance patient communication and care",
+      icon: <Stethoscope className="h-8 w-8" />,
+      route: "/patient-support"
+    },
+    {
+      id: 24,
+      title: "Nutrition & Wellness",
+      description: "Manage dietary consultations and guidance",
+      icon: <Brain className="h-8 w-8" />,
+      route: "/nutrition-wellness"
+    }
+  ];
+
+  const filteredNiches = niches.filter(niche =>
+    niche.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    niche.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const handleDemoClick = () => {
     const widget = document.querySelector('elevenlabs-convai');
@@ -133,7 +227,7 @@ export default function VoiceAgentsMarketplace() {
       {/* Healthcare Niches Grid */}
       <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredNiches.map((niche) => (
               <Card 
                 key={niche.id}
