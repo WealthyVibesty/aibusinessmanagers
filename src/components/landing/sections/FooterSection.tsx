@@ -27,7 +27,8 @@ const FooterSection = () => {
     { name: "About Us", path: "/about" },
     { name: "Why Choose Us", path: "/why-us" },
     { name: "Our Team", path: "/team" },
-    { name: "Contact", path: "/contact" }
+    { name: "Contact", path: "/contact" },
+    { name: "Affiliate Program", path: "/affiliate-program" }
   ];
 
   return (
