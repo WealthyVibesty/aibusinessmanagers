@@ -119,7 +119,7 @@ export default function VoiceAgentsMarketplace() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               size="lg"
-              onClick={handleTalkToAI}
+              onClick={() => navigate("/checkout")}
               className="text-lg px-8 py-6 h-auto w-full sm:w-auto bg-primary hover:bg-primary/90 transition-all"
             >
               Schedule a Free Demo

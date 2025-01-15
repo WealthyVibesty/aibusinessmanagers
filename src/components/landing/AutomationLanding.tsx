@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, Rocket } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function AutomationLanding() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -13,7 +16,12 @@ export default function AutomationLanding() {
         <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-slideUp" style={{ animationDelay: "100ms" }}>
           Discover How We Helped a Print Shop Save 20+ Hours a Week, Eliminate Errors, and Boost Profits—And How We Can Do the Same for You!
         </p>
-        <Button size="lg" className="animate-slideUp" style={{ animationDelay: "200ms" }}>
+        <Button 
+          size="lg" 
+          className="animate-slideUp" 
+          style={{ animationDelay: "200ms" }}
+          onClick={() => navigate("/checkout")}
+        >
           Book My Consultation Now ➡️
         </Button>
       </section>
@@ -119,7 +127,11 @@ export default function AutomationLanding() {
               Limited-Time Offer: $250 Consultation + Free Workflow Blueprint!
             </p>
           </Card>
-          <Button size="lg" className="animate-slideUp">
+          <Button 
+            size="lg" 
+            className="animate-slideUp"
+            onClick={() => navigate("/checkout")}
+          >
             Book My Consultation Now ➡️
           </Button>
         </div>
@@ -128,7 +140,15 @@ export default function AutomationLanding() {
       {/* Contact Section */}
       <section className="container px-4 py-16 mx-auto text-center">
         <h2 className="text-2xl font-bold mb-4">Got Questions?</h2>
-        <p className="text-lg mb-8">Contact us at [your email or phone number].</p>
+        <p className="text-lg mb-8">
+          <Button 
+            variant="link" 
+            className="text-lg"
+            onClick={() => navigate("/contact")}
+          >
+            Contact our support team
+          </Button>
+        </p>
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">Why Wait? Your Business Can't Afford to Fall Behind.</h2>
           <p className="text-xl text-muted-foreground">
