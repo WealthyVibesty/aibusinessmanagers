@@ -24,7 +24,7 @@ interface Question {
 const questions: Question[] = [
   {
     id: "industry",
-    text: "What type of business are you in?",
+    text: "Tell me more about your business and what you're experiencing?",
     type: 'text',
   },
   {

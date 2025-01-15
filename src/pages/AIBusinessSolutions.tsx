@@ -31,19 +31,19 @@ export default function AIBusinessSolutions() {
             {[
               {
                 icon: <MessageSquare className="h-6 w-6 text-red-500" />,
-                text: "Overflowing customer service requests that overwhelm your team"
+                text: "Overflowing customer service requests that overwhelm your team?"
               },
               {
                 icon: <Instagram className="h-6 w-6 text-red-500" />,
-                text: "Missed opportunities to engage customers on social media"
+                text: "Missed opportunities to engage customers on social media?"
               },
               {
                 icon: <Send className="h-6 w-6 text-red-500" />,
-                text: "Inefficient follow-ups that let leads slip through the cracks"
+                text: "Inefficient follow-ups that let leads slip through the cracks?"
               },
               {
                 icon: <Globe className="h-6 w-6 text-red-500" />,
-                text: "A website that fails to convert visitors into customers"
+                text: "A website that fails to convert visitors into customers?"
               }
             ].map((item, i) => (
               <Card 
