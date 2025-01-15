@@ -110,6 +110,7 @@
 .page-content {
   padding: 1rem;
   padding-top: 5rem;
+  padding-bottom: 8rem; /* Increased bottom padding */
   max-width: 100%;
   margin: 0 auto;
   overflow-x: hidden;
@@ -120,6 +121,7 @@
   .page-content {
     padding: 1.5rem;
     padding-top: 6rem;
+    padding-bottom: 10rem; /* Increased bottom padding for larger screens */
   }
 }
 
@@ -127,6 +129,7 @@
   .page-content {
     padding: 2rem;
     padding-top: 7rem;
+    padding-bottom: 12rem; /* Further increased bottom padding for medium screens */
     max-width: 768px;
   }
 }
@@ -135,6 +138,7 @@
   .page-content {
     padding: 2.5rem;
     padding-top: 7rem;
+    padding-bottom: 14rem; /* Larger bottom padding for desktop */
     max-width: 1024px;
   }
 }
@@ -143,6 +147,7 @@
   .page-content {
     padding: 3rem;
     padding-top: 7rem;
+    padding-bottom: 16rem; /* Maximum bottom padding for large screens */
     max-width: 1280px;
   }
 }
