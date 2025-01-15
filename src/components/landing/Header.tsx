@@ -37,25 +37,12 @@ export default function Header() {
       ]
     },
     {
-      label: "Healthcare",
+      label: "Industries",
       submenu: [
-        { label: "Hospitals & Health Systems", path: "/industries/hospitals-health-systems" },
-        { label: "Clinics & Private Practices", path: "/industries/clinics-private-practices" },
-        { label: "Telehealth Providers", path: "/industries/telehealth-providers" },
-        { label: "Specialty Care", path: "/industries/specialty-care" },
-        { label: "Pharmaceuticals", path: "/industries/pharmaceuticals" },
-        { label: "Mental Health", path: "/mental-health" },
-        { label: "Primary Care", path: "/primary-care" },
-        { label: "Elderly Care", path: "/elderly-care" },
-        { label: "Dental Care", path: "/dental-care" },
-        { label: "Emergency Services", path: "/emergency-services" },
-        { label: "Home Healthcare", path: "/home-healthcare" },
-        { label: "Hospital Operations", path: "/hospital-operations" },
-        { label: "OB/GYN", path: "/obgyn" },
-        { label: "Oncology", path: "/oncology" },
-        { label: "Pediatrics", path: "/pediatrics" },
-        { label: "Rehabilitation", path: "/rehabilitation" },
-        { label: "Surgical Practices", path: "/surgical-practices" }
+        { 
+          label: "Healthcare", 
+          path: "/" // This will lead to the voice marketplace
+        }
       ]
     },
     {
