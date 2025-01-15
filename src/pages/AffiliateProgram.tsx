@@ -5,14 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Copy, TrendingUp, Users, DollarSign } from "lucide-react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 
 interface Affiliate {
   id: string;
@@ -49,22 +41,25 @@ export default function AffiliateProgram() {
     try {
       console.log("Checking affiliate status...");
       const { data: { session } } = await supabase.auth.getSession();
+      
       if (!session) {
         console.log("No session found, redirecting to login");
         navigate("/login");
         return;
       }
 
+      console.log("Session found, checking affiliate data");
       const { data: affiliateData, error } = await supabase
         .from("affiliates")
         .select("*")
         .eq("user_id", session.user.id)
-        .single();
+        .maybeSingle();
 
       if (error) {
         console.error("Error fetching affiliate data:", error);
         throw error;
       }
+
       console.log("Affiliate data:", affiliateData);
       setAffiliate(affiliateData);
     } catch (error) {
@@ -83,15 +78,19 @@ export default function AffiliateProgram() {
     try {
       console.log("Fetching referrals...");
       const { data: { session } } = await supabase.auth.getSession();
-      if (!session) return;
+      if (!session) {
+        console.log("No session found, skipping referrals fetch");
+        return;
+      }
 
       const { data: affiliateData } = await supabase
         .from("affiliates")
         .select("id")
         .eq("user_id", session.user.id)
-        .single();
+        .maybeSingle();
 
       if (affiliateData) {
+        console.log("Found affiliate data, fetching referrals");
         const { data: referralsData, error } = await supabase
           .from("referrals")
           .select(`
@@ -147,7 +146,10 @@ export default function AffiliateProgram() {
         .select()
         .single();
 
-      if (error) throw error;
+      if (error) {
+        console.error("Error creating affiliate:", error);
+        throw error;
+      }
 
       console.log("Created affiliate record:", data);
       setAffiliate(data);
@@ -248,39 +250,39 @@ export default function AffiliateProgram() {
       <Card className="p-6">
         <h2 className="text-xl font-semibold mb-6">Recent Referrals</h2>
         <div className="overflow-x-auto">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Date</TableHead>
-                <TableHead>User</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Commission</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
+          <table className="w-full">
+            <thead>
+              <tr className="text-left border-b">
+                <th className="pb-4">Date</th>
+                <th className="pb-4">User</th>
+                <th className="pb-4">Status</th>
+                <th className="pb-4">Commission</th>
+              </tr>
+            </thead>
+            <tbody>
               {referrals.map((referral) => (
-                <TableRow key={referral.id}>
-                  <TableCell>
+                <tr key={referral.id} className="border-b">
+                  <td className="py-4">
                     {new Date(referral.created_at).toLocaleDateString()}
-                  </TableCell>
-                  <TableCell>
+                  </td>
+                  <td className="py-4">
                     {referral.profiles.full_name || referral.profiles.email || "Anonymous"}
-                  </TableCell>
-                  <TableCell className="capitalize">{referral.status}</TableCell>
-                  <TableCell>
+                  </td>
+                  <td className="py-4 capitalize">{referral.status}</td>
+                  <td className="py-4">
                     ${referral.commission_amount || "0.00"}
-                  </TableCell>
-                </TableRow>
+                  </td>
+                </tr>
               ))}
               {referrals.length === 0 && (
-                <TableRow>
-                  <TableCell colSpan={4} className="text-center text-muted-foreground">
+                <tr>
+                  <td colSpan={4} className="text-center py-8 text-muted-foreground">
                     No referrals yet
-                  </TableCell>
-                </TableRow>
+                  </td>
+                </tr>
               )}
-            </TableBody>
-          </Table>
+            </tbody>
+          </table>
         </div>
       </Card>
     </div>
