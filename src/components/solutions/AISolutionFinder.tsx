@@ -188,84 +188,93 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:max-w-[600px] p-8"> {/* Increased max-width and padding */}
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Bot className="h-5 w-5" />
+          <DialogTitle className="flex items-center gap-2 text-2xl"> {/* Increased text size */}
+            <Bot className="h-6 w-6" />
             AI Solution Finder
           </DialogTitle>
         </DialogHeader>
 
-        <div className="py-6">
+        <div className="py-8"> {/* Increased vertical padding */}
           {!recommendation ? (
-            <div className="space-y-6">
-              <h3 className="text-lg font-medium">
+            <div className="space-y-8"> {/* Increased spacing */}
+              <h3 className="text-xl font-medium mb-6"> {/* Increased text size and margin */}
                 {currentQuestionData.text}
               </h3>
               
               {currentQuestionData.type === 'text' ? (
-                <div className="space-y-4">
+                <div className="space-y-6">
                   <Input
                     placeholder="Enter your business type"
                     value={(answers[currentQuestionData.id] as string) || ''}
                     onChange={(e) => handleTextInput(e.target.value)}
-                    className="w-full"
+                    className="w-full text-lg p-6" /* Increased text size and padding */
                   />
                   <Button 
                     onClick={handleNextForText}
-                    className="w-full"
+                    className="w-full text-lg py-6" /* Increased button size */
                   >
                     Next
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </div>
               ) : currentQuestionData.type === 'single' ? (
                 <RadioGroup
                   onValueChange={handleSingleSelect}
-                  className="space-y-3"
+                  className="space-y-4"
                 >
                   {currentQuestionData.options?.map((option) => (
-                    <div key={option.value} className="flex items-center space-x-2">
-                      <RadioGroupItem value={option.value} id={option.value} />
-                      <Label htmlFor={option.value}>{option.label}</Label>
+                    <div key={option.value} className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-gray-50 cursor-pointer"> {/* Added padding and hover effect */}
+                      <RadioGroupItem value={option.value} id={option.value} className="h-5 w-5" /> {/* Increased radio size */}
+                      <Label htmlFor={option.value} className="text-lg cursor-pointer flex-grow"> {/* Increased text size and made full width clickable */}
+                        {option.label}
+                      </Label>
                     </div>
                   ))}
                 </RadioGroup>
               ) : (
-                <div className="space-y-4">
-                  <div className="space-y-3">
+                <div className="space-y-6">
+                  <div className="space-y-4">
                     {currentQuestionData.options?.map((option) => (
-                      <div key={option.value} className="flex items-center space-x-2">
+                      <div 
+                        key={option.value} 
+                        className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-gray-50 cursor-pointer"
+                        onClick={() => handleMultiSelect(option.value)}
+                      >
                         <Checkbox
                           id={option.value}
                           checked={(answers[currentQuestionData.id] as string[] || []).includes(option.value)}
                           onCheckedChange={() => handleMultiSelect(option.value)}
+                          className="h-5 w-5" /* Increased checkbox size */
                         />
-                        <Label htmlFor={option.value}>{option.label}</Label>
+                        <Label htmlFor={option.value} className="text-lg cursor-pointer flex-grow"> {/* Increased text size */}
+                          {option.label}
+                        </Label>
                       </div>
                     ))}
                   </div>
                   <Button 
                     onClick={handleNextForMultiSelect}
-                    className="w-full mt-4"
+                    className="w-full text-lg py-6" /* Increased button size */
                   >
                     Next
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </div>
               )}
             </div>
           ) : (
-            <div className="space-y-6">
-              <div className="whitespace-pre-line text-gray-700">
+            <div className="space-y-8">
+              <div className="whitespace-pre-line text-lg text-gray-700"> {/* Increased text size */}
                 {recommendation}
               </div>
               <Button 
                 onClick={handleRequestDemo}
-                className="w-full"
+                className="w-full text-lg py-6" /* Increased button size */
               >
                 Schedule a Demo
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
           )}
