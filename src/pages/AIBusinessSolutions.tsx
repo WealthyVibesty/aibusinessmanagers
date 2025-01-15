@@ -135,14 +135,6 @@ export default function AIBusinessSolutions() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center animate-slideUp">
             <Button 
               size="lg"
-              onClick={() => setIsDemoModalOpen(true)}
-              className="text-xl px-10 py-7 bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all"
-            >
-              See a Live Demo
-              <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
-            <Button 
-              size="lg"
               variant="outline"
               onClick={() => setIsSolutionFinderOpen(true)}
               className="text-xl px-10 py-7 border-2 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all"
