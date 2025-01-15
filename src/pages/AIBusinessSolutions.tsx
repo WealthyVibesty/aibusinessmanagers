@@ -31,24 +31,29 @@ export default function AIBusinessSolutions() {
             {[
               {
                 icon: <MessageSquare className="h-6 w-6 text-red-500" />,
-                text: "Overflowing customer service requests that overwhelm your team?"
+                text: "Overflowing customer service requests that overwhelm your team?",
+                path: "/solutions/ai-chatbots"
               },
               {
                 icon: <Instagram className="h-6 w-6 text-red-500" />,
-                text: "Missed opportunities to engage customers on social media?"
+                text: "Missed opportunities to engage customers on social media?",
+                path: "/solutions/instagram-automation"
               },
               {
                 icon: <Send className="h-6 w-6 text-red-500" />,
-                text: "Inefficient follow-ups that let leads slip through the cracks?"
+                text: "Inefficient follow-ups that let leads slip through the cracks?",
+                path: "/solutions/proactive-engagement"
               },
               {
                 icon: <Globe className="h-6 w-6 text-red-500" />,
-                text: "A website that fails to convert visitors into customers?"
+                text: "A website that fails to convert visitors into customers?",
+                path: "/solutions/ai-website-development"
               }
             ].map((item, i) => (
               <Card 
                 key={i} 
-                className="p-8 hover:shadow-xl transition-all duration-300 group bg-white/80 backdrop-blur-sm border-red-100 hover:border-red-200"
+                className="p-8 hover:shadow-xl transition-all duration-300 group bg-white/80 backdrop-blur-sm border-red-100 hover:border-red-200 cursor-pointer"
+                onClick={() => navigate(item.path)}
               >
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-red-50 mb-6 group-hover:scale-95 transition-transform">
                   {item.icon}
