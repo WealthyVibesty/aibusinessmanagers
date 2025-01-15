@@ -109,11 +109,19 @@ export default function AffiliateProgram() {
         return;
       }
 
+      // First, get a unique affiliate code from our database function
+      const { data: codeData, error: codeError } = await supabase
+        .rpc('generate_unique_affiliate_code');
+
+      if (codeError) throw codeError;
+
+      // Now insert the new affiliate record with the generated code
       const { data, error } = await supabase
         .from("affiliates")
-        .insert([
-          { user_id: session.user.id }
-        ])
+        .insert({
+          user_id: session.user.id,
+          code: codeData
+        })
         .select()
         .single();
 

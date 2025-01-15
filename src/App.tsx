@@ -13,6 +13,7 @@ import SalesPage from "@/pages/SalesPage";
 import CoreOffer from "@/pages/CoreOffer";
 import AIBusinessSolutions from "@/pages/AIBusinessSolutions";
 import AffiliateProgram from "@/pages/AffiliateProgram";
+import FooterSection from "@/components/landing/sections/FooterSection";
 
 function App() {
   useEffect(() => {
