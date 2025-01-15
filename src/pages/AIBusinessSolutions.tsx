@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, MessageSquare, Phone, Globe, Send, Instagram, BarChart, AlertCircle, CheckCircle } from "lucide-react";
+import { ArrowRight, MessageSquare, Phone, Globe, Send, Instagram, BarChart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import StrategyCallForm from "@/components/StrategyCallForm";
@@ -25,7 +25,7 @@ export default function AIBusinessSolutions() {
       <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeIn">
-            AI Solutions for Small to Medium Size Businesses!
+            Maximize Revenue and Efficiency with AI Business Managers for Mid-Sized and Large Companies
           </h1>
           <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto animate-slideUp">
             Helping Businesses Save 20+ Hours Per Week with AI-Powered Automation | Streamlining Customer Service, Boosting Engagement, and Cutting Costs for Scalable Growth

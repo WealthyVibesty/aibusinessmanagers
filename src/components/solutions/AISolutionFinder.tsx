@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowRight, Bot } from "lucide-react";
@@ -11,32 +12,15 @@ import { ArrowRight, Bot } from "lucide-react";
 interface Question {
   id: string;
   text: string;
-  options: { value: string; label: string }[];
-  type: 'single' | 'multiple';
+  options?: { value: string; label: string }[];
+  type: 'single' | 'multiple' | 'text';
 }
 
 const questions: Question[] = [
   {
     id: "industry",
     text: "What type of business are you in?",
-    type: 'single',
-    options: [
-      { value: "healthcare", label: "Healthcare" },
-      { value: "ecommerce", label: "eCommerce" },
-      { value: "real-estate", label: "Real Estate" },
-      { value: "services", label: "Professional Services" },
-      { value: "retail", label: "Retail" },
-      { value: "hospitality", label: "Hospitality" },
-      { value: "finance", label: "Finance & Banking" },
-      { value: "insurance", label: "Insurance" },
-      { value: "education", label: "Education" },
-      { value: "manufacturing", label: "Manufacturing" },
-      { value: "technology", label: "Technology" },
-      { value: "automotive", label: "Automotive" },
-      { value: "legal", label: "Legal Services" },
-      { value: "construction", label: "Construction" },
-      { value: "other", label: "Other" },
-    ],
+    type: 'text',
   },
   {
     id: "painPoint",
@@ -75,17 +59,17 @@ const questions: Question[] = [
   },
 ];
 
-interface AISolutionFinderProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
 export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
   const [recommendation, setRecommendation] = useState<string | null>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
+
+  const handleTextInput = (value: string) => {
+    const question = questions[currentQuestion];
+    setAnswers(prev => ({ ...prev, [question.id]: value }));
+  };
 
   const handleSingleSelect = (value: string) => {
     const question = questions[currentQuestion];
@@ -116,6 +100,25 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
     if (currentAnswers.length === 0) {
       toast({
         title: "Please select at least one option",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(prev => prev + 1);
+    } else {
+      generateRecommendation();
+    }
+  };
+
+  const handleNextForText = () => {
+    const question = questions[currentQuestion];
+    const currentAnswer = answers[question.id] as string;
+    
+    if (!currentAnswer?.trim()) {
+      toast({
+        title: "Please enter your business type",
         variant: "destructive",
       });
       return;
@@ -195,12 +198,28 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
                 {currentQuestionData.text}
               </h3>
               
-              {currentQuestionData.type === 'single' ? (
+              {currentQuestionData.type === 'text' ? (
+                <div className="space-y-4">
+                  <Input
+                    placeholder="Enter your business type"
+                    value={(answers[currentQuestionData.id] as string) || ''}
+                    onChange={(e) => handleTextInput(e.target.value)}
+                    className="w-full"
+                  />
+                  <Button 
+                    onClick={handleNextForText}
+                    className="w-full"
+                  >
+                    Next
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              ) : currentQuestionData.type === 'single' ? (
                 <RadioGroup
                   onValueChange={handleSingleSelect}
                   className="space-y-3"
                 >
-                  {currentQuestionData.options.map((option) => (
+                  {currentQuestionData.options?.map((option) => (
                     <div key={option.value} className="flex items-center space-x-2">
                       <RadioGroupItem value={option.value} id={option.value} />
                       <Label htmlFor={option.value}>{option.label}</Label>
@@ -210,7 +229,7 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
               ) : (
                 <div className="space-y-4">
                   <div className="space-y-3">
-                    {currentQuestionData.options.map((option) => (
+                    {currentQuestionData.options?.map((option) => (
                       <div key={option.value} className="flex items-center space-x-2">
                         <Checkbox
                           id={option.value}
