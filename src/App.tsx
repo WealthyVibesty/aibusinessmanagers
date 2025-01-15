@@ -14,6 +14,13 @@ import CoreOffer from "@/pages/CoreOffer";
 
 // Solutions
 import AIVoiceAgents from "@/pages/solutions/AIVoiceAgents";
+import AIWebsiteDevelopment from "@/pages/solutions/AIWebsiteDevelopment";
+import AIChatbots from "@/pages/solutions/AIChatbots";
+import SMSMarketing from "@/pages/solutions/SMSMarketing";
+import MultilingualSupport from "@/pages/solutions/MultilingualSupport";
+import CRMIntegration from "@/pages/solutions/CRMIntegration";
+import InstagramAutomation from "@/pages/solutions/InstagramAutomation";
+import PilotPrograms from "@/pages/solutions/PilotPrograms";
 import CallRouting from "@/pages/solutions/CallRouting";
 import TaskAutomation from "@/pages/solutions/TaskAutomation";
 import ActionableInsights from "@/pages/solutions/ActionableInsights";
@@ -99,11 +106,20 @@ function App() {
               
               {/* Solutions Routes */}
               <Route path="/voice-agents" element={<AIVoiceAgents />} />
+              <Route path="/ai-website-development" element={<AIWebsiteDevelopment />} />
+              <Route path="/ai-chatbots" element={<AIChatbots />} />
+              <Route path="/sms-marketing" element={<SMSMarketing />} />
+              <Route path="/multilingual-support" element={<MultilingualSupport />} />
+              <Route path="/crm-integration" element={<CRMIntegration />} />
+              <Route path="/instagram-automation" element={<InstagramAutomation />} />
+              <Route path="/pilot-programs" element={<PilotPrograms />} />
+              <Route path="/hipaa-compliant" element={<HIPAACompliant />} />
+              
+              {/* Resources Routes (moved from Solutions) */}
               <Route path="/call-routing" element={<CallRouting />} />
               <Route path="/task-automation" element={<TaskAutomation />} />
               <Route path="/actionable-insights" element={<ActionableInsights />} />
               <Route path="/cost-effective-call-centers" element={<CostEffectiveCallCenters />} />
-              <Route path="/hipaa-compliant" element={<HIPAACompliant />} />
               <Route path="/proactive-engagement" element={<ProactiveEngagement />} />
               
               {/* Industry Routes */}
