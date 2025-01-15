@@ -29,7 +29,7 @@ export function useCheckout() {
     try {
       // Create the request payload
       const payload = {
-        priceId: 'price_1QdYndGineWW4dYE2pij53XE', // Main product price ID
+        priceId: 'price_1QhWOHGineWW4dYEhBv1EweI', // Updated main product price ID
         upsellPriceIds: selectedUpsells,
       };
       

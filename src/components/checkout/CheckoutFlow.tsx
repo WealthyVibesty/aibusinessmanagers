@@ -75,8 +75,8 @@ export default function CheckoutFlow() {
             "Training Documentation"
           ]}
           price="$1,500"
-          priceId="price_1QdYnvGineWW4dYE5nh8CnHC"
-          isSelected={selectedUpsells.includes('price_1QdYnvGineWW4dYE5nh8CnHC')}
+          priceId="price_1QhWPpGineWW4dYENsMVwYMy"
+          isSelected={selectedUpsells.includes('price_1QhWPpGineWW4dYENsMVwYMy')}
           onToggle={toggleUpsell}
           animationDelay="100ms"
           disabled={isLoading}
@@ -92,8 +92,8 @@ export default function CheckoutFlow() {
             "Cultural Adaptation Support"
           ]}
           price="$2,000"
-          priceId="price_1QdYo7GineWW4dYE6hMDnATH"
-          isSelected={selectedUpsells.includes('price_1QdYo7GineWW4dYE6hMDnATH')}
+          priceId="price_1QhWQuGineWW4dYEcVkSr2sX"
+          isSelected={selectedUpsells.includes('price_1QhWQuGineWW4dYEcVkSr2sX')}
           onToggle={toggleUpsell}
           animationDelay="200ms"
           disabled={isLoading}
@@ -109,8 +109,8 @@ export default function CheckoutFlow() {
             "Usage Monitoring Setup"
           ]}
           price="$500"
-          priceId="price_1QdYo7GineWW4dYE6hMDnATH_sms"
-          isSelected={selectedUpsells.includes('price_1QdYo7GineWW4dYE6hMDnATH_sms')}
+          priceId="price_1QhWRYGineWW4dYEEj3brt2W"
+          isSelected={selectedUpsells.includes('price_1QhWRYGineWW4dYEEj3brt2W')}
           onToggle={toggleUpsell}
           animationDelay="300ms"
           disabled={isLoading}
