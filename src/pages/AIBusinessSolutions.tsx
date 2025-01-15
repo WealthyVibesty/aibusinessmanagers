@@ -22,7 +22,7 @@ export default function AIBusinessSolutions() {
       />
 
       {/* Problems Section - Moved to top */}
-      <section className="py-16 px-6 bg-white">
+      <section className="pt-32 pb-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">
             Is Your Business Struggling With...?
