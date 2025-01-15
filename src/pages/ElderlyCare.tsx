@@ -8,8 +8,8 @@ export default function ElderlyCare() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
       <SEO 
-        title="AI Solutions for Elderly Care" 
-        description="Improve elderly care with AI assistance. 24/7 support, medication reminders & family communication tools."
+        title="AI Voice Agents for Elderly Care Services" 
+        description="Optimize elderly care with AI voice agents. Automate medication reminders, coordinate care teams & improve family communication."
       />
       <ElderlyHeroSection />
       <ElderlyFeaturesSection />

@@ -1,12 +1,11 @@
 import HeroSection from "@/components/landing/sections/specialty/HeroSection";
 import UseCasesSection from "@/components/landing/sections/specialty/UseCasesSection";
 import BenefitsSection from "@/components/landing/sections/specialty/BenefitsSection";
-import Header from "@/components/landing/Header";
-import FooterSection from "@/components/landing/sections/FooterSection";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
+import Header from "@/components/landing/Header";
 
 export default function TelemedicineLanding() {
   const navigate = useNavigate();
@@ -78,7 +77,6 @@ export default function TelemedicineLanding() {
           </div>
         </div>
       </section>
-      <FooterSection />
     </div>
   );
 }

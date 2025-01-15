@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { 
   Stethoscope, Brain, Heart, Pill, Hospital, 
   Dumbbell, BookOpen, Home, Baby, Smile, Apple, 
-  Ambulance, ArrowRight
+  Ambulance, ArrowRight, Search
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SEO from "@/components/SEO";
 
-const industries = [
+const healthcareNiches = [
   { 
     id: 'telemedicine', 
     name: 'Telemedicine', 
@@ -23,139 +26,132 @@ const industries = [
     route: '/mental-health'
   },
   { 
-    id: 'chronic-disease', 
-    name: 'Chronic Disease', 
+    id: 'hospitals', 
+    name: 'Hospitals & Health Systems', 
+    icon: <Hospital className="h-6 w-6" />,
+    description: 'Streamline hospital operations and improve patient care.',
+    route: '/industries/hospitals-health-systems'
+  },
+  { 
+    id: 'clinics', 
+    name: 'Clinics & Private Practices', 
+    icon: <Stethoscope className="h-6 w-6" />,
+    description: 'Optimize clinic workflows and patient communication.',
+    route: '/industries/clinics-private-practices'
+  },
+  { 
+    id: 'specialty', 
+    name: 'Specialty Care', 
     icon: <Heart className="h-6 w-6" />,
-    description: 'Patient education and medication adherence.',
-    route: '/chronic-disease'
+    description: 'Specialized care coordination and patient management.',
+    route: '/industries/specialty-care'
   },
   { 
     id: 'pharmaceuticals', 
     name: 'Pharmaceuticals', 
     icon: <Pill className="h-6 w-6" />,
-    description: 'Customer support and clinical trial assistance.',
+    description: 'Medication management and patient support.',
     route: '/pharmaceuticals'
   },
   { 
-    id: 'hospital', 
-    name: 'Hospital Operations', 
-    icon: <Hospital className="h-6 w-6" />,
-    description: 'Patient intake and staff coordination.',
-    route: '/hospital-operations'
-  },
-  { 
-    id: 'rehabilitation', 
-    name: 'Rehabilitation', 
-    icon: <Dumbbell className="h-6 w-6" />,
-    description: 'Exercise guidance and progress tracking.',
-    route: '/rehabilitation'
-  },
-  { 
-    id: 'research', 
-    name: 'Medical Research', 
-    icon: <BookOpen className="h-6 w-6" />,
-    description: 'Data analysis and literature review.',
-    route: '/medical-research'
-  },
-  { 
-    id: 'home-healthcare', 
-    name: 'Home Healthcare', 
+    id: 'elderly', 
+    name: 'Elderly Care', 
     icon: <Home className="h-6 w-6" />,
-    description: 'Remote monitoring and daily assistance.',
-    route: '/home-healthcare'
-  },
-  { 
-    id: 'pediatrics', 
-    name: 'Pediatrics', 
-    icon: <Baby className="h-6 w-6" />,
-    description: 'Child-friendly interaction and parental support.',
-    route: '/pediatrics'
+    description: 'Senior care coordination and family communication.',
+    route: '/elderly-care'
   },
   { 
     id: 'dental', 
     name: 'Dental Care', 
     icon: <Smile className="h-6 w-6" />,
-    description: 'Appointment management and patient education.',
+    description: 'Dental practice management and patient scheduling.',
     route: '/dental-care'
   },
   { 
-    id: 'nutrition', 
-    name: 'Nutrition & Wellness', 
-    icon: <Apple className="h-6 w-6" />,
-    description: 'Dietary guidance and fitness coaching.',
-    route: '/nutrition-wellness'
+    id: 'pediatrics', 
+    name: 'Pediatrics', 
+    icon: <Baby className="h-6 w-6" />,
+    description: 'Child healthcare and parent communication.',
+    route: '/pediatrics'
   },
   { 
     id: 'emergency', 
     name: 'Emergency Services', 
     icon: <Ambulance className="h-6 w-6" />,
-    description: 'First responder assistance and public alerts.',
+    description: 'Emergency response and coordination.',
     route: '/emergency-services'
+  },
+  { 
+    id: 'rehabilitation', 
+    name: 'Rehabilitation', 
+    icon: <Dumbbell className="h-6 w-6" />,
+    description: 'Recovery tracking and exercise management.',
+    route: '/rehabilitation'
   }
 ];
 
 export default function VoiceAgentsMarketplace() {
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
   
-  const handleTalkToAI = () => {
-    const widget = document.querySelector('elevenlabs-convai');
-    if (widget) {
-      widget.classList.toggle('hidden');
-      console.log('Toggling AI assistant widget');
-    }
-  };
+  const filteredNiches = healthcareNiches.filter(niche => 
+    niche.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    niche.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      <SEO 
+        title="Healthcare AI Voice Agents Marketplace" 
+        description="Explore AI voice agents for healthcare. Streamline patient communication, automate scheduling & improve care delivery across medical specialties."
+      />
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Transforming Healthcare with Conversational AI and Customer Service Solutions
+            AI Voice Agents for Healthcare
           </h1>
           <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
-            Revolutionize patient care and streamline operations with voice AI solutions tailored for healthcare providers.
+            Transform patient care and streamline operations with AI solutions tailored for healthcare providers.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button 
-              size="lg"
-              onClick={() => navigate("/checkout")}
-              className="text-lg px-8 py-6 h-auto w-full sm:w-auto bg-primary hover:bg-primary/90 transition-all"
-            >
-              Schedule a Free Demo
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+          
+          {/* Search Bar */}
+          <div className="max-w-2xl mx-auto mb-12">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <Input
+                type="text"
+                placeholder="Search for your healthcare specialty..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 py-6 text-lg"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Industries Grid */}
+      {/* Healthcare Niches Grid */}
       <section className="py-12 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {industries.map((industry) => (
+            {filteredNiches.map((niche) => (
               <Card 
-                key={industry.id}
-                className="p-6 hover:shadow-lg transition-all group"
+                key={niche.id}
+                className="p-6 hover:shadow-lg transition-all group cursor-pointer"
+                onClick={() => navigate(niche.route)}
               >
                 <div className="flex flex-col gap-4">
                   <div className="flex items-start gap-3">
                     <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
-                      {industry.icon}
+                      {niche.icon}
                     </div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-lg mb-1 group-hover:text-blue-600 transition-colors">
-                        {industry.name}
+                        {niche.name}
                       </h3>
-                      <p className="text-gray-600 text-sm mb-4">{industry.description}</p>
-                      <Button
-                        variant="outline"
-                        onClick={() => navigate(industry.route)}
-                        className="w-full group-hover:bg-primary group-hover:text-white transition-all"
-                      >
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
+                      <p className="text-gray-600 text-sm">{niche.description}</p>
                     </div>
                   </div>
                 </div>
@@ -165,8 +161,8 @@ export default function VoiceAgentsMarketplace() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-12 px-6 bg-gradient-to-b from-white to-blue-50">
+      {/* CTA Section */}
+      <section className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Healthcare Practice?</h2>
           <p className="text-xl text-gray-600 mb-6">

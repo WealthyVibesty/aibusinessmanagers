@@ -5,6 +5,7 @@ import { ArrowRight, Pill, Shield, Phone } from "lucide-react";
 import SolutionHero from "@/components/solutions/SolutionHero";
 import FeatureList from "@/components/solutions/FeatureList";
 import HowItWorks from "@/components/solutions/HowItWorks";
+import SEO from "@/components/SEO";
 
 export default function Pharmaceuticals() {
   const navigate = useNavigate();
@@ -97,6 +98,11 @@ export default function Pharmaceuticals() {
       <FeatureList 
         title="Benefits"
         features={benefits}
+      />
+      
+      <SEO 
+        title="AI Voice Agents for Pharmaceutical Services" 
+        description="Optimize pharmaceutical services with AI voice agents. Automate medication reminders, improve adherence & enhance patient support."
       />
     </div>
   );

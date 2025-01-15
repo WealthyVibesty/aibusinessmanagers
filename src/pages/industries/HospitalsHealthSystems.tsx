@@ -68,6 +68,10 @@ export default function HospitalsHealthSystems() {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="AI Voice Agents for Hospitals & Health Systems" 
+        description="Optimize hospital operations with AI voice agents. Streamline patient communications, automate scheduling & improve care coordination."
+      />
       <SolutionHero 
         title="AI Solutions for Hospitals & Health Systems"
         subtitle="Streamline operations, reduce costs, and improve patient experiences with AI-powered voice solutions."

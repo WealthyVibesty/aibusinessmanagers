@@ -77,9 +77,12 @@ export default function ClinicsPrivatePractices() {
       description: "Focus on delivering high-quality care, not managing calls"
     }
   ];
-
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="AI Voice Agents for Clinics & Private Practices" 
+        description="Transform clinic operations with AI voice agents. Automate appointment scheduling, improve patient engagement & reduce administrative workload."
+      />
       <SolutionHero 
         title="AI Solutions for Clinics & Private Practices"
         subtitle="Deliver exceptional patient care without the overhead."

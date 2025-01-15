@@ -2,8 +2,9 @@ import HeroSection from "@/components/landing/sections/specialty/HeroSection";
 import UseCasesSection from "@/components/landing/sections/specialty/UseCasesSection";
 import BenefitsSection from "@/components/landing/sections/specialty/BenefitsSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Clock, Heart, MessageSquare } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 export default function MentalHealthLanding() {
   const navigate = useNavigate();
@@ -28,6 +29,10 @@ export default function MentalHealthLanding() {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="AI Voice Agents for Mental Health Practices" 
+        description="Transform mental health care delivery with AI voice agents. Provide 24/7 support, automate appointment scheduling & enhance patient engagement."
+      />
       <HeroSection 
         title="Transform Mental Health Care with AI Voice Agents"
         subtitle="Provide compassionate, always-available support while reducing administrative burden on your staff."

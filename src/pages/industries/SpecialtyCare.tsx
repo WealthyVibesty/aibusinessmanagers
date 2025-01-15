@@ -5,6 +5,7 @@ import { ArrowRight, Stethoscope, Calendar, ClipboardList } from "lucide-react";
 import SolutionHero from "@/components/solutions/SolutionHero";
 import FeatureList from "@/components/solutions/FeatureList";
 import HowItWorks from "@/components/solutions/HowItWorks";
+import SEO from "@/components/SEO";
 
 export default function SpecialtyCare() {
   const navigate = useNavigate();
@@ -97,6 +98,11 @@ export default function SpecialtyCare() {
       <FeatureList 
         title="Benefits"
         features={benefits}
+      />
+      
+      <SEO 
+        title="AI Voice Agents for Specialty Care Providers" 
+        description="Enhance specialty care delivery with AI voice agents. Streamline patient communications, automate follow-ups & improve care coordination."
       />
     </div>
   );
