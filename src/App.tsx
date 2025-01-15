@@ -93,6 +93,7 @@ function App() {
           <div className="flex-grow page-content">
             <Routes>
               <Route path="/" element={<AIBusinessSolutions />} />
+              <Route path="/voice-agents-marketplace" element={<VoiceAgentsMarketplace />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
               <Route path="/login" element={<Login />} />
               <Route path="/core-offer" element={<CoreOffer />} />
