@@ -10,6 +10,7 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
 import SalesPage from "@/pages/SalesPage";
+import CoreOffer from "@/pages/CoreOffer";
 
 // Solutions
 import AIVoiceAgents from "@/pages/solutions/AIVoiceAgents";
@@ -95,6 +96,7 @@ function App() {
               <Route path="/sales" element={<SalesPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
+              <Route path="/core-offer" element={<CoreOffer />} />
               
               {/* Solutions Routes */}
               <Route path="/voice-agents" element={<AIVoiceAgents />} />
