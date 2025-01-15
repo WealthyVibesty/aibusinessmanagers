@@ -45,7 +45,7 @@ export default function HeroSection() {
           <Button
             size="lg"
             className="text-lg sm:text-xl w-full sm:w-auto px-12 py-7 rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all group"
-            onClick={() => navigate("/sales")}
+            onClick={() => navigate("/checkout")}
           >
             Get Started Now - Only $247
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />

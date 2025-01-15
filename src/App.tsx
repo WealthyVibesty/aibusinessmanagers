@@ -93,9 +93,8 @@ function App() {
           <div className="flex-grow page-content">
             <Routes>
               <Route path="/" element={<VoiceAgentsMarketplace />} />
-              <Route path="/sales" element={<SalesPage />} />
-              <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/core-offer" element={<CoreOffer />} />
               
               {/* Solutions Routes */}
@@ -148,6 +147,9 @@ function App() {
               <Route element={<ProtectedRoute />}>
                 <Route path="/dashboard" element={<Dashboard />} />
               </Route>
+
+              {/* Redirect /sales to /checkout */}
+              <Route path="/sales" element={<Navigate to="/checkout" replace />} />
             </Routes>
           </div>
           <FooterSection />

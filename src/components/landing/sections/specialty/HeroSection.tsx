@@ -21,7 +21,7 @@ export default function HeroSection({ title, subtitle }: HeroSectionProps) {
         </p>
         <Button 
           size="lg"
-          onClick={() => navigate("/sales")}
+          onClick={() => navigate("/checkout")}
           className="text-lg px-8"
         >
           Get Started Now
