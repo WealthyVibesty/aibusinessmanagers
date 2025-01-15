@@ -8,6 +8,7 @@ export default function ProtectedRoute() {
 
   useEffect(() => {
     if (!loading && !session) {
+      console.log("No session found in ProtectedRoute, redirecting to login");
       navigate("/login");
     }
   }, [session, loading, navigate]);
@@ -20,5 +21,6 @@ export default function ProtectedRoute() {
     );
   }
 
+  // Only render the route content if we have a session
   return session ? <Outlet /> : null;
 }
