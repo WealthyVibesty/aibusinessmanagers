@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { MessageSquare, Globe, Send, Instagram, BarChart, Phone } from "lucide-react";
+import { MessageSquare, Globe, Send, Instagram, BarChart, Phone, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import StrategyCallForm from "@/components/StrategyCallForm";
