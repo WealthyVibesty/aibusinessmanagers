@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, MessageSquare, Phone, Globe, Send, Instagram, BarChart } from "lucide-react";
+import { ArrowRight, MessageSquare, Globe, Send, Instagram, BarChart, Phone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import StrategyCallForm from "@/components/StrategyCallForm";
@@ -22,35 +22,40 @@ export default function AIBusinessSolutions() {
       />
 
       {/* Problems Section */}
-      <section className="pt-32 pb-16 px-6 bg-white">
+      <section className="pt-32 pb-16 px-6 bg-gradient-to-b from-white to-blue-50/30">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
             Is Your Business Struggling With...?
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: <MessageSquare className="h-8 w-8 text-red-500" />,
+                icon: <MessageSquare className="h-6 w-6 text-red-500" />,
                 text: "Overflowing customer service requests that overwhelm your team"
               },
               {
-                icon: <Instagram className="h-8 w-8 text-red-500" />,
+                icon: <Instagram className="h-6 w-6 text-red-500" />,
                 text: "Missed opportunities to engage customers on social media"
               },
               {
-                icon: <Send className="h-8 w-8 text-red-500" />,
+                icon: <Send className="h-6 w-6 text-red-500" />,
                 text: "Inefficient follow-ups that let leads slip through the cracks"
               },
               {
-                icon: <Globe className="h-8 w-8 text-red-500" />,
+                icon: <Globe className="h-6 w-6 text-red-500" />,
                 text: "A website that fails to convert visitors into customers"
               }
             ].map((item, i) => (
-              <Card key={i} className="p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 mb-4">
+              <Card 
+                key={i} 
+                className="p-8 hover:shadow-xl transition-all duration-300 group bg-white/80 backdrop-blur-sm border-red-100 hover:border-red-200"
+              >
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-red-50 mb-6 group-hover:scale-95 transition-transform">
                   {item.icon}
                 </div>
-                <p className="text-lg text-gray-700">{item.text}</p>
+                <p className="text-xl md:text-2xl text-gray-800 leading-relaxed font-medium">
+                  {item.text}
+                </p>
               </Card>
             ))}
           </div>
@@ -118,20 +123,20 @@ export default function AIBusinessSolutions() {
         </div>
       </section>
 
-      {/* Hero Section - Moved to end */}
+      {/* Hero Section - At the end */}
       <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeIn">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeIn leading-tight">
             Mid-Size and Large Companies Hire AI Business Managers To Maximize Work Efficiency, Time & Revenue
           </h1>
-          <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto animate-slideUp">
+          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto animate-slideUp leading-relaxed">
             We Assist Businesses Save 20+ Hours Per Week with AI-Powered Automation | Streamlining Customer Service, Boosting Engagement, and Cutting Costs for Scalable Growth
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slideUp">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center animate-slideUp">
             <Button 
               size="lg"
               onClick={() => setIsDemoModalOpen(true)}
-              className="text-xl px-10 py-7"
+              className="text-xl px-10 py-7 bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all"
             >
               See a Live Demo
               <ArrowRight className="ml-2 h-6 w-6" />
@@ -140,7 +145,7 @@ export default function AIBusinessSolutions() {
               size="lg"
               variant="outline"
               onClick={() => setIsSolutionFinderOpen(true)}
-              className="text-xl px-10 py-7 animate-pulse hover:animate-none"
+              className="text-xl px-10 py-7 border-2 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all"
             >
               Find Your AI Solution
               <ArrowRight className="ml-2 h-6 w-6" />
@@ -149,7 +154,7 @@ export default function AIBusinessSolutions() {
               size="lg"
               variant="secondary"
               onClick={() => setIsStrategyCallOpen(true)}
-              className="text-xl px-10 py-7"
+              className="text-xl px-10 py-7 shadow-lg hover:shadow-xl transition-all"
             >
               Book a Free Strategy Call
               <ArrowRight className="ml-2 h-6 w-6" />
