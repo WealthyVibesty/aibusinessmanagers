@@ -5,7 +5,7 @@
   min-height: 100vh;
   position: relative;
   z-index: 1;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 .glass-morphism {
@@ -49,12 +49,8 @@
 }
 
 @keyframes shine {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(100%);
-  }
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
 }
 
 .hover-lift {
@@ -73,10 +69,10 @@
   color: transparent;
 }
 
-/* Improved responsive page content spacing */
+/* Mobile-first page content spacing */
 .page-content {
   padding: 1rem;
-  padding-top: calc(4rem + 16px);
+  padding-top: 5rem;
   max-width: 100%;
   margin: 0 auto;
   overflow-x: hidden;
@@ -86,18 +82,14 @@
 @media (min-width: 640px) {
   .page-content {
     padding: 1.5rem;
-    padding-top: calc(4rem + 24px);
+    padding-top: 6rem;
   }
 }
 
 @media (min-width: 768px) {
-  #root {
-    padding: 0;
-  }
-  
   .page-content {
     padding: 2rem;
-    padding-top: calc(4rem + 32px);
+    padding-top: 7rem;
     max-width: 768px;
   }
 }
@@ -105,7 +97,7 @@
 @media (min-width: 1024px) {
   .page-content {
     padding: 2.5rem;
-    padding-top: calc(4rem + 40px);
+    padding-top: 7rem;
     max-width: 1024px;
   }
 }
@@ -113,12 +105,12 @@
 @media (min-width: 1280px) {
   .page-content {
     padding: 3rem;
-    padding-top: calc(4rem + 48px);
+    padding-top: 7rem;
     max-width: 1280px;
   }
 }
 
-/* Enhanced responsive typography */
+/* Mobile-optimized typography */
 @media (max-width: 640px) {
   h1 {
     font-size: 1.75rem !important;
@@ -139,12 +131,10 @@
     font-size: 1rem !important;
     line-height: 1.5rem !important;
   }
+}
 
-  .mobile-text-sm {
-    font-size: 0.875rem !important;
-    line-height: 1.25rem !important;
-  }
-
+/* Mobile-optimized spacing and layout */
+@media (max-width: 768px) {
   .mobile-stack {
     flex-direction: column !important;
     gap: 1rem !important;
@@ -197,7 +187,6 @@
   padding-left: 1rem;
   padding-right: 1rem;
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 @media (min-width: 640px) {
@@ -224,42 +213,6 @@
   }
 }
 
-/* Mobile navigation improvements */
-@media (max-width: 768px) {
-  .mobile-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 50;
-  }
-
-  .mobile-menu {
-    padding: 1rem;
-    background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-
-  .mobile-hidden {
-    display: none !important;
-  }
-
-  .mobile-block {
-    display: block !important;
-  }
-
-  .mobile-stack-vertical > * {
-    width: 100%;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: 0.75rem;
-  }
-
-  .mobile-stack-vertical > *:last-child {
-    margin-bottom: 0;
-  }
-}
-
 /* ElevenLabs Widget Mobile Optimization */
 @media (max-width: 768px) {
   elevenlabs-convai {
@@ -268,21 +221,4 @@
     max-width: calc(100vw - 40px);
     max-height: calc(100vh - 40px);
   }
-}
-
-/* Fix for double header issue */
-.page-content {
-  padding-top: calc(4rem + 16px); /* Adjust based on header height */
-  margin-top: 0;
-}
-
-/* Ensure header is always on top */
-header {
-  z-index: 1000;
-}
-
-/* Prevent content from appearing under header */
-main {
-  position: relative;
-  z-index: 1;
 }
