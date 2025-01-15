@@ -64,7 +64,7 @@ export default function AIBusinessSolutions() {
             Mid-Size and Large Companies Hire AI Business Managers To Maximize Work Efficiency, Time & Revenue
           </h1>
           <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto animate-slideUp">
-            Helping Businesses Save 20+ Hours Per Week with AI-Powered Automation | Streamlining Customer Service, Boosting Engagement, and Cutting Costs for Scalable Growth
+            We Assist Businesses Save 20+ Hours Per Week with AI-Powered Automation | Streamlining Customer Service, Boosting Engagement, and Cutting Costs for Scalable Growth
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slideUp">
             <Button 
