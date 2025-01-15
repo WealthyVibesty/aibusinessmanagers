@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Phone, MessageSquare, Globe, Database } from "lucide-react";
+import { Check, Phone, MessageSquare, Globe, Database, Instagram, Bot } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 
@@ -95,38 +95,89 @@ export default function CoreOffer() {
       <section className="pt-20 pb-16 px-6 bg-gradient-to-b from-primary/5 to-background">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-6 animate-fadeIn">
-            Transform Your Customer Engagement
+            Increase Customer Service & Engage Customers Over The Phone & Instagram messenger with AI-Powered Assistants 🚀
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 animate-slideUp">
-            An AI-powered system that builds SMS marketing lists, streamlines customer calls, 
-            and enables personalized follow-ups.
+            From 24/7 AI customer support to SMS marketing, Instagram comment automation, and CRM integrations, 
+            we help businesses streamline operations, build loyal audiences, and grow revenue—all with the power of AI.
           </p>
-          <Button 
-            size="lg"
-            onClick={() => navigate("/sales")}
-            className="text-lg px-8 py-6 h-auto animate-slideUp"
-          >
-            Schedule a Free Demo
-          </Button>
+          
+          {/* Video Section */}
+          <div className="w-full max-w-4xl mx-auto mb-12 rounded-xl overflow-hidden shadow-xl animate-scale">
+            <video 
+              className="w-full aspect-video object-cover"
+              autoPlay 
+              muted 
+              loop 
+              playsInline
+            >
+              <source src="/lovable-uploads/demo-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 animate-slideUp">
+            <Button 
+              size="lg"
+              onClick={() => navigate("/demo")}
+              className="text-lg px-8 py-6 h-auto group"
+            >
+              See How It Works (Live Demo)
+              <Bot className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+            </Button>
+            
+            <Button 
+              size="lg"
+              variant="outline"
+              onClick={() => navigate("/solution-finder")}
+              className="text-lg px-8 py-6 h-auto group"
+            >
+              Find Your Solution
+              <MessageSquare className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+            </Button>
+            
+            <Button 
+              size="lg"
+              variant="secondary"
+              onClick={() => navigate("/chat")}
+              className="text-lg px-8 py-6 h-auto group"
+            >
+              Let's Chat!
+              <Globe className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Instagram Feature Section */}
       <section className="py-16 px-6 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Core Features</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <Card 
-                key={index} 
-                className="p-6 hover:shadow-lg transition-shadow animate-slideUp"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </Card>
-            ))}
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-8">Instagram Comment Automation Made Easy</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="p-6 hover:shadow-lg transition-shadow animate-slideUp">
+              <Instagram className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Automatic Responses</h3>
+              <p className="text-muted-foreground">
+                Automatically respond to common questions, mentions, or DMs.
+              </p>
+            </Card>
+            
+            <Card className="p-6 hover:shadow-lg transition-shadow animate-slideUp delay-100">
+              <MessageSquare className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Lead Generation</h3>
+              <p className="text-muted-foreground">
+                Turn comments into conversations that drive leads and sales.
+              </p>
+            </Card>
+            
+            <Card className="p-6 hover:shadow-lg transition-shadow animate-slideUp delay-200">
+              <Bot className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">24/7 Availability</h3>
+              <p className="text-muted-foreground">
+                Never miss a customer inquiry—your AI assistant is always on!
+              </p>
+            </Card>
           </div>
         </div>
       </section>
