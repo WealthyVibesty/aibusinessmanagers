@@ -83,13 +83,16 @@ elevenlabs-convai {
   z-index: 1000;
   transition: all 0.3s ease-in-out;
   transform-origin: bottom right;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
   max-width: calc(100vw - 80px);
   max-height: calc(100vh - 80px);
   opacity: 1;
   pointer-events: auto;
   transform: scale(1);
+  background: transparent;
+  border: none;
+  overflow: hidden;
 }
 
 /* Change the widget text */
