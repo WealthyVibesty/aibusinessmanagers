@@ -19,10 +19,10 @@ export default function CheckoutFlow() {
   const [isStrategyCallOpen, setIsStrategyCallOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 py-8 px-4">
+    <div className="min-h-screen bg-white py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Demo Button */}
-        <div className="bg-primary/5 rounded-lg p-6 border border-primary/20 text-center mt-16 mb-12">
+        <div className="bg-white rounded-lg p-6 text-center mt-16 mb-12">
           <h2 className="text-xl font-semibold mb-3">Not Ready to Purchase?</h2>
           <Button 
             size="lg"
@@ -37,7 +37,7 @@ export default function CheckoutFlow() {
         {/* Alternative Options Grid */}
         <div className="grid md:grid-cols-3 gap-6 my-8">
           {/* Strategy Call Box */}
-          <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+          <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
             <div className="flex flex-col h-full">
               <PhoneCall className="h-8 w-8 text-primary mb-4" />
               <h3 className="text-lg font-semibold mb-3">Free 30-Minute Strategy Call</h3>
@@ -55,7 +55,7 @@ export default function CheckoutFlow() {
           </div>
 
           {/* ROI Calculator Box */}
-          <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+          <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
             <div className="flex flex-col h-full">
               <Calculator className="h-8 w-8 text-primary mb-4" />
               <h3 className="text-lg font-semibold mb-3">ROI Calculator Demo</h3>
@@ -73,7 +73,7 @@ export default function CheckoutFlow() {
           </div>
 
           {/* Pilot Program Box */}
-          <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+          <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
             <div className="flex flex-col h-full">
               <PlayCircle className="h-8 w-8 text-primary mb-4" />
               <h3 className="text-lg font-semibold mb-3">Pilot Program</h3>
@@ -105,7 +105,7 @@ export default function CheckoutFlow() {
         </div>
 
         {/* Introductory Offer Message */}
-        <div className="text-center bg-primary/5 rounded-lg p-4 border border-primary/20">
+        <div className="text-center bg-white rounded-lg p-4 border border-primary/20">
           <p className="text-lg font-medium text-primary">
             🎉 Enterprise-Grade AI Implementation Package - Transform Your Business Operations
           </p>
