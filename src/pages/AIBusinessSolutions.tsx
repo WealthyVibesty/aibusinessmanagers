@@ -23,7 +23,7 @@ export default function AIBusinessSolutions() {
       <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeIn">
-            Revolutionize Customer Service and Digital Engagement with AI
+            Helping Businesses Save 20+ Hours Per Week with AI-Powered Automation | Streamlining Customer Service, Boosting Engagement, and Cutting Costs for Scalable Growth
           </h1>
           <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto animate-slideUp">
             From voice assistants and chatbots to AI-driven websites and SMS marketing, 
