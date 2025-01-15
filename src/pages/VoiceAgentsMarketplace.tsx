@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Search, ArrowRight, Stethoscope, Brain, Heart, Baby, Pills, Apple, Activity, Hospital, FirstAid } from "lucide-react";
+import { Search, ArrowRight, Stethoscope, Brain, Heart, Baby, Pill, Apple, Activity, Hospital, Bandage } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { useState } from "react";
@@ -39,7 +39,7 @@ const niches = [
     id: 5,
     title: "Pharmaceuticals",
     description: "Automate prescription refills and medication information",
-    icon: <Pills className="h-8 w-8" />,
+    icon: <Pill className="h-8 w-8" />,
     route: "/pharmaceuticals"
   },
   {
@@ -67,7 +67,7 @@ const niches = [
     id: 9,
     title: "Emergency Care",
     description: "Enhance emergency response and patient triage",
-    icon: <FirstAid className="h-8 w-8" />,
+    icon: <Bandage className="h-8 w-8" />,
     route: "/emergency-care"
   }
 ];
