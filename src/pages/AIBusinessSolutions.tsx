@@ -6,11 +6,13 @@ import DemoRequestForm from "@/components/DemoRequestForm";
 import StrategyCallForm from "@/components/StrategyCallForm";
 import { useState } from "react";
 import SEO from "@/components/SEO";
+import AISolutionFinder from "@/components/solutions/AISolutionFinder";
 
 export default function AIBusinessSolutions() {
   const navigate = useNavigate();
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [isStrategyCallOpen, setIsStrategyCallOpen] = useState(false);
+  const [isSolutionFinderOpen, setIsSolutionFinderOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
@@ -41,7 +43,7 @@ export default function AIBusinessSolutions() {
             <Button 
               size="lg"
               variant="outline"
-              onClick={() => navigate("/voice-agents")}
+              onClick={() => setIsSolutionFinderOpen(true)}
               className="text-lg px-8"
             >
               Find Your AI Solution
@@ -60,7 +62,6 @@ export default function AIBusinessSolutions() {
         </div>
       </section>
 
-      {/* Pain Points Section */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">
@@ -187,7 +188,7 @@ export default function AIBusinessSolutions() {
         </div>
       </section>
 
-      {/* Forms */}
+      {/* Forms and Dialogs */}
       <DemoRequestForm 
         isOpen={isDemoModalOpen} 
         onClose={() => setIsDemoModalOpen(false)} 
@@ -195,6 +196,10 @@ export default function AIBusinessSolutions() {
       <StrategyCallForm 
         isOpen={isStrategyCallOpen} 
         onClose={() => setIsStrategyCallOpen(false)} 
+      />
+      <AISolutionFinder
+        isOpen={isSolutionFinderOpen}
+        onClose={() => setIsSolutionFinderOpen(false)}
       />
     </div>
   );
