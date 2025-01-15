@@ -10,6 +10,40 @@ export default function VoiceAgentsMarketplace() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Helper function to handle navigation
+  const handleNavigation = (route: string) => {
+    // List of available routes
+    const availableRoutes = [
+      '/primary-care',
+      '/mental-health',
+      '/voice-agents-marketplace',
+      '/pediatrics',
+      '/pharmaceuticals',
+      '/industries/hospitals-health-systems',
+      '/medical-research',
+      '/emergency-services',
+      '/diagnostic-imaging',
+      '/telemedicine',
+      '/dental-care',
+      '/elderly-care',
+      '/rehabilitation',
+      '/oncology',
+      '/ob-gyn',
+      '/public-health',
+      '/surgical-practices',
+      '/home-healthcare',
+      '/nutrition-wellness'
+    ];
+
+    // If route is not available, redirect to checkout
+    if (!availableRoutes.includes(route)) {
+      console.log(`Route ${route} not available, redirecting to checkout`);
+      navigate('/checkout');
+    } else {
+      navigate(route);
+    }
+  };
+
   const niches = [
     {
       id: 1,
@@ -248,7 +282,7 @@ export default function VoiceAgentsMarketplace() {
                   </div>
                   <div className="mt-auto">
                     <Button 
-                      onClick={() => navigate(niche.route)}
+                      onClick={() => handleNavigation(niche.route)}
                       className="w-full"
                     >
                       Learn More
