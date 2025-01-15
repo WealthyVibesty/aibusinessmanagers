@@ -6,6 +6,7 @@ import FooterSection from "@/components/landing/sections/FooterSection";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 export default function TelemedicineLanding() {
   const navigate = useNavigate();
@@ -28,9 +29,20 @@ export default function TelemedicineLanding() {
     { text: "Enable multilingual patient communication" }
   ];
 
+  const handleDemoClick = () => {
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
+      widget.classList.remove('hidden');
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
+      <SEO 
+        title="Transform Your Telemedicine Practice with AI Voice Agents"
+        description="Revolutionize telemedicine with AI support. 24/7 patient assistance, appointment scheduling & follow-up automation."
+      />
       <HeroSection 
         title="Transform Your Telemedicine Practice with AI Voice Agents"
         subtitle="Streamline patient communication, automate administrative tasks, and provide 24/7 support with our intelligent voice technology."
@@ -57,7 +69,7 @@ export default function TelemedicineLanding() {
           <div className="pt-4">
             <Button 
               size="lg"
-              onClick={() => navigate("/checkout")}
+              onClick={handleDemoClick}
               className="text-lg px-8 py-6 h-auto"
             >
               Get Started Now

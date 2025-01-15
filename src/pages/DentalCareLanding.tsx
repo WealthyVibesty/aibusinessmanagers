@@ -4,6 +4,7 @@ import BenefitsSection from "@/components/landing/sections/specialty/BenefitsSec
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 export default function DentalCareLanding() {
   const navigate = useNavigate();
@@ -28,6 +29,10 @@ export default function DentalCareLanding() {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Transform Your Dental Practice with AI Voice Agents" 
+        description="Automate dental practice operations with AI. Schedule appointments, send reminders & improve patient communication."
+      />
       <HeroSection 
         title="Transform Your Dental Practice with AI Voice Agents"
         subtitle="Streamline your dental practice operations while improving patient satisfaction and reducing administrative burden."

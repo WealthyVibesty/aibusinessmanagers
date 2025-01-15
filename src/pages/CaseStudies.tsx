@@ -5,8 +5,8 @@ export default function CaseStudies() {
   return (
     <>
       <SEO 
-        title="Case Studies" 
-        description="Discover how healthcare organizations are transforming their operations with AI voice solutions."
+        title="Success Stories in Healthcare AI" 
+        description="Real success stories of healthcare providers using our AI solutions. See how we've helped transform patient care & operational efficiency."
       />
       <div className="min-h-screen">
         <HeroSection

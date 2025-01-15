@@ -5,8 +5,8 @@ export default function Blog() {
   return (
     <>
       <SEO 
-        title="Blog" 
-        description="Latest insights and updates on healthcare AI technology and industry trends."
+        title="Healthcare AI Insights" 
+        description="Stay informed with latest healthcare AI trends, best practices & industry insights. Expert analysis on medical technology innovation."
       />
       <div className="min-h-screen">
         <HeroSection

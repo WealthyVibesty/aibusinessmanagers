@@ -4,6 +4,7 @@ import BenefitsSection from "@/components/landing/sections/specialty/BenefitsSec
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 export default function DiagnosticImagingLanding() {
   const navigate = useNavigate();
@@ -28,6 +29,10 @@ export default function DiagnosticImagingLanding() {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Transform Your Diagnostic Center with AI Voice Agents" 
+        description="Enhance diagnostic imaging operations with AI. Automate scheduling, prep instructions & results communication."
+      />
       <HeroSection 
         title="Transform Your Diagnostic Center with AI Voice Agents"
         subtitle="Streamline appointments, improve patient preparedness, and reduce administrative burden."

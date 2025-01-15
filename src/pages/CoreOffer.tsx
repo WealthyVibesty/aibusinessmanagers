@@ -7,6 +7,13 @@ import SEO from "@/components/SEO";
 export default function CoreOffer() {
   const navigate = useNavigate();
 
+  const handleDemoClick = () => {
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
+      widget.classList.remove('hidden');
+    }
+  };
+
   const features = [
     {
       title: "SMS Marketing List Building",
@@ -87,7 +94,7 @@ export default function CoreOffer() {
     <div className="min-h-screen">
       <SEO 
         title="AI-Powered Customer Engagement System"
-        description="Transform your customer service with AI-powered engagement, SMS marketing, and automated follow-ups. Our solution helps businesses streamline operations and grow revenue."
+        description="Transform customer service with AI voice agents, SMS marketing & Instagram automation. 24/7 support, multilingual capabilities & CRM integration."
         path="/core-offer"
       />
 
@@ -117,7 +124,7 @@ export default function CoreOffer() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 animate-slideUp">
             <Button 
               size="lg"
-              onClick={() => navigate("/demo")}
+              onClick={handleDemoClick}
               className="text-lg px-8 py-6 h-auto group"
             >
               See How It Works (Live Demo)
@@ -127,7 +134,7 @@ export default function CoreOffer() {
             <Button 
               size="lg"
               variant="outline"
-              onClick={() => navigate("/solution-finder")}
+              onClick={handleDemoClick}
               className="text-lg px-8 py-6 h-auto group"
             >
               Find Your Solution
@@ -137,7 +144,7 @@ export default function CoreOffer() {
             <Button 
               size="lg"
               variant="secondary"
-              onClick={() => navigate("/chat")}
+              onClick={handleDemoClick}
               className="text-lg px-8 py-6 h-auto group"
             >
               Let's Chat!

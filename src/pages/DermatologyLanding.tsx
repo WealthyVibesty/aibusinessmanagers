@@ -4,6 +4,7 @@ import BenefitsSection from "@/components/landing/sections/specialty/BenefitsSec
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 export default function DermatologyLanding() {
   const navigate = useNavigate();
@@ -28,6 +29,10 @@ export default function DermatologyLanding() {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Transform Your Dermatology Practice with AI Voice Agents" 
+        description="Optimize dermatology practice with AI automation. Streamline cosmetic consultations & improve patient engagement."
+      />
       <HeroSection 
         title="Transform Your Dermatology Practice with AI Voice Agents"
         subtitle="Streamline your cosmetic and medical dermatology operations while improving patient satisfaction and reducing administrative burden."

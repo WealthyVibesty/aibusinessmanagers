@@ -21,8 +21,8 @@ export default function FAQs() {
   return (
     <>
       <SEO 
-        title="FAQs" 
-        description="Find answers to commonly asked questions about our healthcare AI solutions."
+        title="Frequently Asked Questions" 
+        description="Find answers about our healthcare AI solutions. Learn about implementation, pricing, support & technical details."
       />
       <div className="min-h-screen">
         <HeroSection

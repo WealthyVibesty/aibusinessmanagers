@@ -4,6 +4,7 @@ import BenefitsSection from "@/components/landing/sections/specialty/BenefitsSec
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 export default function RadiologyLanding() {
   const navigate = useNavigate();
@@ -28,6 +29,10 @@ export default function RadiologyLanding() {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Transform Your Radiology Practice with AI Voice Agents" 
+        description="Optimize radiology workflows with AI automation. Streamline imaging appointments & enhance result communication."
+      />
       <HeroSection 
         title="Transform Your Radiology Practice with AI Voice Agents"
         subtitle="Streamline imaging operations while improving patient communication and reducing administrative burden."

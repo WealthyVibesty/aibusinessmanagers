@@ -2,8 +2,9 @@ import HeroSection from "@/components/landing/sections/specialty/HeroSection";
 import UseCasesSection from "@/components/landing/sections/specialty/UseCasesSection";
 import BenefitsSection from "@/components/landing/sections/specialty/BenefitsSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Activity, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 export default function RehabilitationLanding() {
   const navigate = useNavigate();
@@ -28,6 +29,10 @@ export default function RehabilitationLanding() {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Transform Rehabilitation Care with AI Voice Agents"
+        description="Enhance rehabilitation services with AI. Track progress, automate exercises & improve patient engagement."
+      />
       <HeroSection 
         title="Transform Rehabilitation Care with AI Voice Agents"
         subtitle="Boost patient engagement, improve adherence to treatment plans, and streamline progress tracking."

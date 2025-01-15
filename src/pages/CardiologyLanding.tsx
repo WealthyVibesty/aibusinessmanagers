@@ -3,8 +3,9 @@ import UseCasesSection from "@/components/landing/sections/specialty/UseCasesSec
 import BenefitsSection from "@/components/landing/sections/specialty/BenefitsSection";
 import FooterSection from "@/components/landing/sections/FooterSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Heart, Calendar, Bell, Shield } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 export default function CardiologyLanding() {
   const navigate = useNavigate();
@@ -26,6 +27,13 @@ export default function CardiologyLanding() {
     { text: "Reduce missed appointments" },
     { text: "Enhance patient communication" }
   ];
+
+  const handleDemoClick = () => {
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
+      widget.classList.remove('hidden');
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -57,7 +65,7 @@ export default function CardiologyLanding() {
             <div className="pt-4">
               <Button 
                 size="lg"
-                onClick={() => navigate("/voice-agents")}
+                onClick={handleDemoClick}
                 className="text-lg px-8 py-6 h-auto"
               >
                 Explore Voice Agents
@@ -68,6 +76,10 @@ export default function CardiologyLanding() {
         </section>
       </div>
       <FooterSection />
+      <SEO 
+        title="Transform Your Cardiology Practice with AI Voice Agents" 
+        description="Streamline cardiology practice operations with AI voice agents. Improve patient care, reduce admin work & boost efficiency."
+      />
     </div>
   );
 }
