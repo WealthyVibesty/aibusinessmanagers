@@ -43,7 +43,7 @@ export default function Header() {
       submenu: [
         { 
           label: "Healthcare", 
-          path: "/" 
+          path: "/voice-agents-marketplace" 
         }
       ]
     },

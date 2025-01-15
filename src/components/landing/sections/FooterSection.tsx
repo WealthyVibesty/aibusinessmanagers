@@ -13,7 +13,7 @@ const FooterSection = () => {
   ];
 
   const industries = [
-    { name: "Healthcare", path: "/" }
+    { name: "Healthcare", path: "/voice-agents-marketplace" }
   ];
 
   const resources = [
