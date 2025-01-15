@@ -107,7 +107,7 @@ export default function VoiceAgentsMarketplace() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      {/* Hero Section with proper spacing from header */}
+      {/* Hero Section */}
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
@@ -129,25 +129,34 @@ export default function VoiceAgentsMarketplace() {
         </div>
       </section>
 
-      {/* Industries Grid with optimized spacing */}
+      {/* Industries Grid */}
       <section className="py-12 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {industries.map((industry) => (
               <Card 
                 key={industry.id}
-                className="p-4 hover:shadow-lg transition-all cursor-pointer animate-scale group"
-                onClick={() => navigate(industry.route)}
+                className="p-6 hover:shadow-lg transition-all group"
               >
-                <div className="flex items-start gap-3">
-                  <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
-                    {industry.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1 group-hover:text-blue-600 transition-colors">
-                      {industry.name}
-                    </h3>
-                    <p className="text-gray-600 text-sm">{industry.description}</p>
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
+                      {industry.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-lg mb-1 group-hover:text-blue-600 transition-colors">
+                        {industry.name}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-4">{industry.description}</p>
+                      <Button
+                        variant="outline"
+                        onClick={() => navigate(industry.route)}
+                        className="w-full group-hover:bg-primary group-hover:text-white transition-all"
+                      >
+                        Learn More
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </Card>
@@ -156,7 +165,7 @@ export default function VoiceAgentsMarketplace() {
         </div>
       </section>
 
-      {/* Call to Action with reduced spacing */}
+      {/* Call to Action */}
       <section className="py-12 px-6 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Healthcare Practice?</h2>
