@@ -164,7 +164,7 @@ export default function AffiliateProgram() {
 
   if (!affiliate) {
     return (
-      <div className="container mx-auto px-4 py-16 max-w-4xl">
+      <div className="container mx-auto px-4 py-24 max-w-4xl">
         <Card className="p-8 text-center">
           <h1 className="text-3xl font-bold mb-6">Become an Affiliate Partner</h1>
           <p className="text-muted-foreground mb-8">
@@ -179,7 +179,7 @@ export default function AffiliateProgram() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className="container mx-auto px-4 py-24 max-w-6xl">
       <h1 className="text-3xl font-bold mb-8">Affiliate Dashboard</h1>
 
       <div className="grid md:grid-cols-3 gap-6 mb-8">
