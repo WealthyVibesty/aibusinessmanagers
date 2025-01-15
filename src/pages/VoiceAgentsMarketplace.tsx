@@ -1,153 +1,89 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { 
-  Stethoscope, Brain, Heart, Pill, Hospital, 
-  Dumbbell, BookOpen, Home, Baby, Smile, Apple, 
-  Ambulance, ArrowRight, Search, Microscope,
-  Syringe, Thermometer
-} from "lucide-react";
+import { Search, ArrowRight, Stethoscope, Brain, Heart, Baby, Pills, Apple, Activity, Hospital, FirstAid } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
-const healthcareNiches = [
-  { 
-    id: 'telemedicine', 
-    name: 'Telemedicine', 
-    icon: <Stethoscope className="h-6 w-6" />,
-    description: 'Virtual consultations, appointment scheduling, and patient triage.',
-    route: '/telemedicine'
+const niches = [
+  {
+    id: 1,
+    title: "General Practice",
+    description: "Streamline patient communication and appointment scheduling",
+    icon: <Stethoscope className="h-8 w-8" />,
+    route: "/general-practice"
   },
-  { 
-    id: 'mental-health', 
-    name: 'Mental Health', 
-    icon: <Brain className="h-6 w-6" />,
-    description: 'Therapeutic conversation agents and crisis intervention tools.',
-    route: '/mental-health'
+  {
+    id: 2,
+    title: "Mental Health",
+    description: "Support patients with 24/7 care and appointment management",
+    icon: <Brain className="h-8 w-8" />,
+    route: "/mental-health"
   },
-  { 
-    id: 'cardiology', 
-    name: 'Cardiology', 
-    icon: <Heart className="h-6 w-6" />,
-    description: 'Streamline cardiac care and patient monitoring.',
-    route: '/cardiology'
+  {
+    id: 3,
+    title: "Cardiology",
+    description: "Monitor patient care and manage follow-ups efficiently",
+    icon: <Heart className="h-8 w-8" />,
+    route: "/cardiology"
   },
-  { 
-    id: 'obgyn', 
-    name: 'OB/GYN', 
-    icon: <Baby className="h-6 w-6" />,
-    description: 'Enhance prenatal care and patient communication.',
-    route: '/ob-gyn'
+  {
+    id: 4,
+    title: "Pediatrics",
+    description: "Enhance parent communication and vaccination scheduling",
+    icon: <Baby className="h-8 w-8" />,
+    route: "/pediatrics"
   },
-  { 
-    id: 'dermatology', 
-    name: 'Dermatology', 
-    icon: <Smile className="h-6 w-6" />,
-    description: 'Optimize dermatology practice management.',
-    route: '/dermatology'
+  {
+    id: 5,
+    title: "Pharmaceuticals",
+    description: "Automate prescription refills and medication information",
+    icon: <Pills className="h-8 w-8" />,
+    route: "/pharmaceuticals"
   },
-  { 
-    id: 'dental', 
-    name: 'Dental Care', 
-    icon: <Smile className="h-6 w-6" />,
-    description: 'Streamline dental practice operations.',
-    route: '/dental-care'
+  {
+    id: 6,
+    title: "Nutrition & Wellness",
+    description: "Schedule consultations and provide dietary guidance",
+    icon: <Apple className="h-8 w-8" />,
+    route: "/nutrition-wellness"
   },
-  { 
-    id: 'pediatrics', 
-    name: 'Pediatrics', 
-    icon: <Baby className="h-6 w-6" />,
-    description: 'Enhance pediatric care delivery.',
-    route: '/pediatrics'
+  {
+    id: 7,
+    title: "Medical Research",
+    description: "Streamline research participant communication and data collection",
+    icon: <Activity className="h-8 w-8" />,
+    route: "/medical-research"
   },
-  { 
-    id: 'emergency', 
-    name: 'Emergency Services', 
-    icon: <Ambulance className="h-6 w-6" />,
-    description: 'Optimize emergency response coordination.',
-    route: '/emergency-services'
+  {
+    id: 8,
+    title: "Hospitals & Clinics",
+    description: "Improve patient experience and operational efficiency",
+    icon: <Hospital className="h-8 w-8" />,
+    route: "/hospitals-clinics"
   },
-  { 
-    id: 'rehabilitation', 
-    name: 'Rehabilitation', 
-    icon: <Dumbbell className="h-6 w-6" />,
-    description: 'Streamline rehabilitation programs.',
-    route: '/rehabilitation'
-  },
-  { 
-    id: 'diagnostic-imaging', 
-    name: 'Diagnostic Imaging', 
-    icon: <Microscope className="h-6 w-6" />,
-    description: 'Enhance imaging center operations.',
-    route: '/diagnostic-imaging'
-  },
-  { 
-    id: 'elderly-care', 
-    name: 'Elderly Care', 
-    icon: <Home className="h-6 w-6" />,
-    description: 'Optimize senior care coordination.',
-    route: '/elderly-care'
-  },
-  { 
-    id: 'pharmaceuticals', 
-    name: 'Pharmaceuticals', 
-    icon: <Pill className="h-6 w-6" />,
-    description: 'Streamline pharmacy operations.',
-    route: '/pharmaceuticals'
-  },
-  { 
-    id: 'chronic-disease', 
-    name: 'Chronic Disease Management', 
-    icon: <Thermometer className="h-6 w-6" />,
-    description: 'Comprehensive chronic disease care management.',
-    route: '/chronic-disease'
-  },
-  { 
-    id: 'oncology', 
-    name: 'Oncology', 
-    icon: <Syringe className="h-6 w-6" />,
-    description: 'Streamline cancer care coordination.',
-    route: '/oncology'
-  },
-  { 
-    id: 'primary-care', 
-    name: 'Primary Care', 
-    icon: <Stethoscope className="h-6 w-6" />,
-    description: 'Optimize primary care practice operations.',
-    route: '/primary-care'
-  },
-  { 
-    id: 'radiology', 
-    name: 'Radiology', 
-    icon: <Microscope className="h-6 w-6" />,
-    description: 'Enhance radiology practice efficiency.',
-    route: '/radiology'
-  },
-  { 
-    id: 'hospitals', 
-    name: 'Hospitals & Health Systems', 
-    icon: <Hospital className="h-6 w-6" />,
-    description: 'Comprehensive hospital management solutions.',
-    route: '/industries/hospitals-health-systems'
-  },
-  { 
-    id: 'clinics', 
-    name: 'Clinics & Private Practices', 
-    icon: <Stethoscope className="h-6 w-6" />,
-    description: 'Optimize clinic workflows and patient communication.',
-    route: '/industries/clinics-private-practices'
+  {
+    id: 9,
+    title: "Emergency Care",
+    description: "Enhance emergency response and patient triage",
+    icon: <FirstAid className="h-8 w-8" />,
+    route: "/emergency-care"
   }
 ];
+
+const filterNiches = (query: string) => {
+  return niches.filter(niche =>
+    niche.title.toLowerCase().includes(query.toLowerCase()) ||
+    niche.description.toLowerCase().includes(query.toLowerCase())
+  );
+};
 
 export default function VoiceAgentsMarketplace() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  
-  const filteredNiches = healthcareNiches.filter(niche => 
-    niche.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    niche.description.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+
+  const filteredNiches = filterNiches(searchQuery);
 
   return (
     <div className="min-h-screen bg-white">
@@ -155,35 +91,33 @@ export default function VoiceAgentsMarketplace() {
         title="Healthcare AI Voice Agents Marketplace" 
         description="Explore AI voice agents for healthcare. Streamline patient communication, automate scheduling & improve care delivery across medical specialties."
       />
-
+      
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+      <section className="py-16 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6">
             AI Voice Agents for Healthcare
           </h1>
-          <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
-            Transform patient care and streamline operations with AI solutions tailored for healthcare providers.
+          <p className="text-xl text-gray-600 mb-8">
+            Discover specialized AI voice agents designed for different healthcare specialties
           </p>
           
           {/* Search Bar */}
-          <div className="max-w-2xl mx-auto mb-12">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-              <Input
-                type="text"
-                placeholder="Search for your healthcare specialty..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 py-6 text-lg"
-              />
-            </div>
+          <div className="relative max-w-xl mx-auto">
+            <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+            <Input
+              type="text"
+              placeholder="Search healthcare specialties..."
+              className="pl-10 h-12"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
         </div>
       </section>
 
       {/* Healthcare Niches Grid */}
-      <section className="py-12 px-6 bg-gray-50">
+      <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredNiches.map((niche) => (
@@ -193,16 +127,16 @@ export default function VoiceAgentsMarketplace() {
                 onClick={() => navigate(niche.route)}
               >
                 <div className="flex flex-col gap-4">
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
-                      {niche.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-lg mb-1 group-hover:text-blue-600 transition-colors">
-                        {niche.name}
-                      </h3>
-                      <p className="text-gray-600 text-sm">{niche.description}</p>
-                    </div>
+                  <div className="text-primary">
+                    {niche.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                      {niche.title}
+                    </h3>
+                    <p className="text-gray-600">
+                      {niche.description}
+                    </p>
                   </div>
                 </div>
               </Card>
@@ -216,12 +150,12 @@ export default function VoiceAgentsMarketplace() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Healthcare Practice?</h2>
           <p className="text-xl text-gray-600 mb-6">
-            Join healthcare leaders who are revolutionizing patient care with AI voice technology.
+            Join leading healthcare providers using AI voice agents to improve patient care and operational efficiency
           </p>
           <Button 
             size="lg"
             onClick={() => navigate("/checkout")}
-            className="text-lg px-8 py-6 h-auto"
+            className="text-lg px-8"
           >
             Get Started Now
             <ArrowRight className="ml-2 h-5 w-5" />
