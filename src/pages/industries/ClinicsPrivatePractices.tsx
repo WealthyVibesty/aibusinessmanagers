@@ -5,6 +5,7 @@ import { ArrowRight, Phone, Calendar, Clock } from "lucide-react";
 import SolutionHero from "@/components/solutions/SolutionHero";
 import FeatureList from "@/components/solutions/FeatureList";
 import HowItWorks from "@/components/solutions/HowItWorks";
+import SEO from "@/components/SEO";
 
 export default function ClinicsPrivatePractices() {
   const navigate = useNavigate();

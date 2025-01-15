@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import SolutionHero from "@/components/solutions/SolutionHero";
 import FeatureList from "@/components/solutions/FeatureList";
+import SEO from "@/components/SEO";
 
 export default function HospitalsHealthSystems() {
   const navigate = useNavigate();

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { 
   Stethoscope, Brain, Heart, Pill, Hospital, 
   Dumbbell, BookOpen, Home, Baby, Smile, Apple, 
-  Ambulance, ArrowRight, Search
+  Ambulance, ArrowRight, Search, Microscope
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
@@ -26,10 +26,80 @@ const healthcareNiches = [
     route: '/mental-health'
   },
   { 
+    id: 'cardiology', 
+    name: 'Cardiology', 
+    icon: <Heart className="h-6 w-6" />,
+    description: 'Streamline cardiac care and patient monitoring.',
+    route: '/cardiology'
+  },
+  { 
+    id: 'obgyn', 
+    name: 'OB/GYN', 
+    icon: <Baby className="h-6 w-6" />,
+    description: 'Enhance prenatal care and patient communication.',
+    route: '/ob-gyn'
+  },
+  { 
+    id: 'dermatology', 
+    name: 'Dermatology', 
+    icon: <Smile className="h-6 w-6" />,
+    description: 'Optimize dermatology practice management.',
+    route: '/dermatology'
+  },
+  { 
+    id: 'dental', 
+    name: 'Dental Care', 
+    icon: <Smile className="h-6 w-6" />,
+    description: 'Streamline dental practice operations.',
+    route: '/dental-care'
+  },
+  { 
+    id: 'pediatrics', 
+    name: 'Pediatrics', 
+    icon: <Baby className="h-6 w-6" />,
+    description: 'Enhance pediatric care delivery.',
+    route: '/pediatrics'
+  },
+  { 
+    id: 'emergency', 
+    name: 'Emergency Services', 
+    icon: <Ambulance className="h-6 w-6" />,
+    description: 'Optimize emergency response coordination.',
+    route: '/emergency-services'
+  },
+  { 
+    id: 'rehabilitation', 
+    name: 'Rehabilitation', 
+    icon: <Dumbbell className="h-6 w-6" />,
+    description: 'Streamline rehabilitation programs.',
+    route: '/rehabilitation'
+  },
+  { 
+    id: 'diagnostic-imaging', 
+    name: 'Diagnostic Imaging', 
+    icon: <Microscope className="h-6 w-6" />,
+    description: 'Enhance imaging center operations.',
+    route: '/diagnostic-imaging'
+  },
+  { 
+    id: 'elderly-care', 
+    name: 'Elderly Care', 
+    icon: <Home className="h-6 w-6" />,
+    description: 'Optimize senior care coordination.',
+    route: '/elderly-care'
+  },
+  { 
+    id: 'pharmaceuticals', 
+    name: 'Pharmaceuticals', 
+    icon: <Pill className="h-6 w-6" />,
+    description: 'Streamline pharmacy operations.',
+    route: '/pharmaceuticals'
+  },
+  { 
     id: 'hospitals', 
     name: 'Hospitals & Health Systems', 
     icon: <Hospital className="h-6 w-6" />,
-    description: 'Streamline hospital operations and improve patient care.',
+    description: 'Comprehensive hospital management solutions.',
     route: '/industries/hospitals-health-systems'
   },
   { 
@@ -38,55 +108,6 @@ const healthcareNiches = [
     icon: <Stethoscope className="h-6 w-6" />,
     description: 'Optimize clinic workflows and patient communication.',
     route: '/industries/clinics-private-practices'
-  },
-  { 
-    id: 'specialty', 
-    name: 'Specialty Care', 
-    icon: <Heart className="h-6 w-6" />,
-    description: 'Specialized care coordination and patient management.',
-    route: '/industries/specialty-care'
-  },
-  { 
-    id: 'pharmaceuticals', 
-    name: 'Pharmaceuticals', 
-    icon: <Pill className="h-6 w-6" />,
-    description: 'Medication management and patient support.',
-    route: '/pharmaceuticals'
-  },
-  { 
-    id: 'elderly', 
-    name: 'Elderly Care', 
-    icon: <Home className="h-6 w-6" />,
-    description: 'Senior care coordination and family communication.',
-    route: '/elderly-care'
-  },
-  { 
-    id: 'dental', 
-    name: 'Dental Care', 
-    icon: <Smile className="h-6 w-6" />,
-    description: 'Dental practice management and patient scheduling.',
-    route: '/dental-care'
-  },
-  { 
-    id: 'pediatrics', 
-    name: 'Pediatrics', 
-    icon: <Baby className="h-6 w-6" />,
-    description: 'Child healthcare and parent communication.',
-    route: '/pediatrics'
-  },
-  { 
-    id: 'emergency', 
-    name: 'Emergency Services', 
-    icon: <Ambulance className="h-6 w-6" />,
-    description: 'Emergency response and coordination.',
-    route: '/emergency-services'
-  },
-  { 
-    id: 'rehabilitation', 
-    name: 'Rehabilitation', 
-    icon: <Dumbbell className="h-6 w-6" />,
-    description: 'Recovery tracking and exercise management.',
-    route: '/rehabilitation'
   }
 ];
 
