@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Search, ArrowRight, Stethoscope, Brain, Heart, Baby, Pill, Apple, Activity, Hospital, Bandage, Microscope, Bone, Eye, Tooth, Home, Syringe, Thermometer } from "lucide-react";
+import { Search, ArrowRight, Stethoscope, Brain, Heart, Baby, Pill, Hospital, Bandage, Microscope, Syringe } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { useState } from "react";
@@ -44,10 +44,10 @@ const niches = [
   },
   {
     id: 6,
-    title: "Nutrition & Wellness",
-    description: "Schedule consultations and provide dietary guidance",
-    icon: <Apple className="h-8 w-8" />,
-    route: "/nutrition-wellness"
+    title: "Hospitals & Clinics",
+    description: "Improve patient experience and operational efficiency",
+    icon: <Hospital className="h-8 w-8" />,
+    route: "/industries/hospitals-health-systems"
   },
   {
     id: 7,
@@ -58,58 +58,23 @@ const niches = [
   },
   {
     id: 8,
-    title: "Hospitals & Clinics",
-    description: "Improve patient experience and operational efficiency",
-    icon: <Hospital className="h-8 w-8" />,
-    route: "/industries/hospitals-health-systems"
-  },
-  {
-    id: 9,
     title: "Emergency Care",
     description: "Enhance emergency response and patient triage",
     icon: <Bandage className="h-8 w-8" />,
     route: "/emergency-services"
   },
   {
-    id: 10,
-    title: "Orthopedics",
-    description: "Manage appointments and rehabilitation schedules",
-    icon: <Bone className="h-8 w-8" />,
-    route: "/rehabilitation"
-  },
-  {
-    id: 11,
-    title: "Dental Care",
-    description: "Streamline dental practice operations and patient care",
-    icon: <Tooth className="h-8 w-8" />,
-    route: "/dental-care"
-  },
-  {
-    id: 12,
-    title: "Home Healthcare",
-    description: "Coordinate care teams and patient support",
-    icon: <Home className="h-8 w-8" />,
-    route: "/home-healthcare"
-  },
-  {
-    id: 13,
-    title: "Elderly Care",
-    description: "Manage senior care and family communication",
-    icon: <Activity className="h-8 w-8" />,
-    route: "/elderly-care"
-  },
-  {
-    id: 14,
-    title: "Diagnostic Imaging",
+    id: 9,
+    title: "Diagnostic Services",
     description: "Schedule imaging appointments and manage results",
-    icon: <Eye className="h-8 w-8" />,
+    icon: <Syringe className="h-8 w-8" />,
     route: "/diagnostic-imaging"
   },
   {
-    id: 15,
+    id: 10,
     title: "Telemedicine",
     description: "Virtual care coordination and patient engagement",
-    icon: <Thermometer className="h-8 w-8" />,
+    icon: <Stethoscope className="h-8 w-8" />,
     route: "/telemedicine"
   }
 ];
