@@ -15,7 +15,7 @@ export default function CheckoutFlow() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
-        {/* Demo Button - Updated with increased padding */}
+        {/* Demo Button */}
         <div className="bg-primary/5 rounded-lg p-6 border border-primary/20 text-center mt-16 mb-12">
           <h2 className="text-xl font-semibold mb-3">Not Ready to Purchase?</h2>
           <Button 
@@ -44,34 +44,37 @@ export default function CheckoutFlow() {
         {/* Introductory Offer Message */}
         <div className="text-center bg-primary/5 rounded-lg p-4 border border-primary/20">
           <p className="text-lg font-medium text-primary">
-            🎉 Introductory Offer: Get started in the right direction with our comprehensive AI implementation package
+            🎉 Enterprise-Grade AI Implementation Package - Transform Your Business Operations
           </p>
         </div>
 
         {/* Main Offer */}
         <div className="pt-4">
           <CheckoutProduct 
-            title="AI Business Managers"
-            description="Get started with your AI-powered business transformation"
+            title="Basic AI Implementation Package"
+            description="Get started with enterprise-grade AI automation"
             features={[
-              "Custom AI Business Profile",
-              "AI Voice Agent Setup",
-              "Workflow Automation",
-              "1-Hour Strategy Consultation"
+              "AI Assistant Configuration",
+              "Basic SMS Marketing",
+              "Call Handling",
+              "Standard Support",
+              "Initial Setup and Configuration"
             ]}
-            price="$247"
+            price="$3,000"
           />
         </div>
 
         {/* Upsells */}
         <UpsellItem 
-          title="AI Training for Your Team"
-          description="Maximize your team's AI capabilities"
+          title="CRM Integration Package"
+          description="Seamlessly connect your existing systems"
           features={[
-            "Custom Training Sessions",
-            "Hands-On Workshops"
+            "Custom CRM Integration",
+            "Data Migration Support",
+            "Workflow Setup",
+            "Training Documentation"
           ]}
-          price="$197"
+          price="$1,500"
           priceId="price_1QdYnvGineWW4dYE5nh8CnHC"
           isSelected={selectedUpsells.includes('price_1QdYnvGineWW4dYE5nh8CnHC')}
           onToggle={toggleUpsell}
@@ -80,18 +83,36 @@ export default function CheckoutFlow() {
         />
 
         <UpsellItem 
-          title="30 Days of Premium Support"
-          description="Get expert guidance every step of the way"
+          title="Multilingual Capability"
+          description="Expand your reach with additional language support"
           features={[
-            "Unlimited Email and Chat Support",
-            "Priority Assistance",
-            "Implementation Guidance"
+            "Additional Language Support",
+            "Custom Voice Options",
+            "Localized Response Templates",
+            "Cultural Adaptation Support"
           ]}
-          price="$147"
+          price="$2,000"
           priceId="price_1QdYo7GineWW4dYE6hMDnATH"
           isSelected={selectedUpsells.includes('price_1QdYo7GineWW4dYE6hMDnATH')}
           onToggle={toggleUpsell}
           animationDelay="200ms"
+          disabled={isLoading}
+        />
+
+        <UpsellItem 
+          title="Twilio SMS Integration"
+          description="Enable automated SMS follow-ups and notifications"
+          features={[
+            "SMS Integration Setup",
+            "Template Creation",
+            "Automation Rules Configuration",
+            "Usage Monitoring Setup"
+          ]}
+          price="$500"
+          priceId="price_1QdYo7GineWW4dYE6hMDnATH_sms"
+          isSelected={selectedUpsells.includes('price_1QdYo7GineWW4dYE6hMDnATH_sms')}
+          onToggle={toggleUpsell}
+          animationDelay="300ms"
           disabled={isLoading}
         />
 
@@ -116,7 +137,6 @@ export default function CheckoutFlow() {
             )}
           </Button>
         </div>
-
       </div>
 
       <DemoRequestForm 
