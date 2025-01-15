@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, MessageSquare, Globe, Send, Instagram, BarChart, Phone } from "lucide-react";
+import { MessageSquare, Globe, Send, Instagram, BarChart, Phone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import StrategyCallForm from "@/components/StrategyCallForm";
@@ -114,16 +114,6 @@ export default function AIBusinessSolutions() {
                 <p className="text-gray-600">{solution.description}</p>
               </Card>
             ))}
-          </div>
-          <div className="text-center mt-12">
-            <Button 
-              size="lg"
-              onClick={() => navigate("/voice-agents")}
-              className="text-lg px-8"
-            >
-              Explore All Solutions
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
           </div>
         </div>
       </section>
