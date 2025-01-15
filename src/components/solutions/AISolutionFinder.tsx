@@ -9,11 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowRight, Bot } from "lucide-react";
 
-interface AISolutionFinderProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
 interface Question {
   id: string;
   text: string;
