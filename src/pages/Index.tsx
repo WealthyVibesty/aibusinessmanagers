@@ -23,11 +23,11 @@ export default function Index() {
       
       <div className="container py-8 sm:py-12 px-4 space-y-8 sm:space-y-12 animate-fadeIn">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div className="space-y-2">
-            <h1 className="text-3xl sm:text-4xl font-bold gradient-text">
+          <div className="space-y-2 w-full sm:w-auto">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text">
               Welcome to the Course Platform
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-sm sm:text-base">
               Explore our courses and start learning today
             </p>
           </div>
@@ -42,13 +42,13 @@ export default function Index() {
         </div>
         
         <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
-          <Card className="glass-card p-6 sm:p-8 hover-scale group">
+          <Card className="glass-card p-4 sm:p-6 md:p-8 hover-scale group">
             <div className="space-y-4">
               <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
                 <BookOpen className="h-6 w-6 text-primary" />
               </div>
-              <div className="space-y-2">
-                <h2 className="text-xl sm:text-2xl font-semibold gradient-text">
+              <div className="space-y-2 text-center">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold gradient-text">
                   Browse Courses
                 </h2>
                 <p className="text-sm sm:text-base text-muted-foreground">
@@ -57,20 +57,20 @@ export default function Index() {
               </div>
               <Button 
                 onClick={() => navigate("/courses")} 
-                className="w-full sm:w-auto group-hover:shadow-lg transition-shadow"
+                className="w-full group-hover:shadow-lg transition-shadow"
               >
                 View Courses
               </Button>
             </div>
           </Card>
           
-          <Card className="glass-card p-6 sm:p-8 hover-scale group">
+          <Card className="glass-card p-4 sm:p-6 md:p-8 hover-scale group">
             <div className="space-y-4">
               <div className="h-12 w-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
                 <Users className="h-6 w-6 text-accent" />
               </div>
-              <div className="space-y-2">
-                <h2 className="text-xl sm:text-2xl font-semibold gradient-text">
+              <div className="space-y-2 text-center">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold gradient-text">
                   My Enrollments
                 </h2>
                 <p className="text-sm sm:text-base text-muted-foreground">
@@ -79,12 +79,29 @@ export default function Index() {
               </div>
               <Button 
                 onClick={() => navigate("/enrollments")} 
-                className="w-full sm:w-auto group-hover:shadow-lg transition-shadow"
+                className="w-full group-hover:shadow-lg transition-shadow"
               >
                 View Enrollments
               </Button>
             </div>
           </Card>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button 
+            onClick={() => navigate("/forum")}
+            variant="outline"
+            className="w-full sm:w-auto"
+          >
+            Visit Forum
+          </Button>
+          <Button 
+            onClick={() => navigate("/contact")}
+            variant="outline"
+            className="w-full sm:w-auto"
+          >
+            Contact Support
+          </Button>
         </div>
       </div>
     </>
