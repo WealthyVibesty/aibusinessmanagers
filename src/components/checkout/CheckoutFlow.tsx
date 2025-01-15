@@ -7,12 +7,16 @@ import { useCheckout } from "./useCheckout";
 import { useState } from "react";
 import DemoRequestForm from "../DemoRequestForm";
 import ROICalculatorDialog from "../ROICalculatorDialog";
+import PilotProgramForm from "../PilotProgramForm";
+import StrategyCallForm from "../StrategyCallForm";
 
 export default function CheckoutFlow() {
   const navigate = useNavigate();
   const { selectedUpsells, isLoading, toggleUpsell, handleCheckout } = useCheckout();
   const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
   const [isROICalculatorOpen, setIsROICalculatorOpen] = useState(false);
+  const [isPilotFormOpen, setIsPilotFormOpen] = useState(false);
+  const [isStrategyCallOpen, setIsStrategyCallOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 py-8 px-4">
@@ -43,7 +47,7 @@ export default function CheckoutFlow() {
               <Button 
                 variant="outline" 
                 className="w-full"
-                onClick={() => setIsDemoFormOpen(true)}
+                onClick={() => setIsStrategyCallOpen(true)}
               >
                 Book Your Free Strategy Call
               </Button>
@@ -79,7 +83,7 @@ export default function CheckoutFlow() {
               <Button 
                 variant="outline" 
                 className="w-full"
-                onClick={() => setIsDemoFormOpen(true)}
+                onClick={() => setIsPilotFormOpen(true)}
               >
                 Start Your Pilot Program Today
               </Button>
@@ -196,6 +200,7 @@ export default function CheckoutFlow() {
             )}
           </Button>
         </div>
+
       </div>
 
       <DemoRequestForm 
@@ -206,6 +211,16 @@ export default function CheckoutFlow() {
       <ROICalculatorDialog
         isOpen={isROICalculatorOpen}
         onClose={() => setIsROICalculatorOpen(false)}
+      />
+
+      <PilotProgramForm
+        isOpen={isPilotFormOpen}
+        onClose={() => setIsPilotFormOpen(false)}
+      />
+
+      <StrategyCallForm
+        isOpen={isStrategyCallOpen}
+        onClose={() => setIsStrategyCallOpen(false)}
       />
     </div>
   );
