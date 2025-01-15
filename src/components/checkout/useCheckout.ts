@@ -8,7 +8,7 @@ export function useCheckout() {
   const { toast } = useToast();
 
   const toggleUpsell = (priceId: string) => {
-    if (isLoading) return; // Prevent toggling while loading
+    if (isLoading) return;
     console.log('Toggling upsell:', priceId);
     setSelectedUpsells(prev => 
       prev.includes(priceId) 
@@ -27,10 +27,15 @@ export function useCheckout() {
     console.log('Starting checkout process...');
     
     try {
+      // Get referral code from URL if present
+      const urlParams = new URLSearchParams(window.location.search);
+      const refCode = urlParams.get('ref');
+      
       // Create the request payload
       const payload = {
-        priceId: 'price_1QhWOHGineWW4dYEhBv1EweI', // Updated main product price ID
+        priceId: 'price_1QhWOHGineWW4dYEhBv1EweI',
         upsellPriceIds: selectedUpsells,
+        refCode
       };
       
       console.log('Sending checkout request with payload:', payload);
@@ -55,7 +60,7 @@ export function useCheckout() {
       
     } catch (error) {
       console.error('Checkout error:', error);
-      setIsLoading(false); // Reset loading state on error
+      setIsLoading(false);
       toast({
         title: "Checkout Error",
         description: error instanceof Error ? error.message : "There was a problem initiating checkout. Please try again.",

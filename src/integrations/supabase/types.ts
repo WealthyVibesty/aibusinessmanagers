@@ -9,6 +9,44 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      affiliates: {
+        Row: {
+          code: string
+          commission_rate: number
+          created_at: string
+          id: string
+          total_earnings: number
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          code: string
+          commission_rate?: number
+          created_at?: string
+          id?: string
+          total_earnings?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          code?: string
+          commission_rate?: number
+          created_at?: string
+          id?: string
+          total_earnings?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "affiliates_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       courses: {
         Row: {
           created_at: string
@@ -291,12 +329,60 @@ export type Database = {
         }
         Relationships: []
       }
+      referrals: {
+        Row: {
+          affiliate_id: string | null
+          commission_amount: number | null
+          created_at: string
+          id: string
+          referred_user_id: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          affiliate_id?: string | null
+          commission_amount?: number | null
+          created_at?: string
+          id?: string
+          referred_user_id?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          affiliate_id?: string | null
+          commission_amount?: number | null
+          created_at?: string
+          id?: string
+          referred_user_id?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "referrals_affiliate_id_fkey"
+            columns: ["affiliate_id"]
+            isOneToOne: false
+            referencedRelation: "affiliates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "referrals_referred_user_id_fkey"
+            columns: ["referred_user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_unique_affiliate_code: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never

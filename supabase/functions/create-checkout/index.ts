@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import Stripe from 'https://esm.sh/stripe@14.21.0';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -9,26 +10,24 @@ const corsHeaders = {
 serve(async (req) => {
   console.log('Received checkout request');
   
-  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     console.log('Handling CORS preflight request');
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    // Parse and validate request body
     const body = await req.json();
     console.log('Request body:', body);
     
-    const { priceId, upsellPriceIds = [] } = body;
-    console.log('Parsed payload:', { priceId, upsellPriceIds });
+    const { priceId, upsellPriceIds = [], refCode } = body;
+    console.log('Parsed payload:', { priceId, upsellPriceIds, refCode });
 
     if (!priceId) {
       console.error('No priceId provided');
       throw new Error('Price ID is required');
     }
 
-    // Initialize Stripe with error handling
+    // Initialize Stripe
     const stripeKey = Deno.env.get('STRIPE_SECRET_KEY');
     if (!stripeKey) {
       console.error('Stripe secret key not found');
@@ -41,6 +40,28 @@ serve(async (req) => {
       httpClient: Stripe.createFetchHttpClient(),
     });
 
+    // Initialize Supabase client
+    const supabaseUrl = Deno.env.get('SUPABASE_URL');
+    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+    if (!supabaseUrl || !supabaseKey) {
+      throw new Error('Supabase configuration error');
+    }
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    // If refCode exists, verify and get affiliate info
+    let affiliateId = null;
+    if (refCode) {
+      const { data: affiliate } = await supabase
+        .from('affiliates')
+        .select('id')
+        .eq('code', refCode)
+        .single();
+      
+      if (affiliate) {
+        affiliateId = affiliate.id;
+      }
+    }
+
     // Prepare line items
     const lineItems = [
       { price: priceId, quantity: 1 },
@@ -48,7 +69,7 @@ serve(async (req) => {
     ];
     console.log('Line items prepared:', lineItems);
 
-    // Create checkout session with proper error handling
+    // Create checkout session
     console.log('Creating checkout session...');
     const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
@@ -57,11 +78,11 @@ serve(async (req) => {
       cancel_url: `${req.headers.get('origin')}/checkout`,
       allow_promotion_codes: true,
       billing_address_collection: 'required',
+      metadata: affiliateId ? { affiliateId } : undefined,
     });
 
     console.log('Checkout session created successfully:', session.id);
     
-    // Return success response with no-cache headers
     return new Response(
       JSON.stringify({ 
         url: session.url,
@@ -81,7 +102,6 @@ serve(async (req) => {
   } catch (error) {
     console.error('Error in checkout process:', error);
     
-    // Return error response with no-cache headers
     return new Response(
       JSON.stringify({ 
         error: error instanceof Error ? error.message : 'An error occurred during checkout',
