@@ -5,7 +5,8 @@ import { Input } from "@/components/ui/input";
 import { 
   Stethoscope, Brain, Heart, Pill, Hospital, 
   Dumbbell, BookOpen, Home, Baby, Smile, Apple, 
-  Ambulance, ArrowRight, Search, Microscope
+  Ambulance, ArrowRight, Search, Microscope,
+  Syringe, Thermometer
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
@@ -94,6 +95,34 @@ const healthcareNiches = [
     icon: <Pill className="h-6 w-6" />,
     description: 'Streamline pharmacy operations.',
     route: '/pharmaceuticals'
+  },
+  { 
+    id: 'chronic-disease', 
+    name: 'Chronic Disease Management', 
+    icon: <Thermometer className="h-6 w-6" />,
+    description: 'Comprehensive chronic disease care management.',
+    route: '/chronic-disease'
+  },
+  { 
+    id: 'oncology', 
+    name: 'Oncology', 
+    icon: <Syringe className="h-6 w-6" />,
+    description: 'Streamline cancer care coordination.',
+    route: '/oncology'
+  },
+  { 
+    id: 'primary-care', 
+    name: 'Primary Care', 
+    icon: <Stethoscope className="h-6 w-6" />,
+    description: 'Optimize primary care practice operations.',
+    route: '/primary-care'
+  },
+  { 
+    id: 'radiology', 
+    name: 'Radiology', 
+    icon: <Microscope className="h-6 w-6" />,
+    description: 'Enhance radiology practice efficiency.',
+    route: '/radiology'
   },
   { 
     id: 'hospitals', 
