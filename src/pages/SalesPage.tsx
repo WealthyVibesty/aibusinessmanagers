@@ -4,10 +4,12 @@ import ContactCaptureDialog from "@/components/ContactCaptureDialog";
 import { useState } from "react";
 import SEO from "@/components/SEO";
 import DemoRequestForm from "@/components/DemoRequestForm";
+import ROICalculatorDialog from "@/components/ROICalculatorDialog";
 
 export default function SalesPage() {
   const [showContactDialog, setShowContactDialog] = useState(false);
   const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
+  const [isROICalculatorOpen, setIsROICalculatorOpen] = useState(false);
 
   const handleCTAClick = () => {
     console.log("Opening contact capture dialog");
@@ -70,7 +72,7 @@ export default function SalesPage() {
               </p>
               <Button 
                 className="w-full"
-                onClick={handleCTAClick}
+                onClick={() => setIsROICalculatorOpen(true)}
               >
                 Try the ROI Calculator Now
               </Button>
@@ -188,6 +190,11 @@ export default function SalesPage() {
       <DemoRequestForm 
         isOpen={isDemoFormOpen}
         onClose={() => setIsDemoFormOpen(false)}
+      />
+
+      <ROICalculatorDialog
+        isOpen={isROICalculatorOpen}
+        onClose={() => setIsROICalculatorOpen(false)}
       />
     </div>
   );
