@@ -25,7 +25,7 @@ export default function AIBusinessSolutions() {
       <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeIn">
-            Maximize Revenue and Efficiency with AI Business Managers for Mid-Sized and Large Companies
+            Mid-Sized and Large Companies Hire AI Business Managers To Maximize Work Efficiency, Time & Revenue
           </h1>
           <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto animate-slideUp">
             Helping Businesses Save 20+ Hours Per Week with AI-Powered Automation | Streamlining Customer Service, Boosting Engagement, and Cutting Costs for Scalable Growth
@@ -34,28 +34,28 @@ export default function AIBusinessSolutions() {
             <Button 
               size="lg"
               onClick={() => setIsDemoModalOpen(true)}
-              className="text-lg px-8"
+              className="text-xl px-10 py-7"
             >
               See a Live Demo
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
             <Button 
               size="lg"
               variant="outline"
               onClick={() => setIsSolutionFinderOpen(true)}
-              className="text-lg px-8 animate-pulse hover:animate-none"
+              className="text-xl px-10 py-7 animate-pulse hover:animate-none"
             >
               Find Your AI Solution
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
             <Button 
               size="lg"
               variant="secondary"
               onClick={() => setIsStrategyCallOpen(true)}
-              className="text-lg px-8"
+              className="text-xl px-10 py-7"
             >
               Book a Free Strategy Call
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
           </div>
         </div>
