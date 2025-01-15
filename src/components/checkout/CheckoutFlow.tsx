@@ -1,17 +1,33 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CheckoutProduct } from "./CheckoutProduct";
 import { UpsellItem } from "./UpsellItem";
 import { useCheckout } from "./useCheckout";
+import { useState } from "react";
+import DemoRequestForm from "../DemoRequestForm";
 
 export default function CheckoutFlow() {
   const navigate = useNavigate();
   const { selectedUpsells, isLoading, toggleUpsell, handleCheckout } = useCheckout();
+  const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
+        {/* Demo Button */}
+        <div className="bg-primary/5 rounded-lg p-6 border border-primary/20 text-center">
+          <h2 className="text-xl font-semibold mb-3">Not Ready to Purchase?</h2>
+          <Button 
+            size="lg"
+            onClick={() => setIsDemoFormOpen(true)}
+            className="bg-primary hover:bg-primary/90"
+          >
+            <Calendar className="mr-2 h-5 w-5" />
+            Schedule a Free Demo
+          </Button>
+        </div>
+
         {/* Back Button */}
         <div className="pt-8">
           <Button
@@ -100,7 +116,13 @@ export default function CheckoutFlow() {
             )}
           </Button>
         </div>
+
       </div>
+
+      <DemoRequestForm 
+        isOpen={isDemoFormOpen}
+        onClose={() => setIsDemoFormOpen(false)}
+      />
     </div>
   );
 }
