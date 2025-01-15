@@ -49,7 +49,7 @@ function App() {
               <Route path="/affiliate-program" element={<AffiliateProgram />} />
               
               <Route path="/dashboard" element={<ProtectedRoute />}>
-                <Route path="/" element={<Dashboard />} />
+                <Route index element={<Dashboard />} />
               </Route>
 
               <Route path="/sales" element={<Navigate to="/checkout" replace />} />
