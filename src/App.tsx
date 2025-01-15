@@ -11,6 +11,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
 import SalesPage from "@/pages/SalesPage";
 import CoreOffer from "@/pages/CoreOffer";
+import AIBusinessSolutions from "@/pages/AIBusinessSolutions";
 
 // Solutions
 import AIVoiceAgents from "@/pages/solutions/AIVoiceAgents";
@@ -91,7 +92,7 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
-              <Route path="/" element={<VoiceAgentsMarketplace />} />
+              <Route path="/" element={<AIBusinessSolutions />} />
               <Route path="/checkout" element={<CheckoutFlow />} />
               <Route path="/login" element={<Login />} />
               <Route path="/core-offer" element={<CoreOffer />} />
