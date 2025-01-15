@@ -21,7 +21,7 @@ export default function AIBusinessSolutions() {
         description="Revolutionize customer service and digital engagement with AI-powered solutions for voice, chat, web, and social media automation."
       />
 
-      {/* Problems Section - Moved to top */}
+      {/* Problems Section */}
       <section className="pt-32 pb-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">
@@ -53,46 +53,6 @@ export default function AIBusinessSolutions() {
                 <p className="text-lg text-gray-700">{item.text}</p>
               </Card>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Hero Section */}
-      <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeIn">
-            Mid-Size and Large Companies Hire AI Business Managers To Maximize Work Efficiency, Time & Revenue
-          </h1>
-          <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto animate-slideUp">
-            We Assist Businesses Save 20+ Hours Per Week with AI-Powered Automation | Streamlining Customer Service, Boosting Engagement, and Cutting Costs for Scalable Growth
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slideUp">
-            <Button 
-              size="lg"
-              onClick={() => setIsDemoModalOpen(true)}
-              className="text-xl px-10 py-7"
-            >
-              See a Live Demo
-              <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
-            <Button 
-              size="lg"
-              variant="outline"
-              onClick={() => setIsSolutionFinderOpen(true)}
-              className="text-xl px-10 py-7 animate-pulse hover:animate-none"
-            >
-              Find Your AI Solution
-              <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
-            <Button 
-              size="lg"
-              variant="secondary"
-              onClick={() => setIsStrategyCallOpen(true)}
-              className="text-xl px-10 py-7"
-            >
-              Book a Free Strategy Call
-              <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
           </div>
         </div>
       </section>
@@ -158,32 +118,42 @@ export default function AIBusinessSolutions() {
         </div>
       </section>
 
-      {/* Credibility Section */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Trusted by Industry Leaders
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {[
-              {
-                stat: "30%",
-                label: "Cost Reduction for Customer Service Teams"
-              },
-              {
-                stat: "90%",
-                label: "Calls Handled Automatically"
-              },
-              {
-                stat: "50%",
-                label: "Increase in Lead Conversions"
-              }
-            ].map((stat, i) => (
-              <Card key={i} className="p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="text-4xl font-bold text-primary mb-2">{stat.stat}</div>
-                <p className="text-gray-600">{stat.label}</p>
-              </Card>
-            ))}
+      {/* Hero Section - Moved to end */}
+      <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeIn">
+            Mid-Size and Large Companies Hire AI Business Managers To Maximize Work Efficiency, Time & Revenue
+          </h1>
+          <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto animate-slideUp">
+            We Assist Businesses Save 20+ Hours Per Week with AI-Powered Automation | Streamlining Customer Service, Boosting Engagement, and Cutting Costs for Scalable Growth
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slideUp">
+            <Button 
+              size="lg"
+              onClick={() => setIsDemoModalOpen(true)}
+              className="text-xl px-10 py-7"
+            >
+              See a Live Demo
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </Button>
+            <Button 
+              size="lg"
+              variant="outline"
+              onClick={() => setIsSolutionFinderOpen(true)}
+              className="text-xl px-10 py-7 animate-pulse hover:animate-none"
+            >
+              Find Your AI Solution
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </Button>
+            <Button 
+              size="lg"
+              variant="secondary"
+              onClick={() => setIsStrategyCallOpen(true)}
+              className="text-xl px-10 py-7"
+            >
+              Book a Free Strategy Call
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </Button>
           </div>
         </div>
       </section>
