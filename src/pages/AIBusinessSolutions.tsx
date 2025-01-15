@@ -25,11 +25,10 @@ export default function AIBusinessSolutions() {
       <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeIn">
-            Helping Businesses Save 20+ Hours Per Week with AI-Powered Automation | Streamlining Customer Service, Boosting Engagement, and Cutting Costs for Scalable Growth
+            Integrate AI Into Your Business | Save Time, Increase Customer Engagement
           </h1>
           <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto animate-slideUp">
-            From voice assistants and chatbots to AI-driven websites and SMS marketing, 
-            we provide cutting-edge tools to automate your operations and grow your business.
+            Helping Businesses Save 20+ Hours Per Week with AI-Powered Automation | Streamlining Customer Service, Boosting Engagement, and Cutting Costs for Scalable Growth
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slideUp">
             <Button 
