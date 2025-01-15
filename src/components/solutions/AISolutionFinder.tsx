@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -11,12 +12,14 @@ interface Question {
   id: string;
   text: string;
   options: { value: string; label: string }[];
+  type: 'single' | 'multiple';
 }
 
 const questions: Question[] = [
   {
     id: "industry",
     text: "What type of business are you in?",
+    type: 'single',
     options: [
       { value: "healthcare", label: "Healthcare" },
       { value: "ecommerce", label: "eCommerce" },
@@ -37,7 +40,8 @@ const questions: Question[] = [
   },
   {
     id: "painPoint",
-    text: "What's the biggest challenge you're facing?",
+    text: "What are the biggest challenges you're facing? (Select all that apply)",
+    type: 'multiple',
     options: [
       { value: "customer-service", label: "Overwhelmed customer service" },
       { value: "missed-leads", label: "Missed leads" },
@@ -48,7 +52,8 @@ const questions: Question[] = [
   },
   {
     id: "channel",
-    text: "How do you primarily interact with customers?",
+    text: "How do you primarily interact with customers? (Select all that apply)",
+    type: 'multiple',
     options: [
       { value: "phone", label: "Phone calls" },
       { value: "sms", label: "SMS" },
@@ -60,6 +65,7 @@ const questions: Question[] = [
   {
     id: "budget",
     text: "Do you have a specific budget in mind for AI solutions?",
+    type: 'single',
     options: [
       { value: "low", label: "Less than $1,000" },
       { value: "medium", label: "1,000–$5,000" },
@@ -76,14 +82,44 @@ interface AISolutionFinderProps {
 
 export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
   const [recommendation, setRecommendation] = useState<string | null>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  const handleAnswer = (value: string) => {
+  const handleSingleSelect = (value: string) => {
     const question = questions[currentQuestion];
     setAnswers(prev => ({ ...prev, [question.id]: value }));
+
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(prev => prev + 1);
+    } else {
+      generateRecommendation();
+    }
+  };
+
+  const handleMultiSelect = (value: string) => {
+    const question = questions[currentQuestion];
+    setAnswers(prev => {
+      const currentAnswers = (prev[question.id] as string[]) || [];
+      const newAnswers = currentAnswers.includes(value)
+        ? currentAnswers.filter(v => v !== value)
+        : [...currentAnswers, value];
+      return { ...prev, [question.id]: newAnswers };
+    });
+  };
+
+  const handleNextForMultiSelect = () => {
+    const question = questions[currentQuestion];
+    const currentAnswers = (answers[question.id] as string[]) || [];
+    
+    if (currentAnswers.length === 0) {
+      toast({
+        title: "Please select at least one option",
+        variant: "destructive",
+      });
+      return;
+    }
 
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(prev => prev + 1);
@@ -99,17 +135,20 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
     let primarySolution = "";
     let additionalSolutions = [];
 
-    if (answers.channel === "phone" || answers.painPoint === "customer-service") {
+    const painPoints = answers.painPoint as string[];
+    const channels = answers.channel as string[];
+
+    if (channels?.includes("phone") || painPoints?.includes("customer-service")) {
       primarySolution = "AI Voice Assistant";
       additionalSolutions.push("CRM Integration");
     }
     
-    if (answers.channel === "social" || answers.painPoint === "engagement") {
+    if (channels?.includes("social") || painPoints?.includes("engagement")) {
       primarySolution = "Instagram Automation";
       additionalSolutions.push("SMS Marketing");
     }
     
-    if (answers.painPoint === "missed-leads") {
+    if (painPoints?.includes("missed-leads")) {
       primarySolution = "AI Chatbot";
       additionalSolutions.push("Lead Generation System");
     }
@@ -137,6 +176,8 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
     });
   };
 
+  const currentQuestionData = questions[currentQuestion];
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[500px]">
@@ -151,19 +192,44 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
           {!recommendation ? (
             <div className="space-y-6">
               <h3 className="text-lg font-medium">
-                {questions[currentQuestion].text}
+                {currentQuestionData.text}
               </h3>
-              <RadioGroup
-                onValueChange={handleAnswer}
-                className="space-y-3"
-              >
-                {questions[currentQuestion].options.map((option) => (
-                  <div key={option.value} className="flex items-center space-x-2">
-                    <RadioGroupItem value={option.value} id={option.value} />
-                    <Label htmlFor={option.value}>{option.label}</Label>
+              
+              {currentQuestionData.type === 'single' ? (
+                <RadioGroup
+                  onValueChange={handleSingleSelect}
+                  className="space-y-3"
+                >
+                  {currentQuestionData.options.map((option) => (
+                    <div key={option.value} className="flex items-center space-x-2">
+                      <RadioGroupItem value={option.value} id={option.value} />
+                      <Label htmlFor={option.value}>{option.label}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              ) : (
+                <div className="space-y-4">
+                  <div className="space-y-3">
+                    {currentQuestionData.options.map((option) => (
+                      <div key={option.value} className="flex items-center space-x-2">
+                        <Checkbox
+                          id={option.value}
+                          checked={(answers[currentQuestionData.id] as string[] || []).includes(option.value)}
+                          onCheckedChange={() => handleMultiSelect(option.value)}
+                        />
+                        <Label htmlFor={option.value}>{option.label}</Label>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </RadioGroup>
+                  <Button 
+                    onClick={handleNextForMultiSelect}
+                    className="w-full mt-4"
+                  >
+                    Next
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              )}
             </div>
           ) : (
             <div className="space-y-6">
