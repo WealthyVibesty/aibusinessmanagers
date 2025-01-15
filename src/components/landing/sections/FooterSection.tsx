@@ -2,11 +2,18 @@ import { Link } from "react-router-dom";
 import { Linkedin } from "lucide-react";
 
 const FooterSection = () => {
-  const healthcare = [
+  const industries = [
+    // Main industry pages
+    { name: "Hospitals & Health Systems", path: "/industries/hospitals-health-systems" },
+    { name: "Clinics & Private Practices", path: "/industries/clinics-private-practices" },
+    { name: "Telehealth Providers", path: "/industries/telehealth-providers" },
+    { name: "Specialty Care", path: "/industries/specialty-care" },
+    { name: "Pharmaceuticals", path: "/industries/pharmaceuticals" },
+    // Healthcare specialties
     { name: "Telemedicine", path: "/telemedicine" },
     { name: "Mental Health", path: "/mental-health" },
-    { name: "Primary Care", path: "/primary-care" },
     { name: "Elderly Care", path: "/elderly-care" },
+    { name: "Primary Care", path: "/primary-care" },
     { name: "Dental Care", path: "/dental-care" },
     { name: "Diagnostic Imaging", path: "/diagnostic-imaging" },
     { name: "Emergency Services", path: "/emergency-services" },
@@ -66,9 +73,9 @@ const FooterSection = () => {
           </div>
 
           <div>
-            <h3 className="text-white font-semibold text-xl mb-6">Healthcare</h3>
+            <h3 className="text-white font-semibold text-xl mb-6">Industries</h3>
             <ul className="space-y-4">
-              {healthcare.map((item) => (
+              {industries.map((item) => (
                 <li key={item.path}>
                   <Link 
                     to={item.path}
