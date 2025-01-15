@@ -5,12 +5,13 @@ export default function AboutUs() {
   return (
     <>
       <SEO 
-        title="About AI Business Managers" 
-        description="Learn about our mission to revolutionize healthcare with AI. Meet our team of experts dedicated to transforming patient care through innovation."
+        title="About Our AI Healthcare Solutions Team" 
+        description="Meet our expert team revolutionizing healthcare with AI. Learn how we're transforming patient care through innovative voice solutions."
+        path="/about"
       />
       <div className="min-h-screen">
         <HeroSection
-          title="About AI Business Managers"
+          title="About Our AI Healthcare Solutions Team"
           subtitle="We're on a mission to transform healthcare operations with intelligent AI solutions."
           ctaText="Join Our Mission"
         />
