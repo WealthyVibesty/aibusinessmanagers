@@ -1,16 +1,18 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Calendar } from "lucide-react";
+import { ArrowRight, ArrowLeft, Calendar, Calculator, PhoneCall, PlayCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CheckoutProduct } from "./CheckoutProduct";
 import { UpsellItem } from "./UpsellItem";
 import { useCheckout } from "./useCheckout";
 import { useState } from "react";
 import DemoRequestForm from "../DemoRequestForm";
+import ROICalculatorDialog from "../ROICalculatorDialog";
 
 export default function CheckoutFlow() {
   const navigate = useNavigate();
   const { selectedUpsells, isLoading, toggleUpsell, handleCheckout } = useCheckout();
   const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
+  const [isROICalculatorOpen, setIsROICalculatorOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 py-8 px-4">
@@ -26,6 +28,63 @@ export default function CheckoutFlow() {
             <Calendar className="mr-2 h-5 w-5" />
             Schedule a Free Demo
           </Button>
+        </div>
+
+        {/* Alternative Options Grid */}
+        <div className="grid md:grid-cols-3 gap-6 my-8">
+          {/* Strategy Call Box */}
+          <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+            <div className="flex flex-col h-full">
+              <PhoneCall className="h-8 w-8 text-primary mb-4" />
+              <h3 className="text-lg font-semibold mb-3">Free 30-Minute Strategy Call</h3>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Let's dive into your current challenges. We'll show you exactly how conversational AI can save you money, reduce wait times, and improve patient satisfaction.
+              </p>
+              <Button 
+                variant="outline" 
+                className="w-full"
+                onClick={() => setIsDemoFormOpen(true)}
+              >
+                Book Your Free Strategy Call
+              </Button>
+            </div>
+          </div>
+
+          {/* ROI Calculator Box */}
+          <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+            <div className="flex flex-col h-full">
+              <Calculator className="h-8 w-8 text-primary mb-4" />
+              <h3 className="text-lg font-semibold mb-3">ROI Calculator Demo</h3>
+              <p className="text-gray-600 mb-6 flex-grow">
+                See the numbers for yourself. Enter your current call volume and staffing costs, and our tool will show you how much you can save with AI.
+              </p>
+              <Button 
+                variant="outline" 
+                className="w-full"
+                onClick={() => setIsROICalculatorOpen(true)}
+              >
+                Try the ROI Calculator Now
+              </Button>
+            </div>
+          </div>
+
+          {/* Pilot Program Box */}
+          <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+            <div className="flex flex-col h-full">
+              <PlayCircle className="h-8 w-8 text-primary mb-4" />
+              <h3 className="text-lg font-semibold mb-3">Pilot Program</h3>
+              <p className="text-gray-600 mb-6 flex-grow">
+                Not ready to go all-in? Start small. We'll implement a limited AI solution for one key process—like appointment scheduling or billing inquiries—so you can see the results before scaling.
+              </p>
+              <Button 
+                variant="outline" 
+                className="w-full"
+                onClick={() => setIsDemoFormOpen(true)}
+              >
+                Start Your Pilot Program Today
+              </Button>
+            </div>
+          </div>
         </div>
 
         {/* Back Button */}
@@ -142,6 +201,11 @@ export default function CheckoutFlow() {
       <DemoRequestForm 
         isOpen={isDemoFormOpen}
         onClose={() => setIsDemoFormOpen(false)}
+      />
+
+      <ROICalculatorDialog
+        isOpen={isROICalculatorOpen}
+        onClose={() => setIsROICalculatorOpen(false)}
       />
     </div>
   );
