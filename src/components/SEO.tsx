@@ -7,7 +7,7 @@ interface SEOProps {
 }
 
 export default function SEO({ title, description, path = "" }: SEOProps) {
-  const baseUrl = "https://your-domain.com";
+  const baseUrl = "https://aibusinessmanagers.com";
   const url = `${baseUrl}${path}`;
   const imageUrl = `${baseUrl}/lovable-uploads/cd3826ee-3df6-4947-b0b1-a5ff9f03f4cb.png`;
 
@@ -15,6 +15,8 @@ export default function SEO({ title, description, path = "" }: SEOProps) {
   const truncatedDescription = description.length > 130 
     ? `${description.substring(0, 127)}...` 
     : description;
+
+  console.log('SEO Component Rendered:', { url, imageUrl }); // Debug log
 
   return (
     <Helmet>
