@@ -231,11 +231,10 @@ export default function VoiceAgentsMarketplace() {
             {filteredNiches.map((niche) => (
               <Card 
                 key={niche.id}
-                className="p-6 hover:shadow-lg transition-all group cursor-pointer bg-white border border-gray-200 relative overflow-hidden"
-                onClick={() => navigate(niche.route)}
+                className="p-6 hover:shadow-lg transition-all group cursor-pointer bg-white border border-gray-200 relative overflow-hidden flex flex-col"
               >
                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-8 -mt-8" />
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 flex-grow">
                   <div className="text-primary bg-primary/10 w-fit p-3 rounded-lg">
                     {niche.icon}
                   </div>
@@ -243,9 +242,18 @@ export default function VoiceAgentsMarketplace() {
                     <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                       {niche.title}
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 mb-4">
                       {niche.description}
                     </p>
+                  </div>
+                  <div className="mt-auto">
+                    <Button 
+                      onClick={() => navigate(niche.route)}
+                      className="w-full"
+                    >
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
                   </div>
                 </div>
               </Card>
