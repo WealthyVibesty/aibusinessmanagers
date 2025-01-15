@@ -147,15 +147,6 @@ export default function AIBusinessSolutions() {
               Find Your AI Solution
               <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
-            <Button 
-              size="lg"
-              variant="secondary"
-              onClick={() => setIsStrategyCallOpen(true)}
-              className="text-xl px-10 py-7 shadow-lg hover:shadow-xl transition-all"
-            >
-              Book a Free Strategy Call
-              <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
           </div>
         </div>
       </section>
