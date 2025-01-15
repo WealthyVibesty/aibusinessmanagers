@@ -37,7 +37,7 @@ export default function Header() {
       ]
     },
     {
-      label: "Industries",
+      label: "Healthcare",
       submenu: [
         { label: "Hospitals & Health Systems", path: "/industries/hospitals-health-systems" },
         { label: "Clinics & Private Practices", path: "/industries/clinics-private-practices" },
