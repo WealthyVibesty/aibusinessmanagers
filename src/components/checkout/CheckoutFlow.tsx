@@ -15,8 +15,8 @@ export default function CheckoutFlow() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/10 py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
-        {/* Demo Button */}
-        <div className="bg-primary/5 rounded-lg p-6 border border-primary/20 text-center">
+        {/* Demo Button - Updated with increased padding */}
+        <div className="bg-primary/5 rounded-lg p-6 border border-primary/20 text-center mt-16 mb-12">
           <h2 className="text-xl font-semibold mb-3">Not Ready to Purchase?</h2>
           <Button 
             size="lg"
