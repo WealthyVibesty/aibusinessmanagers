@@ -14,6 +14,7 @@ import CoreOffer from "@/pages/CoreOffer";
 import AIBusinessSolutions from "@/pages/AIBusinessSolutions";
 import AffiliateProgram from "@/pages/AffiliateProgram";
 import FooterSection from "@/components/landing/sections/FooterSection";
+import HealthcareWorkflowAutomation from "@/pages/HealthcareWorkflowAutomation";
 
 function App() {
   useEffect(() => {
@@ -46,6 +47,7 @@ function App() {
               <Route path="/checkout" element={<CheckoutFlow />} />
               <Route path="/login" element={<Login />} />
               <Route path="/core-offer" element={<CoreOffer />} />
+              <Route path="/healthcare-workflow-automation" element={<HealthcareWorkflowAutomation />} />
               
               <Route path="/dashboard" element={<ProtectedRoute />}>
                 <Route index element={<Dashboard />} />
