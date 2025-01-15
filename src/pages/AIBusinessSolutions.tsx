@@ -43,7 +43,7 @@ export default function AIBusinessSolutions() {
               size="lg"
               variant="outline"
               onClick={() => setIsSolutionFinderOpen(true)}
-              className="text-lg px-8"
+              className="text-lg px-8 animate-pulse hover:animate-none"
             >
               Find Your AI Solution
               <ArrowRight className="ml-2 h-5 w-5" />
