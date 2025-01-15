@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button";
 import ContactCaptureDialog from "@/components/ContactCaptureDialog";
 import { useState } from "react";
 import SEO from "@/components/SEO";
+import DemoRequestForm from "@/components/DemoRequestForm";
 
 export default function SalesPage() {
   const [showContactDialog, setShowContactDialog] = useState(false);
+  const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
 
   const handleCTAClick = () => {
     console.log("Opening contact capture dialog");
@@ -53,7 +55,7 @@ export default function SalesPage() {
               </p>
               <Button 
                 className="w-full"
-                onClick={handleCTAClick}
+                onClick={() => setIsDemoFormOpen(true)}
               >
                 Book Your Free Strategy Call
               </Button>
@@ -181,6 +183,11 @@ export default function SalesPage() {
         isOpen={showContactDialog}
         onClose={handleDialogClose}
         onSuccess={handleSuccess}
+      />
+
+      <DemoRequestForm 
+        isOpen={isDemoFormOpen}
+        onClose={() => setIsDemoFormOpen(false)}
       />
     </div>
   );
