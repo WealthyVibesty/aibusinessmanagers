@@ -87,7 +87,7 @@ export default function CoreOffer() {
     <div className="min-h-screen">
       <SEO 
         title="AI-Powered Customer Engagement System"
-        description="Transform your customer service with AI-powered engagement, SMS marketing, and automated follow-ups"
+        description="Transform your customer service with AI-powered engagement, SMS marketing, and automated follow-ups. Our solution helps businesses streamline operations and grow revenue."
         path="/core-offer"
       />
 
@@ -104,16 +104,13 @@ export default function CoreOffer() {
           
           {/* Video Section */}
           <div className="w-full max-w-4xl mx-auto mb-12 rounded-xl overflow-hidden shadow-xl animate-scale">
-            <video 
-              className="w-full aspect-video object-cover"
-              autoPlay 
-              muted 
-              loop 
-              playsInline
-            >
-              <source src="/lovable-uploads/demo-video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <iframe 
+              className="w-full aspect-video"
+              src="https://www.youtube.com/embed/E0BGE2jpMGE"
+              title="AI Customer Service Demo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
           </div>
 
           {/* CTA Buttons */}
