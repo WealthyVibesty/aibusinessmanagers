@@ -150,7 +150,7 @@ export default function VoiceAgentsMarketplace() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-white">
       <SEO 
         title="Healthcare AI Voice Agents Marketplace" 
         description="Explore AI voice agents for healthcare. Streamline patient communication, automate scheduling & improve care delivery across medical specialties."
@@ -183,13 +183,13 @@ export default function VoiceAgentsMarketplace() {
       </section>
 
       {/* Healthcare Niches Grid */}
-      <section className="py-12 px-6 bg-white">
+      <section className="py-12 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredNiches.map((niche) => (
               <Card 
                 key={niche.id}
-                className="p-6 hover:shadow-lg transition-all group cursor-pointer"
+                className="p-6 hover:shadow-lg transition-all group cursor-pointer bg-white border border-gray-200"
                 onClick={() => navigate(niche.route)}
               >
                 <div className="flex flex-col gap-4">
@@ -212,7 +212,7 @@ export default function VoiceAgentsMarketplace() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
+      <section className="py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Healthcare Practice?</h2>
           <p className="text-xl text-gray-600 mb-6">
