@@ -46,10 +46,13 @@ function App() {
               <Route path="/checkout" element={<CheckoutFlow />} />
               <Route path="/login" element={<Login />} />
               <Route path="/core-offer" element={<CoreOffer />} />
-              <Route path="/affiliate-program" element={<AffiliateProgram />} />
               
               <Route path="/dashboard" element={<ProtectedRoute />}>
                 <Route index element={<Dashboard />} />
+              </Route>
+
+              <Route path="/affiliate-program" element={<ProtectedRoute />}>
+                <Route index element={<AffiliateProgram />} />
               </Route>
 
               <Route path="/sales" element={<Navigate to="/checkout" replace />} />

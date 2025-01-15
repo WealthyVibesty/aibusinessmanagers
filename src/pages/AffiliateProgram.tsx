@@ -47,8 +47,10 @@ export default function AffiliateProgram() {
 
   const checkAffiliateStatus = async () => {
     try {
+      console.log("Checking affiliate status...");
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
+        console.log("No session found, redirecting to login");
         navigate("/login");
         return;
       }
@@ -59,10 +61,19 @@ export default function AffiliateProgram() {
         .eq("user_id", session.user.id)
         .single();
 
-      if (error) throw error;
+      if (error) {
+        console.error("Error fetching affiliate data:", error);
+        throw error;
+      }
+      console.log("Affiliate data:", affiliateData);
       setAffiliate(affiliateData);
     } catch (error) {
       console.error("Error checking affiliate status:", error);
+      toast({
+        title: "Error",
+        description: "Failed to load affiliate data. Please try again.",
+        variant: "destructive",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -70,6 +81,7 @@ export default function AffiliateProgram() {
 
   const fetchReferrals = async () => {
     try {
+      console.log("Fetching referrals...");
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return;
 
@@ -93,18 +105,26 @@ export default function AffiliateProgram() {
           .order("created_at", { ascending: false });
 
         if (error) throw error;
+        console.log("Referrals data:", referralsData);
         setReferrals(referralsData);
       }
     } catch (error) {
       console.error("Error fetching referrals:", error);
+      toast({
+        title: "Error",
+        description: "Failed to load referrals. Please try again.",
+        variant: "destructive",
+      });
     }
   };
 
   const becomeAffiliate = async () => {
     try {
+      console.log("Becoming affiliate...");
       setIsLoading(true);
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
+        console.log("No session found, redirecting to login");
         navigate("/login");
         return;
       }
@@ -114,6 +134,8 @@ export default function AffiliateProgram() {
         .rpc('generate_unique_affiliate_code');
 
       if (codeError) throw codeError;
+
+      console.log("Generated affiliate code:", codeData);
 
       // Now insert the new affiliate record with the generated code
       const { data, error } = await supabase
@@ -127,6 +149,7 @@ export default function AffiliateProgram() {
 
       if (error) throw error;
 
+      console.log("Created affiliate record:", data);
       setAffiliate(data);
       toast({
         title: "Success!",
@@ -162,23 +185,7 @@ export default function AffiliateProgram() {
     );
   }
 
-  if (!affiliate) {
-    return (
-      <div className="container mx-auto px-4 py-24 max-w-4xl">
-        <Card className="p-8 text-center">
-          <h1 className="text-3xl font-bold mb-6">Become an Affiliate Partner</h1>
-          <p className="text-muted-foreground mb-8">
-            Join our affiliate program and earn commissions by referring customers to our services.
-          </p>
-          <Button onClick={becomeAffiliate} size="lg">
-            Join Affiliate Program
-          </Button>
-        </Card>
-      </div>
-    );
-  }
-
-  return (
+  return affiliate ? (
     <div className="container mx-auto px-4 py-24 max-w-6xl">
       <h1 className="text-3xl font-bold mb-8">Affiliate Dashboard</h1>
 
@@ -275,6 +282,25 @@ export default function AffiliateProgram() {
             </TableBody>
           </Table>
         </div>
+      </Card>
+    </div>
+  ) : (
+    <div className="container mx-auto px-4 py-24 max-w-4xl">
+      <Card className="p-8 text-center">
+        <h1 className="text-3xl font-bold mb-6">Become an Affiliate Partner</h1>
+        <p className="text-muted-foreground mb-8">
+          Join our affiliate program and earn commissions by referring customers to our services.
+        </p>
+        <Button onClick={becomeAffiliate} size="lg" disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Processing...
+            </>
+          ) : (
+            'Join Affiliate Program'
+          )}
+        </Button>
       </Card>
     </div>
   );
