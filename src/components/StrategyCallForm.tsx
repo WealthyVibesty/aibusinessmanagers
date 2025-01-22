@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, User, Mail, Phone, Building, MessageSquare } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface StrategyCallFormProps {
   isOpen: boolean;
@@ -30,15 +31,35 @@ export default function StrategyCallForm({ isOpen, onClose }: StrategyCallFormPr
       return;
     }
 
-    console.log("Strategy Call request submitted:", { name, email, phone, company, challenges });
-    
-    toast({
-      title: "Strategy Call Request Received!",
-      description: "We'll contact you shortly to schedule your call.",
-    });
+    try {
+      console.log("Saving strategy call form submission...");
+      const { error } = await supabase
+        .from('form_submissions')
+        .insert([
+          {
+            form_type: 'strategy_call',
+            data: { name, email, phone, company, challenges }
+          }
+        ]);
 
-    onClose();
-    resetForm();
+      if (error) throw error;
+
+      console.log("Strategy call form saved successfully");
+      toast({
+        title: "Strategy Call Request Received!",
+        description: "We'll contact you shortly to schedule your call.",
+      });
+
+      onClose();
+      resetForm();
+    } catch (error) {
+      console.error("Error saving strategy call request:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem submitting your request. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const resetForm = () => {

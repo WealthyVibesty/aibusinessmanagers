@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, User, Mail, Phone, Building, MessageSquare } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface DemoRequestFormProps {
   isOpen: boolean;
@@ -30,16 +31,35 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
       return;
     }
 
-    // Here you would typically send the form data to your backend
-    console.log("Demo request submitted:", { name, email, phone, company, message });
-    
-    toast({
-      title: "Demo Request Received!",
-      description: "We'll contact you shortly to schedule your demo.",
-    });
+    try {
+      console.log("Saving demo request form submission...");
+      const { error } = await supabase
+        .from('form_submissions')
+        .insert([
+          {
+            form_type: 'demo_request',
+            data: { name, email, phone, company, message }
+          }
+        ]);
 
-    onClose();
-    resetForm();
+      if (error) throw error;
+
+      console.log("Demo request form saved successfully");
+      toast({
+        title: "Demo Request Received!",
+        description: "We'll contact you shortly to schedule your demo.",
+      });
+
+      onClose();
+      resetForm();
+    } catch (error) {
+      console.error("Error saving demo request:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem submitting your request. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const resetForm = () => {

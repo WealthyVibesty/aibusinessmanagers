@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ContactCaptureDialogProps {
   isOpen: boolean;
@@ -38,27 +39,45 @@ export default function ContactCaptureDialog({ isOpen, onClose, onSuccess }: Con
       return;
     }
 
-    // Store contact info (you can implement actual storage logic here)
-    console.log("Contact info captured:", { name, email, phone });
-    
-    // Show success message
-    toast({
-      title: "Thank you!",
-      description: "Your information has been saved.",
-    });
+    try {
+      console.log("Saving contact form submission...");
+      const { error } = await supabase
+        .from('form_submissions')
+        .insert([
+          {
+            form_type: 'contact_capture',
+            data: { name, email, phone }
+          }
+        ]);
 
-    // Close dialog and trigger success callback
-    onClose();
-    onSuccess();
+      if (error) throw error;
+      
+      console.log("Contact form submission saved successfully");
+      toast({
+        title: "Thank you!",
+        description: "Your information has been saved.",
+      });
 
-    // Show AI assistant after successful form submission
-    setTimeout(() => {
-      const widget = document.querySelector('elevenlabs-convai');
-      if (widget) {
-        widget.classList.remove('hidden');
-        console.log('Opening AI assistant after contact capture');
-      }
-    }, 1000); // Small delay to ensure dialog is closed first
+      // Close dialog and trigger success callback
+      onClose();
+      onSuccess();
+
+      // Show AI assistant after successful form submission
+      setTimeout(() => {
+        const widget = document.querySelector('elevenlabs-convai');
+        if (widget) {
+          widget.classList.remove('hidden');
+          console.log('Opening AI assistant after contact capture');
+        }
+      }, 1000); // Small delay to ensure dialog is closed first
+    } catch (error) {
+      console.error("Error saving form submission:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem saving your information. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

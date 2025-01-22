@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Rocket, User, Mail, Phone, Building, MessageSquare } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface PilotProgramFormProps {
   isOpen: boolean;
@@ -30,15 +31,35 @@ export default function PilotProgramForm({ isOpen, onClose }: PilotProgramFormPr
       return;
     }
 
-    console.log("Pilot Program request submitted:", { name, email, phone, company, useCase });
-    
-    toast({
-      title: "Pilot Program Request Received!",
-      description: "We'll contact you shortly to discuss your pilot program.",
-    });
+    try {
+      console.log("Saving pilot program form submission...");
+      const { error } = await supabase
+        .from('form_submissions')
+        .insert([
+          {
+            form_type: 'pilot_program',
+            data: { name, email, phone, company, useCase }
+          }
+        ]);
 
-    onClose();
-    resetForm();
+      if (error) throw error;
+
+      console.log("Pilot program form saved successfully");
+      toast({
+        title: "Pilot Program Request Received!",
+        description: "We'll contact you shortly to discuss your pilot program.",
+      });
+
+      onClose();
+      resetForm();
+    } catch (error) {
+      console.error("Error saving pilot program request:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem submitting your request. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const resetForm = () => {
