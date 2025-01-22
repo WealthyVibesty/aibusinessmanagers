@@ -23,6 +23,15 @@ import AIChatbots from "@/pages/solutions/AIChatbots";
 import AIWebsiteDevelopment from "@/pages/solutions/AIWebsiteDevelopment";
 import InstagramAutomation from "@/pages/solutions/InstagramAutomation";
 import SMSMarketing from "@/pages/solutions/SMSMarketing";
+import HIPAACompliant from "@/pages/solutions/HIPAACompliant";
+import CRMIntegration from "@/pages/solutions/CRMIntegration";
+import CallRouting from "@/pages/solutions/CallRouting";
+import MultilingualSupport from "@/pages/solutions/MultilingualSupport";
+import PilotPrograms from "@/pages/solutions/PilotPrograms";
+import ProactiveEngagement from "@/pages/solutions/ProactiveEngagement";
+import TaskAutomation from "@/pages/solutions/TaskAutomation";
+import ActionableInsights from "@/pages/solutions/ActionableInsights";
+import CostEffectiveCallCenters from "@/pages/solutions/CostEffectiveCallCenters";
 
 function App() {
   const { toast } = useToast();
@@ -64,11 +73,14 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
+              {/* Main Routes */}
               <Route path="/" element={
                 <div className="animate-fadeIn">
                   <AIBusinessSolutions />
                 </div>
               } />
+              
+              {/* Marketplace and Core Routes */}
               <Route path="/voice-agents-marketplace" element={
                 <div className="animate-slideUp">
                   <VoiceAgentsMarketplace />
@@ -79,6 +91,8 @@ function App() {
                   <AIVoiceAgents />
                 </div>
               } />
+              
+              {/* Solution Routes */}
               <Route path="/solutions/ai-chatbots" element={
                 <div className="animate-slideUp">
                   <AIChatbots />
@@ -99,6 +113,53 @@ function App() {
                   <SMSMarketing />
                 </div>
               } />
+              <Route path="/solutions/hipaa-compliant" element={
+                <div className="animate-slideUp">
+                  <HIPAACompliant />
+                </div>
+              } />
+              <Route path="/solutions/crm-integration" element={
+                <div className="animate-slideUp">
+                  <CRMIntegration />
+                </div>
+              } />
+              <Route path="/solutions/call-routing" element={
+                <div className="animate-slideUp">
+                  <CallRouting />
+                </div>
+              } />
+              <Route path="/solutions/multilingual-support" element={
+                <div className="animate-slideUp">
+                  <MultilingualSupport />
+                </div>
+              } />
+              <Route path="/solutions/pilot-programs" element={
+                <div className="animate-slideUp">
+                  <PilotPrograms />
+                </div>
+              } />
+              <Route path="/solutions/proactive-engagement" element={
+                <div className="animate-slideUp">
+                  <ProactiveEngagement />
+                </div>
+              } />
+              <Route path="/solutions/task-automation" element={
+                <div className="animate-slideUp">
+                  <TaskAutomation />
+                </div>
+              } />
+              <Route path="/solutions/actionable-insights" element={
+                <div className="animate-slideUp">
+                  <ActionableInsights />
+                </div>
+              } />
+              <Route path="/solutions/cost-effective-call-centers" element={
+                <div className="animate-slideUp">
+                  <CostEffectiveCallCenters />
+                </div>
+              } />
+
+              {/* Information Routes */}
               <Route path="/about" element={
                 <div className="animate-slideUp">
                   <AboutUs />
@@ -109,16 +170,23 @@ function App() {
                   <WhyChooseUs />
                 </div>
               } />
+              
+              {/* Checkout and Sales Routes */}
               <Route path="/checkout" element={
                 <div className="animate-scale">
                   <CheckoutFlow />
                 </div>
               } />
+              <Route path="/sales" element={<Navigate to="/checkout" replace />} />
+              
+              {/* Authentication Routes */}
               <Route path="/login" element={
                 <div className="animate-fadeIn">
                   <Login />
                 </div>
               } />
+              
+              {/* Product Routes */}
               <Route path="/core-offer" element={
                 <div className="animate-slideUp">
                   <CoreOffer />
@@ -130,6 +198,7 @@ function App() {
                 </div>
               } />
               
+              {/* Protected Routes */}
               <Route path="/dashboard" element={<ProtectedRoute />}>
                 <Route index element={
                   <div className="animate-fadeIn">
@@ -137,7 +206,6 @@ function App() {
                   </div>
                 } />
               </Route>
-
               <Route path="/affiliate-program" element={<ProtectedRoute />}>
                 <Route index element={
                   <div className="animate-slideUp">
@@ -146,7 +214,8 @@ function App() {
                 } />
               </Route>
 
-              <Route path="/sales" element={<Navigate to="/checkout" replace />} />
+              {/* Catch-all redirect */}
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>
           <FooterSection />
