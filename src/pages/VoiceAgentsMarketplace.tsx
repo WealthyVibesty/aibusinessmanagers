@@ -5,42 +5,32 @@ import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function VoiceAgentsMarketplace() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
+  const { toast } = useToast();
 
   // Helper function to handle navigation
   const handleNavigation = (route: string) => {
-    // List of available routes
-    const availableRoutes = [
-      '/primary-care',
-      '/mental-health',
-      '/voice-agents-marketplace',
-      '/pediatrics',
-      '/pharmaceuticals',
-      '/industries/hospitals-health-systems',
-      '/medical-research',
-      '/emergency-services',
-      '/diagnostic-imaging',
-      '/telemedicine',
-      '/dental-care',
-      '/elderly-care',
-      '/rehabilitation',
-      '/oncology',
-      '/ob-gyn',
-      '/public-health',
-      '/surgical-practices',
-      '/home-healthcare',
-      '/nutrition-wellness'
-    ];
+    console.log(`Navigating to: ${route}`);
+    navigate("/checkout");
+    toast({
+      title: "Redirecting to checkout",
+      description: "We'll help you get started with our AI solutions.",
+    });
+  };
 
-    // If route is not available, redirect to checkout
-    if (!availableRoutes.includes(route)) {
-      console.log(`Route ${route} not available, redirecting to checkout`);
-      navigate('/checkout');
-    } else {
-      navigate(route);
+  const handleDemoClick = () => {
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
+      widget.classList.remove('hidden');
+      console.log('Opening AI assistant for demo');
+      toast({
+        title: "AI Assistant Activated",
+        description: "Feel free to ask any questions about our solutions!",
+      });
     }
   };
 
@@ -220,13 +210,6 @@ export default function VoiceAgentsMarketplace() {
     niche.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleDemoClick = () => {
-    const widget = document.querySelector('elevenlabs-convai');
-    if (widget) {
-      widget.classList.remove('hidden');
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <SEO 
@@ -237,10 +220,10 @@ export default function VoiceAgentsMarketplace() {
       {/* Hero Section */}
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600 animate-gradient">
             AI Voice Agents for Healthcare
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-gray-600 mb-8 animate-fadeIn">
             Discover specialized AI voice agents designed for different healthcare specialties
           </p>
           
@@ -250,7 +233,7 @@ export default function VoiceAgentsMarketplace() {
             <Input
               type="text"
               placeholder="Search healthcare specialties..."
-              className="pl-10 h-12"
+              className="pl-10 h-12 bg-white/80 backdrop-blur-sm border-gray-200 hover:border-primary/50 transition-all"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -265,11 +248,12 @@ export default function VoiceAgentsMarketplace() {
             {filteredNiches.map((niche) => (
               <Card 
                 key={niche.id}
-                className="p-6 hover:shadow-lg transition-all group cursor-pointer bg-white border border-gray-200 relative overflow-hidden flex flex-col"
+                className="p-6 hover:shadow-lg transition-all group cursor-pointer bg-white/80 backdrop-blur-sm border border-gray-200 hover:border-primary/50 relative overflow-hidden flex flex-col"
+                onClick={() => handleNavigation(niche.route)}
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-8 -mt-8" />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-8 -mt-8 transition-all group-hover:scale-110" />
                 <div className="flex flex-col gap-4 flex-grow">
-                  <div className="text-primary bg-primary/10 w-fit p-3 rounded-lg">
+                  <div className="text-primary bg-primary/10 w-fit p-3 rounded-lg transition-transform group-hover:scale-105">
                     {niche.icon}
                   </div>
                   <div>
@@ -282,11 +266,10 @@ export default function VoiceAgentsMarketplace() {
                   </div>
                   <div className="mt-auto">
                     <Button 
-                      onClick={() => handleNavigation(niche.route)}
-                      className="w-full"
+                      className="w-full group-hover:bg-primary/90 transition-all"
                     >
                       Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
                   </div>
                 </div>
@@ -299,15 +282,15 @@ export default function VoiceAgentsMarketplace() {
       {/* CTA Section */}
       <section className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Healthcare Practice?</h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <h2 className="text-3xl font-bold mb-4 animate-fadeIn">Ready to Transform Your Healthcare Practice?</h2>
+          <p className="text-xl text-gray-600 mb-8 animate-fadeIn delay-100">
             Join leading healthcare providers using AI voice agents to improve patient care and operational efficiency
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeIn delay-200">
             <Button 
               size="lg"
               onClick={() => navigate("/checkout")}
-              className="text-lg px-8"
+              className="text-lg px-8 bg-primary hover:bg-primary/90 transition-all"
             >
               Get Started Now
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -316,7 +299,7 @@ export default function VoiceAgentsMarketplace() {
               size="lg"
               variant="outline"
               onClick={handleDemoClick}
-              className="text-lg px-8"
+              className="text-lg px-8 border-2 hover:bg-gray-50"
             >
               Try Live Demo
             </Button>

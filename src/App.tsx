@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Header from "@/components/landing/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import VoiceAgentsMarketplace from "@/pages/VoiceAgentsMarketplace";
+import AIVoiceAgents from "@/pages/solutions/AIVoiceAgents";
 import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
 import CheckoutFlow from "@/components/checkout/CheckoutFlow";
@@ -16,6 +17,12 @@ import AIBusinessSolutions from "@/pages/AIBusinessSolutions";
 import AffiliateProgram from "@/pages/AffiliateProgram";
 import FooterSection from "@/components/landing/sections/FooterSection";
 import HealthcareWorkflowAutomation from "@/pages/HealthcareWorkflowAutomation";
+import AboutUs from "@/pages/AboutUs";
+import WhyChooseUs from "@/pages/WhyChooseUs";
+import AIChatbots from "@/pages/solutions/AIChatbots";
+import AIWebsiteDevelopment from "@/pages/solutions/AIWebsiteDevelopment";
+import InstagramAutomation from "@/pages/solutions/InstagramAutomation";
+import SMSMarketing from "@/pages/solutions/SMSMarketing";
 
 function App() {
   const { toast } = useToast();
@@ -65,6 +72,41 @@ function App() {
               <Route path="/voice-agents-marketplace" element={
                 <div className="animate-slideUp">
                   <VoiceAgentsMarketplace />
+                </div>
+              } />
+              <Route path="/voice-agents" element={
+                <div className="animate-slideUp">
+                  <AIVoiceAgents />
+                </div>
+              } />
+              <Route path="/solutions/ai-chatbots" element={
+                <div className="animate-slideUp">
+                  <AIChatbots />
+                </div>
+              } />
+              <Route path="/solutions/ai-website-development" element={
+                <div className="animate-slideUp">
+                  <AIWebsiteDevelopment />
+                </div>
+              } />
+              <Route path="/solutions/instagram-automation" element={
+                <div className="animate-slideUp">
+                  <InstagramAutomation />
+                </div>
+              } />
+              <Route path="/solutions/sms-marketing" element={
+                <div className="animate-slideUp">
+                  <SMSMarketing />
+                </div>
+              } />
+              <Route path="/about" element={
+                <div className="animate-slideUp">
+                  <AboutUs />
+                </div>
+              } />
+              <Route path="/why-us" element={
+                <div className="animate-slideUp">
+                  <WhyChooseUs />
                 </div>
               } />
               <Route path="/checkout" element={
