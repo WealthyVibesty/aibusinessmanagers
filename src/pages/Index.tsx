@@ -21,87 +21,91 @@ export default function Index() {
         path="/"
       />
       
-      <div className="container py-8 sm:py-12 px-4 space-y-8 sm:space-y-12 animate-fadeIn">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div className="space-y-2 w-full sm:w-auto">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text">
-              Welcome to the Course Platform
-            </h1>
-            <p className="text-muted-foreground text-sm sm:text-base">
-              Explore our courses and start learning today
-            </p>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-pink-50/50">
+        <div className="container py-12 sm:py-16 px-4 space-y-10 sm:space-y-14 animate-fadeIn">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 relative">
+            <div className="space-y-3 w-full sm:w-auto">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 text-transparent bg-clip-text">
+                Welcome to the Course Platform
+              </h1>
+              <p className="text-muted-foreground text-lg sm:text-xl font-medium">
+                Explore our courses and start learning today
+              </p>
+            </div>
+            <Button 
+              variant="outline" 
+              onClick={handleSignOut} 
+              className="w-full sm:w-auto hover:bg-primary/5 transition-all duration-300 group"
+            >
+              <LogOut className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform duration-300" />
+              Sign Out
+            </Button>
           </div>
-          <Button 
-            variant="outline" 
-            onClick={handleSignOut} 
-            className="w-full sm:w-auto hover-scale group"
-          >
-            <LogOut className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
-            Sign Out
-          </Button>
-        </div>
-        
-        <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
-          <Card className="glass-card p-4 sm:p-6 md:p-8 hover-scale group">
-            <div className="space-y-4">
-              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                <BookOpen className="h-6 w-6 text-primary" />
-              </div>
-              <div className="space-y-2 text-center">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold gradient-text">
-                  Browse Courses
-                </h2>
-                <p className="text-sm sm:text-base text-muted-foreground">
-                  Explore our collection of courses and start learning today.
-                </p>
-              </div>
-              <Button 
-                onClick={() => navigate("/courses")} 
-                className="w-full group-hover:shadow-lg transition-shadow"
-              >
-                View Courses
-              </Button>
-            </div>
-          </Card>
           
-          <Card className="glass-card p-4 sm:p-6 md:p-8 hover-scale group">
-            <div className="space-y-4">
-              <div className="h-12 w-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                <Users className="h-6 w-6 text-accent" />
+          <div className="grid gap-8 sm:gap-10 md:grid-cols-2">
+            <Card className="group overflow-hidden relative p-6 sm:p-8 md:p-10 hover:shadow-xl transition-all duration-500 bg-gradient-to-br from-white via-white to-blue-50/50 border border-blue-100/50">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative space-y-6">
+                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-500">
+                  <BookOpen className="h-7 w-7 text-primary" />
+                </div>
+                <div className="space-y-3 text-center">
+                  <h2 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-primary to-purple-600 text-transparent bg-clip-text">
+                    Browse Courses
+                  </h2>
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                    Explore our collection of courses and start learning today.
+                  </p>
+                </div>
+                <Button 
+                  onClick={() => navigate("/courses")} 
+                  className="w-full bg-gradient-to-r from-primary to-purple-600 hover:opacity-90 transition-opacity group-hover:shadow-lg"
+                >
+                  View Courses
+                </Button>
               </div>
-              <div className="space-y-2 text-center">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold gradient-text">
-                  My Enrollments
-                </h2>
-                <p className="text-sm sm:text-base text-muted-foreground">
-                  Access your enrolled courses and continue learning.
-                </p>
+            </Card>
+            
+            <Card className="group overflow-hidden relative p-6 sm:p-8 md:p-10 hover:shadow-xl transition-all duration-500 bg-gradient-to-br from-white via-white to-purple-50/50 border border-purple-100/50">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative space-y-6">
+                <div className="h-14 w-14 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-500">
+                  <Users className="h-7 w-7 text-accent" />
+                </div>
+                <div className="space-y-3 text-center">
+                  <h2 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-accent to-pink-600 text-transparent bg-clip-text">
+                    My Enrollments
+                  </h2>
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                    Access your enrolled courses and continue learning.
+                  </p>
+                </div>
+                <Button 
+                  onClick={() => navigate("/enrollments")} 
+                  className="w-full bg-gradient-to-r from-accent to-pink-600 hover:opacity-90 transition-opacity group-hover:shadow-lg"
+                >
+                  View Enrollments
+                </Button>
               </div>
-              <Button 
-                onClick={() => navigate("/enrollments")} 
-                className="w-full group-hover:shadow-lg transition-shadow"
-              >
-                View Enrollments
-              </Button>
-            </div>
-          </Card>
-        </div>
+            </Card>
+          </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button 
-            onClick={() => navigate("/forum")}
-            variant="outline"
-            className="w-full sm:w-auto"
-          >
-            Visit Forum
-          </Button>
-          <Button 
-            onClick={() => navigate("/contact")}
-            variant="outline"
-            className="w-full sm:w-auto"
-          >
-            Contact Support
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+            <Button 
+              onClick={() => navigate("/forum")}
+              variant="outline"
+              className="w-full sm:w-auto hover:bg-primary/5 transition-all duration-300"
+            >
+              Visit Forum
+            </Button>
+            <Button 
+              onClick={() => navigate("/contact")}
+              variant="outline"
+              className="w-full sm:w-auto hover:bg-primary/5 transition-all duration-300"
+            >
+              Contact Support
+            </Button>
+          </div>
         </div>
       </div>
     </>
