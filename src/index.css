@@ -32,7 +32,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
  
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
  
   .dark {
@@ -71,20 +71,35 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
 }
 
-/* ElevenLabs Widget Styling */
+/* Enhanced Glass Morphism */
+.glass-morphism {
+  backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius);
+  border: 1px solid rgba(209, 213, 219, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-morphism:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Enhanced ElevenLabs Widget Styling */
 elevenlabs-convai {
   position: fixed;
   bottom: 40px;
   right: 40px;
   z-index: 1000;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: bottom right;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius);
   max-width: calc(100vw - 80px);
   max-height: calc(100vh - 80px);
   opacity: 1;
@@ -95,47 +110,56 @@ elevenlabs-convai {
   overflow: hidden;
 }
 
-/* Change the widget text */
-elevenlabs-convai::part(button)::before {
-  content: "Schedule a demo" !important;
+elevenlabs-convai.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.95);
 }
 
-/* Add close button for ElevenLabs widget */
+/* Modern Close Button */
 .elevenlabs-close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   background: rgba(0, 0, 0, 0.1);
   border: none;
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
   z-index: 1001;
 }
 
 .elevenlabs-close-btn:hover {
   background: rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
 }
 
 .elevenlabs-close-btn::before,
 .elevenlabs-close-btn::after {
   content: '';
   position: absolute;
-  width: 12px;
+  width: 14px;
   height: 2px;
   background-color: white;
   transform: rotate(45deg);
+  transition: all 0.2s ease;
 }
 
 .elevenlabs-close-btn::after {
   transform: rotate(-45deg);
 }
 
+.elevenlabs-close-btn:hover::before,
+.elevenlabs-close-btn:hover::after {
+  width: 16px;
+}
+
+/* Mobile Optimization */
 @media (max-width: 768px) {
   elevenlabs-convai {
     bottom: 20px;
@@ -143,4 +167,48 @@ elevenlabs-convai::part(button)::before {
     max-width: calc(100vw - 40px);
     max-height: calc(100vh - 40px);
   }
+}
+
+/* Enhanced Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Page Transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
 }
