@@ -33,6 +33,7 @@ import TaskAutomation from "@/pages/solutions/TaskAutomation";
 import ActionableInsights from "@/pages/solutions/ActionableInsights";
 import CostEffectiveCallCenters from "@/pages/solutions/CostEffectiveCallCenters";
 import Pricing from "@/pages/Pricing";
+import PropertyManagement from "@/pages/PropertyManagement";
 
 function App() {
   const { toast } = useToast();
@@ -74,7 +75,13 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
-              {/* Add Pricing Route */}
+              {/* Add Property Management Route */}
+              <Route path="/property-management" element={
+                <div className="animate-fadeIn">
+                  <PropertyManagement />
+                </div>
+              } />
+              
               <Route path="/pricing" element={
                 <div className="animate-fadeIn">
                   <Pricing />
