@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CircuitBoard, Cpu, MessageSquare, Timer, Gauge, Settings, Mic, MicOff, Send } from "lucide-react";
+import { CircuitBoard, Cpu, MessageSquare, Timer, Gauge, Settings, Mic, MicOff, Send, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -149,10 +149,11 @@ export default function Demo() {
     }
   };
 
-  const toggleVoice = async () => {
+  const handleVoiceToggle = async () => {
     if (isVoiceEnabled) {
       await conversation.endSession();
       setIsVoiceEnabled(false);
+      toast.success("Voice assistant disabled");
     } else {
       try {
         await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -160,9 +161,10 @@ export default function Demo() {
           agentId: "default_property_assistant",
         });
         setIsVoiceEnabled(true);
+        toast.success("Voice assistant enabled - You can now speak with Property Mate");
       } catch (error) {
         console.error("Failed to start voice conversation:", error);
-        toast.error("Please allow microphone access to use the voice assistant.");
+        toast.error("Please allow microphone access to use the voice assistant");
       }
     }
   };
@@ -182,7 +184,7 @@ export default function Demo() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Test the Power of AI Business Managers
+            Interactive AI Business Assistant Demo
           </motion.h1>
           <motion.p 
             className="text-lg sm:text-xl text-gray-600 px-4"
@@ -190,7 +192,7 @@ export default function Demo() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            Choose your industry to see how our AI can handle your business needs.
+            Experience our AI assistant in action. Try both text and voice interactions!
           </motion.p>
         </div>
 
@@ -219,23 +221,28 @@ export default function Demo() {
               </Select>
 
               <div className="flex gap-2 w-full sm:w-auto">
-                <Button
-                  variant="outline"
-                  onClick={toggleVoice}
-                  className="w-full sm:w-auto bg-white border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-gray-900"
-                >
-                  {isVoiceEnabled ? (
-                    <>
-                      <MicOff className="h-4 w-4 mr-2" />
-                      Stop Voice
-                    </>
-                  ) : (
-                    <>
-                      <Mic className="h-4 w-4 mr-2" />
-                      Start Voice
-                    </>
-                  )}
-                </Button>
+                <div className="relative group">
+                  <Button
+                    variant="outline"
+                    onClick={handleVoiceToggle}
+                    className="w-full sm:w-auto bg-white border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-gray-900 relative"
+                  >
+                    {isVoiceEnabled ? (
+                      <>
+                        <MicOff className="h-4 w-4 mr-2" />
+                        Stop Voice
+                      </>
+                    ) : (
+                      <>
+                        <Mic className="h-4 w-4 mr-2" />
+                        Start Voice
+                      </>
+                    )}
+                  </Button>
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
+                    {isVoiceEnabled ? "Click to disable voice assistant" : "Click to enable voice assistant"}
+                  </div>
+                </div>
 
                 <Button
                   variant="outline"
@@ -245,6 +252,25 @@ export default function Demo() {
                 >
                   <Settings className="h-4 w-4" />
                 </Button>
+
+                <div className="relative group">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="bg-white border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-gray-900"
+                  >
+                    <HelpCircle className="h-4 w-4" />
+                  </Button>
+                  <div className="absolute bottom-full right-0 mb-2 p-4 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-64 z-50">
+                    <h4 className="font-semibold mb-2">How to use voice chat:</h4>
+                    <ol className="list-decimal list-inside space-y-1">
+                      <li>Click "Start Voice" button</li>
+                      <li>Allow microphone access when prompted</li>
+                      <li>Speak clearly into your microphone</li>
+                      <li>Click "Stop Voice" to end the conversation</li>
+                    </ol>
+                  </div>
+                </div>
               </div>
             </div>
           </Card>
@@ -276,39 +302,27 @@ export default function Demo() {
 
             <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                  <MessageSquare className="h-5 w-5 text-blue-500" />
-                  Common Questions
-                </h3>
-                <div className="grid gap-2">
-                  {industries.find(i => i.id === selectedIndustry)?.questions.map((question, index) => (
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                    <MessageSquare className="h-5 w-5 text-blue-500" />
+                    Interactive Chat
+                  </h3>
+                  {isVoiceEnabled && (
                     <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 * index }}
-                    >
-                      <Button
-                        variant="outline"
-                        className="w-full justify-start text-left bg-white border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-gray-900"
-                        onClick={() => {
-                          setUserInput(question);
-                          handleSendMessage();
-                        }}
-                        disabled={isLoading}
-                      >
-                        {question}
-                      </Button>
-                    </motion.div>
-                  ))}
+                      className="h-3 w-3 rounded-full bg-green-500"
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.5, 1, 0.5],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  )}
                 </div>
-              </div>
-            </Card>
-
-            <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-800">Chat Simulation</h3>
-                <div className="space-y-4 max-h-[60vh] overflow-y-auto">
+                <div className="space-y-4 max-h-[60vh] overflow-y-auto rounded-lg bg-gray-50 p-4">
                   {chatMessages.map((message, index) => (
                     <motion.div
                       key={index}
@@ -321,7 +335,7 @@ export default function Demo() {
                         className={`max-w-[85%] sm:max-w-[80%] p-3 rounded-lg ${
                           message.type === 'user'
                             ? 'bg-blue-500 text-white'
-                            : 'bg-gray-100 text-gray-800'
+                            : 'bg-white shadow-sm border border-gray-100 text-gray-800'
                         }`}
                       >
                         {message.text}
@@ -334,17 +348,43 @@ export default function Demo() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                     >
-                      <div className="max-w-[85%] sm:max-w-[80%] p-3 rounded-lg bg-gray-100">
+                      <div className="flex items-center space-x-2 max-w-[85%] sm:max-w-[80%] p-3 rounded-lg bg-white shadow-sm border border-gray-100">
                         <motion.div
-                          className="w-8 h-8 rounded-full bg-blue-500"
+                          className="w-2 h-2 rounded-full bg-blue-500"
                           animate={{
                             scale: [1, 1.2, 1],
-                            opacity: [0.5, 1, 0.5]
+                            opacity: [0.5, 1, 0.5],
                           }}
                           transition={{
-                            duration: 1.5,
+                            duration: 1,
                             repeat: Infinity,
-                            ease: "easeInOut"
+                            ease: "easeInOut",
+                          }}
+                        />
+                        <motion.div
+                          className="w-2 h-2 rounded-full bg-blue-500"
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.5, 1, 0.5],
+                          }}
+                          transition={{
+                            duration: 1,
+                            delay: 0.2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                        />
+                        <motion.div
+                          className="w-2 h-2 rounded-full bg-blue-500"
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.5, 1, 0.5],
+                          }}
+                          transition={{
+                            duration: 1,
+                            delay: 0.4,
+                            repeat: Infinity,
+                            ease: "easeInOut",
                           }}
                         />
                       </div>
@@ -352,13 +392,12 @@ export default function Demo() {
                   )}
                 </div>
 
-                {/* Text Input Area */}
                 <div className="flex gap-2">
                   <Textarea
                     value={userInput}
                     onChange={(e) => setUserInput(e.target.value)}
                     placeholder="Type your message here..."
-                    className="min-h-[50px] bg-white border-gray-200"
+                    className="min-h-[50px] bg-white border-gray-200 resize-none"
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
                         e.preventDefault();
