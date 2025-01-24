@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useConversation, ConvaiProvider } from "@11labs/react";
+import { useConversation } from "@11labs/react";
 
 type Industry = {
   id: string;
@@ -66,7 +66,7 @@ const industries: Industry[] = [
   },
 ];
 
-function DemoContent() {
+export default function Demo() {
   const [selectedIndustry, setSelectedIndustry] = useState<string>("property");
   const [systemPrompt, setSystemPrompt] = useState<string>(propertyManagementPrompt);
   const [chatMessages, setChatMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([]);
@@ -373,14 +373,5 @@ function DemoContent() {
         )}
       </motion.div>
     </div>
-  );
-}
-
-// Wrap the component with ConvaiProvider
-export default function Demo() {
-  return (
-    <ConvaiProvider apiKey={process.env.ELEVEN_LABS_API_KEY}>
-      <DemoContent />
-    </ConvaiProvider>
   );
 }
