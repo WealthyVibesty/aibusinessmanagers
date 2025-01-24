@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Building2, Utensils, Hotel, Car, Calculator, DollarSign, MessageSquare, Layers } from "lucide-react";
+import { ArrowRight, Stethoscope, UtensilsCrossed, Hotel, Car, Wallet, MessageSquare, Layers, DollarSign } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import VideoBenefitCard from "@/components/landing/VideoBenefitCard";
@@ -10,28 +10,43 @@ export default function Home() {
   const industries = [
     {
       name: "Healthcare",
-      icon: <Building2 className="h-8 w-8" />,
-      path: "/healthcare"
+      icon: <Stethoscope className="h-8 w-8" />,
+      path: "/healthcare",
+      color: "bg-[#E5DEFF]",
+      hoverColor: "group-hover:text-[#8B5CF6]",
+      description: "AI-powered healthcare solutions"
     },
     {
       name: "Restaurants",
-      icon: <Utensils className="h-8 w-8" />,
-      path: "/restaurants"
+      icon: <UtensilsCrossed className="h-8 w-8" />,
+      path: "/restaurants",
+      color: "bg-[#FDE1D3]",
+      hoverColor: "group-hover:text-[#F97316]",
+      description: "Streamline restaurant operations"
     },
     {
       name: "Hospitality",
       icon: <Hotel className="h-8 w-8" />,
-      path: "/hospitality"
+      path: "/hospitality",
+      color: "bg-[#D3E4FD]",
+      hoverColor: "group-hover:text-[#0EA5E9]",
+      description: "Enhance guest experiences"
     },
     {
       name: "Transportation",
       icon: <Car className="h-8 w-8" />,
-      path: "/transportation"
+      path: "/transportation",
+      color: "bg-[#F2FCE2]",
+      hoverColor: "group-hover:text-[#16A34A]",
+      description: "Optimize fleet management"
     },
     {
       name: "Finance",
-      icon: <Calculator className="h-8 w-8" />,
-      path: "/finance"
+      icon: <Wallet className="h-8 w-8" />,
+      path: "/finance",
+      color: "bg-[#FFDEE2]",
+      hoverColor: "group-hover:text-[#D946EF]",
+      description: "Automate financial processes"
     }
   ];
 
@@ -135,16 +150,21 @@ export default function Home() {
       {/* Industries Section */}
       <section className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
-            className="text-3xl font-bold text-center mb-12"
+          <motion.div 
+            className="text-center mb-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            Industries We Serve
-          </motion.h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Industries We Serve
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Discover how our AI solutions transform operations across different sectors
+            </p>
+          </motion.div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {industries.map((industry, index) => (
               <motion.div
                 key={index}
@@ -154,12 +174,15 @@ export default function Home() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all group-hover:-translate-y-1 duration-300">
+                <div className={`p-6 rounded-xl ${industry.color} shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1`}>
                   <div className="flex flex-col items-center gap-4">
-                    <div className="text-primary group-hover:scale-110 transition-transform">
+                    <div className={`transition-all duration-300 ${industry.hoverColor}`}>
                       {industry.icon}
                     </div>
-                    <p className="font-medium text-gray-900">{industry.name}</p>
+                    <div className="space-y-2 text-center">
+                      <h3 className="font-semibold text-gray-900">{industry.name}</h3>
+                      <p className="text-sm text-gray-600">{industry.description}</p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
