@@ -9,11 +9,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { CircuitBoard, Cpu, MessageSquare, Timer, Gauge, Settings } from "lucide-react";
+import { CircuitBoard, Cpu, MessageSquare, Timer, Gauge, Settings, Mic, MicOff } from "lucide-react";
 import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useConversation } from "@11labs/react";
 
 type Industry = {
   id: string;
@@ -22,6 +23,19 @@ type Industry = {
   questions: string[];
   defaultSystemPrompt: string;
 };
+
+const propertyManagementPrompt = `You are an AI voice assistant named Property Mate, designed to assist renters and potential tenants with their property-related needs at 444 NE 7th Street, Fort Lauderdale, Florida 33304. Your goal is to make the process of finding, leasing, and maintaining a rental property as smooth and stress-free as possible. Be friendly, helpful, and patient.
+
+When users request information via text, always collect and confirm their name and phone number first. Only discuss positive aspects that would influence leasing/buying decisions.
+
+Key points to remember:
+- Always introduce yourself as PropertyMate
+- Confirm user details before sending texts
+- Focus on positive property features
+- Use a warm, friendly tone
+- Speak clearly and avoid jargon
+- Show empathy and patience
+- Always verify information before proceeding`;
 
 const industries: Industry[] = [
   {
@@ -42,13 +56,13 @@ const industries: Industry[] = [
     name: "Property Management",
     icon: <Cpu className="h-6 w-6 text-purple-500" />,
     questions: [
-      "How do I submit a maintenance request?",
-      "What is the process for renewing my lease?",
+      "Tell me about your available units",
+      "What amenities do you offer?",
       "Can I schedule a property tour?",
-      "What is included in my rent?",
-      "How do I report a noise complaint?"
+      "What are your lease terms?",
+      "Can you send me more information about the property?"
     ],
-    defaultSystemPrompt: "You are an AI assistant for a property management company. Be professional and informative. Help tenants with their inquiries and maintenance requests."
+    defaultSystemPrompt: propertyManagementPrompt
   },
 ];
 
@@ -57,9 +71,44 @@ export default function Demo() {
   const [systemPrompt, setSystemPrompt] = useState<string>("");
   const [chatMessages, setChatMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([]);
   const [metrics, setMetrics] = useState({ responseTime: "2 seconds", satisfaction: "97%" });
-  const [isConfiguring, setIsConfiguring] = useState(true); // Changed to true by default
+  const [isConfiguring, setIsConfiguring] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
   const isMobile = useIsMobile();
+
+  const conversation = useConversation({
+    onConnect: () => {
+      console.log("Connected to ElevenLabs");
+      toast({
+        title: "Connected to Property Mate",
+        description: "You can now start speaking with our AI assistant",
+      });
+    },
+    onDisconnect: () => {
+      console.log("Disconnected from ElevenLabs");
+      setIsVoiceEnabled(false);
+    },
+    onError: (error) => {
+      console.error("ElevenLabs error:", error);
+      toast({
+        title: "Connection Error",
+        description: "Failed to connect to the voice assistant. Please try again.",
+        variant: "destructive",
+      });
+    },
+    overrides: {
+      agent: {
+        prompt: {
+          prompt: propertyManagementPrompt,
+        },
+        firstMessage: "Hello! I'm PropertyMate, your AI assistant. How can I help you today?",
+        language: "en",
+      },
+      tts: {
+        voiceId: "EXAVITQu4vr4xnSDxMaL", // Sarah voice
+      },
+    },
+  });
 
   const handleIndustrySelect = (value: string) => {
     setSelectedIndustry(value);
@@ -114,6 +163,28 @@ export default function Demo() {
     }
   };
 
+  const toggleVoice = async () => {
+    if (isVoiceEnabled) {
+      await conversation.endSession();
+      setIsVoiceEnabled(false);
+    } else {
+      try {
+        await navigator.mediaDevices.getUserMedia({ audio: true });
+        await conversation.startSession({
+          agentId: "default_property_assistant",
+        });
+        setIsVoiceEnabled(true);
+      } catch (error) {
+        console.error("Failed to start voice conversation:", error);
+        toast({
+          title: "Microphone Access Required",
+          description: "Please allow microphone access to use the voice assistant.",
+          variant: "destructive",
+        });
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 sm:p-6">
       <motion.div 
@@ -164,14 +235,35 @@ export default function Demo() {
                   ))}
                 </SelectContent>
               </Select>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setIsConfiguring(!isConfiguring)}
-                className="w-full sm:w-auto bg-white border-gray-200 hover:bg-gray-50"
-              >
-                <Settings className="h-4 w-4" />
-              </Button>
+
+              <div className="flex gap-2 w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  onClick={toggleVoice}
+                  className="w-full sm:w-auto bg-white border-gray-200 hover:bg-gray-50"
+                >
+                  {isVoiceEnabled ? (
+                    <>
+                      <MicOff className="h-4 w-4 mr-2" />
+                      Stop Voice
+                    </>
+                  ) : (
+                    <>
+                      <Mic className="h-4 w-4 mr-2" />
+                      Start Voice
+                    </>
+                  )}
+                </Button>
+
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => setIsConfiguring(!isConfiguring)}
+                  className="bg-white border-gray-200 hover:bg-gray-50"
+                >
+                  <Settings className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </Card>
         </motion.div>
