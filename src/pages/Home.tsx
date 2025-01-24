@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Building2, Utensils, Hotel, Car, Calculator } from "lucide-react";
+import { ArrowRight, Building2, Utensils, Hotel, Car, Calculator, DollarSign, MessageSquare, Layers } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import VideoBenefitCard from "@/components/landing/VideoBenefitCard";
@@ -40,19 +40,22 @@ export default function Home() {
       title: "75% Cost Reduction",
       description: "See how our AI solutions dramatically cut operational costs while maintaining quality service",
       videoUrl: "/lovable-uploads/cost-reduction-demo.mp4",
-      delay: 0.2
+      delay: 0.2,
+      icon: <DollarSign className="w-8 h-8 text-blue-600" />
     },
     {
       title: "Instant AI Responses",
       description: "Watch our AI system handle customer inquiries in real-time with natural conversations",
       videoUrl: "/lovable-uploads/ai-responses-demo.mp4",
-      delay: 0.4
+      delay: 0.4,
+      icon: <MessageSquare className="w-8 h-8 text-blue-600" />
     },
     {
       title: "Industry-Specific AI",
       description: "Discover how our AI adapts to your specific industry needs and workflows",
       videoUrl: "/lovable-uploads/industry-specific-demo.mp4",
-      delay: 0.6
+      delay: 0.6,
+      icon: <Layers className="w-8 h-8 text-blue-600" />
     }
   ];
 
@@ -102,18 +105,18 @@ export default function Home() {
       </section>
 
       {/* Benefits Section with Videos */}
-      <section className="py-20 px-6">
+      <section className="py-12 sm:py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
               See Our AI in Action
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
               Watch how our AI solutions deliver immediate impact with measurable results
             </p>
           </motion.div>
@@ -126,6 +129,7 @@ export default function Home() {
                 description={benefit.description}
                 videoUrl={benefit.videoUrl}
                 delay={benefit.delay}
+                icon={benefit.icon}
               />
             ))}
           </div>

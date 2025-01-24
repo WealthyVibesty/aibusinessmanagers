@@ -6,9 +6,10 @@ interface VideoBenefitCardProps {
   description: string;
   videoUrl: string;
   delay?: number;
+  icon?: React.ReactNode;
 }
 
-export default function VideoBenefitCard({ title, description, videoUrl, delay = 0 }: VideoBenefitCardProps) {
+export default function VideoBenefitCard({ title, description, videoUrl, delay = 0, icon }: VideoBenefitCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -18,6 +19,11 @@ export default function VideoBenefitCard({ title, description, videoUrl, delay =
     >
       <Card className="p-6 h-full hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 overflow-hidden bg-white/80 backdrop-blur-sm">
         <div className="space-y-4">
+          {icon && (
+            <div className="flex justify-center mb-2 transform group-hover:scale-110 transition-transform duration-300">
+              {icon}
+            </div>
+          )}
           <div className="aspect-video rounded-lg overflow-hidden bg-gray-100">
             <video 
               autoPlay 
