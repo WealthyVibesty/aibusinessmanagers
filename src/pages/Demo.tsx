@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -85,7 +85,7 @@ const industries = [
 ];
 
 export default function Demo() {
-  const [selectedIndustry, setSelectedIndustry] = useState<string>("property");
+  const [selectedIndustry, setSelectedIndustry] = useState<string>("healthcare");
   const [systemPrompt, setSystemPrompt] = useState<string>(industries[0].defaultSystemPrompt);
   const [chatMessages, setChatMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([]);
   const [metrics, setMetrics] = useState({ responseTime: "2 seconds", satisfaction: "97%" });
@@ -97,23 +97,25 @@ export default function Demo() {
 
   const conversation = useConversation({
     onConnect: () => {
-      console.log("Connected to ElevenLabs");
-      toast("Connected to Property Mate voice assistant");
+      console.log("Connected to ElevenLabs voice service");
+      toast.success("Voice assistant connected successfully");
     },
     onDisconnect: () => {
-      console.log("Disconnected from ElevenLabs");
+      console.log("Disconnected from ElevenLabs voice service");
       setIsVoiceEnabled(false);
+      toast.info("Voice assistant disconnected");
     },
     onError: (error) => {
       console.error("ElevenLabs error:", error);
-      toast.error("Failed to connect to the voice assistant. Please try again.");
+      toast.error("Voice assistant error. Please try again.");
+      setIsVoiceEnabled(false);
     },
     overrides: {
       agent: {
         prompt: {
           prompt: systemPrompt,
         },
-        firstMessage: "Hello! I'm your AI assistant. How can I help you today?",
+        firstMessage: `Hello! I'm your AI assistant for ${selectedIndustry}. How can I help you today?`,
         language: "en",
       },
       tts: {
@@ -124,7 +126,6 @@ export default function Demo() {
 
   const handleIndustrySelect = (value: string) => {
     setSelectedIndustry(value);
-    setChatMessages([]);
     const industry = industries.find(i => i.id === value);
     if (industry) {
       setSystemPrompt(industry.defaultSystemPrompt);
@@ -132,6 +133,34 @@ export default function Demo() {
         type: 'ai',
         text: `Welcome! I'm your AI assistant for ${industry.name}. How can I help you today?`
       }]);
+    }
+  };
+
+  const handleVoiceToggle = async () => {
+    try {
+      if (isVoiceEnabled) {
+        console.log("Ending voice session...");
+        await conversation.endSession();
+        setIsVoiceEnabled(false);
+        toast.success("Voice call ended");
+      } else {
+        console.log("Starting voice session...");
+        // First request microphone access
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        console.log("Microphone access granted:", stream);
+        
+        // Then start the conversation session
+        await conversation.startSession({
+          agentId: "default",
+        });
+        
+        setIsVoiceEnabled(true);
+        toast.success("Voice call started - You can now speak");
+      }
+    } catch (error) {
+      console.error("Voice toggle error:", error);
+      toast.error("Failed to toggle voice. Please check microphone permissions.");
+      setIsVoiceEnabled(false);
     }
   };
 
@@ -175,26 +204,6 @@ export default function Demo() {
       toast.error("Failed to get AI response. Please try again.");
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  const handleVoiceToggle = async () => {
-    if (isVoiceEnabled) {
-      await conversation.endSession();
-      setIsVoiceEnabled(false);
-      toast.success("Voice assistant disabled");
-    } else {
-      try {
-        await navigator.mediaDevices.getUserMedia({ audio: true });
-        await conversation.startSession({
-          agentId: "default_property_assistant",
-        });
-        setIsVoiceEnabled(true);
-        toast.success("Voice assistant enabled - You can now speak with Property Mate");
-      } catch (error) {
-        console.error("Failed to start voice conversation:", error);
-        toast.error("Please allow microphone access to use the voice assistant");
-      }
     }
   };
 
