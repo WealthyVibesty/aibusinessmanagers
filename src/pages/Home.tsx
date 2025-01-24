@@ -6,7 +6,7 @@ import VideoBenefitCard from "@/components/landing/VideoBenefitCard";
 
 export default function Home() {
   const navigate = useNavigate();
-
+  
   const industries = [
     {
       name: "Healthcare",
@@ -59,26 +59,26 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-32 px-6">
+      <section className="relative py-20 sm:py-32 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div 
-            className="text-center space-y-8"
+            className="text-center space-y-6 sm:space-y-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight max-w-[90%] mx-auto">
               See How AI Business Managers Can{' '}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
                 Transform Your Operations Today
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto px-4">
               Watch our AI in action and discover how it can revolutionize your business operations
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
               <Button 
                 size="lg"
                 onClick={() => navigate("/demo")}
