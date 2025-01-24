@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, UtensilsCrossed, Bot, Clock, ChartLineUp, Users2 } from "lucide-react";
+import { ArrowRight, UtensilsCrossed, Bot, Clock, ChartLine, Users2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { Card } from "@/components/ui/card";
@@ -14,7 +14,7 @@ export default function Restaurants() {
       description: "Never miss a customer inquiry with round-the-clock automated service"
     },
     {
-      icon: <ChartLineUp className="h-8 w-8 text-green-500 animate-pulse" />,
+      icon: <ChartLine className="h-8 w-8 text-green-500 animate-pulse" />,
       title: "Increased Efficiency",
       description: "Streamline operations and reduce wait times by up to 80%"
     },
