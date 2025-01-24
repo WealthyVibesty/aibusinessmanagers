@@ -9,7 +9,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
 import { CircuitBoard, Cpu, MessageSquare, Timer, Gauge, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
@@ -76,8 +75,10 @@ export default function Demo() {
   const handleQuestionClick = async (question: string) => {
     try {
       setIsLoading(true);
+      console.log('Sending question:', question);
       setChatMessages(prev => [...prev, { type: 'user', text: question }]);
       
+      const startTime = Date.now();
       const { data, error } = await supabase.functions.invoke('chat-completion', {
         body: {
           prompt: question,
@@ -89,7 +90,14 @@ export default function Demo() {
         }
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Error from chat-completion:', error);
+        throw error;
+      }
+
+      console.log('Received response:', data);
+      const responseTime = ((Date.now() - startTime) / 1000).toFixed(1);
+      setMetrics(prev => ({ ...prev, responseTime: `${responseTime} seconds` }));
 
       setChatMessages(prev => [...prev, {
         type: 'ai',

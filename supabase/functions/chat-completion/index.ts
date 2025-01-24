@@ -13,24 +13,35 @@ serve(async (req) => {
 
   try {
     const { prompt, systemPrompt, messages } = await req.json();
+    console.log('Received request:', { prompt, systemPrompt, messages });
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${Deno.env.get('OPENAI_API_KEY')}`,
+        'Authorization': `Bearer ${Deno.env.get('DEEPSEEK_API_KEY')}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'deepseek-chat',
         messages: [
           { role: 'system', content: systemPrompt || 'You are a helpful AI assistant.' },
           ...messages,
           { role: 'user', content: prompt }
         ],
+        temperature: 0.7,
+        max_tokens: 1000,
       }),
     });
 
+    if (!response.ok) {
+      const error = await response.text();
+      console.error('Deepseek API error:', error);
+      throw new Error(`Deepseek API error: ${error}`);
+    }
+
     const data = await response.json();
+    console.log('Deepseek response:', data);
+
     return new Response(JSON.stringify({
       response: data.choices[0].message.content,
       usage: data.usage
@@ -39,6 +50,7 @@ serve(async (req) => {
     });
 
   } catch (error) {
+    console.error('Error in chat-completion function:', error);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
