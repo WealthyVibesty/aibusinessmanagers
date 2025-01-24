@@ -143,8 +143,7 @@ export default function Demo() {
         widget.classList.add('animate-fadeOut');
         setTimeout(() => {
           widget.classList.add('hidden');
-          toast({
-            title: "AI Assistant Hidden",
+          toast("AI Assistant Hidden", {
             description: "Click the button to bring it back anytime!",
             duration: 3000,
           });
@@ -155,18 +154,15 @@ export default function Demo() {
         widget.classList.add('animate-scale');
         console.log('Showing AI assistant');
         setIsVoiceEnabled(true);
-        toast({
-          title: "AI Assistant Ready",
+        toast("AI Assistant Ready", {
           description: "You can now speak with our AI!",
           duration: 3000,
         });
       }
     } else {
       console.error('ElevenLabs widget not found');
-      toast({
-        title: "Error",
+      toast("Error", {
         description: "Could not find AI assistant widget",
-        variant: "destructive",
         duration: 3000,
       });
     }
