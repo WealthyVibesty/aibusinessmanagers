@@ -37,6 +37,15 @@ import PropertyManagement from "@/pages/PropertyManagement";
 import Home from "@/pages/Home";
 import Demo from "@/pages/Demo";
 
+// Add environment variable type declaration
+declare global {
+  interface Window {
+    env: {
+      ELEVEN_LABS_API_KEY: string;
+    };
+  }
+}
+
 function App() {
   const { toast } = useToast();
 

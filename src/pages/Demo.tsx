@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useConversation } from "@11labs/react";
+import { useConversation, ConvaiProvider } from "@11labs/react";
 
 type Industry = {
   id: string;
@@ -66,7 +66,7 @@ const industries: Industry[] = [
   },
 ];
 
-export default function Demo() {
+function DemoContent() {
   const [selectedIndustry, setSelectedIndustry] = useState<string>("property");
   const [systemPrompt, setSystemPrompt] = useState<string>(propertyManagementPrompt);
   const [chatMessages, setChatMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([]);
@@ -79,9 +79,7 @@ export default function Demo() {
   const conversation = useConversation({
     onConnect: () => {
       console.log("Connected to ElevenLabs");
-      toast({
-        description: "Connected to Property Mate voice assistant"
-      });
+      toast("Connected to Property Mate voice assistant");
     },
     onDisconnect: () => {
       console.log("Disconnected from ElevenLabs");
@@ -89,17 +87,14 @@ export default function Demo() {
     },
     onError: (error) => {
       console.error("ElevenLabs error:", error);
-      toast({
-        description: "Failed to connect to the voice assistant. Please try again.",
-        variant: "destructive",
-      });
+      toast.error("Failed to connect to the voice assistant. Please try again.");
     },
     overrides: {
       agent: {
         prompt: {
           prompt: propertyManagementPrompt,
         },
-        firstMessage: "Hello! I'm PropertyMate, your AI assistant. How can I help you today?",
+        firstMessage: "Hello! I'm PropertyMate, your friendly assistant for all things property-related. How can I help you today?",
         language: "en",
       },
       tts: {
@@ -174,10 +169,7 @@ export default function Demo() {
         setIsVoiceEnabled(true);
       } catch (error) {
         console.error("Failed to start voice conversation:", error);
-        toast({
-          description: "Please allow microphone access to use the voice assistant.",
-          variant: "destructive",
-        });
+        toast.error("Please allow microphone access to use the voice assistant.");
       }
     }
   };
@@ -381,5 +373,14 @@ export default function Demo() {
         )}
       </motion.div>
     </div>
+  );
+}
+
+// Wrap the component with ConvaiProvider
+export default function Demo() {
+  return (
+    <ConvaiProvider apiKey={process.env.ELEVEN_LABS_API_KEY}>
+      <DemoContent />
+    </ConvaiProvider>
   );
 }
