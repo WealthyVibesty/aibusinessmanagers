@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,11 +9,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CircuitBoard, Cpu, MessageSquare, Timer, Gauge, Settings, Send, HelpCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { CircuitBoard, Cpu, MessageSquare, Timer, Gauge, Settings, Mic, MicOff, Send, HelpCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useConversation } from "@11labs/react";
 
 const industries = [
   {
@@ -90,8 +91,38 @@ export default function Demo() {
   const [metrics, setMetrics] = useState({ responseTime: "2 seconds", satisfaction: "97%" });
   const [isConfiguring, setIsConfiguring] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
   const [userInput, setUserInput] = useState("");
   const isMobile = useIsMobile();
+
+  const conversation = useConversation({
+    onConnect: () => {
+      console.log("Connected to ElevenLabs voice service");
+      toast.success("Voice assistant connected successfully");
+    },
+    onDisconnect: () => {
+      console.log("Disconnected from ElevenLabs voice service");
+      setIsVoiceEnabled(false);
+      toast.info("Voice assistant disconnected");
+    },
+    onError: (error) => {
+      console.error("ElevenLabs error:", error);
+      toast.error("Voice assistant error. Please try again.");
+      setIsVoiceEnabled(false);
+    },
+    overrides: {
+      agent: {
+        prompt: {
+          prompt: systemPrompt,
+        },
+        firstMessage: `Hello! I'm your AI assistant for ${selectedIndustry}. How can I help you today?`,
+        language: "en",
+      },
+      tts: {
+        voiceId: "EXAVITQu4vr4xnSDxMaL", // Sarah voice
+      },
+    },
+  });
 
   const handleIndustrySelect = (value: string) => {
     setSelectedIndustry(value);
@@ -102,6 +133,34 @@ export default function Demo() {
         type: 'ai',
         text: `Welcome! I'm your AI assistant for ${industry.name}. How can I help you today?`
       }]);
+    }
+  };
+
+  const handleVoiceToggle = async () => {
+    try {
+      if (isVoiceEnabled) {
+        console.log("Ending voice session...");
+        await conversation.endSession();
+        setIsVoiceEnabled(false);
+        toast.success("Voice call ended");
+      } else {
+        console.log("Starting voice session...");
+        // First request microphone access
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        console.log("Microphone access granted:", stream);
+        
+        // Then start the conversation session
+        await conversation.startSession({
+          agentId: "default",
+        });
+        
+        setIsVoiceEnabled(true);
+        toast.success("Voice call started - You can now speak");
+      }
+    } catch (error) {
+      console.error("Voice toggle error:", error);
+      toast.error("Failed to toggle voice. Please check microphone permissions.");
+      setIsVoiceEnabled(false);
     }
   };
 
@@ -267,6 +326,20 @@ export default function Demo() {
                     <MessageSquare className="h-5 w-5 text-blue-500" />
                     Interactive Chat
                   </h3>
+                  {isVoiceEnabled && (
+                    <motion.div
+                      className="h-3 w-3 rounded-full bg-green-500"
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.5, 1, 0.5],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  )}
                 </div>
                 <div className="space-y-4 max-h-[60vh] overflow-y-auto rounded-lg bg-gray-50 p-4">
                   {chatMessages.map((message, index) => (
@@ -359,6 +432,45 @@ export default function Demo() {
                     <Send className="h-4 w-4" />
                   </Button>
                 </div>
+              </div>
+            </Card>
+
+            <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <Mic className="h-5 w-5 text-blue-500" />
+                  Voice Assistant Controls
+                </h3>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    size="lg"
+                    onClick={handleVoiceToggle}
+                    className={`w-full sm:w-auto font-semibold py-6 px-8 h-auto text-lg ${
+                      isVoiceEnabled 
+                        ? 'bg-red-500 hover:bg-red-600' 
+                        : 'bg-blue-500 hover:bg-blue-600'
+                    } text-white`}
+                  >
+                    {isVoiceEnabled ? (
+                      <>
+                        <MicOff className="h-5 w-5 mr-3" />
+                        End Voice Call
+                      </>
+                    ) : (
+                      <>
+                        <Mic className="h-5 w-5 mr-3" />
+                        Start Voice Call
+                      </>
+                    )}
+                  </Button>
+                </div>
+
+                <p className="text-sm text-gray-500 text-center">
+                  {isVoiceEnabled 
+                    ? "Voice assistant is active. Speak naturally to interact."
+                    : "Click the button above to start a voice conversation."}
+                </p>
               </div>
             </Card>
 
