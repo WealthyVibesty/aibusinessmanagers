@@ -67,8 +67,8 @@ const industries: Industry[] = [
 ];
 
 export default function Demo() {
-  const [selectedIndustry, setSelectedIndustry] = useState<string>("");
-  const [systemPrompt, setSystemPrompt] = useState<string>("");
+  const [selectedIndustry, setSelectedIndustry] = useState<string>("property");
+  const [systemPrompt, setSystemPrompt] = useState<string>(propertyManagementPrompt);
   const [chatMessages, setChatMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([]);
   const [metrics, setMetrics] = useState({ responseTime: "2 seconds", satisfaction: "97%" });
   const [isConfiguring, setIsConfiguring] = useState(true);
@@ -80,8 +80,7 @@ export default function Demo() {
     onConnect: () => {
       console.log("Connected to ElevenLabs");
       toast({
-        title: "Connected to Property Mate",
-        description: "You can now start speaking with our AI assistant",
+        description: "Connected to Property Mate voice assistant"
       });
     },
     onDisconnect: () => {
@@ -91,7 +90,6 @@ export default function Demo() {
     onError: (error) => {
       console.error("ElevenLabs error:", error);
       toast({
-        title: "Connection Error",
         description: "Failed to connect to the voice assistant. Please try again.",
         variant: "destructive",
       });
@@ -177,7 +175,6 @@ export default function Demo() {
       } catch (error) {
         console.error("Failed to start voice conversation:", error);
         toast({
-          title: "Microphone Access Required",
           description: "Please allow microphone access to use the voice assistant.",
           variant: "destructive",
         });
@@ -380,20 +377,6 @@ export default function Demo() {
                 </div>
               </div>
             </Card>
-
-            <motion.div 
-              className="text-center space-y-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-            >
-              <Button 
-                size="lg" 
-                className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white"
-              >
-                Request a Full Custom Demo
-              </Button>
-            </motion.div>
           </motion.div>
         )}
       </motion.div>
