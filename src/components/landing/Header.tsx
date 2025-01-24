@@ -28,14 +28,19 @@ export default function Header() {
       label: "Solutions",
       submenu: [
         { label: "AI Voice Agents", path: "/voice-agents" },
-        { label: "HIPAA Compliant", path: "/hipaa-compliant" },
-        { label: "AI Website Development", path: "/ai-website-development" },
-        { label: "AI-Powered Chatbots", path: "/ai-chatbots" },
-        { label: "SMS Marketing", path: "/sms-marketing" },
-        { label: "Multilingual AI Support", path: "/multilingual-support" },
-        { label: "CRM Integration", path: "/crm-integration" },
-        { label: "Instagram Automation", path: "/instagram-automation" },
-        { label: "Pilot Programs", path: "/pilot-programs" }
+        { label: "HIPAA Compliant", path: "/solutions/hipaa-compliant" },
+        { label: "AI Website Development", path: "/solutions/ai-website-development" },
+        { label: "AI-Powered Chatbots", path: "/solutions/ai-chatbots" },
+        { label: "SMS Marketing", path: "/solutions/sms-marketing" },
+        { label: "Multilingual AI Support", path: "/solutions/multilingual-support" },
+        { label: "CRM Integration", path: "/solutions/crm-integration" },
+        { label: "Instagram Automation", path: "/solutions/instagram-automation" },
+        { label: "Call Routing", path: "/solutions/call-routing" },
+        { label: "Task Automation", path: "/solutions/task-automation" },
+        { label: "Actionable Insights", path: "/solutions/actionable-insights" },
+        { label: "Cost-Effective Call Centers", path: "/solutions/cost-effective-call-centers" },
+        { label: "Proactive Engagement", path: "/solutions/proactive-engagement" },
+        { label: "Pilot Programs", path: "/solutions/pilot-programs" }
       ]
     },
     {
@@ -50,11 +55,6 @@ export default function Header() {
     {
       label: "Resources",
       submenu: [
-        { label: "Call Routing", path: "/call-routing" },
-        { label: "Task Automation", path: "/task-automation" },
-        { label: "Actionable Insights", path: "/actionable-insights" },
-        { label: "Cost-Effective Call Centers", path: "/cost-effective-call-centers" },
-        { label: "Proactive Engagement", path: "/proactive-engagement" },
         { label: "Case Studies", path: "/case-studies" },
         { label: "Whitepapers", path: "/whitepapers" },
         { label: "Blog", path: "/blog" },
