@@ -235,7 +235,7 @@ export default function Demo() {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <Select onValueChange={handleIndustrySelect} value={selectedIndustry}>
                 <SelectTrigger className="w-full bg-white border-gray-200">
-                  <SelectValue placeholder="Select your industry" />
+                  <SelectValue placeholder="Choose your industry" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-gray-200">
                   {industries.map((industry) => (
@@ -271,9 +271,6 @@ export default function Demo() {
                       Start Voice Assistant
                     </>
                   )}
-                  <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                    {isVoiceEnabled ? 'Click to stop voice assistant' : 'Click to start voice assistant'}
-                  </span>
                 </Button>
 
                 <Button
@@ -293,7 +290,7 @@ export default function Demo() {
                   >
                     <HelpCircle className="h-4 w-4" />
                   </Button>
-                  <div className="absolute bottom-full right-0 mb-2 p-4 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-64 z-50">
+                  <div className="absolute bottom-full right-0 mb-2 p-4 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-64 z-50">
                     <h4 className="font-semibold mb-2">How to use voice chat:</h4>
                     <ol className="list-decimal list-inside space-y-1">
                       <li>Click "Start Voice" button</li>
