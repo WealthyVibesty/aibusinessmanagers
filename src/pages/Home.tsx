@@ -99,7 +99,7 @@ export default function Home() {
                 onClick={() => navigate("/demo")}
                 className="text-lg px-8 py-6 h-auto rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all group w-full sm:w-auto"
               >
-                Watch Demo
+                Create Bot Now
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               

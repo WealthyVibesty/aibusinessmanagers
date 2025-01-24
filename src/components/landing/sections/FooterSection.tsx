@@ -63,7 +63,7 @@ const FooterSection = () => {
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-primary" />
-                <span>San Francisco, CA</span>
+                <span>Fort Lauderdale, FL</span>
               </div>
             </div>
           </div>

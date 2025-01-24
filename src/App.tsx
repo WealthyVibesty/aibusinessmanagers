@@ -199,7 +199,34 @@ function App() {
                 </div>
               } />
 
-              {/* Information Routes */}
+              {/* Industry Routes */}
+<Route path="/industries/healthcare" element={
+  <div className="animate-slideUp">
+    <Healthcare />
+  </div>
+} />
+<Route path="/industries/restaurants" element={
+  <div className="animate-slideUp">
+    <Restaurants />
+  </div>
+} />
+<Route path="/industries/hospitality" element={
+  <div className="animate-slideUp">
+    <Hospitality />
+  </div>
+} />
+<Route path="/industries/transportation" element={
+  <div className="animate-slideUp">
+    <Transportation />
+  </div>
+} />
+<Route path="/industries/finance" element={
+  <div className="animate-slideUp">
+    <Finance />
+  </div>
+} />
+
+{/* Information Routes */}
               <Route path="/about" element={
                 <div className="animate-slideUp">
                   <AboutUs />

@@ -57,8 +57,29 @@ export default function Header() {
       label: "Industries",
       submenu: [
         { 
-          label: "Healthcare", 
-          path: "/voice-agents-marketplace" 
+          label: "Healthcare",
+          path: "/industries/healthcare",
+          description: "AI-powered healthcare solutions"
+        },
+        {
+          label: "Restaurants",
+          path: "/industries/restaurants",
+          description: "Streamline restaurant operations"
+        },
+        {
+          label: "Hospitality",
+          path: "/industries/hospitality",
+          description: "Enhance guest experiences"
+        },
+        {
+          label: "Transportation",
+          path: "/industries/transportation",
+          description: "Optimize fleet management"
+        },
+        {
+          label: "Finance",
+          path: "/industries/finance",
+          description: "Automate financial processes"
         }
       ]
     },
