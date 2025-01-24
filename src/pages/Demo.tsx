@@ -221,28 +221,26 @@ export default function Demo() {
               </Select>
 
               <div className="flex gap-2 w-full sm:w-auto">
-                <div className="relative group">
-                  <Button
-                    variant="outline"
-                    onClick={handleVoiceToggle}
-                    className="w-full sm:w-auto bg-white border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-gray-900 relative"
-                  >
-                    {isVoiceEnabled ? (
-                      <>
-                        <MicOff className="h-4 w-4 mr-2" />
-                        Stop Voice
-                      </>
-                    ) : (
-                      <>
-                        <Mic className="h-4 w-4 mr-2" />
-                        Start Voice
-                      </>
-                    )}
-                  </Button>
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
-                    {isVoiceEnabled ? "Click to disable voice assistant" : "Click to enable voice assistant"}
-                  </div>
-                </div>
+                <Button
+                  variant={isVoiceEnabled ? "destructive" : "outline"}
+                  onClick={handleVoiceToggle}
+                  className="w-full sm:w-auto relative group"
+                >
+                  {isVoiceEnabled ? (
+                    <>
+                      <MicOff className="h-4 w-4 mr-2" />
+                      Stop Voice Assistant
+                    </>
+                  ) : (
+                    <>
+                      <Mic className="h-4 w-4 mr-2" />
+                      Start Voice Assistant
+                    </>
+                  )}
+                  <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    {isVoiceEnabled ? 'Click to stop voice assistant' : 'Click to start voice assistant'}
+                  </span>
+                </Button>
 
                 <Button
                   variant="outline"
@@ -436,6 +434,27 @@ export default function Demo() {
             </Card>
           </motion.div>
         )}
+
+        {/* Add Get Full Version button at the bottom */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="text-center py-8"
+        >
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+            onClick={() => window.location.href = "/pricing"}
+          >
+            <span className="mr-2">✨</span>
+            Get Full Version
+            <span className="ml-2">→</span>
+          </Button>
+          <p className="text-sm text-gray-600 mt-3">
+            Unlock all features and unlimited conversations
+          </p>
+        </motion.div>
       </motion.div>
     </div>
   );
