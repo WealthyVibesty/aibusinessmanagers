@@ -238,70 +238,6 @@ export default function Demo() {
           </motion.p>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4 }}
-          className="px-4"
-        >
-          <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <Select onValueChange={handleIndustrySelect} value={selectedIndustry}>
-                <SelectTrigger className="w-full bg-white border-gray-200">
-                  <SelectValue placeholder="Choose your industry" />
-                </SelectTrigger>
-                <SelectContent className="bg-white border-gray-200">
-                  {industries.map((industry) => (
-                    <SelectItem 
-                      key={industry.id} 
-                      value={industry.id}
-                      className="hover:bg-gray-50 focus:bg-gray-50 focus:text-gray-900 data-[highlighted]:bg-gray-50 data-[highlighted]:text-gray-900 py-3"
-                    >
-                      <div className="flex items-center gap-2">
-                        {industry.icon}
-                        <span className="text-gray-700 font-medium">{industry.name}</span>
-                      </div>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              <div className="flex gap-2 w-full sm:w-auto">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => setIsConfiguring(!isConfiguring)}
-                  className="bg-white border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-gray-900"
-                >
-                  <Settings className="h-4 w-4" />
-                </Button>
-
-                <div className="relative group">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="bg-white border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-gray-900"
-                  >
-                    <HelpCircle className="h-4 w-4" />
-                  </Button>
-                  <div className="absolute bottom-full right-0 mb-2 p-4 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-64 z-50 
-                    sm:right-0 
-                    max-sm:fixed max-sm:bottom-20 max-sm:right-4 max-sm:left-4 max-sm:w-auto max-sm:mb-0
-                    max-sm:transform max-sm:translate-y-0 max-sm:group-focus:opacity-100">
-                    <h4 className="font-semibold mb-2">How to use voice chat:</h4>
-                    <ol className="list-decimal list-inside space-y-1">
-                      <li>Click "Start Voice" button</li>
-                      <li>Allow microphone access when prompted</li>
-                      <li>Speak clearly into your microphone</li>
-                      <li>Click "Stop Voice" to end the conversation</li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </motion.div>
-
         {selectedIndustry && (
           <motion.div 
             className="space-y-6 px-4"
@@ -333,20 +269,6 @@ export default function Demo() {
                     <MessageSquare className="h-5 w-5 text-blue-500" />
                     Interactive Chat
                   </h3>
-                  {isVoiceEnabled && (
-                    <motion.div
-                      className="h-3 w-3 rounded-full bg-green-500"
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.5, 1, 0.5],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                    />
-                  )}
                 </div>
                 <div className="space-y-4 max-h-[60vh] overflow-y-auto rounded-lg bg-gray-50 p-4">
                   {chatMessages.map((message, index) => (
@@ -444,10 +366,26 @@ export default function Demo() {
 
             <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                  <Mic className="h-5 w-5 text-blue-500" />
-                  Voice Assistant Controls
-                </h3>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                    <Mic className="h-5 w-5 text-blue-500" />
+                    Voice Assistant Controls
+                  </h3>
+                  {isVoiceEnabled && (
+                    <motion.div
+                      className="h-3 w-3 rounded-full bg-green-500"
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.5, 1, 0.5],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  )}
+                </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
