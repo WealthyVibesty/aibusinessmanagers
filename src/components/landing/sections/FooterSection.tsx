@@ -4,12 +4,12 @@ import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
 const FooterSection = () => {
   const solutions = [
     { name: "AI Voice Agents", path: "/voice-agents" },
-    { name: "Call Routing", path: "/call-routing" },
-    { name: "Task Automation", path: "/task-automation" },
-    { name: "Actionable Insights", path: "/actionable-insights" },
-    { name: "Cost-Effective Call Centers", path: "/cost-effective-call-centers" },
-    { name: "HIPAA Compliant", path: "/hipaa-compliant" },
-    { name: "Proactive Engagement", path: "/proactive-engagement" }
+    { name: "Call Routing", path: "/solutions/call-routing" },
+    { name: "Task Automation", path: "/solutions/task-automation" },
+    { name: "Actionable Insights", path: "/solutions/actionable-insights" },
+    { name: "Cost-Effective Call Centers", path: "/solutions/cost-effective-call-centers" },
+    { name: "HIPAA Compliant", path: "/solutions/hipaa-compliant" },
+    { name: "Proactive Engagement", path: "/solutions/proactive-engagement" }
   ];
 
   const industries = [
