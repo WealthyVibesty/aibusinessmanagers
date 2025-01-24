@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useMemo } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,48 +16,77 @@ import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useConversation } from "@11labs/react";
 
-type Industry = {
-  id: string;
-  name: string;
-  icon: JSX.Element;
-  questions: string[];
-  defaultSystemPrompt: string;
-};
-
-const propertyManagementPrompt = `You are an AI voice assistant named Property Mate, designed to assist renters and potential tenants with their property-related needs at 444 NE 7th Street, Fort Lauderdale, Florida 33304. Your goal is to make the process of finding, leasing, and maintaining a rental property as smooth and stress-free as possible. Be friendly, helpful, and patient.`;
-
-const industries: Industry[] = [
+const industries = [
+  {
+    id: "healthcare",
+    name: "Healthcare",
+    icon: <CircuitBoard className="h-6 w-6 text-blue-500" />,
+    questions: [
+      "What are your patient care hours?",
+      "How do I schedule an appointment?",
+      "Do you accept my insurance?",
+      "What specialists do you have?",
+      "How do I access my medical records?"
+    ],
+    defaultSystemPrompt: "You are an AI assistant for a healthcare facility. Be professional, empathetic, and helpful while maintaining HIPAA compliance. Provide general information about services and procedures."
+  },
+  {
+    id: "restaurants",
+    name: "Restaurants",
+    icon: <Cpu className="h-6 w-6 text-orange-500" />,
+    questions: [
+      "What are your hours of operation?",
+      "Do you take reservations?",
+      "What's on the menu?",
+      "Do you offer delivery?",
+      "Are you available for private events?"
+    ],
+    defaultSystemPrompt: "You are an AI assistant for a restaurant. Be friendly and knowledgeable about menu items, reservations, and dining policies."
+  },
   {
     id: "hospitality",
     name: "Hospitality",
-    icon: <CircuitBoard className="h-6 w-6 text-blue-500" />,
+    icon: <CircuitBoard className="h-6 w-6 text-purple-500" />,
     questions: [
-      "What are your check-in and check-out times?",
-      "Do you have availability for next weekend?",
-      "Can I book a room with a sea view?",
-      "Do you offer airport shuttles?",
-      "What is your cancellation policy?"
+      "What are your check-in/check-out times?",
+      "Do you have room service?",
+      "What amenities do you offer?",
+      "Is parking available?",
+      "Do you have conference facilities?"
     ],
-    defaultSystemPrompt: "You are an AI assistant for a luxury hotel. Be professional, courteous, and helpful. Provide detailed information about amenities and services."
+    defaultSystemPrompt: "You are an AI assistant for a hotel. Provide excellent customer service and detailed information about accommodations and services."
   },
   {
-    id: "property",
-    name: "Property Management",
-    icon: <Cpu className="h-6 w-6 text-purple-500" />,
+    id: "transportation",
+    name: "Transportation",
+    icon: <Cpu className="h-6 w-6 text-green-500" />,
     questions: [
-      "Tell me about your available units",
-      "What amenities do you offer?",
-      "Can I schedule a property tour?",
-      "What are your lease terms?",
-      "Can you send me more information about the property?"
+      "What are your service routes?",
+      "How do I book a ride?",
+      "What are your rates?",
+      "Do you offer corporate accounts?",
+      "What's your cancellation policy?"
     ],
-    defaultSystemPrompt: propertyManagementPrompt
+    defaultSystemPrompt: "You are an AI assistant for a transportation company. Help customers with bookings, routes, and service information."
   },
+  {
+    id: "finance",
+    name: "Finance",
+    icon: <CircuitBoard className="h-6 w-6 text-emerald-500" />,
+    questions: [
+      "What financial services do you offer?",
+      "How do I open an account?",
+      "What are your interest rates?",
+      "Do you offer investment advice?",
+      "How do I apply for a loan?"
+    ],
+    defaultSystemPrompt: "You are an AI assistant for a financial institution. Provide professional guidance while maintaining compliance with financial regulations."
+  }
 ];
 
 export default function Demo() {
   const [selectedIndustry, setSelectedIndustry] = useState<string>("property");
-  const [systemPrompt, setSystemPrompt] = useState<string>(propertyManagementPrompt);
+  const [systemPrompt, setSystemPrompt] = useState<string>(industries[0].defaultSystemPrompt);
   const [chatMessages, setChatMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([]);
   const [metrics, setMetrics] = useState({ responseTime: "2 seconds", satisfaction: "97%" });
   const [isConfiguring, setIsConfiguring] = useState(true);
@@ -82,9 +111,9 @@ export default function Demo() {
     overrides: {
       agent: {
         prompt: {
-          prompt: propertyManagementPrompt,
+          prompt: systemPrompt,
         },
-        firstMessage: "Hello! I'm PropertyMate, your friendly assistant for all things property-related. How can I help you today?",
+        firstMessage: "Hello! I'm your AI assistant. How can I help you today?",
         language: "en",
       },
       tts: {
@@ -210,10 +239,14 @@ export default function Demo() {
                 </SelectTrigger>
                 <SelectContent className="bg-white border-gray-200">
                   {industries.map((industry) => (
-                    <SelectItem key={industry.id} value={industry.id}>
+                    <SelectItem 
+                      key={industry.id} 
+                      value={industry.id}
+                      className="hover:bg-gray-50 focus:bg-gray-50 focus:text-gray-900 data-[highlighted]:bg-gray-50 data-[highlighted]:text-gray-900 py-3"
+                    >
                       <div className="flex items-center gap-2">
                         {industry.icon}
-                        <span className="text-gray-700">{industry.name}</span>
+                        <span className="text-gray-700 font-medium">{industry.name}</span>
                       </div>
                     </SelectItem>
                   ))}
