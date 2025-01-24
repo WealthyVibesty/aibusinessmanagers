@@ -34,6 +34,8 @@ import ActionableInsights from "@/pages/solutions/ActionableInsights";
 import CostEffectiveCallCenters from "@/pages/solutions/CostEffectiveCallCenters";
 import Pricing from "@/pages/Pricing";
 import PropertyManagement from "@/pages/PropertyManagement";
+import Home from "@/pages/Home";
+import Demo from "@/pages/Demo";
 
 function App() {
   const { toast } = useToast();
@@ -75,6 +77,20 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
+              {/* Update the root route to use the new Home component */}
+              <Route path="/" element={
+                <div className="animate-fadeIn">
+                  <Home />
+                </div>
+              } />
+              
+              {/* Add the new Demo route */}
+              <Route path="/demo" element={
+                <div className="animate-fadeIn">
+                  <Demo />
+                </div>
+              } />
+
               {/* Add Property Management Route */}
               <Route path="/property-management" element={
                 <div className="animate-fadeIn">
@@ -89,7 +105,7 @@ function App() {
               } />
               
               {/* Main Routes */}
-              <Route path="/" element={
+              <Route path="/ai-business-solutions" element={
                 <div className="animate-fadeIn">
                   <AIBusinessSolutions />
                 </div>
