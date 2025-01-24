@@ -59,6 +59,9 @@ function App() {
     // Add close button to ElevenLabs widget with improved animation
     const widget = document.querySelector('elevenlabs-convai');
     if (widget) {
+      // Hide widget by default
+      widget.classList.add('hidden');
+      
       const closeBtn = document.createElement('button');
       closeBtn.className = 'elevenlabs-close-btn animate-fadeIn';
       closeBtn.onclick = () => {
@@ -73,11 +76,7 @@ function App() {
         }, 300);
       };
       widget.appendChild(closeBtn);
-      
-      // Show widget by default with animation
-      widget.classList.remove('hidden');
-      widget.classList.add('animate-scale');
-      console.log('Showing AI assistant by default with animation');
+      console.log('ElevenLabs widget initialized and hidden by default');
     }
 
     // Add smooth scroll behavior
