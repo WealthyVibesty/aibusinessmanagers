@@ -280,7 +280,10 @@ export default function Demo() {
                   >
                     <HelpCircle className="h-4 w-4" />
                   </Button>
-                  <div className="absolute bottom-full right-0 mb-2 p-4 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-64 z-50">
+                  <div className="absolute bottom-full right-0 mb-2 p-4 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-64 z-50 
+                    sm:right-0 
+                    max-sm:fixed max-sm:bottom-20 max-sm:right-4 max-sm:left-4 max-sm:w-auto max-sm:mb-0
+                    max-sm:transform max-sm:translate-y-0 max-sm:group-focus:opacity-100">
                     <h4 className="font-semibold mb-2">How to use voice chat:</h4>
                     <ol className="list-decimal list-inside space-y-1">
                       <li>Click "Start Voice" button</li>
