@@ -13,6 +13,7 @@ import { CircuitBoard, Cpu, MessageSquare, Timer, Gauge, Settings } from "lucide
 import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 type Industry = {
   id: string;
@@ -56,8 +57,9 @@ export default function Demo() {
   const [systemPrompt, setSystemPrompt] = useState<string>("");
   const [chatMessages, setChatMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([]);
   const [metrics, setMetrics] = useState({ responseTime: "2 seconds", satisfaction: "97%" });
-  const [isConfiguring, setIsConfiguring] = useState(false);
+  const [isConfiguring, setIsConfiguring] = useState(true); // Changed to true by default
   const [isLoading, setIsLoading] = useState(false);
+  const isMobile = useIsMobile();
 
   const handleIndustrySelect = (value: string) => {
     setSelectedIndustry(value);
@@ -113,16 +115,16 @@ export default function Demo() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-6">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 sm:p-6">
       <motion.div 
-        className="max-w-4xl mx-auto space-y-8"
+        className="max-w-4xl mx-auto space-y-6 sm:space-y-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <div className="text-center space-y-4 pt-20">
           <motion.h1 
-            className="text-4xl font-bold text-gray-800"
+            className="text-3xl sm:text-4xl font-bold text-gray-800 px-4"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -130,7 +132,7 @@ export default function Demo() {
             Test the Power of AI Business Managers
           </motion.h1>
           <motion.p 
-            className="text-xl text-gray-600"
+            className="text-lg sm:text-xl text-gray-600 px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -143,9 +145,10 @@ export default function Demo() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4 }}
+          className="px-4"
         >
-          <Card className="p-6 bg-white shadow-md border border-gray-100">
-            <div className="flex justify-between items-center gap-4">
+          <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <Select onValueChange={handleIndustrySelect} value={selectedIndustry}>
                 <SelectTrigger className="w-full bg-white border-gray-200">
                   <SelectValue placeholder="Select your industry" />
@@ -165,7 +168,7 @@ export default function Demo() {
                 variant="outline"
                 size="icon"
                 onClick={() => setIsConfiguring(!isConfiguring)}
-                className="bg-white border-gray-200 hover:bg-gray-50"
+                className="w-full sm:w-auto bg-white border-gray-200 hover:bg-gray-50"
               >
                 <Settings className="h-4 w-4" />
               </Button>
@@ -175,13 +178,13 @@ export default function Demo() {
 
         {selectedIndustry && (
           <motion.div 
-            className="space-y-6"
+            className="space-y-6 px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
             {isConfiguring && (
-              <Card className="p-6 bg-white shadow-md border border-gray-100">
+              <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
                     <Settings className="h-5 w-5 text-blue-500" />
@@ -197,7 +200,7 @@ export default function Demo() {
               </Card>
             )}
 
-            <Card className="p-6 bg-white shadow-md border border-gray-100">
+            <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
                   <MessageSquare className="h-5 w-5 text-blue-500" />
@@ -225,10 +228,10 @@ export default function Demo() {
               </div>
             </Card>
 
-            <Card className="p-6 bg-white shadow-md border border-gray-100">
+            <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-gray-800">Chat Simulation</h3>
-                <div className="space-y-4 max-h-96 overflow-y-auto">
+                <div className="space-y-4 max-h-[60vh] overflow-y-auto">
                   {chatMessages.map((message, index) => (
                     <motion.div
                       key={index}
@@ -238,7 +241,7 @@ export default function Demo() {
                       transition={{ duration: 0.3 }}
                     >
                       <div
-                        className={`max-w-[80%] p-3 rounded-lg ${
+                        className={`max-w-[85%] sm:max-w-[80%] p-3 rounded-lg ${
                           message.type === 'user'
                             ? 'bg-blue-500 text-white'
                             : 'bg-gray-100 text-gray-800'
@@ -254,7 +257,7 @@ export default function Demo() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                     >
-                      <div className="max-w-[80%] p-3 rounded-lg bg-gray-100 text-gray-800">
+                      <div className="max-w-[85%] sm:max-w-[80%] p-3 rounded-lg bg-gray-100 text-gray-800">
                         <span className="inline-flex gap-1">
                           <span className="animate-bounce">.</span>
                           <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>.</span>
@@ -267,8 +270,8 @@ export default function Demo() {
               </div>
             </Card>
 
-            <Card className="p-6 bg-white shadow-md border border-gray-100">
-              <div className="flex justify-between items-center">
+            <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div className="flex items-center gap-2">
                   <Timer className="h-5 w-5 text-blue-500" />
                   <div>
@@ -292,7 +295,10 @@ export default function Demo() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
-              <Button size="lg" className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white">
+              <Button 
+                size="lg" 
+                className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white"
+              >
                 Request a Full Custom Demo
               </Button>
             </motion.div>
