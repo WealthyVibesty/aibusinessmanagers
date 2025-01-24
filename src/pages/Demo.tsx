@@ -434,25 +434,27 @@ export default function Demo() {
                 </h3>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  {!isVoiceEnabled ? (
-                    <Button
-                      size="lg"
-                      onClick={handleVoiceToggle}
-                      className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-semibold py-6 px-8 h-auto text-lg"
-                    >
-                      <Mic className="h-5 w-5 mr-3" />
-                      Start Voice Call
-                    </Button>
-                  ) : (
-                    <Button
-                      size="lg"
-                      onClick={handleVoiceToggle}
-                      className="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white font-semibold py-6 px-8 h-auto text-lg"
-                    >
-                      <MicOff className="h-5 w-5 mr-3" />
-                      End Voice Call
-                    </Button>
-                  )}
+                  <Button
+                    size="lg"
+                    onClick={handleVoiceToggle}
+                    className={`w-full sm:w-auto font-semibold py-6 px-8 h-auto text-lg ${
+                      isVoiceEnabled 
+                        ? 'bg-red-500 hover:bg-red-600' 
+                        : 'bg-blue-500 hover:bg-blue-600'
+                    } text-white`}
+                  >
+                    {isVoiceEnabled ? (
+                      <>
+                        <MicOff className="h-5 w-5 mr-3" />
+                        End Voice Call
+                      </>
+                    ) : (
+                      <>
+                        <Mic className="h-5 w-5 mr-3" />
+                        Start Voice Call
+                      </>
+                    )}
+                  </Button>
                 </div>
 
                 <p className="text-sm text-gray-500 text-center">
