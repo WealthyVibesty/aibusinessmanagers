@@ -136,31 +136,39 @@ export default function Demo() {
     }
   };
 
-  const handleVoiceToggle = async () => {
-    try {
+  const handleVoiceToggle = () => {
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget) {
       if (isVoiceEnabled) {
-        console.log("Ending voice session...");
-        await conversation.endSession();
+        widget.classList.add('animate-fadeOut');
+        setTimeout(() => {
+          widget.classList.add('hidden');
+          toast({
+            title: "AI Assistant Hidden",
+            description: "Click the button to bring it back anytime!",
+            duration: 3000,
+          });
+        }, 300);
         setIsVoiceEnabled(false);
-        toast.success("Voice call ended");
       } else {
-        console.log("Starting voice session...");
-        // First request microphone access
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        console.log("Microphone access granted:", stream);
-        
-        // Then start the conversation session
-        await conversation.startSession({
-          agentId: "default",
-        });
-        
+        widget.classList.remove('hidden');
+        widget.classList.add('animate-scale');
+        console.log('Showing AI assistant');
         setIsVoiceEnabled(true);
-        toast.success("Voice call started - You can now speak");
+        toast({
+          title: "AI Assistant Ready",
+          description: "You can now speak with our AI!",
+          duration: 3000,
+        });
       }
-    } catch (error) {
-      console.error("Voice toggle error:", error);
-      toast.error("Failed to toggle voice. Please check microphone permissions.");
-      setIsVoiceEnabled(false);
+    } else {
+      console.error('ElevenLabs widget not found');
+      toast({
+        title: "Error",
+        description: "Could not find AI assistant widget",
+        variant: "destructive",
+        duration: 3000,
+      });
     }
   };
 
