@@ -120,7 +120,7 @@ export default function Demo() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="text-center space-y-4">
+        <div className="text-center space-y-4 pt-20">
           <motion.h1 
             className="text-4xl font-bold text-gray-800"
             initial={{ opacity: 0, y: -20 }}
