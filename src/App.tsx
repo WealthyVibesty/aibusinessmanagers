@@ -36,6 +36,12 @@ import Pricing from "@/pages/Pricing";
 import PropertyManagement from "@/pages/PropertyManagement";
 import Home from "@/pages/Home";
 import Demo from "@/pages/Demo";
+// Import industry pages
+import Healthcare from "@/pages/industries/Healthcare";
+import Restaurants from "@/pages/industries/Restaurants";
+import Hospitality from "@/pages/industries/Hospitality";
+import Transportation from "@/pages/industries/Transportation";
+import Finance from "@/pages/industries/Finance";
 
 // Add environment variable type declaration
 declare global {
@@ -200,33 +206,33 @@ function App() {
               } />
 
               {/* Industry Routes */}
-<Route path="/industries/healthcare" element={
-  <div className="animate-slideUp">
-    <Healthcare />
-  </div>
-} />
-<Route path="/industries/restaurants" element={
-  <div className="animate-slideUp">
-    <Restaurants />
-  </div>
-} />
-<Route path="/industries/hospitality" element={
-  <div className="animate-slideUp">
-    <Hospitality />
-  </div>
-} />
-<Route path="/industries/transportation" element={
-  <div className="animate-slideUp">
-    <Transportation />
-  </div>
-} />
-<Route path="/industries/finance" element={
-  <div className="animate-slideUp">
-    <Finance />
-  </div>
-} />
+              <Route path="/industries/healthcare" element={
+                <div className="animate-slideUp">
+                  <Healthcare />
+                </div>
+              } />
+              <Route path="/industries/restaurants" element={
+                <div className="animate-slideUp">
+                  <Restaurants />
+                </div>
+              } />
+              <Route path="/industries/hospitality" element={
+                <div className="animate-slideUp">
+                  <Hospitality />
+                </div>
+              } />
+              <Route path="/industries/transportation" element={
+                <div className="animate-slideUp">
+                  <Transportation />
+                </div>
+              } />
+              <Route path="/industries/finance" element={
+                <div className="animate-slideUp">
+                  <Finance />
+                </div>
+              } />
 
-{/* Information Routes */}
+              {/* Information Routes */}
               <Route path="/about" element={
                 <div className="animate-slideUp">
                   <AboutUs />
