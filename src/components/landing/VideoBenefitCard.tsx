@@ -4,12 +4,11 @@ import { Card } from "@/components/ui/card";
 interface VideoBenefitCardProps {
   title: string;
   description: string;
-  videoUrl: string;
   delay?: number;
   icon?: React.ReactNode;
 }
 
-export default function VideoBenefitCard({ title, description, videoUrl, delay = 0, icon }: VideoBenefitCardProps) {
+export default function VideoBenefitCard({ title, description, delay = 0, icon }: VideoBenefitCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -17,27 +16,29 @@ export default function VideoBenefitCard({ title, description, videoUrl, delay =
       transition={{ duration: 0.5, delay }}
       className="h-full"
     >
-      <Card className="p-6 h-full hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 overflow-hidden bg-white/80 backdrop-blur-sm">
-        <div className="space-y-4">
+      <Card className="p-8 h-full hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 overflow-hidden bg-white/80 backdrop-blur-sm">
+        <div className="space-y-6">
           {icon && (
-            <div className="flex justify-center mb-2 transform group-hover:scale-110 transition-transform duration-300">
-              {icon}
-            </div>
-          )}
-          <div className="aspect-video rounded-lg overflow-hidden bg-gray-100">
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+            <motion.div 
+              className="flex justify-center"
+              initial={{ scale: 1 }}
+              whileHover={{ scale: 1.2 }}
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
             >
-              <source src={videoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <h3 className="text-xl font-semibold">{title}</h3>
-          <p className="text-gray-600">{description}</p>
+              <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-200 transition-colors duration-300">
+                {icon}
+              </div>
+            </motion.div>
+          )}
+          <h3 className="text-xl font-semibold text-center">{title}</h3>
+          <p className="text-gray-600 text-center">{description}</p>
         </div>
       </Card>
     </motion.div>

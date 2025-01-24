@@ -39,23 +39,20 @@ export default function Home() {
     {
       title: "75% Cost Reduction",
       description: "See how our AI solutions dramatically cut operational costs while maintaining quality service",
-      videoUrl: "/lovable-uploads/cost-reduction-demo.mp4",
       delay: 0.2,
-      icon: <DollarSign className="w-8 h-8 text-blue-600" />
+      icon: <DollarSign className="w-8 h-8" />
     },
     {
       title: "Instant AI Responses",
       description: "Watch our AI system handle customer inquiries in real-time with natural conversations",
-      videoUrl: "/lovable-uploads/ai-responses-demo.mp4",
       delay: 0.4,
-      icon: <MessageSquare className="w-8 h-8 text-blue-600" />
+      icon: <MessageSquare className="w-8 h-8" />
     },
     {
       title: "Industry-Specific AI",
       description: "Discover how our AI adapts to your specific industry needs and workflows",
-      videoUrl: "/lovable-uploads/industry-specific-demo.mp4",
       delay: 0.6,
-      icon: <Layers className="w-8 h-8 text-blue-600" />
+      icon: <Layers className="w-8 h-8" />
     }
   ];
 
@@ -104,7 +101,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Benefits Section with Videos */}
+      {/* Benefits Section with Animated Icons */}
       <section className="py-12 sm:py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -127,7 +124,6 @@ export default function Home() {
                 key={index}
                 title={benefit.title}
                 description={benefit.description}
-                videoUrl={benefit.videoUrl}
                 delay={benefit.delay}
                 icon={benefit.icon}
               />
