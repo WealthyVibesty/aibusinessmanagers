@@ -113,7 +113,7 @@ export default function Demo() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 p-6">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-6">
       <motion.div 
         className="max-w-4xl mx-auto space-y-8"
         initial={{ opacity: 0, y: 20 }}
@@ -122,7 +122,7 @@ export default function Demo() {
       >
         <div className="text-center space-y-4">
           <motion.h1 
-            className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600"
+            className="text-4xl font-bold text-gray-800"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -130,7 +130,7 @@ export default function Demo() {
             Test the Power of AI Business Managers
           </motion.h1>
           <motion.p 
-            className="text-xl text-gray-300"
+            className="text-xl text-gray-600"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -144,18 +144,18 @@ export default function Demo() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <Card className="p-6 bg-slate-800/50 backdrop-blur-lg border-slate-700">
+          <Card className="p-6 bg-white shadow-md border border-gray-100">
             <div className="flex justify-between items-center gap-4">
               <Select onValueChange={handleIndustrySelect} value={selectedIndustry}>
-                <SelectTrigger className="w-full bg-slate-700/50 border-slate-600">
+                <SelectTrigger className="w-full bg-white border-gray-200">
                   <SelectValue placeholder="Select your industry" />
                 </SelectTrigger>
-                <SelectContent className="bg-slate-800 border-slate-700">
+                <SelectContent className="bg-white border-gray-200">
                   {industries.map((industry) => (
                     <SelectItem key={industry.id} value={industry.id}>
                       <div className="flex items-center gap-2">
                         {industry.icon}
-                        <span className="text-gray-200">{industry.name}</span>
+                        <span className="text-gray-700">{industry.name}</span>
                       </div>
                     </SelectItem>
                   ))}
@@ -165,7 +165,7 @@ export default function Demo() {
                 variant="outline"
                 size="icon"
                 onClick={() => setIsConfiguring(!isConfiguring)}
-                className="bg-slate-700/50 border-slate-600 hover:bg-slate-600/50"
+                className="bg-white border-gray-200 hover:bg-gray-50"
               >
                 <Settings className="h-4 w-4" />
               </Button>
@@ -181,26 +181,26 @@ export default function Demo() {
             transition={{ delay: 0.5 }}
           >
             {isConfiguring && (
-              <Card className="p-6 bg-slate-800/50 backdrop-blur-lg border-slate-700">
+              <Card className="p-6 bg-white shadow-md border border-gray-100">
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-200 flex items-center gap-2">
-                    <Settings className="h-5 w-5 text-blue-400" />
+                  <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                    <Settings className="h-5 w-5 text-blue-500" />
                     System Configuration
                   </h3>
                   <Textarea
                     value={systemPrompt}
                     onChange={(e) => setSystemPrompt(e.target.value)}
                     placeholder="Enter system prompt to customize AI behavior..."
-                    className="min-h-[100px] bg-slate-700/50 border-slate-600"
+                    className="min-h-[100px] bg-white border-gray-200"
                   />
                 </div>
               </Card>
             )}
 
-            <Card className="p-6 bg-slate-800/50 backdrop-blur-lg border-slate-700">
+            <Card className="p-6 bg-white shadow-md border border-gray-100">
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-200 flex items-center gap-2">
-                  <MessageSquare className="h-5 w-5 text-blue-400" />
+                <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <MessageSquare className="h-5 w-5 text-blue-500" />
                   Common Questions
                 </h3>
                 <div className="grid gap-2">
@@ -213,7 +213,7 @@ export default function Demo() {
                     >
                       <Button
                         variant="outline"
-                        className="w-full justify-start text-left bg-slate-700/50 border-slate-600 hover:bg-slate-600/50 hover:border-slate-500 transition-all duration-300"
+                        className="w-full justify-start text-left bg-white border-gray-200 hover:bg-gray-50 text-gray-700 transition-all duration-300"
                         onClick={() => handleQuestionClick(question)}
                         disabled={isLoading}
                       >
@@ -225,9 +225,9 @@ export default function Demo() {
               </div>
             </Card>
 
-            <Card className="p-6 bg-slate-800/50 backdrop-blur-lg border-slate-700">
+            <Card className="p-6 bg-white shadow-md border border-gray-100">
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-200">Chat Simulation</h3>
+                <h3 className="text-lg font-semibold text-gray-800">Chat Simulation</h3>
                 <div className="space-y-4 max-h-96 overflow-y-auto">
                   {chatMessages.map((message, index) => (
                     <motion.div
@@ -241,7 +241,7 @@ export default function Demo() {
                         className={`max-w-[80%] p-3 rounded-lg ${
                           message.type === 'user'
                             ? 'bg-blue-500 text-white'
-                            : 'bg-slate-700 text-gray-200'
+                            : 'bg-gray-100 text-gray-800'
                         }`}
                       >
                         {message.text}
@@ -254,7 +254,7 @@ export default function Demo() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                     >
-                      <div className="max-w-[80%] p-3 rounded-lg bg-slate-700 text-gray-200">
+                      <div className="max-w-[80%] p-3 rounded-lg bg-gray-100 text-gray-800">
                         <span className="inline-flex gap-1">
                           <span className="animate-bounce">.</span>
                           <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>.</span>
@@ -267,20 +267,20 @@ export default function Demo() {
               </div>
             </Card>
 
-            <Card className="p-6 bg-slate-800/50 backdrop-blur-lg border-slate-700">
+            <Card className="p-6 bg-white shadow-md border border-gray-100">
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
-                  <Timer className="h-5 w-5 text-blue-400" />
+                  <Timer className="h-5 w-5 text-blue-500" />
                   <div>
-                    <p className="text-sm text-gray-400">Response Time</p>
-                    <p className="text-lg font-semibold text-gray-200">{metrics.responseTime}</p>
+                    <p className="text-sm text-gray-500">Response Time</p>
+                    <p className="text-lg font-semibold text-gray-800">{metrics.responseTime}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Gauge className="h-5 w-5 text-purple-400" />
+                  <Gauge className="h-5 w-5 text-purple-500" />
                   <div>
-                    <p className="text-sm text-gray-400">Customer Satisfaction</p>
-                    <p className="text-lg font-semibold text-gray-200">{metrics.satisfaction}</p>
+                    <p className="text-sm text-gray-500">Customer Satisfaction</p>
+                    <p className="text-lg font-semibold text-gray-800">{metrics.satisfaction}</p>
                   </div>
                 </div>
               </div>
@@ -292,7 +292,7 @@ export default function Demo() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
-              <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
+              <Button size="lg" className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white">
                 Request a Full Custom Demo
               </Button>
             </motion.div>
