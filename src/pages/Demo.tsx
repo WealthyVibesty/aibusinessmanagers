@@ -86,16 +86,7 @@ const industries = [
 
 export default function Demo() {
   const [selectedIndustry, setSelectedIndustry] = useState<string>("healthcare");
-  const [systemPrompt, setSystemPrompt] = useState<string>(industries[0].defaultSystemPrompt);
-  const [chatMessages, setChatMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([]);
-  const [metrics, setMetrics] = useState({ responseTime: "2 seconds", satisfaction: "97%" });
-  const [isConfiguring, setIsConfiguring] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
-  const [userInput, setUserInput] = useState("");
-  const isMobile = useIsMobile();
-
-  const conversation = useConversation({
+  const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
     onConnect: () => {
       console.log("Connected to ElevenLabs voice service");
       toast.success("Voice assistant connected successfully");
@@ -136,75 +127,8 @@ export default function Demo() {
     }
   };
 
-  const handleVoiceToggle = async () => {
-    try {
-      if (isVoiceEnabled) {
-        console.log("Ending voice session...");
-        await conversation.endSession();
-        setIsVoiceEnabled(false);
-        toast.success("Voice call ended");
-      } else {
-        console.log("Starting voice session...");
-        // First request microphone access
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        console.log("Microphone access granted:", stream);
-        
-        // Then start the conversation session
-        await conversation.startSession({
-          agentId: "default",
-        });
-        
-        setIsVoiceEnabled(true);
-        toast.success("Voice call started - You can now speak");
-      }
-    } catch (error) {
-      console.error("Voice toggle error:", error);
-      toast.error("Failed to toggle voice. Please check microphone permissions.");
-      setIsVoiceEnabled(false);
-    }
-  };
-
-  const handleSendMessage = async () => {
-    if (!userInput.trim()) return;
-
-    try {
-      setIsLoading(true);
-      console.log('Sending message:', userInput);
-      setChatMessages(prev => [...prev, { type: 'user', text: userInput }]);
-      
-      const startTime = Date.now();
-      const { data, error } = await supabase.functions.invoke('chat-completion', {
-        body: {
-          prompt: userInput,
-          systemPrompt,
-          messages: chatMessages.map(msg => ({
-            role: msg.type === 'user' ? 'user' : 'assistant',
-            content: msg.text
-          }))
-        }
-      });
-
-      if (error) {
-        console.error('Error from chat-completion:', error);
-        throw error;
-      }
-
-      console.log('Received response:', data);
-      const responseTime = ((Date.now() - startTime) / 1000).toFixed(1);
-      setMetrics(prev => ({ ...prev, responseTime: `${responseTime} seconds` }));
-
-      setChatMessages(prev => [...prev, {
-        type: 'ai',
-        text: data.response
-      }]);
-      setUserInput("");
-
-    } catch (error) {
-      console.error('Error:', error);
-      toast.error("Failed to get AI response. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
+  const handleDemoRequest = () => {
+    setIsDemoFormOpen(true);
   };
 
   return (
@@ -222,7 +146,7 @@ export default function Demo() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Interactive AI Business Assistant Demo
+            Schedule a Live Demo
           </motion.h1>
           <motion.p 
             className="text-lg sm:text-xl text-gray-600 px-4"
@@ -230,7 +154,7 @@ export default function Demo() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            Experience our AI assistant in action. Try both text and voice interactions!
+            Experience how our AI solution can transform your business operations with a personalized demo.
           </motion.p>
         </div>
 
@@ -240,56 +164,23 @@ export default function Demo() {
           transition={{ delay: 0.4 }}
           className="px-4"
         >
-          <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <Select onValueChange={handleIndustrySelect} value={selectedIndustry}>
-                <SelectTrigger className="w-full bg-white border-gray-200">
-                  <SelectValue placeholder="Choose your industry" />
-                </SelectTrigger>
-                <SelectContent className="bg-white border-gray-200">
-                  {industries.map((industry) => (
-                    <SelectItem 
-                      key={industry.id} 
-                      value={industry.id}
-                      className="hover:bg-gray-50 focus:bg-gray-50 focus:text-gray-900 data-[highlighted]:bg-gray-50 data-[highlighted]:text-gray-900 py-3"
-                    >
-                      <div className="flex items-center gap-2">
-                        {industry.icon}
-                        <span className="text-gray-700 font-medium">{industry.name}</span>
-                      </div>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              <div className="flex gap-2 w-full sm:w-auto">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => setIsConfiguring(!isConfiguring)}
-                  className="bg-white border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-gray-900"
+          <Card className="p-8 bg-white shadow-md border border-gray-100">
+            <div className="text-center space-y-6">
+              <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                <Calendar className="h-8 w-8 text-blue-500" />
+              </div>
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold">Book Your Free Demo Session</h3>
+                <p className="text-gray-600">
+                  Our team will walk you through our AI solution and show you how it can benefit your business.
+                </p>
+                <Button 
+                  size="lg"
+                  onClick={handleDemoRequest}
+                  className="w-full sm:w-auto px-8 py-6 text-lg h-auto"
                 >
-                  <Settings className="h-4 w-4" />
+                  Schedule Your Demo Now
                 </Button>
-
-                <div className="relative group">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="bg-white border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-gray-900"
-                  >
-                    <HelpCircle className="h-4 w-4" />
-                  </Button>
-                  <div className="absolute bottom-full right-0 mb-2 p-4 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-64 z-50">
-                    <h4 className="font-semibold mb-2">How to use voice chat:</h4>
-                    <ol className="list-decimal list-inside space-y-1">
-                      <li>Click "Start Voice" button</li>
-                      <li>Allow microphone access when prompted</li>
-                      <li>Speak clearly into your microphone</li>
-                      <li>Click "Stop Voice" to end the conversation</li>
-                    </ol>
-                  </div>
-                </div>
               </div>
             </div>
           </Card>
