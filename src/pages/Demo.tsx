@@ -8,14 +8,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CircuitBoard, Cpu, MessageSquare, Timer, Gauge } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { CircuitBoard, Cpu, MessageSquare, Timer, Gauge, Settings } from "lucide-react";
 import { motion } from "framer-motion";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 type Industry = {
   id: string;
   name: string;
   icon: JSX.Element;
   questions: string[];
+  defaultSystemPrompt: string;
 };
 
 const industries: Industry[] = [
@@ -29,7 +34,8 @@ const industries: Industry[] = [
       "Can I book a room with a sea view?",
       "Do you offer airport shuttles?",
       "What is your cancellation policy?"
-    ]
+    ],
+    defaultSystemPrompt: "You are an AI assistant for a luxury hotel. Be professional, courteous, and helpful. Provide detailed information about amenities and services."
   },
   {
     id: "property",
@@ -41,20 +47,25 @@ const industries: Industry[] = [
       "Can I schedule a property tour?",
       "What is included in my rent?",
       "How do I report a noise complaint?"
-    ]
+    ],
+    defaultSystemPrompt: "You are an AI assistant for a property management company. Be professional and informative. Help tenants with their inquiries and maintenance requests."
   },
 ];
 
 export default function Demo() {
   const [selectedIndustry, setSelectedIndustry] = useState<string>("");
+  const [systemPrompt, setSystemPrompt] = useState<string>("");
   const [chatMessages, setChatMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([]);
   const [metrics, setMetrics] = useState({ responseTime: "2 seconds", satisfaction: "97%" });
+  const [isConfiguring, setIsConfiguring] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleIndustrySelect = (value: string) => {
     setSelectedIndustry(value);
     setChatMessages([]);
     const industry = industries.find(i => i.id === value);
     if (industry) {
+      setSystemPrompt(industry.defaultSystemPrompt);
       setChatMessages([{
         type: 'ai',
         text: `Welcome! I'm your AI assistant for ${industry.name}. How can I help you today?`
@@ -62,15 +73,35 @@ export default function Demo() {
     }
   };
 
-  const handleQuestionClick = (question: string) => {
-    setChatMessages(prev => [...prev, { type: 'user', text: question }]);
-    
-    setTimeout(() => {
+  const handleQuestionClick = async (question: string) => {
+    try {
+      setIsLoading(true);
+      setChatMessages(prev => [...prev, { type: 'user', text: question }]);
+      
+      const { data, error } = await supabase.functions.invoke('chat-completion', {
+        body: {
+          prompt: question,
+          systemPrompt,
+          messages: chatMessages.map(msg => ({
+            role: msg.type === 'user' ? 'user' : 'assistant',
+            content: msg.text
+          }))
+        }
+      });
+
+      if (error) throw error;
+
       setChatMessages(prev => [...prev, {
         type: 'ai',
-        text: `Here's a helpful response about "${question}" tailored to your industry. This is where the AI would provide specific, relevant information.`
+        text: data.response
       }]);
-    }, 1000);
+
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error("Failed to get AI response. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -106,21 +137,31 @@ export default function Demo() {
           transition={{ delay: 0.4 }}
         >
           <Card className="p-6 bg-slate-800/50 backdrop-blur-lg border-slate-700">
-            <Select onValueChange={handleIndustrySelect}>
-              <SelectTrigger className="w-full bg-slate-700/50 border-slate-600">
-                <SelectValue placeholder="Select your industry" />
-              </SelectTrigger>
-              <SelectContent className="bg-slate-800 border-slate-700">
-                {industries.map((industry) => (
-                  <SelectItem key={industry.id} value={industry.id}>
-                    <div className="flex items-center gap-2">
-                      {industry.icon}
-                      <span className="text-gray-200">{industry.name}</span>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="flex justify-between items-center gap-4">
+              <Select onValueChange={handleIndustrySelect} value={selectedIndustry}>
+                <SelectTrigger className="w-full bg-slate-700/50 border-slate-600">
+                  <SelectValue placeholder="Select your industry" />
+                </SelectTrigger>
+                <SelectContent className="bg-slate-800 border-slate-700">
+                  {industries.map((industry) => (
+                    <SelectItem key={industry.id} value={industry.id}>
+                      <div className="flex items-center gap-2">
+                        {industry.icon}
+                        <span className="text-gray-200">{industry.name}</span>
+                      </div>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setIsConfiguring(!isConfiguring)}
+                className="bg-slate-700/50 border-slate-600 hover:bg-slate-600/50"
+              >
+                <Settings className="h-4 w-4" />
+              </Button>
+            </div>
           </Card>
         </motion.div>
 
@@ -131,6 +172,23 @@ export default function Demo() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
+            {isConfiguring && (
+              <Card className="p-6 bg-slate-800/50 backdrop-blur-lg border-slate-700">
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-gray-200 flex items-center gap-2">
+                    <Settings className="h-5 w-5 text-blue-400" />
+                    System Configuration
+                  </h3>
+                  <Textarea
+                    value={systemPrompt}
+                    onChange={(e) => setSystemPrompt(e.target.value)}
+                    placeholder="Enter system prompt to customize AI behavior..."
+                    className="min-h-[100px] bg-slate-700/50 border-slate-600"
+                  />
+                </div>
+              </Card>
+            )}
+
             <Card className="p-6 bg-slate-800/50 backdrop-blur-lg border-slate-700">
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-gray-200 flex items-center gap-2">
@@ -149,6 +207,7 @@ export default function Demo() {
                         variant="outline"
                         className="w-full justify-start text-left bg-slate-700/50 border-slate-600 hover:bg-slate-600/50 hover:border-slate-500 transition-all duration-300"
                         onClick={() => handleQuestionClick(question)}
+                        disabled={isLoading}
                       >
                         {question}
                       </Button>
@@ -181,6 +240,21 @@ export default function Demo() {
                       </div>
                     </motion.div>
                   ))}
+                  {isLoading && (
+                    <motion.div
+                      className="flex justify-start"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                    >
+                      <div className="max-w-[80%] p-3 rounded-lg bg-slate-700 text-gray-200">
+                        <span className="inline-flex gap-1">
+                          <span className="animate-bounce">.</span>
+                          <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>.</span>
+                          <span className="animate-bounce" style={{ animationDelay: '0.4s' }}>.</span>
+                        </span>
+                      </div>
+                    </motion.div>
+                  )}
                 </div>
               </div>
             </Card>
@@ -212,9 +286,6 @@ export default function Demo() {
             >
               <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
                 Request a Full Custom Demo
-              </Button>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto border-slate-600 text-gray-200 hover:bg-slate-700">
-                View Pricing Plans
               </Button>
             </motion.div>
           </motion.div>
