@@ -446,6 +446,43 @@ export default function Demo() {
             </Card>
 
             <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <Mic className="h-5 w-5 text-blue-500" />
+                  Voice Assistant Controls
+                </h3>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  {!isVoiceEnabled ? (
+                    <Button
+                      size="lg"
+                      onClick={handleVoiceToggle}
+                      className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-semibold py-6 px-8 h-auto text-lg"
+                    >
+                      <Mic className="h-5 w-5 mr-3" />
+                      Start Voice Call
+                    </Button>
+                  ) : (
+                    <Button
+                      size="lg"
+                      onClick={handleVoiceToggle}
+                      className="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white font-semibold py-6 px-8 h-auto text-lg"
+                    >
+                      <MicOff className="h-5 w-5 mr-3" />
+                      End Voice Call
+                    </Button>
+                  )}
+                </div>
+
+                <p className="text-sm text-gray-500 text-center">
+                  {isVoiceEnabled 
+                    ? "Voice assistant is active. Speak naturally to interact."
+                    : "Click the button above to start a voice conversation."}
+                </p>
+              </div>
+            </Card>
+
+            <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div className="flex items-center gap-2">
                   <Timer className="h-5 w-5 text-blue-500" />
