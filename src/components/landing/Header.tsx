@@ -27,20 +27,30 @@ export default function Header() {
     {
       label: "Solutions",
       submenu: [
-        { label: "AI Voice Agents", path: "/voice-agents" },
-        { label: "HIPAA Compliant", path: "/solutions/hipaa-compliant" },
-        { label: "AI Website Development", path: "/solutions/ai-website-development" },
-        { label: "AI-Powered Chatbots", path: "/solutions/ai-chatbots" },
-        { label: "SMS Marketing", path: "/solutions/sms-marketing" },
-        { label: "Multilingual AI Support", path: "/solutions/multilingual-support" },
-        { label: "CRM Integration", path: "/solutions/crm-integration" },
-        { label: "Instagram Automation", path: "/solutions/instagram-automation" },
-        { label: "Call Routing", path: "/solutions/call-routing" },
-        { label: "Task Automation", path: "/solutions/task-automation" },
-        { label: "Actionable Insights", path: "/solutions/actionable-insights" },
-        { label: "Cost-Effective Call Centers", path: "/solutions/cost-effective-call-centers" },
-        { label: "Proactive Engagement", path: "/solutions/proactive-engagement" },
-        { label: "Pilot Programs", path: "/solutions/pilot-programs" }
+        {
+          category: "PRODUCTS",
+          items: [
+            { label: "AI Voice Agents", path: "/voice-agents", description: "Automated voice assistance for your business" },
+            { label: "Call Routing", path: "/solutions/call-routing", description: "Intelligent call distribution" },
+            { label: "Task Automation", path: "/solutions/task-automation", description: "Streamline repetitive tasks" }
+          ]
+        },
+        {
+          category: "SOLUTIONS",
+          items: [
+            { label: "HIPAA Compliant", path: "/solutions/hipaa-compliant", description: "Secure healthcare communication" },
+            { label: "Actionable Insights", path: "/solutions/actionable-insights", description: "Data-driven decision making" },
+            { label: "Cost-Effective Call Centers", path: "/solutions/cost-effective-call-centers", description: "Optimize call center operations" }
+          ]
+        },
+        {
+          category: "FEATURES",
+          items: [
+            { label: "AI Website Development", path: "/solutions/ai-website-development", description: "Smart web solutions" },
+            { label: "AI-Powered Chatbots", path: "/solutions/ai-chatbots", description: "24/7 customer support" },
+            { label: "SMS Marketing", path: "/solutions/sms-marketing", description: "Engage customers via text" }
+          ]
+        }
       ]
     },
     {
@@ -95,24 +105,56 @@ export default function Header() {
               <div key={index} className="relative group">
                 <button
                   className="text-gray-600 hover:text-primary transition-colors flex items-center gap-1 py-2 text-sm font-medium"
-                  onClick={() => handleNavigation(item.submenu[0].path)}
+                  onMouseEnter={() => setActiveSubmenu(item.label)}
+                  onMouseLeave={() => setActiveSubmenu(null)}
                 >
                   {item.label}
                   <ChevronDown className="h-4 w-4" />
                 </button>
-                <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="py-1" role="menu">
-                    {item.submenu.map((subItem, subIndex) => (
-                      <button
-                        key={subIndex}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                        onClick={() => handleNavigation(subItem.path)}
-                      >
-                        {subItem.label}
-                      </button>
-                    ))}
+                {item.label === "Solutions" ? (
+                  <div 
+                    className={`absolute left-0 mt-2 w-[800px] rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 
+                    opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 -translate-x-1/4`}
+                    onMouseEnter={() => setActiveSubmenu(item.label)}
+                    onMouseLeave={() => setActiveSubmenu(null)}
+                  >
+                    <div className="p-6 grid grid-cols-3 gap-8">
+                      {item.submenu.map((category: any, categoryIndex: number) => (
+                        <div key={categoryIndex} className="space-y-4">
+                          <h3 className="text-xs font-semibold text-gray-400 tracking-wider">
+                            {category.category}
+                          </h3>
+                          <div className="space-y-4">
+                            {category.items.map((subItem: any, subIndex: number) => (
+                              <button
+                                key={subIndex}
+                                className="block w-full text-left space-y-1 hover:bg-gray-50 p-2 rounded-md transition-colors"
+                                onClick={() => handleNavigation(subItem.path)}
+                              >
+                                <div className="text-sm font-medium text-gray-900">{subItem.label}</div>
+                                <p className="text-xs text-gray-500">{subItem.description}</p>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className="py-1" role="menu">
+                      {item.submenu.map((subItem: any, subIndex: number) => (
+                        <button
+                          key={subIndex}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                          onClick={() => handleNavigation(subItem.path)}
+                        >
+                          {subItem.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </nav>
@@ -153,9 +195,28 @@ export default function Header() {
                       activeSubmenu === item.label ? "rotate-180" : ""
                     }`} />
                   </button>
-                  {activeSubmenu === item.label && (
+                  {activeSubmenu === item.label && item.label === "Solutions" ? (
                     <div className="bg-gray-50 px-4 py-2">
-                      {item.submenu.map((subItem, subIndex) => (
+                      {item.submenu.map((category: any, categoryIndex: number) => (
+                        <div key={categoryIndex} className="mb-4">
+                          <h3 className="text-xs font-semibold text-gray-400 tracking-wider px-4 py-2">
+                            {category.category}
+                          </h3>
+                          {category.items.map((subItem: any, subIndex: number) => (
+                            <button
+                              key={subIndex}
+                              className="block w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded"
+                              onClick={() => handleNavigation(subItem.path)}
+                            >
+                              {subItem.label}
+                            </button>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  ) : activeSubmenu === item.label && (
+                    <div className="bg-gray-50 px-4 py-2">
+                      {item.submenu.map((subItem: any, subIndex: number) => (
                         <button
                           key={subIndex}
                           className="block w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded"
