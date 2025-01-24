@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -8,9 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { CircuitBoard, Cpu, MessageSquare, Timer, Gauge, Settings, Mic, MicOff } from "lucide-react";
-import { motion } from "framer-motion";
+import { CircuitBoard, Cpu, MessageSquare, Timer, Gauge, Settings, Mic, MicOff, Send } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -24,18 +24,7 @@ type Industry = {
   defaultSystemPrompt: string;
 };
 
-const propertyManagementPrompt = `You are an AI voice assistant named Property Mate, designed to assist renters and potential tenants with their property-related needs at 444 NE 7th Street, Fort Lauderdale, Florida 33304. Your goal is to make the process of finding, leasing, and maintaining a rental property as smooth and stress-free as possible. Be friendly, helpful, and patient.
-
-When users request information via text, always collect and confirm their name and phone number first. Only discuss positive aspects that would influence leasing/buying decisions.
-
-Key points to remember:
-- Always introduce yourself as PropertyMate
-- Confirm user details before sending texts
-- Focus on positive property features
-- Use a warm, friendly tone
-- Speak clearly and avoid jargon
-- Show empathy and patience
-- Always verify information before proceeding`;
+const propertyManagementPrompt = `You are an AI voice assistant named Property Mate, designed to assist renters and potential tenants with their property-related needs at 444 NE 7th Street, Fort Lauderdale, Florida 33304. Your goal is to make the process of finding, leasing, and maintaining a rental property as smooth and stress-free as possible. Be friendly, helpful, and patient.`;
 
 const industries: Industry[] = [
   {
@@ -74,6 +63,7 @@ export default function Demo() {
   const [isConfiguring, setIsConfiguring] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
+  const [userInput, setUserInput] = useState("");
   const isMobile = useIsMobile();
 
   const conversation = useConversation({
@@ -116,16 +106,18 @@ export default function Demo() {
     }
   };
 
-  const handleQuestionClick = async (question: string) => {
+  const handleSendMessage = async () => {
+    if (!userInput.trim()) return;
+
     try {
       setIsLoading(true);
-      console.log('Sending question:', question);
-      setChatMessages(prev => [...prev, { type: 'user', text: question }]);
+      console.log('Sending message:', userInput);
+      setChatMessages(prev => [...prev, { type: 'user', text: userInput }]);
       
       const startTime = Date.now();
       const { data, error } = await supabase.functions.invoke('chat-completion', {
         body: {
-          prompt: question,
+          prompt: userInput,
           systemPrompt,
           messages: chatMessages.map(msg => ({
             role: msg.type === 'user' ? 'user' : 'assistant',
@@ -147,6 +139,7 @@ export default function Demo() {
         type: 'ai',
         text: data.response
       }]);
+      setUserInput("");
 
     } catch (error) {
       console.error('Error:', error);
@@ -229,7 +222,7 @@ export default function Demo() {
                 <Button
                   variant="outline"
                   onClick={toggleVoice}
-                  className="w-full sm:w-auto bg-white border-gray-200 hover:bg-gray-50"
+                  className="w-full sm:w-auto bg-white border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-gray-900"
                 >
                   {isVoiceEnabled ? (
                     <>
@@ -248,7 +241,7 @@ export default function Demo() {
                   variant="outline"
                   size="icon"
                   onClick={() => setIsConfiguring(!isConfiguring)}
-                  className="bg-white border-gray-200 hover:bg-gray-50"
+                  className="bg-white border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-gray-900"
                 >
                   <Settings className="h-4 w-4" />
                 </Button>
@@ -297,8 +290,11 @@ export default function Demo() {
                     >
                       <Button
                         variant="outline"
-                        className="w-full justify-start text-left bg-white border-gray-200 hover:bg-gray-50 text-gray-700 transition-all duration-300"
-                        onClick={() => handleQuestionClick(question)}
+                        className="w-full justify-start text-left bg-white border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-gray-900"
+                        onClick={() => {
+                          setUserInput(question);
+                          handleSendMessage();
+                        }}
                         disabled={isLoading}
                       >
                         {question}
@@ -338,15 +334,45 @@ export default function Demo() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                     >
-                      <div className="max-w-[85%] sm:max-w-[80%] p-3 rounded-lg bg-gray-100 text-gray-800">
-                        <span className="inline-flex gap-1">
-                          <span className="animate-bounce">.</span>
-                          <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>.</span>
-                          <span className="animate-bounce" style={{ animationDelay: '0.4s' }}>.</span>
-                        </span>
+                      <div className="max-w-[85%] sm:max-w-[80%] p-3 rounded-lg bg-gray-100">
+                        <motion.div
+                          className="w-8 h-8 rounded-full bg-blue-500"
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.5, 1, 0.5]
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        />
                       </div>
                     </motion.div>
                   )}
+                </div>
+
+                {/* Text Input Area */}
+                <div className="flex gap-2">
+                  <Textarea
+                    value={userInput}
+                    onChange={(e) => setUserInput(e.target.value)}
+                    placeholder="Type your message here..."
+                    className="min-h-[50px] bg-white border-gray-200"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        handleSendMessage();
+                      }
+                    }}
+                  />
+                  <Button
+                    onClick={handleSendMessage}
+                    disabled={isLoading || !userInput.trim()}
+                    className="bg-blue-500 hover:bg-blue-600 text-white"
+                  >
+                    <Send className="h-4 w-4" />
+                  </Button>
                 </div>
               </div>
             </Card>
