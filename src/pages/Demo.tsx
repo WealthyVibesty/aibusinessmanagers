@@ -255,25 +255,6 @@ export default function Demo() {
 
               <div className="flex gap-2 w-full sm:w-auto">
                 <Button
-                  variant={isVoiceEnabled ? "destructive" : "default"}
-                  onClick={handleVoiceToggle}
-                  className="w-full sm:w-auto relative group text-lg font-semibold py-6 px-8 h-auto"
-                  size="lg"
-                >
-                  {isVoiceEnabled ? (
-                    <>
-                      <MicOff className="h-5 w-5 mr-3" />
-                      Stop Voice Assistant
-                    </>
-                  ) : (
-                    <>
-                      <Mic className="h-5 w-5 mr-3" />
-                      Start Voice Assistant
-                    </>
-                  )}
-                </Button>
-
-                <Button
                   variant="outline"
                   size="icon"
                   onClick={() => setIsConfiguring(!isConfiguring)}
