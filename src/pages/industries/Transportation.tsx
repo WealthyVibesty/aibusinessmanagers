@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Car, Bot, Clock, ChartLine, Users2 } from "lucide-react";
+import { ArrowRight, Car, BrainCircuit, Clock, ChartLine, Users2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { Card } from "@/components/ui/card";
@@ -56,7 +56,7 @@ export default function Transportation() {
               className="group bg-green-600 hover:bg-green-700 text-lg px-8 py-6 h-auto"
             >
               Create Your AI Bot
-              <Bot className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+              <BrainCircuit className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
             </Button>
             
             <Button 

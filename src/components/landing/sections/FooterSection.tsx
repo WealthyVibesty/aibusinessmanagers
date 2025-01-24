@@ -13,7 +13,11 @@ const FooterSection = () => {
   ];
 
   const industries = [
-    { name: "Healthcare", path: "/voice-agents-marketplace" }
+    { name: "Healthcare", path: "/industries/healthcare" },
+    { name: "Finance", path: "/industries/finance" },
+    { name: "Transportation", path: "/industries/transportation" },
+    { name: "Hospitality", path: "/industries/hospitality" },
+    { name: "Restaurants", path: "/industries/restaurants" }
   ];
 
   const resources = [
@@ -33,7 +37,6 @@ const FooterSection = () => {
 
   return (
     <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-gray-300">
-      {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Company Info */}
@@ -57,8 +60,8 @@ const FooterSection = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary" />
-                <a href="tel:+1234567890" className="hover:text-primary transition-colors">
-                  (123) 456-7890
+                <a href="tel:+18887084440" className="hover:text-primary transition-colors">
+                  +1 (888) 708 4440
                 </a>
               </div>
               <div className="flex items-center gap-3">

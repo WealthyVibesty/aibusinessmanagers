@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, DollarSign, Bot, Clock, ChartLine, Shield } from "lucide-react";
+import { ArrowRight, DollarSign, BrainCircuit, Clock, ChartLine, Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { Card } from "@/components/ui/card";
@@ -56,7 +56,7 @@ export default function Finance() {
               className="group bg-purple-600 hover:bg-purple-700 text-lg px-8 py-6 h-auto"
             >
               Create Your AI Bot
-              <Bot className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+              <BrainCircuit className="ml-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
             </Button>
             
             <Button 

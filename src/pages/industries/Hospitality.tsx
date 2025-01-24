@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Hotel, Clock, ChartLine, Users2, UtensilsCrossed, BrainCircuit } from "lucide-react";
+import { ArrowRight, Hotel, Clock, ChartLine, Users2, BrainCircuit } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { Card } from "@/components/ui/card";
