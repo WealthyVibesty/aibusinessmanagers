@@ -125,7 +125,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-black">
               See Our AI in Action
             </h2>
             <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto">

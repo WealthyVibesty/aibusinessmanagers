@@ -189,7 +189,7 @@ export default function CoreOffer() {
       {/* Pricing Section */}
       <section className="py-16 px-6 bg-primary/5">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Pricing Plans</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-black">Pricing Plans</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {pricingTiers.map((tier, index) => (
               <Card 
@@ -222,7 +222,7 @@ export default function CoreOffer() {
       {/* Add-ons Section */}
       <section className="py-16 px-6 bg-background">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Available Add-ons</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-black">Available Add-ons</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {addOns.map((addon, index) => (
               <Card 

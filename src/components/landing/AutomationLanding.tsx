@@ -32,7 +32,7 @@ export default function AutomationLanding() {
       <section className="container px-4 py-20 mx-auto bg-white/50 backdrop-blur-sm">
         <div className="max-w-3xl mx-auto space-y-12">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 leading-tight text-black">
               What We Offer: AI-Powered Automation That Works for You
             </h2>
             <p className="text-xl text-muted-foreground">
