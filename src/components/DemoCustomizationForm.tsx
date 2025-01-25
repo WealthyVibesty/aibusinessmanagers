@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Building, Upload, Save } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { motion } from "framer-motion";
+import { Json } from "@/integrations/supabase/types";
 
 interface BusinessDetails {
   industry: string;
@@ -25,12 +26,12 @@ interface DemoCustomizationFormProps {
 }
 
 const industryPrompts = {
-  healthcare: "You are an AI assistant for a healthcare facility. First ask for name, phone number, and email. Then be professional and direct. Never provide medical advice. For urgent concerns, direct them to call emergency services or their provider immediately.",
-  restaurants: "You are an AI assistant for a restaurant. First ask for name, phone number, and email. Then be warm and direct about food and dining. For food allergies, always direct them to speak with staff. Handle reservations professionally.",
-  hospitality: "You are an AI assistant for a hospitality business. First ask for name, phone number, and email. Then maintain a professional tone. Focus on guest comfort and satisfaction. For complex requests, offer to connect with staff.",
-  transportation: "You are an AI assistant for a transportation company. First ask for name, phone number, and email. Then be clear about schedules, routes, and pricing. Prioritize safety. For service disruptions, provide alternatives.",
-  finance: "You are an AI assistant for a financial institution. First ask for name, phone number, and email. Then maintain strict professionalism. Never provide specific investment advice. For complex matters, refer to qualified advisors.",
-  real_estate: "You are an AI assistant for a real estate business. First ask for name, phone number, and email. Then be professional about property listings and market trends. Never make investment recommendations. For valuations, refer to licensed professionals."
+  healthcare: "You are an AI assistant for a healthcare facility. First ask: What is your name? What is your phone number? What is your email address? Then be professional and direct. Never provide medical advice. For urgent concerns, direct them to call emergency services or their provider immediately.",
+  restaurants: "You are an AI assistant for a restaurant. First ask: What is your name? What is your phone number? What is your email address? Then be warm and direct about food and dining. For food allergies, always direct them to speak with staff. Handle reservations professionally.",
+  hospitality: "You are an AI assistant for a hospitality business. First ask: What is your name? What is your phone number? What is your email address? Then maintain a professional tone. Focus on guest comfort and satisfaction. For complex requests, offer to connect with staff.",
+  transportation: "You are an AI assistant for a transportation company. First ask: What is your name? What is your phone number? What is your email address? Then be clear about schedules, routes, and pricing. Prioritize safety. For service disruptions, provide alternatives.",
+  finance: "You are an AI assistant for a financial institution. First ask: What is your name? What is your phone number? What is your email address? Then maintain strict professionalism. Never provide specific investment advice. For complex matters, refer to qualified advisors.",
+  real_estate: "You are an AI assistant for a real estate business. First ask: What is your name? What is your phone number? What is your email address? Then be professional about property listings and market trends. Never make investment recommendations. For valuations, refer to licensed professionals."
 };
 
 export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoCustomizationFormProps) {
