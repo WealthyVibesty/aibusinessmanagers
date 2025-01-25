@@ -186,10 +186,10 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
   };
 
   return (
-    <Card className="p-6 space-y-6">
+    <Card className="p-6 space-y-6 bg-white border-2 border-gray-200 shadow-lg">
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium mb-1">Business Name</label>
+          <label className="block text-sm font-medium text-gray-900 mb-1">Business Name</label>
           <Input
             placeholder="Enter your business name"
             value={businessDetails.business_name}
@@ -197,11 +197,12 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
               ...prev,
               business_name: e.target.value
             }))}
+            className="bg-white border-gray-300 focus:border-primary"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Industry</label>
+          <label className="block text-sm font-medium text-gray-900 mb-1">Industry</label>
           <Select
             value={businessDetails.industry}
             onValueChange={(value) => setBusinessDetails(prev => ({
@@ -210,10 +211,10 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
               custom_prompt: industryPrompts[value as keyof typeof industryPrompts] || prev.custom_prompt
             }))}
           >
-            <SelectTrigger>
+            <SelectTrigger className="bg-white border-gray-300">
               <SelectValue placeholder="Select your industry" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white border border-gray-200 shadow-lg">
               <SelectItem value="healthcare">Healthcare</SelectItem>
               <SelectItem value="restaurants">Restaurants</SelectItem>
               <SelectItem value="hospitality">Hospitality</SelectItem>
@@ -225,7 +226,7 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Business Size</label>
+          <label className="block text-sm font-medium text-gray-900 mb-1">Business Size</label>
           <Select
             value={businessDetails.business_size}
             onValueChange={(value) => setBusinessDetails(prev => ({
@@ -233,10 +234,10 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
               business_size: value
             }))}
           >
-            <SelectTrigger>
+            <SelectTrigger className="bg-white border-gray-300">
               <SelectValue placeholder="Select your business size" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white border border-gray-200 shadow-lg">
               <SelectItem value="1-10">1-10 employees</SelectItem>
               <SelectItem value="11-50">11-50 employees</SelectItem>
               <SelectItem value="51-200">51-200 employees</SelectItem>
@@ -247,7 +248,7 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Target Audience</label>
+          <label className="block text-sm font-medium text-gray-900 mb-1">Target Audience</label>
           <Input
             placeholder="Describe your target audience"
             value={businessDetails.target_audience}
@@ -255,11 +256,12 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
               ...prev,
               target_audience: e.target.value
             }))}
+            className="bg-white border-gray-300 focus:border-primary"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Key Services (comma-separated)</label>
+          <label className="block text-sm font-medium text-gray-900 mb-1">Key Services (comma-separated)</label>
           <Input
             placeholder="Enter your key services"
             value={businessDetails.key_services.join(', ')}
@@ -267,11 +269,12 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
               ...prev,
               key_services: e.target.value.split(',').map(s => s.trim())
             }))}
+            className="bg-white border-gray-300 focus:border-primary"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Custom AI Prompt</label>
+          <label className="block text-sm font-medium text-gray-900 mb-1">Custom AI Prompt</label>
           <Textarea
             placeholder="Customize how the AI should interact with your customers"
             value={businessDetails.custom_prompt}
@@ -279,19 +282,19 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
               ...prev,
               custom_prompt: e.target.value
             }))}
-            className="min-h-[100px]"
+            className="min-h-[100px] bg-white border-gray-300 focus:border-primary"
           />
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-gray-600 mt-1">
             This prompt will guide how the AI interacts with your customers. Feel free to modify it to better match your business needs.
           </p>
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Upload Business Files</label>
+          <label className="block text-sm font-medium text-gray-900 mb-1">Upload Business Files</label>
           <div className="mt-2">
-            <label className="flex flex-col items-center px-4 py-6 border-2 border-dashed rounded-md hover:bg-gray-50 cursor-pointer">
+            <label className="flex flex-col items-center px-4 py-6 bg-white border-2 border-dashed border-gray-300 rounded-md hover:bg-gray-50 cursor-pointer">
               <Upload className="h-8 w-8 text-gray-400" />
-              <span className="mt-2 text-sm text-gray-500">
+              <span className="mt-2 text-sm text-gray-600">
                 Click to upload business documents
               </span>
               <input
@@ -305,8 +308,8 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
           </div>
           {businessDetails.file_urls.length > 0 && (
             <div className="mt-4">
-              <h4 className="text-sm font-medium mb-2">Uploaded Files:</h4>
-              <ul className="text-sm text-gray-500">
+              <h4 className="text-sm font-medium text-gray-900 mb-2">Uploaded Files:</h4>
+              <ul className="text-sm text-gray-600">
                 {businessDetails.file_urls.map((url, index) => (
                   <li key={index} className="truncate">
                     <a href={url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
@@ -323,7 +326,7 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
           <Button
             onClick={handleSave}
             disabled={isLoading}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 bg-primary hover:bg-primary/90"
           >
             <Save className="h-4 w-4" />
             {isLoading ? 'Saving...' : 'Save Settings'}
