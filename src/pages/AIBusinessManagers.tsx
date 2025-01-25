@@ -24,17 +24,20 @@ const testimonials = [
   {
     quote: "AI Business Managers transformed our customer service experience. The AI solutions they provided were tailored perfectly to our needs. Their partnership with IBM gave us the confidence to trust them with our data.",
     author: "Sarah T.",
-    role: "CEO of a Retail Chain"
+    role: "CEO of a Retail Chain",
+    delay: 0.1
   },
   {
     quote: "We saw a 75% cost reduction in operations after implementing their AI systems. Highly recommend!",
     author: "John D.",
-    role: "Logistics Manager"
+    role: "Logistics Manager",
+    delay: 0.2
   },
   {
     quote: "Their AI voice agents handle everything for us, from lead management to customer support. It's like having an extra team!",
     author: "Emily R.",
-    role: "Property Manager"
+    role: "Property Manager",
+    delay: 0.3
   }
 ];
 
@@ -265,21 +268,73 @@ export default function AIBusinessManagers() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container px-4 mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800">Client Testimonials</h2>
+      <section className="py-20 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#00000008_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="container px-4 mx-auto relative z-10">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800"
+          >
+            What Our Clients Say
+          </motion.h2>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300"
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: testimonial.delay }}
+                viewport={{ once: true }}
+                className="relative p-8 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
-                <p className="text-gray-600 mb-4">{testimonial.quote}</p>
-                <div className="font-semibold text-gray-800">{testimonial.author}</div>
-                <div className="text-sm text-gray-500">{testimonial.role}</div>
+                {/* Quote Icon */}
+                <div className="absolute -top-4 left-6">
+                  <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="space-y-4">
+                  <motion.p 
+                    className="text-gray-600 italic relative z-10 text-lg leading-relaxed"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: testimonial.delay + 0.2 }}
+                  >
+                    "{testimonial.quote}"
+                  </motion.p>
+                  
+                  <div className="pt-4 border-t border-gray-100">
+                    <motion.h4 
+                      className="font-semibold text-gray-800"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: testimonial.delay + 0.3 }}
+                    >
+                      {testimonial.author}
+                    </motion.h4>
+                    <motion.p 
+                      className="text-primary/80"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: testimonial.delay + 0.4 }}
+                    >
+                      {testimonial.role}
+                    </motion.p>
+                  </div>
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
               </motion.div>
             ))}
           </div>
