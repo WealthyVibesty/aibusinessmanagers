@@ -43,14 +43,7 @@ import Hospitality from "@/pages/industries/Hospitality";
 import Transportation from "@/pages/industries/Transportation";
 import Finance from "@/pages/industries/Finance";
 
-// Add environment variable type declaration
-declare global {
-  interface Window {
-    env: {
-      ELEVEN_LABS_API_KEY: string;
-    };
-  }
-}
+import AIBusinessManagers from "@/pages/AIBusinessManagers";
 
 function App() {
   const { toast } = useToast();
@@ -91,7 +84,13 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
-              {/* Update the root route to use the new Home component */}
+              {/* Add the new AIBusinessManagers route */}
+              <Route path="/ai-business-managers" element={
+                <div className="animate-fadeIn">
+                  <AIBusinessManagers />
+                </div>
+              } />
+              
               <Route path="/" element={
                 <div className="animate-fadeIn">
                   <Home />
