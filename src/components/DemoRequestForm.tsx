@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, User, Mail, Phone, Building, MessageSquare } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/components/AuthProvider";
 
 interface DemoRequestFormProps {
   isOpen: boolean;
@@ -20,6 +21,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { user } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,8 +37,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
     setIsSubmitting(true);
 
     try {
-      console.log("Getting current user...");
-      const { data: { user } } = await supabase.auth.getUser();
+      console.log("Current auth state:", user ? "Authenticated" : "Not authenticated");
       
       console.log("Saving demo request form submission...");
       const { error: supabaseError } = await supabase
@@ -44,12 +45,15 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
         .insert([
           {
             form_type: 'demo_request',
-            user_id: user?.id, // Set user_id if user is authenticated
+            user_id: user?.id,
             data: { name, email, phone, company, message }
           }
         ]);
 
-      if (supabaseError) throw supabaseError;
+      if (supabaseError) {
+        console.error("Supabase error details:", supabaseError);
+        throw supabaseError;
+      }
 
       // Subscribe to Mailchimp
       console.log("Subscribing to Mailchimp...");
