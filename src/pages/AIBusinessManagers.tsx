@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Brain, Database, Lock, MessageSquare, Rocket, Server, Signal, Wifi } from "lucide-react";
+import { Brain, Signal, Lock, Server, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 
@@ -40,6 +40,13 @@ const testimonials = [
 
 export default function AIBusinessManagers() {
   const navigate = useNavigate();
+
+  const features = [
+    { icon: <Brain className="w-8 h-8" />, title: "Fully Customized AI" },
+    { icon: <Signal className="w-8 h-8" />, title: "Continuous Learning" },
+    { icon: <Lock className="w-8 h-8" />, title: "Trusted Partnerships" },
+    { icon: <Server className="w-8 h-8" />, title: "Seamless Integration" }
+  ];
 
   const industries = [
     { 
@@ -97,7 +104,6 @@ export default function AIBusinessManagers() {
       <section className="relative min-h-screen flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-white">
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#00000010_1px,transparent_1px)] bg-[size:40px_40px]" />
-          {/* Animated background elements */}
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
@@ -120,13 +126,13 @@ export default function AIBusinessManagers() {
           ))}
         </div>
 
-        <div className="relative w-full max-w-4xl mx-auto text-center z-10 mt-30">
+        <div className="relative w-full max-w-4xl mx-auto text-center z-10 mt-[120px]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 animate-gradient leading-[1.2] mb-8">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 animate-gradient leading-[1.2] mb-8">
               We Create Customized Done-for-You AI Business Managers that Automate Your Customer Service Operations
             </h1>
 
@@ -137,19 +143,22 @@ export default function AIBusinessManagers() {
 
           {/* Features Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-            {[
-              { icon: <Brain className="w-8 h-8" />, title: "Fully Customized AI" },
-              { icon: <Signal className="w-8 h-8" />, title: "Continuous Learning" },
-              { icon: <Lock className="w-8 h-8" />, title: "Trusted Partnerships" },
-              { icon: <Server className="w-8 h-8" />, title: "Seamless Integration" }
-            ].map((feature, index) => (
+            {features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-xl bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 group"
-                whileHover={{ scale: 1.05 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: index * 0.2,
+                  type: "spring",
+                  stiffness: 100 
+                }}
+                className="p-6 rounded-xl bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: "rgba(255, 255, 255, 0.9)" 
+                }}
               >
                 <motion.div 
                   className="mb-4 text-primary"
@@ -164,14 +173,21 @@ export default function AIBusinessManagers() {
                 >
                   {feature.icon}
                 </motion.div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">{feature.title}</h3>
+                <motion.h3 
+                  className="text-xl font-semibold mb-2 text-gray-800"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.3 + 0.5 }}
+                >
+                  {feature.title}
+                </motion.h3>
               </motion.div>
             ))}
           </div>
 
           {/* Industries Grid */}
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-800">Industries We Serve</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
             {industries.map((industry, index) => (
               <motion.div
                 key={index}
@@ -259,22 +275,38 @@ export default function AIBusinessManagers() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white">
-        <div className="container px-4 mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-            Get a live demo of our AI Business Manager today and see the difference it can make for your operations.
-          </p>
-          <Button 
-            size="lg"
-            onClick={() => navigate("/demo")}
-            className="text-lg px-8 py-6 h-auto rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all group text-white"
+      <section className="py-32 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#ffffff10_1px,transparent_1px)] bg-[size:40px_40px]" />
+        
+        <div className="container relative px-4 mx-auto text-center text-white">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
           >
-            Get Started Now
-            <Rocket className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
+              Get a live demo of our AI Business Manager today and see the difference it can make for your operations.
+            </p>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button 
+                size="lg"
+                onClick={() => navigate("/demo")}
+                className="text-lg px-12 py-6 h-auto rounded-full bg-white text-primary hover:bg-white/90 shadow-xl hover:shadow-2xl transition-all duration-300 group"
+              >
+                Get Started Now
+                <Rocket className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </>
