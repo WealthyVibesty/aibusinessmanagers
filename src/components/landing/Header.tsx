@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const navigate = useNavigate();
-  const location = useLocation();
-  
-  const isAIBusinessManagersPage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -106,11 +103,6 @@ export default function Header() {
     }
   ];
 
-  const getTextColor = () => {
-    if (!isAIBusinessManagersPage) return "text-black";
-    return isScrolled ? "text-black" : "text-white";
-  };
-
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -125,7 +117,7 @@ export default function Header() {
               alt="AI Business Managers" 
               className="h-10 w-auto"
             />
-            <span className={`font-semibold text-lg hidden sm:inline ${getTextColor()}`}>
+            <span className="font-semibold text-lg hidden sm:inline text-black">
               AI Business Managers
             </span>
           </Link>
@@ -135,7 +127,7 @@ export default function Header() {
             {menuItems.map((item, index) => (
               <div key={index} className="relative group">
                 <button
-                  className={`hover:text-primary transition-colors flex items-center gap-1 py-2 text-sm font-medium ${getTextColor()}`}
+                  className="hover:text-primary transition-colors flex items-center gap-1 py-2 text-sm font-medium text-black"
                   onMouseEnter={() => setActiveSubmenu(item.label)}
                   onMouseLeave={() => setActiveSubmenu(null)}
                 >
@@ -194,16 +186,12 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <Button 
               onClick={() => navigate("/index")}
-              className={`hidden sm:flex ${
-                isAIBusinessManagersPage && !isScrolled
-                  ? "bg-white text-primary hover:bg-white/90"
-                  : "bg-primary text-white hover:bg-primary/90"
-              }`}
+              className="hidden sm:flex bg-primary text-white"
             >
               Get Started
             </Button>
             <button
-              className={`md:hidden p-2 ${getTextColor()}`}
+              className="md:hidden p-2 text-black"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
