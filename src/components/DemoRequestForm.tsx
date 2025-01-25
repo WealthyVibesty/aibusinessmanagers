@@ -94,29 +94,29 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] p-6 bg-white border shadow-lg">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center">Schedule Your Free Personalized Custom Demo for your business</DialogTitle>
-          <DialogDescription className="text-center text-base">
+      <DialogContent className="sm:max-w-[500px] p-6 bg-white border-2 border-gray-200 shadow-xl rounded-xl">
+        <DialogHeader className="space-y-3 text-center">
+          <DialogTitle className="text-2xl font-bold text-gray-900">
+            Schedule Your Free Personalized Custom Demo
+          </DialogTitle>
+          <DialogDescription className="text-base text-gray-600">
             See how our AI solution can transform your business operations
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-          <div className="space-y-2">
+        <form onSubmit={handleSubmit} className="space-y-4 mt-6">
+          <div className="space-y-4">
             <div className="relative">
               <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
               <Input
                 placeholder="Your Name *"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="pl-10 bg-white"
+                className="pl-10 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                 required
                 disabled={isSubmitting}
               />
             </div>
-          </div>
           
-          <div className="space-y-2">
             <div className="relative">
               <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
               <Input
@@ -124,14 +124,12 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 placeholder="Email Address *"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="pl-10 bg-white"
+                className="pl-10 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                 required
                 disabled={isSubmitting}
               />
             </div>
-          </div>
 
-          <div className="space-y-2">
             <div className="relative">
               <Phone className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
               <Input
@@ -139,34 +137,30 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 placeholder="Phone Number *"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="pl-10 bg-white"
+                className="pl-10 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                 required
                 disabled={isSubmitting}
               />
             </div>
-          </div>
 
-          <div className="space-y-2">
             <div className="relative">
               <Building className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
               <Input
                 placeholder="Company Name"
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
-                className="pl-10 bg-white"
+                className="pl-10 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                 disabled={isSubmitting}
               />
             </div>
-          </div>
 
-          <div className="space-y-2">
             <div className="relative">
               <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
               <Textarea
                 placeholder="Tell us about your needs (optional)"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="pl-10 min-h-[100px] bg-white"
+                className="pl-10 min-h-[100px] bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                 disabled={isSubmitting}
               />
             </div>
@@ -174,7 +168,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
 
           <Button 
             type="submit" 
-            className="w-full py-6 text-lg"
+            className="w-full py-6 text-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-colors"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Submitting...' : 'Schedule Demo'}

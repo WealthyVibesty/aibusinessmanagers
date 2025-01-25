@@ -82,39 +82,45 @@ export default function ContactCaptureDialog({ isOpen, onClose, onSuccess }: Con
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-white border shadow-lg">
-        <DialogHeader>
-          <DialogTitle>Have Our Assistant Reach Out To You For a Demo</DialogTitle>
-          <DialogDescription>Put your information below</DialogDescription>
+      <DialogContent className="sm:max-w-md bg-white border-2 border-gray-200 shadow-xl rounded-xl">
+        <DialogHeader className="space-y-3">
+          <DialogTitle className="text-2xl font-bold text-gray-900 text-center">
+            Have Our Assistant Reach Out To You For a Demo
+          </DialogTitle>
+          <DialogDescription className="text-base text-gray-600 text-center">
+            Put your information below
+          </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
+        <form onSubmit={handleSubmit} className="space-y-4 mt-6">
+          <div className="space-y-4">
             <Input
               placeholder="Your Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full bg-white"
+              className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+              required
             />
-          </div>
-          <div>
             <Input
               type="email"
               placeholder="Email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-white"
+              className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+              required
             />
-          </div>
-          <div>
             <Input
               type="tel"
               placeholder="Phone Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="w-full bg-white"
+              className="w-full bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+              required
             />
           </div>
-          <Button type="submit" className="w-full">
+          <Button 
+            type="submit" 
+            className="w-full py-6 text-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-colors"
+          >
             Continue
           </Button>
         </form>
