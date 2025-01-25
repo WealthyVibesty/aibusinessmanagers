@@ -20,13 +20,6 @@ const FooterSection = () => {
     { name: "Restaurants", path: "/industries/restaurants" }
   ];
 
-  const resources = [
-    { name: "Case Studies", path: "/case-studies" },
-    { name: "Whitepapers", path: "/whitepapers" },
-    { name: "Blog", path: "/blog" },
-    { name: "FAQs", path: "/faqs" }
-  ];
-
   const company = [
     { name: "About Us", path: "/about" },
     { name: "Why Choose Us", path: "/why-us" },
@@ -38,8 +31,8 @@ const FooterSection = () => {
   return (
     <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-6">
               <img 
                 src="/lovable-uploads/97d27ffa-5e3f-47b1-b550-d47dc525b2cf.png" 
@@ -110,9 +103,9 @@ const FooterSection = () => {
           </div>
 
           <div>
-            <h3 className="text-white font-semibold text-lg mb-6">Resources</h3>
+            <h3 className="text-white font-semibold text-lg mb-6">Company</h3>
             <ul className="space-y-4">
-              {resources.map((item) => (
+              {company.map((item) => (
                 <li key={item.path}>
                   <Link 
                     to={item.path}

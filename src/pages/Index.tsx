@@ -13,6 +13,10 @@ export default function Index() {
     navigate("/login");
   };
 
+  const handleGetStarted = () => {
+    navigate("/solutions");
+  };
+
   return (
     <>
       <SEO 
@@ -104,6 +108,23 @@ export default function Index() {
               className="w-full sm:w-auto hover:bg-primary/5 transition-all duration-300"
             >
               Contact Support
+            </Button>
+          </div>
+
+          {/* Transform Your Business Section */}
+          <div className="text-center space-y-8 py-12">
+            <h2 className="text-3xl sm:text-4xl font-bold">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Get a live demo of our AI Business Manager today and see the difference it can make for your operations.
+            </p>
+            <Button 
+              onClick={handleGetStarted}
+              size="lg"
+              className="text-lg px-8 py-6 h-auto rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all"
+            >
+              Get Started Now
             </Button>
           </div>
         </div>
