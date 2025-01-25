@@ -117,7 +117,7 @@ export default function Header() {
               alt="AI Business Managers" 
               className="h-10 w-auto"
             />
-            <span className="font-semibold text-lg hidden sm:inline">AI Business Managers</span>
+            <span className="font-semibold text-lg hidden sm:inline text-black">AI Business Managers</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -125,7 +125,7 @@ export default function Header() {
             {menuItems.map((item, index) => (
               <div key={index} className="relative group">
                 <button
-                  className="text-gray-600 hover:text-primary transition-colors flex items-center gap-1 py-2 text-sm font-medium"
+                  className="text-black hover:text-primary transition-colors flex items-center gap-1 py-2 text-sm font-medium"
                   onMouseEnter={() => setActiveSubmenu(item.label)}
                   onMouseLeave={() => setActiveSubmenu(null)}
                 >
@@ -152,7 +152,7 @@ export default function Header() {
                                 className="block w-full text-left space-y-1 hover:bg-gray-50 p-2 rounded-md transition-colors"
                                 onClick={() => handleNavigation(subItem.path)}
                               >
-                                <div className="text-sm font-medium text-gray-900">{subItem.label}</div>
+                                <div className="text-sm font-medium text-black">{subItem.label}</div>
                                 <p className="text-xs text-gray-500">{subItem.description}</p>
                               </button>
                             ))}
@@ -167,7 +167,7 @@ export default function Header() {
                       {item.submenu.map((subItem: any, subIndex: number) => (
                         <button
                           key={subIndex}
-                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                          className="block w-full text-left px-4 py-2 text-sm text-black hover:bg-gray-50"
                           onClick={() => handleNavigation(subItem.path)}
                         >
                           {subItem.label}
@@ -189,7 +189,7 @@ export default function Header() {
               Get Started
             </Button>
             <button
-              className="md:hidden p-2"
+              className="md:hidden p-2 text-black"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -209,7 +209,7 @@ export default function Header() {
                 <div key={index}>
                   <button
                     onClick={() => setActiveSubmenu(activeSubmenu === item.label ? null : item.label)}
-                    className="flex items-center justify-between w-full p-4"
+                    className="flex items-center justify-between w-full p-4 text-black"
                   >
                     <span>{item.label}</span>
                     <ChevronDown className={`h-4 w-4 transition-transform ${
@@ -226,7 +226,7 @@ export default function Header() {
                           {category.items.map((subItem: any, subIndex: number) => (
                             <button
                               key={subIndex}
-                              className="block w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded"
+                              className="block w-full text-left py-2 px-4 text-sm text-black hover:bg-gray-100 rounded"
                               onClick={() => handleNavigation(subItem.path)}
                             >
                               {subItem.label}
@@ -240,7 +240,7 @@ export default function Header() {
                       {item.submenu.map((subItem: any, subIndex: number) => (
                         <button
                           key={subIndex}
-                          className="block w-full text-left py-2 px-4 text-sm hover:bg-gray-100 rounded"
+                          className="block w-full text-left py-2 px-4 text-sm text-black hover:bg-gray-100 rounded"
                           onClick={() => handleNavigation(subItem.path)}
                         >
                           {subItem.label}
