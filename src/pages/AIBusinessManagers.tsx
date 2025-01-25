@@ -96,7 +96,7 @@ export default function AIBusinessManagers() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 animate-gradient leading-[1.1] mb-8">
-              See How AI Business Managers Will Automate Your Business Operations Today
+              We Create Customized Done-for-You AI Business Managers that Automate Your Customer Service Operations
             </h1>
 
             <p className="text-xl sm:text-2xl text-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto px-4 animate-fadeIn">
