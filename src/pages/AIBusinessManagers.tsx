@@ -39,10 +39,29 @@ export default function AIBusinessManagers() {
         description="Transform your business operations with our done-for-you AI voice agents. Automate tasks, provide instant customer support, and reduce costs by up to 75%."
       />
       
-      <HeroSection />
-      <IndustriesSection />
-      <PartnersSection />
+      <div className="relative min-h-screen bg-[#1A1F2C]">
+        {/* Space background with stars effect */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#1A1F2C_0%,#0F1218_100%)]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              radial-gradient(circle at 20% 30%, #1EAEDB 0%, transparent 2%),
+              radial-gradient(circle at 80% 20%, #0FA0CE 0%, transparent 2%),
+              radial-gradient(circle at 40% 70%, #F97316 0%, transparent 2%),
+              radial-gradient(circle at 60% 50%, #9F9EA1 0%, transparent 2%)
+            `,
+            backgroundSize: '200% 200%',
+            animation: 'gradient 15s ease infinite'
+          }} />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        </div>
 
+        {/* Content */}
+        <div className="relative z-10">
+          <HeroSection />
+          <IndustriesSection />
+          <PartnersSection />
+
+          {/* Rest of the content */}
       {/* Testimonials Section */}
       <section className="py-20 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#00000008_1px,transparent_1px)] bg-[size:40px_40px]" />
@@ -146,6 +165,8 @@ export default function AIBusinessManagers() {
           </motion.div>
         </div>
       </section>
+        </div>
+      </div>
     </>
   );
 }
