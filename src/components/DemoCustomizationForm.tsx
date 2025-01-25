@@ -24,6 +24,15 @@ interface DemoCustomizationFormProps {
   initialIndustry?: string;
 }
 
+const industryPrompts = {
+  healthcare: "You are an AI assistant for a healthcare facility. Be professional, empathetic, and HIPAA-compliant. Maintain patient confidentiality at all times. Never provide medical advice, only general information about services and procedures. Use a caring and supportive tone. If patients mention urgent medical concerns, always direct them to call emergency services or contact their healthcare provider immediately.",
+  restaurants: "You are an AI assistant for a restaurant. Be warm, enthusiastic, and knowledgeable about food and dining. Highlight special dietary accommodations and popular dishes. Handle reservations professionally and be precise about wait times. For food allergies, always recommend speaking directly with staff. Maintain an upbeat, service-oriented tone.",
+  hospitality: "You are an AI assistant for a hospitality business. Maintain a sophisticated, courteous tone. Focus on guest comfort and satisfaction. Be knowledgeable about amenities, local attractions, and services. Handle special requests diplomatically. For complex situations, offer to connect guests with a human staff member.",
+  transportation: "You are an AI assistant for a transportation company. Be clear and precise about schedules, routes, and pricing. Prioritize safety and reliability in your responses. Provide accurate ETAs and booking information. For service disruptions or delays, be proactive with alternatives. Maintain a professional, efficient tone.",
+  finance: "You are an AI assistant for a financial institution. Maintain strict professionalism and compliance with financial regulations. Never provide specific investment advice. Be clear about terms, conditions, and fees. For complex financial matters, always recommend consulting with a qualified financial advisor. Use precise, clear language.",
+  real_estate: "You are an AI assistant for a real estate business. Be professional and knowledgeable about property listings, market trends, and real estate processes. Never make specific investment recommendations. Provide general information about properties, viewing appointments, and buying/selling processes. For specific property valuations or legal advice, always refer clients to licensed real estate professionals."
+};
+
 export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoCustomizationFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [businessDetails, setBusinessDetails] = useState<BusinessDetails>({
@@ -40,6 +49,16 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
   useEffect(() => {
     loadExistingDetails();
   }, []);
+
+  // Add effect to update custom prompt when industry changes
+  useEffect(() => {
+    if (businessDetails.industry && !businessDetails.custom_prompt) {
+      setBusinessDetails(prev => ({
+        ...prev,
+        custom_prompt: industryPrompts[businessDetails.industry as keyof typeof industryPrompts] || ""
+      }));
+    }
+  }, [businessDetails.industry]);
 
   const loadExistingDetails = async () => {
     try {
@@ -174,7 +193,8 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
             value={businessDetails.industry}
             onValueChange={(value) => setBusinessDetails(prev => ({
               ...prev,
-              industry: value
+              industry: value,
+              custom_prompt: industryPrompts[value as keyof typeof industryPrompts] || prev.custom_prompt
             }))}
           >
             <SelectTrigger>
@@ -238,7 +258,7 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Custom AI Prompt (Optional)</label>
+          <label className="block text-sm font-medium mb-1">Custom AI Prompt</label>
           <Textarea
             placeholder="Customize how the AI should interact with your customers"
             value={businessDetails.custom_prompt}
@@ -248,6 +268,9 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
             }))}
             className="min-h-[100px]"
           />
+          <p className="text-sm text-gray-500 mt-1">
+            This prompt will guide how the AI interacts with your customers. Feel free to modify it to better match your business needs.
+          </p>
         </div>
 
         <div>
@@ -282,17 +305,17 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
             </div>
           )}
         </div>
-      </div>
 
-      <div className="flex justify-end">
-        <Button
-          onClick={handleSave}
-          disabled={isLoading}
-          className="flex items-center gap-2"
-        >
-          <Save className="h-4 w-4" />
-          {isLoading ? 'Saving...' : 'Save Settings'}
-        </Button>
+        <div className="flex justify-end">
+          <Button
+            onClick={handleSave}
+            disabled={isLoading}
+            className="flex items-center gap-2"
+          >
+            <Save className="h-4 w-4" />
+            {isLoading ? 'Saving...' : 'Save Settings'}
+          </Button>
+        </div>
       </div>
     </Card>
   );
