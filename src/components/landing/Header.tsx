@@ -117,9 +117,9 @@ export default function Header() {
               alt="AI Business Managers" 
               className="h-10 w-auto"
             />
-            <span className={`font-semibold text-lg hidden sm:inline ${
-              isScrolled ? "text-black" : "text-white"
-            }`}>AI Business Managers</span>
+            <span className="font-semibold text-lg hidden sm:inline text-black">
+              AI Business Managers
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -127,9 +127,7 @@ export default function Header() {
             {menuItems.map((item, index) => (
               <div key={index} className="relative group">
                 <button
-                  className={`hover:text-primary transition-colors flex items-center gap-1 py-2 text-sm font-medium ${
-                    isScrolled ? "text-black" : "text-white"
-                  }`}
+                  className="hover:text-primary transition-colors flex items-center gap-1 py-2 text-sm font-medium text-black"
                   onMouseEnter={() => setActiveSubmenu(item.label)}
                   onMouseLeave={() => setActiveSubmenu(null)}
                 >
@@ -138,8 +136,8 @@ export default function Header() {
                 </button>
                 {item.label === "Solutions" ? (
                   <div 
-                    className={`absolute left-0 mt-2 w-[800px] rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 
-                    opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 -translate-x-1/4`}
+                    className="absolute left-0 mt-2 w-[800px] rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 
+                    opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 -translate-x-1/4"
                     onMouseEnter={() => setActiveSubmenu(item.label)}
                     onMouseLeave={() => setActiveSubmenu(null)}
                   >
@@ -187,17 +185,13 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-4">
             <Button 
-              onClick={() => navigate("/checkout")}
-              className={`hidden sm:flex ${
-                isScrolled ? "bg-primary text-white" : "bg-white text-primary"
-              }`}
+              onClick={() => navigate("/index")}
+              className="hidden sm:flex bg-primary text-white"
             >
               Get Started
             </Button>
             <button
-              className={`md:hidden p-2 ${
-                isScrolled ? "text-black" : "text-white"
-              }`}
+              className="md:hidden p-2 text-black"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -209,7 +203,6 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className="md:hidden fixed inset-x-0 top-16 bg-white border-t shadow-lg animate-slideDown max-h-[80vh] overflow-y-auto">
             <div className="divide-y">
