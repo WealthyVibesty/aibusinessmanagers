@@ -185,7 +185,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-4">
             <Button 
-              onClick={() => navigate("/index")}
+              onClick={() => navigate("/solutions")}
               className="hidden sm:flex bg-primary text-white"
             >
               Get Started
@@ -254,7 +254,7 @@ export default function Header() {
               <div className="p-4">
                 <Button 
                   onClick={() => {
-                    navigate("/checkout");
+                    navigate("/solutions");
                     setIsMenuOpen(false);
                   }}
                   className="w-full"

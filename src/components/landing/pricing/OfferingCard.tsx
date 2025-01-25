@@ -35,8 +35,8 @@ export default function OfferingCard({
               </h3>
             </div>
             <div className="space-y-2">
-              <p className="text-3xl font-bold text-primary">
-                ${value.toLocaleString()} <span className="text-lg">one-time setup</span>
+              <p className="text-4xl sm:text-5xl font-extrabold text-primary">
+                ${value.toLocaleString()} <span className="text-lg font-bold">one-time setup</span>
               </p>
               <p className="text-muted-foreground text-sm">
                 then ${monthlyValue}/month after first year
