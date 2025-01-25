@@ -57,9 +57,8 @@ export default function AIBusinessManagers() {
         description="Transform your business operations with our done-for-you AI voice agents. Automate tasks, provide instant customer support, and reduce costs by up to 75%."
       />
       
-      {/* Hero Section with enhanced visuals */}
+      {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 overflow-hidden">
-        {/* Animated background elements */}
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-white">
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#00000010_1px,transparent_1px)] bg-[size:40px_40px]" />
           <motion.div 
@@ -100,7 +99,7 @@ export default function AIBusinessManagers() {
               See How AI Business Managers Will Automate Your Business Operations Today
             </h1>
 
-            <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto px-4 animate-fadeIn">
+            <p className="text-xl sm:text-2xl text-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto px-4 animate-fadeIn">
               Experience the future of business automation with AI managers that seamlessly integrate into your operations, delivering unprecedented efficiency and growth.
             </p>
           </motion.div>
@@ -114,7 +113,7 @@ export default function AIBusinessManagers() {
             <Button 
               size="lg"
               onClick={() => navigate("/demo")}
-              className="text-lg px-8 py-6 h-auto rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="text-lg px-8 py-6 h-auto rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 group text-white"
             >
               Watch Demo
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -123,7 +122,7 @@ export default function AIBusinessManagers() {
               variant="outline"
               size="lg"
               onClick={() => navigate("/pricing")}
-              className="text-lg px-8 py-6 h-auto rounded-full hover:bg-gray-100 transition-all duration-300 border-2"
+              className="text-lg px-8 py-6 h-auto rounded-full hover:bg-gray-100 transition-all duration-300 border-2 text-gray-700"
             >
               View Pricing
             </Button>
@@ -172,7 +171,7 @@ export default function AIBusinessManagers() {
                 className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
                 <div className="mb-4 text-primary">{feature.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{feature.title}</h3>
               </motion.div>
             ))}
           </div>
@@ -182,7 +181,7 @@ export default function AIBusinessManagers() {
       {/* Industries Section */}
       <section className="py-20 bg-gradient-to-b from-white to-blue-50">
         <div className="container px-4 mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">Industries We Serve</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-800">Industries We Serve</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {industries.map((industry, index) => (
               <motion.div
@@ -194,7 +193,7 @@ export default function AIBusinessManagers() {
                 onClick={() => navigate(`/industries/${industry.name.toLowerCase()}`)}
               >
                 <div className="text-4xl mb-4">{industry.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{industry.name}</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{industry.name}</h3>
                 <p className="text-gray-600">{industry.description}</p>
               </motion.div>
             ))}
@@ -205,7 +204,7 @@ export default function AIBusinessManagers() {
       {/* Partners Carousel */}
       <section className="py-20 bg-white overflow-hidden">
         <div className="container px-4 mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">Our Technology Partners</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-800">Our Technology Partners</h2>
           <div className="relative">
             <div className="flex space-x-12 animate-scroll overflow-hidden whitespace-nowrap py-4">
               {[...partners, ...partners].map((partner, index) => (
@@ -228,7 +227,7 @@ export default function AIBusinessManagers() {
       {/* Testimonials */}
       <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
         <div className="container px-4 mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Client Testimonials</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800">Client Testimonials</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
@@ -239,7 +238,7 @@ export default function AIBusinessManagers() {
                 className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <p className="text-gray-600 mb-4">{testimonial.quote}</p>
-                <div className="font-semibold">{testimonial.author}</div>
+                <div className="font-semibold text-gray-800">{testimonial.author}</div>
                 <div className="text-sm text-gray-500">{testimonial.role}</div>
               </motion.div>
             ))}
@@ -250,7 +249,7 @@ export default function AIBusinessManagers() {
       {/* CTA Section */}
       <section className="py-20 bg-white">
         <div className="container px-4 mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
             Ready to Transform Your Business?
           </h2>
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
@@ -259,7 +258,7 @@ export default function AIBusinessManagers() {
           <Button 
             size="lg"
             onClick={() => navigate("/demo")}
-            className="text-lg px-8 py-6 h-auto rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all group"
+            className="text-lg px-8 py-6 h-auto rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all group text-white"
           >
             Get Started Now
             <Rocket className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
