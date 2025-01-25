@@ -324,7 +324,7 @@ export default function Demo() {
   const [systemPrompt, setSystemPrompt] = useState<string>(industries[0].defaultSystemPrompt);
   const [chatMessages, setChatMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([]);
   const [metrics, setMetrics] = useState({ responseTime: "2 seconds", satisfaction: "97%" });
-  const [isConfiguring, setIsConfiguring] = useState(true);
+  const [isConfiguring, setIsConfiguring] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
   const [userInput, setUserInput] = useState("");
@@ -517,16 +517,8 @@ export default function Demo() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
+            className="space-y-6"
           >
-            <DemoCustomizationForm
-              onSave={handleBusinessDetailsSave}
-              initialIndustry={selectedIndustry}
-            />
-          </motion.div>
-        )}
-
-        <div className="space-y-6 px-4">
-          {isConfiguring && (
             <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
@@ -541,8 +533,15 @@ export default function Demo() {
                 />
               </div>
             </Card>
-          )}
+            
+            <DemoCustomizationForm
+              onSave={handleBusinessDetailsSave}
+              initialIndustry={selectedIndustry}
+            />
+          </motion.div>
+        )}
 
+        <div className="space-y-6 px-4">
           <Card className="p-4 sm:p-6 bg-white shadow-md border border-gray-100">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
