@@ -17,11 +17,11 @@
 }
 
 .animate-scroll {
-  animation: scroll 80s linear infinite; /* Increased from 40s to 80s */
+  animation: scroll 40s linear infinite;
 }
 
 .animate-scroll-reverse {
-  animation: scroll-reverse 80s linear infinite; /* Increased from 40s to 80s */
+  animation: scroll-reverse 40s linear infinite;
 }
 
 .partner-scroll-container {
