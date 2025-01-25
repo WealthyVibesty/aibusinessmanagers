@@ -42,46 +42,25 @@ export default function PartnersSection() {
           </p>
         </motion.div>
 
-        <div className="relative">
-          <div className="flex space-x-12 animate-scroll overflow-hidden py-8 opacity-75 hover:opacity-100 transition-opacity duration-300" 
-               style={{ animation: 'scroll 1000ms linear infinite' }}>
-            {partners.map((partner, index) => (
-              <motion.div
-                key={index}
-                className="flex-shrink-0 group"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="relative w-32 h-12 bg-white/80 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 p-2 backdrop-blur-sm">
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="h-full w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="flex space-x-12 animate-scroll-reverse overflow-hidden py-8 opacity-75 hover:opacity-100 transition-opacity duration-300" 
-               style={{ direction: 'rtl', animation: 'scroll-reverse 1000ms linear infinite' }}>
-            {[...partners].reverse().map((partner, index) => (
-              <motion.div
-                key={index}
-                className="flex-shrink-0 group"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="relative w-32 h-12 bg-white/80 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 p-2 backdrop-blur-sm">
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="h-full w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
+          {partners.map((partner, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group"
+            >
+              <div className="relative w-full h-12 bg-white/80 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 p-2 backdrop-blur-sm">
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="h-full w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                />
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
