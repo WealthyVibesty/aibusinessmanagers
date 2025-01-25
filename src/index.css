@@ -19,21 +19,6 @@
   @apply backdrop-blur-lg bg-white/30 border border-white/20 shadow-lg;
 }
 
-/* Space theme utilities */
-.space-bg {
-  @apply bg-[#1A1F2C] bg-opacity-95;
-}
-
-.star {
-  @apply absolute w-1 h-1 bg-white rounded-full;
-  animation: twinkle 1s infinite;
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
 /* Enhance scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
