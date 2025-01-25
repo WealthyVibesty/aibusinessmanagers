@@ -50,7 +50,6 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
     loadExistingDetails();
   }, []);
 
-  // Add effect to update custom prompt when industry changes
   useEffect(() => {
     if (businessDetails.industry && !businessDetails.custom_prompt) {
       setBusinessDetails(prev => ({
@@ -143,14 +142,14 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
 
       if (error) throw error;
 
-      // Save form submission
+      // Save form submission - Fixed type issue here
       const { error: formError } = await supabase
         .from('form_submissions')
-        .insert([{
+        .insert({
           form_type: 'demo_customization',
           user_id: user.id,
-          data: businessDetails
-        }]);
+          data: businessDetails as unknown as Json // Type assertion to match the expected Json type
+        });
 
       if (formError) throw formError;
 
