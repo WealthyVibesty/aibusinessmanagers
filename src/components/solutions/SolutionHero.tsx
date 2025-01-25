@@ -1,37 +1,35 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 interface SolutionHeroProps {
   title: string;
   subtitle: string;
-  ctaText?: string;
+  ctaText: string;
   ctaAction?: () => void;
 }
 
 export default function SolutionHero({ 
   title, 
   subtitle, 
-  ctaText = "Get Started Now",
+  ctaText,
+  ctaAction 
 }: SolutionHeroProps) {
-  const navigate = useNavigate();
-
   return (
-    <section className="relative py-32 px-6 bg-gradient-to-b from-blue-50 to-white">
-      <div className="max-w-7xl mx-auto text-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+    <section className="py-20 px-6">
+      <div className="max-w-4xl mx-auto text-center">
+        <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-black">
           {title}
         </h1>
-        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        <p className="text-xl text-gray-600 mb-8">
           {subtitle}
         </p>
         <Button 
           size="lg"
-          onClick={() => navigate("/sales")}
-          className="text-lg px-8"
+          onClick={ctaAction}
+          className="text-lg px-8 py-6 h-auto group"
         >
           {ctaText}
-          <ArrowRight className="ml-2 h-5 w-5" />
+          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
         </Button>
       </div>
     </section>

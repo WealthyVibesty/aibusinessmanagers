@@ -63,7 +63,7 @@ export default function Healthcare() {
               size="lg"
               variant="outline"
               onClick={() => navigate("/checkout")}
-              className="group text-lg px-8 py-6 h-auto hover:bg-gray-100"
+              className="group text-lg px-8 py-6 h-auto hover:bg-gray-100 text-black"
             >
               Get Started
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -74,7 +74,7 @@ export default function Healthcare() {
 
       <section className="py-16 px-4 bg-white/50 backdrop-blur-lg">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 animate-slideDown">
+          <h2 className="text-3xl font-bold text-center mb-12 animate-slideDown text-black">
             Key Benefits
           </h2>
           
@@ -85,7 +85,7 @@ export default function Healthcare() {
                 className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white/80 backdrop-blur-sm animate-scale"
               >
                 <div className="mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-semibold mb-4">{benefit.title}</h3>
+                <h3 className="text-xl font-semibold mb-4 text-black">{benefit.title}</h3>
                 <p className="text-gray-600">{benefit.description}</p>
               </Card>
             ))}

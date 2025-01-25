@@ -13,7 +13,7 @@ export default function HowItWorks({ steps }: HowItWorksProps) {
   return (
     <section className="py-16 px-6 bg-blue-50">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-black">How It Works</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
             <Card key={index} className="p-6 bg-white">
@@ -22,7 +22,7 @@ export default function HowItWorks({ steps }: HowItWorksProps) {
                   {index + 1}
                 </span>
               </div>
-              <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-black">{step.title}</h3>
               <p className="text-gray-600">{step.description}</p>
             </Card>
           ))}

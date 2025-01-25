@@ -27,13 +27,11 @@ export default function Restaurants() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
-      {/* SEO */}
       <SEO 
         title="AI Solutions for Restaurants | AI Business Managers"
         description="Streamline restaurant operations with AI-powered solutions. Automate ordering, improve customer service, and optimize operations."
       />
       
-      {/* Hero Section */}
       <section className="pt-24 pb-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8 relative">
@@ -65,7 +63,7 @@ export default function Restaurants() {
               size="lg"
               variant="outline"
               onClick={() => navigate("/checkout")}
-              className="group text-lg px-8 py-6 h-auto hover:bg-gray-100"
+              className="group text-lg px-8 py-6 h-auto hover:bg-gray-100 text-black"
             >
               Get Started
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -74,10 +72,9 @@ export default function Restaurants() {
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-16 px-4 bg-white/50 backdrop-blur-lg">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 animate-slideDown">
+          <h2 className="text-3xl font-bold text-center mb-12 animate-slideDown text-black">
             Revolutionary Benefits
           </h2>
           
@@ -88,7 +85,7 @@ export default function Restaurants() {
                 className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white/80 backdrop-blur-sm animate-scale"
               >
                 <div className="mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-semibold mb-4">{benefit.title}</h3>
+                <h3 className="text-xl font-semibold mb-4 text-black">{benefit.title}</h3>
                 <p className="text-gray-600">{benefit.description}</p>
               </Card>
             ))}
@@ -96,27 +93,26 @@ export default function Restaurants() {
         </div>
       </section>
 
-      {/* Features Grid */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-6 rounded-lg bg-gradient-to-br from-blue-50 to-purple-50 hover:shadow-lg transition-all duration-300 animate-slideRight">
-              <h3 className="text-xl font-semibold mb-4">Smart Order Management</h3>
+              <h3 className="text-xl font-semibold mb-4 text-black">Smart Order Management</h3>
               <p className="text-gray-600">Automate order processing and reduce errors with AI-powered system.</p>
             </div>
             
             <div className="p-6 rounded-lg bg-gradient-to-br from-green-50 to-blue-50 hover:shadow-lg transition-all duration-300 animate-slideLeft">
-              <h3 className="text-xl font-semibold mb-4">Customer Insights</h3>
+              <h3 className="text-xl font-semibold mb-4 text-black">Customer Insights</h3>
               <p className="text-gray-600">Gain valuable insights into customer preferences and behavior.</p>
             </div>
             
             <div className="p-6 rounded-lg bg-gradient-to-br from-purple-50 to-pink-50 hover:shadow-lg transition-all duration-300 animate-slideRight">
-              <h3 className="text-xl font-semibold mb-4">Inventory Optimization</h3>
+              <h3 className="text-xl font-semibold mb-4 text-black">Inventory Optimization</h3>
               <p className="text-gray-600">AI-driven inventory management to reduce waste and costs.</p>
             </div>
             
             <div className="p-6 rounded-lg bg-gradient-to-br from-orange-50 to-yellow-50 hover:shadow-lg transition-all duration-300 animate-slideLeft">
-              <h3 className="text-xl font-semibold mb-4">Staff Management</h3>
+              <h3 className="text-xl font-semibold mb-4 text-black">Staff Management</h3>
               <p className="text-gray-600">Optimize scheduling and staff allocation with AI predictions.</p>
             </div>
           </div>
