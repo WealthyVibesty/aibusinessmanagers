@@ -39,7 +39,6 @@ const FooterSection = () => {
     <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-          {/* Company Info */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-6">
               <img 
@@ -49,7 +48,7 @@ const FooterSection = () => {
               />
             </Link>
             <p className="text-gray-400 mb-6 max-w-md">
-              Transforming business operations with AI-powered solutions that deliver measurable results and exceptional customer experiences.
+              Transforming business operations with AI-powered voice agents and conversational AI technology that deliver measurable results and exceptional customer experiences.
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
@@ -66,12 +65,18 @@ const FooterSection = () => {
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-primary" />
-                <span>Fort Lauderdale, FL</span>
+                <a 
+                  href="https://www.google.com/maps/place/Ai+Marketing+Profile/data=!4m2!3m1!1s0x0:0x142f04dbfad3e4ae?sa=X&ved=1t:2428&ictx=111"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  Fort Lauderdale, FL
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Solutions */}
           <div>
             <h3 className="text-white font-semibold text-lg mb-6">Solutions</h3>
             <ul className="space-y-4">
@@ -88,7 +93,6 @@ const FooterSection = () => {
             </ul>
           </div>
 
-          {/* Industries */}
           <div>
             <h3 className="text-white font-semibold text-lg mb-6">Industries</h3>
             <ul className="space-y-4">
@@ -105,7 +109,6 @@ const FooterSection = () => {
             </ul>
           </div>
 
-          {/* Resources */}
           <div>
             <h3 className="text-white font-semibold text-lg mb-6">Resources</h3>
             <ul className="space-y-4">
@@ -123,7 +126,6 @@ const FooterSection = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-gray-400">
@@ -132,7 +134,7 @@ const FooterSection = () => {
             
             <div className="flex items-center space-x-6">
               <a
-                href="https://linkedin.com/company/aibusinessmanagers"
+                href="https://www.linkedin.com/company/aimarketingprofile/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-primary transition-colors duration-200"
