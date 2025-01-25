@@ -18,6 +18,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
   const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,9 +32,13 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
       return;
     }
 
+    setIsSubmitting(true);
+
     try {
       console.log("Saving demo request form submission...");
-      const { error } = await supabase
+      
+      // Save to Supabase
+      const { error: supabaseError } = await supabase
         .from('form_submissions')
         .insert([
           {
@@ -42,9 +47,24 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
           }
         ]);
 
-      if (error) throw error;
+      if (supabaseError) throw supabaseError;
 
-      console.log("Demo request form saved successfully");
+      // Subscribe to Mailchimp
+      console.log("Subscribing to Mailchimp...");
+      const { error: mailchimpError } = await supabase.functions.invoke('mailchimp-subscribe', {
+        body: {
+          email,
+          firstName: name.split(' ')[0],
+          lastName: name.split(' ').slice(1).join(' '),
+          phone,
+          company,
+          formType: 'demo_request'
+        }
+      });
+
+      if (mailchimpError) throw mailchimpError;
+
+      console.log("Form submission completed successfully");
       toast({
         title: "Demo Request Received!",
         description: "We'll contact you shortly to schedule your demo.",
@@ -53,12 +73,14 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
       onClose();
       resetForm();
     } catch (error) {
-      console.error("Error saving demo request:", error);
+      console.error("Error processing form submission:", error);
       toast({
         title: "Error",
         description: "There was a problem submitting your request. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -89,6 +111,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 onChange={(e) => setName(e.target.value)}
                 className="pl-10"
                 required
+                disabled={isSubmitting}
               />
             </div>
           </div>
@@ -103,6 +126,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 onChange={(e) => setEmail(e.target.value)}
                 className="pl-10"
                 required
+                disabled={isSubmitting}
               />
             </div>
           </div>
@@ -117,6 +141,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 onChange={(e) => setPhone(e.target.value)}
                 className="pl-10"
                 required
+                disabled={isSubmitting}
               />
             </div>
           </div>
@@ -129,6 +154,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
                 className="pl-10"
+                disabled={isSubmitting}
               />
             </div>
           </div>
@@ -141,12 +167,17 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className="pl-10 min-h-[100px]"
+                disabled={isSubmitting}
               />
             </div>
           </div>
 
-          <Button type="submit" className="w-full py-6 text-lg">
-            Schedule Demo
+          <Button 
+            type="submit" 
+            className="w-full py-6 text-lg"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Submitting...' : 'Schedule Demo'}
           </Button>
         </form>
       </DialogContent>
