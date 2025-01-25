@@ -15,6 +15,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useConversation } from "@11labs/react";
+import DemoRequestForm from "@/components/DemoRequestForm";
 
 const industries = [
   {
@@ -93,6 +94,7 @@ export default function Demo() {
   const [isLoading, setIsLoading] = useState(false);
   const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
   const [userInput, setUserInput] = useState("");
+  const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
   const isMobile = useIsMobile();
 
   const conversation = useConversation({
@@ -449,7 +451,7 @@ export default function Demo() {
           <Button
             size="lg"
             className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-            onClick={() => window.location.href = "/pricing"}
+            onClick={() => setIsDemoFormOpen(true)}
           >
             <span className="mr-2">✨</span>
             Get Full Version
@@ -459,6 +461,11 @@ export default function Demo() {
             Unlock all features and unlimited conversations
           </p>
         </motion.div>
+
+        <DemoRequestForm 
+          isOpen={isDemoFormOpen}
+          onClose={() => setIsDemoFormOpen(false)}
+        />
       </motion.div>
     </div>
   );
