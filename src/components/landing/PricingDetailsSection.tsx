@@ -9,29 +9,35 @@ export default function PricingDetailsSection() {
   const offerings = [
     {
       title: "AI Voice Agent Profile Creation",
-      value: 500,
+      value: 15000,
+      monthlyValue: 500,
       features: [
         "Custom Scripts",
         "Integration with Your Systems",
-        "Training and Testing"
+        "Training and Testing",
+        "First Year of Service Included ($6,000 value)"
       ]
     },
     {
       title: "Personalized AI Agent Workforce Implementation Roadmap",
-      value: 1000,
+      value: 20000,
+      monthlyValue: 1000,
       features: [
         "AI Voice Agent Profile Creation",
         "Workflow Automation Plan",
-        "Task Delegation Strategy"
+        "Task Delegation Strategy",
+        "First Year of Service Included ($12,000 value)"
       ]
     },
     {
       title: "1-Hour Strategy Consultation",
-      value: 250,
+      value: 25000,
+      monthlyValue: 250,
       features: [
         "Review your current workflows",
         "Pinpoint areas for AI implementation",
-        "Custom action plan"
+        "Custom action plan",
+        "First Year of Service Included ($3,000 value)"
       ]
     }
   ];
@@ -103,16 +109,21 @@ export default function PricingDetailsSection() {
         <div className="max-w-4xl mx-auto space-y-12 sm:space-y-16">
           <div className="text-center space-y-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold animate-fadeIn leading-tight text-primary">
-              What You'll Get for Just $247:
+              Transform Your Business with Our Enterprise Solutions
             </h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto animate-slideUp">
-              Transform your business with our comprehensive AI implementation package
+              One-time setup fee includes your first year of service
             </p>
           </div>
 
           <div className="grid gap-6 sm:gap-8">
             {offerings.map((offering, i) => (
-              <OfferingCard key={i} index={i} {...offering} />
+              <OfferingCard 
+                key={i} 
+                index={i} 
+                {...offering} 
+                showYearlyValue={true}
+              />
             ))}
 
             {/* Bonuses Section */}

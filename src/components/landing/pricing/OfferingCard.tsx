@@ -5,10 +5,19 @@ interface OfferingProps {
   index: number;
   title: string;
   value: number;
+  monthlyValue: number;
   features: string[];
+  showYearlyValue?: boolean;
 }
 
-export default function OfferingCard({ index, title, value, features }: OfferingProps) {
+export default function OfferingCard({ 
+  index, 
+  title, 
+  value, 
+  monthlyValue,
+  features,
+  showYearlyValue = false 
+}: OfferingProps) {
   return (
     <Card 
       className="group border-2 border-primary/20 bg-gradient-to-br from-white to-primary/5 animate-slideUp hover:shadow-lg transition-all duration-300 w-full overflow-hidden"
@@ -25,9 +34,14 @@ export default function OfferingCard({ index, title, value, features }: Offering
                 {title}
               </h3>
             </div>
-            <p className="text-primary font-semibold text-base sm:text-lg mb-4">
-              Value: ${value.toLocaleString()}
-            </p>
+            <div className="space-y-2">
+              <p className="text-3xl font-bold text-primary">
+                ${value.toLocaleString()} <span className="text-lg">one-time setup</span>
+              </p>
+              <p className="text-muted-foreground text-sm">
+                then ${monthlyValue}/month after first year
+              </p>
+            </div>
           </div>
           <ul className="space-y-3">
             {features.map((feature, j) => (
