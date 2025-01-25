@@ -186,6 +186,7 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
               <SelectItem value="hospitality">Hospitality</SelectItem>
               <SelectItem value="transportation">Transportation</SelectItem>
               <SelectItem value="finance">Finance</SelectItem>
+              <SelectItem value="real_estate">Real Estate</SelectItem>
             </SelectContent>
           </Select>
         </div>
