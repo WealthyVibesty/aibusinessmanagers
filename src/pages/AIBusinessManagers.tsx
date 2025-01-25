@@ -120,7 +120,7 @@ export default function AIBusinessManagers() {
           ))}
         </div>
 
-        <div className="relative w-full max-w-4xl mx-auto text-center z-10 pt-30"> {/* Added pt-30 here */}
+        <div className="relative w-full max-w-4xl mx-auto text-center z-10 mt-30">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
