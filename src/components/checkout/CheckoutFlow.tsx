@@ -20,7 +20,7 @@ export default function CheckoutFlow() {
 
   return (
     <div className="min-h-screen bg-white py-8 px-4">
-      <div className="max-w-6xl mx-auto space-y-8">
+      <div className="max-w-7xl mx-auto space-y-8">
         {/* Demo Button */}
         <div className="bg-white rounded-lg p-6 text-center mt-16 mb-12">
           <h2 className="text-xl font-semibold mb-3 text-black">Not Ready to Purchase?</h2>
@@ -111,73 +111,82 @@ export default function CheckoutFlow() {
           </p>
         </div>
 
-        {/* Main Offer */}
-        <div className="pt-4">
-          <CheckoutProduct 
-            title="Basic AI Implementation Package"
-            description="Get started with enterprise-grade AI automation"
-            features={[
-              "AI Assistant Configuration",
-              "Basic SMS Marketing",
-              "Call Handling",
-              "Standard Support",
-              "Initial Setup and Configuration"
-            ]}
-            price="$3,000"
-          />
+        {/* Packages Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Main Package */}
+          <div className="md:col-span-1">
+            <CheckoutProduct 
+              title="Basic AI Implementation Package"
+              description="Get started with enterprise-grade AI automation"
+              features={[
+                "AI Assistant Configuration",
+                "Basic SMS Marketing",
+                "Call Handling",
+                "Standard Support",
+                "Initial Setup and Configuration"
+              ]}
+              price="$3,000"
+            />
+          </div>
+
+          {/* Upsells */}
+          <div className="md:col-span-1">
+            <UpsellItem 
+              title="CRM Integration Package"
+              description="Seamlessly connect your existing systems"
+              features={[
+                "Custom CRM Integration",
+                "Data Migration Support",
+                "Workflow Setup",
+                "Training Documentation"
+              ]}
+              price="$1,500"
+              priceId="price_1QhWPpGineWW4dYENsMVwYMy"
+              isSelected={selectedUpsells.includes('price_1QhWPpGineWW4dYENsMVwYMy')}
+              onToggle={toggleUpsell}
+              animationDelay="100ms"
+              disabled={isLoading}
+            />
+          </div>
+
+          <div className="md:col-span-1">
+            <UpsellItem 
+              title="Multilingual Capability"
+              description="Expand your reach with additional language support"
+              features={[
+                "Additional Language Support",
+                "Custom Voice Options",
+                "Localized Response Templates",
+                "Cultural Adaptation Support"
+              ]}
+              price="$2,000"
+              priceId="price_1QhWQuGineWW4dYEcVkSr2sX"
+              isSelected={selectedUpsells.includes('price_1QhWQuGineWW4dYEcVkSr2sX')}
+              onToggle={toggleUpsell}
+              animationDelay="200ms"
+              disabled={isLoading}
+            />
+          </div>
+
+          <div className="md:col-span-1">
+            <UpsellItem 
+              title="Twilio SMS Integration"
+              description="Enable automated SMS follow-ups and notifications"
+              features={[
+                "SMS Integration Setup",
+                "Template Creation",
+                "Automation Rules Configuration",
+                "Usage Monitoring Setup"
+              ]}
+              price="$500"
+              priceId="price_1QhWRYGineWW4dYEEj3brt2W"
+              isSelected={selectedUpsells.includes('price_1QhWRYGineWW4dYEEj3brt2W')}
+              onToggle={toggleUpsell}
+              animationDelay="300ms"
+              disabled={isLoading}
+            />
+          </div>
         </div>
-
-        {/* Upsells */}
-        <UpsellItem 
-          title="CRM Integration Package"
-          description="Seamlessly connect your existing systems"
-          features={[
-            "Custom CRM Integration",
-            "Data Migration Support",
-            "Workflow Setup",
-            "Training Documentation"
-          ]}
-          price="$1,500"
-          priceId="price_1QhWPpGineWW4dYENsMVwYMy"
-          isSelected={selectedUpsells.includes('price_1QhWPpGineWW4dYENsMVwYMy')}
-          onToggle={toggleUpsell}
-          animationDelay="100ms"
-          disabled={isLoading}
-        />
-
-        <UpsellItem 
-          title="Multilingual Capability"
-          description="Expand your reach with additional language support"
-          features={[
-            "Additional Language Support",
-            "Custom Voice Options",
-            "Localized Response Templates",
-            "Cultural Adaptation Support"
-          ]}
-          price="$2,000"
-          priceId="price_1QhWQuGineWW4dYEcVkSr2sX"
-          isSelected={selectedUpsells.includes('price_1QhWQuGineWW4dYEcVkSr2sX')}
-          onToggle={toggleUpsell}
-          animationDelay="200ms"
-          disabled={isLoading}
-        />
-
-        <UpsellItem 
-          title="Twilio SMS Integration"
-          description="Enable automated SMS follow-ups and notifications"
-          features={[
-            "SMS Integration Setup",
-            "Template Creation",
-            "Automation Rules Configuration",
-            "Usage Monitoring Setup"
-          ]}
-          price="$500"
-          priceId="price_1QhWRYGineWW4dYEEj3brt2W"
-          isSelected={selectedUpsells.includes('price_1QhWRYGineWW4dYEEj3brt2W')}
-          onToggle={toggleUpsell}
-          animationDelay="300ms"
-          disabled={isLoading}
-        />
 
         {/* Checkout Button */}
         <div className="flex justify-center pt-8">
@@ -185,7 +194,7 @@ export default function CheckoutFlow() {
             size="lg"
             onClick={handleCheckout}
             disabled={isLoading}
-            className="text-lg group relative min-w-[200px] h-12"
+            className="text-lg group relative min-w-[200px] h-12 bg-primary hover:bg-primary/90 text-white"
           >
             {isLoading ? (
               <div className="flex items-center justify-center">
