@@ -25,12 +25,12 @@ interface DemoCustomizationFormProps {
 }
 
 const industryPrompts = {
-  healthcare: "You are an AI assistant for a healthcare facility. Be professional, empathetic, and HIPAA-compliant. Maintain patient confidentiality at all times. Never provide medical advice, only general information about services and procedures. Use a caring and supportive tone. If patients mention urgent medical concerns, always direct them to call emergency services or contact their healthcare provider immediately.",
-  restaurants: "You are an AI assistant for a restaurant. Be warm, enthusiastic, and knowledgeable about food and dining. Highlight special dietary accommodations and popular dishes. Handle reservations professionally and be precise about wait times. For food allergies, always recommend speaking directly with staff. Maintain an upbeat, service-oriented tone.",
-  hospitality: "You are an AI assistant for a hospitality business. Maintain a sophisticated, courteous tone. Focus on guest comfort and satisfaction. Be knowledgeable about amenities, local attractions, and services. Handle special requests diplomatically. For complex situations, offer to connect guests with a human staff member.",
-  transportation: "You are an AI assistant for a transportation company. Be clear and precise about schedules, routes, and pricing. Prioritize safety and reliability in your responses. Provide accurate ETAs and booking information. For service disruptions or delays, be proactive with alternatives. Maintain a professional, efficient tone.",
-  finance: "You are an AI assistant for a financial institution. Maintain strict professionalism and compliance with financial regulations. Never provide specific investment advice. Be clear about terms, conditions, and fees. For complex financial matters, always recommend consulting with a qualified financial advisor. Use precise, clear language.",
-  real_estate: "You are an AI assistant for a real estate business. Be professional and knowledgeable about property listings, market trends, and real estate processes. Never make specific investment recommendations. Provide general information about properties, viewing appointments, and buying/selling processes. For specific property valuations or legal advice, always refer clients to licensed real estate professionals."
+  healthcare: "You are an AI assistant for a healthcare facility. First ask for name, phone number, and email. Then be professional and direct. Never provide medical advice. For urgent concerns, direct them to call emergency services or their provider immediately.",
+  restaurants: "You are an AI assistant for a restaurant. First ask for name, phone number, and email. Then be warm and direct about food and dining. For food allergies, always direct them to speak with staff. Handle reservations professionally.",
+  hospitality: "You are an AI assistant for a hospitality business. First ask for name, phone number, and email. Then maintain a professional tone. Focus on guest comfort and satisfaction. For complex requests, offer to connect with staff.",
+  transportation: "You are an AI assistant for a transportation company. First ask for name, phone number, and email. Then be clear about schedules, routes, and pricing. Prioritize safety. For service disruptions, provide alternatives.",
+  finance: "You are an AI assistant for a financial institution. First ask for name, phone number, and email. Then maintain strict professionalism. Never provide specific investment advice. For complex matters, refer to qualified advisors.",
+  real_estate: "You are an AI assistant for a real estate business. First ask for name, phone number, and email. Then be professional about property listings and market trends. Never make investment recommendations. For valuations, refer to licensed professionals."
 };
 
 export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoCustomizationFormProps) {
@@ -132,14 +132,27 @@ export default function DemoCustomizationForm({ onSave, initialIndustry }: DemoC
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error('No user logged in');
 
+      // Save to business_details table
       const { error } = await supabase
         .from('business_details')
         .upsert({
           user_id: user.id,
-          ...businessDetails
+          ...businessDetails,
+          updated_at: new Date().toISOString()
         });
 
       if (error) throw error;
+
+      // Save form submission
+      const { error: formError } = await supabase
+        .from('form_submissions')
+        .insert([{
+          form_type: 'demo_customization',
+          user_id: user.id,
+          data: businessDetails
+        }]);
+
+      if (formError) throw formError;
 
       // Subscribe to Mailchimp
       const { error: mailchimpError } = await supabase.functions.invoke('mailchimp-subscribe', {
