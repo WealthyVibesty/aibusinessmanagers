@@ -20,10 +20,10 @@ export default function CheckoutFlow() {
 
   return (
     <div className="min-h-screen bg-white py-8 px-4">
-      <div className="max-w-4xl mx-auto space-y-8">
+      <div className="max-w-6xl mx-auto space-y-8">
         {/* Demo Button */}
         <div className="bg-white rounded-lg p-6 text-center mt-16 mb-12">
-          <h2 className="text-xl font-semibold mb-3">Not Ready to Purchase?</h2>
+          <h2 className="text-xl font-semibold mb-3 text-black">Not Ready to Purchase?</h2>
           <Button 
             size="lg"
             onClick={() => setIsDemoFormOpen(true)}
@@ -35,12 +35,12 @@ export default function CheckoutFlow() {
         </div>
 
         {/* Alternative Options Grid */}
-        <div className="grid md:grid-cols-3 gap-6 my-8">
+        <div className="grid md:grid-cols-3 gap-8 my-12">
           {/* Strategy Call Box */}
           <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
             <div className="flex flex-col h-full">
               <PhoneCall className="h-8 w-8 text-primary mb-4" />
-              <h3 className="text-lg font-semibold mb-3">Free 30-Minute Strategy Call</h3>
+              <h3 className="text-lg font-semibold mb-3 text-black">Free 30-Minute Strategy Call</h3>
               <p className="text-gray-600 mb-6 flex-grow">
                 Let's dive into your current challenges. We'll show you exactly how conversational AI can save you money, reduce wait times, and improve patient satisfaction.
               </p>
@@ -58,7 +58,7 @@ export default function CheckoutFlow() {
           <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
             <div className="flex flex-col h-full">
               <Calculator className="h-8 w-8 text-primary mb-4" />
-              <h3 className="text-lg font-semibold mb-3">ROI Calculator Demo</h3>
+              <h3 className="text-lg font-semibold mb-3 text-black">ROI Calculator Demo</h3>
               <p className="text-gray-600 mb-6 flex-grow">
                 See the numbers for yourself. Enter your current call volume and staffing costs, and our tool will show you how much you can save with AI.
               </p>
@@ -76,7 +76,7 @@ export default function CheckoutFlow() {
           <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
             <div className="flex flex-col h-full">
               <PlayCircle className="h-8 w-8 text-primary mb-4" />
-              <h3 className="text-lg font-semibold mb-3">Pilot Program</h3>
+              <h3 className="text-lg font-semibold mb-3 text-black">Pilot Program</h3>
               <p className="text-gray-600 mb-6 flex-grow">
                 Not ready to go all-in? Start small. We'll implement a limited AI solution for one key process—like appointment scheduling or billing inquiries—so you can see the results before scaling.
               </p>
@@ -100,7 +100,7 @@ export default function CheckoutFlow() {
             disabled={isLoading}
           >
             <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-            Back to Home
+            <span className="text-black">Back to Home</span>
           </Button>
         </div>
 
