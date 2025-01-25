@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/card";
 import { ArrowRight, Brain, Database, Lock, MessageSquare, Rocket, Server, Signal, Wifi } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
@@ -38,17 +38,53 @@ const testimonials = [
   }
 ];
 
-const industries = [
-  { icon: "🏥", name: "Healthcare", description: "Streamline patient management and scheduling" },
-  { icon: "🍽️", name: "Restaurants", description: "Automate reservations, orders, and inventory management" },
-  { icon: "🏨", name: "Hospitality", description: "Enhance guest experiences with personalized service" },
-  { icon: "🚚", name: "Transportation", description: "Optimize fleet management and logistics" },
-  { icon: "💼", name: "Finance", description: "Automate accounting, reporting, and customer service" },
-  { icon: "🏠", name: "Property Management", description: "Simplify tenant communications and maintenance requests" }
-];
-
 export default function AIBusinessManagers() {
   const navigate = useNavigate();
+
+  const industries = [
+    { 
+      icon: "🏥",
+      name: "Healthcare",
+      description: "Streamline patient management and scheduling",
+      gradient: "from-blue-400 to-cyan-300",
+      delay: 0.1
+    },
+    {
+      icon: "🍽️",
+      name: "Restaurants",
+      description: "Automate reservations, orders, and inventory management",
+      gradient: "from-orange-400 to-red-300",
+      delay: 0.2
+    },
+    {
+      icon: "🏨",
+      name: "Hospitality",
+      description: "Enhance guest experiences with personalized service",
+      gradient: "from-purple-400 to-pink-300",
+      delay: 0.3
+    },
+    {
+      icon: "🚚",
+      name: "Transportation",
+      description: "Optimize fleet management and logistics",
+      gradient: "from-green-400 to-emerald-300",
+      delay: 0.4
+    },
+    {
+      icon: "💼",
+      name: "Finance",
+      description: "Automate accounting, reporting, and customer service",
+      gradient: "from-blue-500 to-indigo-400",
+      delay: 0.5
+    },
+    {
+      icon: "🏠",
+      name: "Property Management",
+      description: "Simplify tenant communications and maintenance requests",
+      gradient: "from-teal-400 to-cyan-300",
+      delay: 0.6
+    }
+  ];
 
   return (
     <>
@@ -61,87 +97,19 @@ export default function AIBusinessManagers() {
       <section className="relative min-h-screen flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-white">
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#00000010_1px,transparent_1px)] bg-[size:40px_40px]" />
-          <motion.div 
-            className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-            animate={{ 
-              scale: [1, 1.2, 1],
-              x: [0, 50, 0],
-              y: [0, 30, 0],
-            }}
-            transition={{ 
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div 
-            className="absolute bottom-20 right-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-            animate={{ 
-              scale: [1.2, 1, 1.2],
-              x: [0, -50, 0],
-              y: [0, -30, 0],
-            }}
-            transition={{ 
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        </div>
-
-        <div className="relative w-full max-w-4xl mx-auto text-center z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 animate-gradient leading-[1.1] mb-8">
-              We Create Customized Done-for-You AI Business Managers that Automate Your Customer Service Operations
-            </h1>
-
-            <p className="text-xl sm:text-2xl text-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto px-4 animate-fadeIn">
-              Experience the future of business automation with AI managers that seamlessly integrate into your operations, delivering unprecedented efficiency and growth.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fadeIn"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <Button 
-              size="lg"
-              onClick={() => navigate("/demo")}
-              className="text-lg px-8 py-6 h-auto rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 group text-white"
-            >
-              Watch Demo
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => navigate("/pricing")}
-              className="text-lg px-8 py-6 h-auto rounded-full hover:bg-gray-100 transition-all duration-300 border-2 text-gray-700"
-            >
-              View Pricing
-            </Button>
-          </motion.div>
-        </div>
-
-        {/* Floating elements animation */}
-        <div className="absolute inset-0 pointer-events-none">
+          {/* Animated background elements */}
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 bg-blue-400 rounded-full"
+              className="absolute w-2 h-2 bg-blue-400/30 rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
               }}
               animate={{
                 y: [0, -10, 0],
-                opacity: [0.5, 1, 0.5],
+                opacity: [0.3, 0.8, 0.3],
+                scale: [1, 1.2, 1],
               }}
               transition={{
                 duration: 2 + Math.random() * 2,
@@ -151,16 +119,28 @@ export default function AIBusinessManagers() {
             />
           ))}
         </div>
-      </section>
 
-      {/* Features Grid */}
-      <section className="py-20 bg-white">
-        <div className="container px-4 mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="relative w-full max-w-4xl mx-auto text-center z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 animate-gradient leading-[1.2] mb-8">
+              We Create Customized Done-for-You AI Business Managers that Automate Your Customer Service Operations
+            </h1>
+
+            <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto px-4 animate-fadeIn">
+              Experience the future of business automation with AI managers that seamlessly integrate into your operations.
+            </p>
+          </motion.div>
+
+          {/* Features Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
             {[
               { icon: <Brain className="w-8 h-8" />, title: "Fully Customized AI" },
               { icon: <Signal className="w-8 h-8" />, title: "Continuous Learning" },
-              { icon: <Database className="w-8 h-8" />, title: "Trusted Partnerships" },
+              { icon: <Lock className="w-8 h-8" />, title: "Trusted Partnerships" },
               { icon: <Server className="w-8 h-8" />, title: "Seamless Integration" }
             ].map((feature, index) => (
               <motion.div
@@ -168,19 +148,28 @@ export default function AIBusinessManagers() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+                className="p-6 rounded-xl bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 group"
+                whileHover={{ scale: 1.05 }}
               >
-                <div className="mb-4 text-primary">{feature.icon}</div>
+                <motion.div 
+                  className="mb-4 text-primary"
+                  animate={{
+                    rotate: [0, 360],
+                  }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                >
+                  {feature.icon}
+                </motion.div>
                 <h3 className="text-xl font-semibold mb-2 text-gray-800">{feature.title}</h3>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Industries Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-blue-50">
-        <div className="container px-4 mx-auto text-center">
+          {/* Industries Grid */}
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-800">Industries We Serve</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {industries.map((industry, index) => (
@@ -188,13 +177,36 @@ export default function AIBusinessManagers() {
                 key={index}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
-                onClick={() => navigate(`/industries/${industry.name.toLowerCase()}`)}
+                transition={{ duration: 0.5, delay: industry.delay }}
+                className="p-6 rounded-xl bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ scale: 1.05 }}
               >
-                <div className="text-4xl mb-4">{industry.icon}</div>
+                <motion.div 
+                  className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${industry.gradient} flex items-center justify-center text-2xl`}
+                  animate={{
+                    y: [0, -10, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  {industry.icon}
+                </motion.div>
                 <h3 className="text-xl font-semibold mb-2 text-gray-800">{industry.name}</h3>
                 <p className="text-gray-600">{industry.description}</p>
+                <motion.div
+                  className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  animate={{
+                    scale: [1, 1.02, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
               </motion.div>
             ))}
           </div>
