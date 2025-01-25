@@ -481,8 +481,9 @@ export default function Demo() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Interactive AI Business Assistant Demo
+            Interactive AI Business Managers Demo
           </motion.h1>
+          
           <motion.p 
             className="text-lg sm:text-xl text-gray-600 px-4"
             initial={{ opacity: 0 }}
