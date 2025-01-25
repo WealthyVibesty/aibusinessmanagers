@@ -28,7 +28,7 @@ export default function VoiceAgents() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-6">
             AI-Powered Voice Agents: Instant Support, 24/7
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
@@ -48,7 +48,7 @@ export default function VoiceAgents() {
       {/* Features Section */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Key Features</h2>
+          <h2 className="text-3xl font-bold text-black text-center mb-12">Key Features</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="p-6 rounded-lg bg-blue-50">
@@ -64,7 +64,7 @@ export default function VoiceAgents() {
       {/* Benefits Section */}
       <section className="py-16 px-6 bg-blue-50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Benefits</h2>
+          <h2 className="text-3xl font-bold text-black text-center mb-12">Benefits</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               "Reduces patient wait times by up to 80%",
@@ -82,7 +82,7 @@ export default function VoiceAgents() {
       {/* CTA Section */}
       <section className="py-16 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">
+          <h2 className="text-3xl font-bold text-black mb-6">
             Transform Your Call Center Today
           </h2>
           <p className="text-xl text-gray-600 mb-8">

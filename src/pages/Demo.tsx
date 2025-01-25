@@ -505,7 +505,9 @@ export default function Demo() {
               className="flex items-center gap-2"
             >
               <Building className="h-4 w-4" />
-              {showCustomization ? 'Hide Customization' : 'Customize AI Assistant'}
+              <span className="text-black">
+                {showCustomization ? 'Hide Customization' : 'Customize AI Assistant'}
+              </span>
             </Button>
           </motion.div>
         </div>
