@@ -12,26 +12,37 @@ interface MailchimpData {
   phone?: string;
   company?: string;
   formType?: string;
+  businessName?: string;
+  industry?: string;
+  businessSize?: string;
 }
 
 serve(async (req) => {
-  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { email, firstName, lastName, phone, company, formType } = await req.json() as MailchimpData;
+    const {
+      email,
+      firstName,
+      lastName,
+      phone,
+      company,
+      formType,
+      businessName,
+      industry,
+      businessSize
+    } = await req.json() as MailchimpData;
     
     const API_KEY = Deno.env.get('MAILCHIMP_API_KEY');
     const AUDIENCE_ID = Deno.env.get('MAILCHIMP_AUDIENCE_ID');
-    const DC = API_KEY?.split('-')[1]; // Data center from API key
+    const DC = API_KEY?.split('-')[1];
 
     if (!API_KEY || !AUDIENCE_ID || !DC) {
       throw new Error('Missing Mailchimp configuration');
     }
 
-    // Prepare subscriber data
     const subscriberData = {
       email_address: email,
       status: 'subscribed',
@@ -39,14 +50,15 @@ serve(async (req) => {
         FNAME: firstName || '',
         LNAME: lastName || '',
         PHONE: phone || '',
-        COMPANY: company || '',
-        FORMTYPE: formType || 'demo'
+        COMPANY: businessName || company || '',
+        FORMTYPE: formType || 'demo',
+        INDUSTRY: industry || '',
+        BIZSIZE: businessSize || ''
       }
     };
 
     console.log('Subscribing to Mailchimp:', email);
 
-    // Make request to Mailchimp API
     const response = await fetch(
       `https://${DC}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`,
       {

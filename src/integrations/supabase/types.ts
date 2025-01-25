@@ -47,6 +47,56 @@ export type Database = {
           },
         ]
       }
+      business_details: {
+        Row: {
+          business_name: string
+          business_size: string | null
+          created_at: string
+          custom_prompt: string | null
+          file_urls: string[] | null
+          id: string
+          industry: string
+          key_services: string[] | null
+          target_audience: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          business_name: string
+          business_size?: string | null
+          created_at?: string
+          custom_prompt?: string | null
+          file_urls?: string[] | null
+          id?: string
+          industry: string
+          key_services?: string[] | null
+          target_audience?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          business_name?: string
+          business_size?: string | null
+          created_at?: string
+          custom_prompt?: string | null
+          file_urls?: string[] | null
+          id?: string
+          industry?: string
+          key_services?: string[] | null
+          target_audience?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "business_details_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       courses: {
         Row: {
           created_at: string
