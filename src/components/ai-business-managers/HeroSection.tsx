@@ -32,10 +32,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-950 via-indigo-900 to-black">
-        <div className="stars" />
-        <div className="twinkling" />
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-950 via-indigo-900 to-black" />
 
       <div className="relative w-full max-w-6xl mx-auto text-center z-10 mt-[120px]">
         <motion.div
@@ -56,7 +53,7 @@ export default function HeroSection() {
               <div className="rocket-flames" />
               <Button
                 size="lg"
-                onClick={() => navigate("/demo")}
+                onClick={() => navigate("/index")}
                 className="text-lg px-16 py-8 bg-white hover:bg-primary text-primary hover:text-white rounded-full shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:shadow-[0_0_50px_rgba(59,130,246,0.8)] transition-all duration-500 transform hover:-translate-y-1 relative z-10 group whitespace-nowrap"
               >
                 <span className="text-xl font-bold">Get Started with AI</span>
@@ -105,10 +102,6 @@ export default function HeroSection() {
         {/* CTA Section */}
         <section className="py-32 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 relative overflow-hidden rounded-3xl">
           <div className="absolute inset-0 bg-black/10" />
-          <div className="absolute inset-0">
-            <div className="stars" />
-            <div className="twinkling" />
-          </div>
           
           <div className="container relative px-4 mx-auto text-center text-white">
             <motion.div
@@ -131,7 +124,7 @@ export default function HeroSection() {
               >
                 <Button 
                   size="lg"
-                  onClick={() => navigate("/demo")}
+                  onClick={() => navigate("/index")}
                   className="text-lg px-12 py-6 h-auto rounded-full bg-white text-primary hover:bg-white/90 shadow-xl hover:shadow-2xl transition-all duration-300 group w-full md:w-auto"
                 >
                   Get Started Now
