@@ -84,14 +84,15 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
-              {/* Add the new AIBusinessManagers route */}
-              <Route path="/ai-business-managers" element={
+              {/* Make AIBusinessManagers the home page */}
+              <Route path="/" element={
                 <div className="animate-fadeIn">
                   <AIBusinessManagers />
                 </div>
               } />
               
-              <Route path="/" element={
+              {/* Move the old home page to /home */}
+              <Route path="/home" element={
                 <div className="animate-fadeIn">
                   <Home />
                 </div>
