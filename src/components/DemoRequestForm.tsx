@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Calendar, User, Mail, Phone, Building, MessageSquare } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/components/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 interface DemoRequestFormProps {
   isOpen: boolean;
@@ -22,6 +23,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,6 +33,18 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
         title: "Please fill in all required fields",
         variant: "destructive",
       });
+      return;
+    }
+
+    if (!user) {
+      console.log("User not authenticated, redirecting to login");
+      toast({
+        title: "Please log in",
+        description: "You need to be logged in to submit a demo request.",
+        variant: "destructive",
+      });
+      onClose();
+      navigate("/login");
       return;
     }
 
@@ -45,7 +59,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
         .insert([
           {
             form_type: 'demo_request',
-            user_id: user?.id,
+            user_id: user.id,
             data: { name, email, phone, company, message }
           }
         ]);
