@@ -21,6 +21,22 @@ import AboutUs from "@/pages/AboutUs";
 import WhyChooseUs from "@/pages/WhyChooseUs";
 import Home from "@/pages/Home";
 import Demo from "@/pages/Demo";
+// Import solutions
+import AIChatbots from "@/pages/solutions/AIChatbots";
+import AIWebsiteDevelopment from "@/pages/solutions/AIWebsiteDevelopment";
+import InstagramAutomation from "@/pages/solutions/InstagramAutomation";
+import SMSMarketing from "@/pages/solutions/SMSMarketing";
+import HIPAACompliant from "@/pages/solutions/HIPAACompliant";
+import CRMIntegration from "@/pages/solutions/CRMIntegration";
+import CallRouting from "@/pages/solutions/CallRouting";
+import MultilingualSupport from "@/pages/solutions/MultilingualSupport";
+import PilotPrograms from "@/pages/solutions/PilotPrograms";
+import ProactiveEngagement from "@/pages/solutions/ProactiveEngagement";
+import TaskAutomation from "@/pages/solutions/TaskAutomation";
+import ActionableInsights from "@/pages/solutions/ActionableInsights";
+import CostEffectiveCallCenters from "@/pages/solutions/CostEffectiveCallCenters";
+import Pricing from "@/pages/Pricing";
+import PropertyManagement from "@/pages/PropertyManagement";
 // Import industry pages
 import Healthcare from "@/pages/industries/Healthcare";
 import Restaurants from "@/pages/industries/Restaurants";
