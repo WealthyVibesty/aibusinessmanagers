@@ -85,16 +85,28 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="relative inline-block"
+          className="relative inline-block mb-32"
         >
-          <div className="rocket-flames" />
-          <Button
-            size="lg"
-            onClick={() => navigate("/demo")}
-            className="text-lg px-16 py-8 bg-white hover:bg-primary text-primary hover:text-white rounded-full shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:shadow-[0_0_50px_rgba(59,130,246,0.8)] transition-all duration-500 transform hover:-translate-y-1 relative z-10 group"
-          >
-            <span className="text-xl font-bold">Get Started with AI</span>
-          </Button>
+          <div className="flex gap-4 items-center">
+            <div className="relative">
+              <div className="rocket-flames" />
+              <Button
+                size="lg"
+                onClick={() => navigate("/demo")}
+                className="text-lg px-16 py-8 bg-white hover:bg-primary text-primary hover:text-white rounded-full shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:shadow-[0_0_50px_rgba(59,130,246,0.8)] transition-all duration-500 transform hover:-translate-y-1 relative z-10 group"
+              >
+                <span className="text-xl font-bold">Get Started with AI</span>
+              </Button>
+            </div>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => navigate("/pricing")}
+              className="text-lg px-16 py-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary rounded-full transition-all duration-500 transform hover:-translate-y-1"
+            >
+              <span className="text-xl font-bold">View Pricing</span>
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>
