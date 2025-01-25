@@ -367,8 +367,22 @@ const BarChart = React.forwardRef<
     fill: colors?.[i] || `hsl(${i * 40}, 70%, 50%)`,
   }))
 
+  // Create chart config for categories
+  const chartConfig: ChartConfig = categories.reduce((acc, category, i) => {
+    acc[category] = {
+      label: category,
+      color: colors?.[i] || `hsl(${i * 40}, 70%, 50%)`
+    }
+    return acc
+  }, {} as ChartConfig)
+
   return (
-    <ChartContainer ref={ref} className={cn("h-80", className)} {...props}>
+    <ChartContainer 
+      ref={ref} 
+      className={cn("h-80", className)} 
+      config={chartConfig} 
+      {...props}
+    >
       <RechartsPrimitive.BarChart data={data}>
         <RechartsPrimitive.XAxis
           dataKey={index}
