@@ -87,7 +87,7 @@ export default function HeroSection() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="relative inline-block mb-32"
         >
-          <div className="flex gap-4 items-center">
+          <div className="flex flex-col gap-4 items-center">
             <div className="relative">
               <div className="rocket-flames" />
               <Button
