@@ -57,25 +57,64 @@ export default function AIBusinessManagers() {
         description="Transform your business operations with our done-for-you AI voice agents. Automate tasks, provide instant customer support, and reduce costs by up to 75%."
       />
       
-      {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-b from-blue-50 to-white">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="container px-4 mx-auto text-center"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-            AI Business Managers: Revolutionizing Business Operations with AI Voice Agents
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto">
-            We deliver done-for-you AI voice agents designed to handle every aspect of your business operations.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      {/* Hero Section with enhanced visuals */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-white">
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,#00000010_1px,transparent_1px)] bg-[size:40px_40px]" />
+          <motion.div 
+            className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+            animate={{ 
+              scale: [1, 1.2, 1],
+              x: [0, 50, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{ 
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-20 right-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+            animate={{ 
+              scale: [1.2, 1, 1.2],
+              x: [0, -50, 0],
+              y: [0, -30, 0],
+            }}
+            transition={{ 
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </div>
+
+        <div className="relative w-full max-w-4xl mx-auto text-center z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 animate-gradient leading-[1.1] mb-8">
+              See How AI Business Managers Will Automate Your Business Operations Today
+            </h1>
+
+            <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto px-4 animate-fadeIn">
+              Experience the future of business automation with AI managers that seamlessly integrate into your operations, delivering unprecedented efficiency and growth.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fadeIn"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <Button 
               size="lg"
               onClick={() => navigate("/demo")}
-              className="text-lg px-8 py-6 h-auto rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all group"
+              className="text-lg px-8 py-6 h-auto rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
               Watch Demo
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -84,12 +123,35 @@ export default function AIBusinessManagers() {
               variant="outline"
               size="lg"
               onClick={() => navigate("/pricing")}
-              className="text-lg px-8 py-6 h-auto rounded-full hover:bg-gray-100 transition-all"
+              className="text-lg px-8 py-6 h-auto rounded-full hover:bg-gray-100 transition-all duration-300 border-2"
             >
               View Pricing
             </Button>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Floating elements animation */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-blue-400 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -10, 0],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 2 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
       </section>
 
       {/* Features Grid */}
