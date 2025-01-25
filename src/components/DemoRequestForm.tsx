@@ -96,7 +96,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[500px] p-6">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center">Schedule Your Free Demo</DialogTitle>
+          <DialogTitle className="text-2xl font-bold text-center">Schedule Your Free Personalized Custom Demo for your business</DialogTitle>
           <DialogDescription className="text-center text-base">
             See how our AI solution can transform your business operations
           </DialogDescription>
