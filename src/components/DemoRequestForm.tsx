@@ -35,14 +35,16 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
     setIsSubmitting(true);
 
     try {
-      console.log("Saving demo request form submission...");
+      console.log("Getting current user...");
+      const { data: { user } } = await supabase.auth.getUser();
       
-      // Save to Supabase
+      console.log("Saving demo request form submission...");
       const { error: supabaseError } = await supabase
         .from('form_submissions')
         .insert([
           {
             form_type: 'demo_request',
+            user_id: user?.id, // Set user_id if user is authenticated
             data: { name, email, phone, company, message }
           }
         ]);
