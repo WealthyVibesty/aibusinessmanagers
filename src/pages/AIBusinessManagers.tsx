@@ -141,8 +141,6 @@ export default function AIBusinessManagers() {
       </section>
 
       {/* Partners Carousel */}
-
-      {/* Partners Carousel */}
       <section className="py-20 bg-white overflow-hidden">
         <div className="container px-4 mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-12">Our Technology Partners</h2>
