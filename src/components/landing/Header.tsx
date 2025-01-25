@@ -93,15 +93,6 @@ export default function Header() {
       ]
     },
     {
-      label: "Resources",
-      submenu: [
-        { label: "Case Studies", path: "/case-studies" },
-        { label: "Whitepapers", path: "/whitepapers" },
-        { label: "Blog", path: "/blog" },
-        { label: "FAQs", path: "/faqs" }
-      ]
-    },
-    {
       label: "Company",
       submenu: [
         { label: "About Us", path: "/about" },
