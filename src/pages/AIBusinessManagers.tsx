@@ -245,26 +245,71 @@ export default function AIBusinessManagers() {
       </section>
 
       {/* Partners Carousel */}
-      <section className="py-20 bg-white overflow-hidden">
-        <div className="container px-4 mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-800">Our Technology Partners</h2>
+      <section className="py-20 bg-gradient-to-b from-white to-blue-50/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#00000005_1px,transparent_1px)] bg-[size:40px_40px]" />
+        
+        <div className="container px-4 mx-auto text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+              Our Technology Partners
+            </h2>
+            <p className="text-lg text-gray-600 mb-12">
+              Powered by industry leaders in AI and technology
+            </p>
+          </motion.div>
+
           <div className="relative">
-            <div className="flex space-x-12 animate-scroll overflow-hidden whitespace-nowrap py-4">
-              {[...partners, ...partners].map((partner, index) => (
-                <div 
-                  key={index} 
-                  className="flex-shrink-0 transition-all duration-300 hover:scale-110"
+            {/* First row of sliding logos */}
+            <div className="flex space-x-12 animate-scroll overflow-hidden py-8 opacity-75 hover:opacity-100 transition-opacity duration-300">
+              {partners.map((partner, index) => (
+                <motion.div
+                  key={index}
+                  className="flex-shrink-0 group"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <img 
-                    src={partner.logo} 
-                    alt={partner.name} 
-                    className="h-12 w-auto object-contain grayscale hover:grayscale-0"
-                  />
-                </div>
+                  <div className="relative w-32 h-12 bg-white/80 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 p-2 backdrop-blur-sm">
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="h-full w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Second row sliding in opposite direction */}
+            <div className="flex space-x-12 animate-scroll-reverse overflow-hidden py-8 opacity-75 hover:opacity-100 transition-opacity duration-300" style={{ direction: 'rtl' }}>
+              {[...partners].reverse().map((partner, index) => (
+                <motion.div
+                  key={index}
+                  className="flex-shrink-0 group"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="relative w-32 h-12 bg-white/80 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 p-2 backdrop-blur-sm">
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="h-full w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                    />
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </div>
+
+        {/* Decorative elements */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-50/10 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200/20 to-transparent" />
       </section>
 
       {/* Testimonials */}
