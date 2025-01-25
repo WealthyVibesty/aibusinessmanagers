@@ -36,13 +36,11 @@ import Pricing from "@/pages/Pricing";
 import PropertyManagement from "@/pages/PropertyManagement";
 import Home from "@/pages/Home";
 import Demo from "@/pages/Demo";
-// Import industry pages
 import Healthcare from "@/pages/industries/Healthcare";
 import Restaurants from "@/pages/industries/Restaurants";
 import Hospitality from "@/pages/industries/Hospitality";
 import Transportation from "@/pages/industries/Transportation";
 import Finance from "@/pages/industries/Finance";
-
 import AIBusinessManagers from "@/pages/AIBusinessManagers";
 import ThankYou from "@/pages/ThankYou";
 
@@ -85,7 +83,6 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
-              {/* Add the new ThankYou route */}
               <Route path="/thank-you" element={
                 <div className="animate-fadeIn">
                   <ThankYou />
@@ -98,14 +95,18 @@ function App() {
                 </div>
               } />
               
-              {/* Add the new Demo route */}
+              <Route path="/ai-business-managers" element={
+                <div className="animate-fadeIn">
+                  <AIBusinessManagers />
+                </div>
+              } />
+              
               <Route path="/demo" element={
                 <div className="animate-fadeIn">
                   <Demo />
                 </div>
               } />
 
-              {/* Add Property Management Route */}
               <Route path="/property-management" element={
                 <div className="animate-fadeIn">
                   <PropertyManagement />
