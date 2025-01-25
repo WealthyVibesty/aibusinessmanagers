@@ -69,13 +69,18 @@ serve(async (req) => {
     ];
     console.log('Line items prepared:', lineItems);
 
+    // Get the base URL from the request URL
+    const url = new URL(req.url);
+    const baseUrl = `${url.protocol}//${url.hostname}${url.port ? `:${url.port}` : ''}`;
+    console.log('Base URL for redirect:', baseUrl);
+
     // Create checkout session
     console.log('Creating checkout session...');
     const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
       mode: 'payment',
-      success_url: `${req.headers.get('origin')}/dashboard`,
-      cancel_url: `${req.headers.get('origin')}/checkout`,
+      success_url: `${baseUrl}/dashboard`,
+      cancel_url: `${baseUrl}/checkout`,
       allow_promotion_codes: true,
       billing_address_collection: 'required',
       metadata: affiliateId ? { affiliateId } : undefined,
