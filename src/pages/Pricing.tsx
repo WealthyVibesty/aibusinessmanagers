@@ -83,7 +83,7 @@ export default function Pricing() {
     <div className="min-h-screen bg-gradient-to-b from-blue-50/50 to-white">
       {/* Header Section */}
       <div className="pt-20 pb-16 text-center px-4">
-        <h1 className="text-4xl font-bold mb-4 animate-fadeIn">
+        <h1 className="text-4xl font-bold mb-4 animate-fadeIn text-black">
           Find the Perfect AI Solution for Your Property Management Business
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-slideUp">
@@ -157,7 +157,7 @@ export default function Pricing() {
       {/* FAQ Section */}
       <div className="bg-gray-50 py-20">
         <div className="container px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-black">Frequently Asked Questions</h2>
           <div className="max-w-3xl mx-auto space-y-8">
             {[
               {
@@ -174,7 +174,7 @@ export default function Pricing() {
               }
             ].map((faq, i) => (
               <div key={i} className="animate-slideUp" style={{ animationDelay: `${i * 100}ms` }}>
-                <h3 className="font-semibold mb-2">{faq.q}</h3>
+                <h3 className="font-semibold mb-2 text-black">{faq.q}</h3>
                 <p className="text-muted-foreground">{faq.a}</p>
               </div>
             ))}
