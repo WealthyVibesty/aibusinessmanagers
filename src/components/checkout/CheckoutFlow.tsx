@@ -27,7 +27,7 @@ export default function CheckoutFlow() {
           <Button 
             size="lg"
             onClick={() => setIsDemoFormOpen(true)}
-            className="bg-primary hover:bg-primary/90"
+            className="bg-primary hover:bg-primary/90 text-white font-medium"
           >
             <Calendar className="mr-2 h-5 w-5" />
             Schedule a Free Demo
@@ -46,7 +46,7 @@ export default function CheckoutFlow() {
               </p>
               <Button 
                 variant="outline" 
-                className="w-full"
+                className="w-full bg-white hover:bg-primary hover:text-white border-primary text-primary transition-colors"
                 onClick={() => setIsStrategyCallOpen(true)}
               >
                 Book Your Free Strategy Call
@@ -64,7 +64,7 @@ export default function CheckoutFlow() {
               </p>
               <Button 
                 variant="outline" 
-                className="w-full"
+                className="w-full bg-white hover:bg-primary hover:text-white border-primary text-primary transition-colors"
                 onClick={() => setIsROICalculatorOpen(true)}
               >
                 Try the ROI Calculator Now
@@ -82,7 +82,7 @@ export default function CheckoutFlow() {
               </p>
               <Button 
                 variant="outline" 
-                className="w-full"
+                className="w-full bg-white hover:bg-primary hover:text-white border-primary text-primary transition-colors"
                 onClick={() => setIsPilotFormOpen(true)}
               >
                 Start Your Pilot Program Today
