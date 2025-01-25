@@ -502,7 +502,7 @@ export default function Demo() {
             <Button
               variant="outline"
               onClick={() => setShowCustomization(!showCustomization)}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 border-black"
             >
               <Building className="h-4 w-4" />
               <span className="text-black">
