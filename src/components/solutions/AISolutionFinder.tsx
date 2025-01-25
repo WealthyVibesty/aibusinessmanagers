@@ -188,18 +188,18 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[600px] p-8"> {/* Increased max-width and padding */}
+      <DialogContent className="sm:max-w-[600px] p-8 bg-white border shadow-lg">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-2xl"> {/* Increased text size */}
+          <DialogTitle className="flex items-center gap-2 text-2xl">
             <Bot className="h-6 w-6" />
             AI Solution Finder
           </DialogTitle>
         </DialogHeader>
 
-        <div className="py-8"> {/* Increased vertical padding */}
+        <div className="py-8">
           {!recommendation ? (
-            <div className="space-y-8"> {/* Increased spacing */}
-              <h3 className="text-xl font-medium mb-6"> {/* Increased text size and margin */}
+            <div className="space-y-8">
+              <h3 className="text-xl font-medium mb-6">
                 {currentQuestionData.text}
               </h3>
               
@@ -209,11 +209,11 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
                     placeholder="Enter your business type"
                     value={(answers[currentQuestionData.id] as string) || ''}
                     onChange={(e) => handleTextInput(e.target.value)}
-                    className="w-full text-lg p-6" /* Increased text size and padding */
+                    className="w-full text-lg p-6 bg-white"
                   />
                   <Button 
                     onClick={handleNextForText}
-                    className="w-full text-lg py-6" /* Increased button size */
+                    className="w-full text-lg py-6"
                   >
                     Next
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -225,9 +225,9 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
                   className="space-y-4"
                 >
                   {currentQuestionData.options?.map((option) => (
-                    <div key={option.value} className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-gray-50 cursor-pointer"> {/* Added padding and hover effect */}
-                      <RadioGroupItem value={option.value} id={option.value} className="h-5 w-5" /> {/* Increased radio size */}
-                      <Label htmlFor={option.value} className="text-lg cursor-pointer flex-grow"> {/* Increased text size and made full width clickable */}
+                    <div key={option.value} className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-gray-50 cursor-pointer bg-white">
+                      <RadioGroupItem value={option.value} id={option.value} className="h-5 w-5" />
+                      <Label htmlFor={option.value} className="text-lg cursor-pointer flex-grow">
                         {option.label}
                       </Label>
                     </div>
@@ -239,16 +239,16 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
                     {currentQuestionData.options?.map((option) => (
                       <div 
                         key={option.value} 
-                        className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-gray-50 cursor-pointer"
+                        className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-gray-50 cursor-pointer bg-white"
                         onClick={() => handleMultiSelect(option.value)}
                       >
                         <Checkbox
                           id={option.value}
                           checked={(answers[currentQuestionData.id] as string[] || []).includes(option.value)}
                           onCheckedChange={() => handleMultiSelect(option.value)}
-                          className="h-5 w-5" /* Increased checkbox size */
+                          className="h-5 w-5"
                         />
-                        <Label htmlFor={option.value} className="text-lg cursor-pointer flex-grow"> {/* Increased text size */}
+                        <Label htmlFor={option.value} className="text-lg cursor-pointer flex-grow">
                           {option.label}
                         </Label>
                       </div>
@@ -256,7 +256,7 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
                   </div>
                   <Button 
                     onClick={handleNextForMultiSelect}
-                    className="w-full text-lg py-6" /* Increased button size */
+                    className="w-full text-lg py-6"
                   >
                     Next
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -266,12 +266,12 @@ export default function AISolutionFinder({ isOpen, onClose }: AISolutionFinderPr
             </div>
           ) : (
             <div className="space-y-8">
-              <div className="whitespace-pre-line text-lg text-gray-700"> {/* Increased text size */}
+              <div className="whitespace-pre-line text-lg text-gray-700 bg-white p-6 rounded-lg">
                 {recommendation}
               </div>
               <Button 
                 onClick={handleRequestDemo}
-                className="w-full text-lg py-6" /* Increased button size */
+                className="w-full text-lg py-6"
               >
                 Schedule a Demo
                 <ArrowRight className="ml-2 h-5 w-5" />

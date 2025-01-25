@@ -43,7 +43,7 @@ export default function ROICalculatorDialog({ isOpen, onClose }: ROICalculatorDi
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] bg-white border shadow-lg">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Calculator className="h-5 w-5" />
@@ -59,7 +59,7 @@ export default function ROICalculatorDialog({ isOpen, onClose }: ROICalculatorDi
             <div className="relative">
               <PhoneCall className="absolute left-3 top-3 h-4 w-4 text-gray-500" />
               <Input
-                className="pl-9"
+                className="pl-9 bg-white"
                 type="number"
                 placeholder="Monthly Call Volume"
                 value={monthlyCallVolume}
@@ -72,7 +72,7 @@ export default function ROICalculatorDialog({ isOpen, onClose }: ROICalculatorDi
             <div className="relative">
               <Users className="absolute left-3 top-3 h-4 w-4 text-gray-500" />
               <Input
-                className="pl-9"
+                className="pl-9 bg-white"
                 type="number"
                 placeholder="Number of Agents"
                 value={agentCount}
@@ -85,7 +85,7 @@ export default function ROICalculatorDialog({ isOpen, onClose }: ROICalculatorDi
             <div className="relative">
               <DollarSign className="absolute left-3 top-3 h-4 w-4 text-gray-500" />
               <Input
-                className="pl-9"
+                className="pl-9 bg-white"
                 type="number"
                 placeholder="Average Hourly Cost per Agent"
                 value={averageHourlyCost}

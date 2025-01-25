@@ -82,7 +82,7 @@ export default function ContactCaptureDialog({ isOpen, onClose, onSuccess }: Con
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-white border shadow-lg">
         <DialogHeader>
           <DialogTitle>Have Our Assistant Reach Out To You For a Demo</DialogTitle>
           <DialogDescription>Put your information below</DialogDescription>
@@ -93,7 +93,7 @@ export default function ContactCaptureDialog({ isOpen, onClose, onSuccess }: Con
               placeholder="Your Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full"
+              className="w-full bg-white"
             />
           </div>
           <div>
@@ -102,7 +102,7 @@ export default function ContactCaptureDialog({ isOpen, onClose, onSuccess }: Con
               placeholder="Email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full"
+              className="w-full bg-white"
             />
           </div>
           <div>
@@ -111,7 +111,7 @@ export default function ContactCaptureDialog({ isOpen, onClose, onSuccess }: Con
               placeholder="Phone Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="w-full"
+              className="w-full bg-white"
             />
           </div>
           <Button type="submit" className="w-full">

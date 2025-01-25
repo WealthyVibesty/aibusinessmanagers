@@ -94,7 +94,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] p-6">
+      <DialogContent className="sm:max-w-[500px] p-6 bg-white border shadow-lg">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center">Schedule Your Free Personalized Custom Demo for your business</DialogTitle>
           <DialogDescription className="text-center text-base">
@@ -109,7 +109,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 placeholder="Your Name *"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="pl-10"
+                className="pl-10 bg-white"
                 required
                 disabled={isSubmitting}
               />
@@ -124,7 +124,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 placeholder="Email Address *"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="pl-10"
+                className="pl-10 bg-white"
                 required
                 disabled={isSubmitting}
               />
@@ -139,7 +139,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 placeholder="Phone Number *"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="pl-10"
+                className="pl-10 bg-white"
                 required
                 disabled={isSubmitting}
               />
@@ -153,7 +153,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 placeholder="Company Name"
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
-                className="pl-10"
+                className="pl-10 bg-white"
                 disabled={isSubmitting}
               />
             </div>
@@ -166,7 +166,7 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 placeholder="Tell us about your needs (optional)"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="pl-10 min-h-[100px]"
+                className="pl-10 min-h-[100px] bg-white"
                 disabled={isSubmitting}
               />
             </div>
