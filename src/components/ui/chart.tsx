@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as RechartsPrimitive from "recharts"
+
 import { cn } from "@/lib/utils"
 
 // Format: { THEME_NAME: CSS_SELECTOR }
@@ -352,90 +353,6 @@ function getPayloadConfigFromPayload(
     : config[key as keyof typeof config]
 }
 
-const BarChart = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div"> & {
-    data: any[]
-    index: string
-    categories: string[]
-    colors?: string[]
-    valueFormatter?: (value: number) => string
-  }
->(({ data, index, categories, colors, valueFormatter, className, ...props }, ref) => {
-  const categoriesMap = categories.map((category, i) => ({
-    dataKey: category,
-    fill: colors?.[i] || `hsl(${i * 40}, 70%, 50%)`,
-  }))
-
-  // Create chart config for categories
-  const chartConfig: ChartConfig = categories.reduce((acc, category, i) => {
-    acc[category] = {
-      label: category,
-      color: colors?.[i] || `hsl(${i * 40}, 70%, 50%)`
-    }
-    return acc
-  }, {} as ChartConfig)
-
-  return (
-    <ChartContainer 
-      ref={ref} 
-      className={cn("h-80", className)} 
-      config={chartConfig} 
-      {...props}
-    >
-      <RechartsPrimitive.BarChart data={data}>
-        <RechartsPrimitive.XAxis
-          dataKey={index}
-          stroke="#888888"
-          fontSize={12}
-          tickLine={false}
-          axisLine={false}
-        />
-        <RechartsPrimitive.YAxis
-          stroke="#888888"
-          fontSize={12}
-          tickLine={false}
-          axisLine={false}
-          tickFormatter={valueFormatter}
-        />
-        <RechartsPrimitive.Tooltip
-          content={({ active, payload }) => {
-            if (!active || !payload) return null
-
-            return (
-              <div className="rounded-lg border bg-background p-2 shadow-sm">
-                <div className="grid grid-cols-2 gap-2">
-                  {payload.map((category) => (
-                    <div key={category.dataKey} className="flex flex-col">
-                      <span className="text-[0.70rem] uppercase text-muted-foreground">
-                        {category.dataKey}
-                      </span>
-                      <span className="font-bold text-muted-foreground">
-                        {valueFormatter
-                          ? valueFormatter(category.value as number)
-                          : category.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )
-          }}
-        />
-        {categoriesMap.map((category) => (
-          <RechartsPrimitive.Bar
-            key={category.dataKey}
-            dataKey={category.dataKey}
-            fill={category.fill}
-            radius={[4, 4, 0, 0]}
-          />
-        ))}
-      </RechartsPrimitive.BarChart>
-    </ChartContainer>
-  )
-})
-BarChart.displayName = "BarChart"
-
 export {
   ChartContainer,
   ChartTooltip,
@@ -443,5 +360,4 @@ export {
   ChartLegend,
   ChartLegendContent,
   ChartStyle,
-  BarChart // Add BarChart to exports
 }
