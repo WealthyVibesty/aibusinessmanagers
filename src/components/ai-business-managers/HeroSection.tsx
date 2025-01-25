@@ -56,7 +56,7 @@ export default function HeroSection() {
               <div className="rocket-flames" />
               <Button
                 size="lg"
-                onClick={() => navigate("/index")}
+                onClick={() => navigate("/solutions")}
                 className="text-lg px-16 py-8 bg-white hover:bg-primary text-primary hover:text-white rounded-full shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:shadow-[0_0_50px_rgba(59,130,246,0.8)] transition-all duration-500 transform hover:-translate-y-1 relative z-10 group whitespace-nowrap"
               >
                 <span className="text-xl font-bold">Get Started with AI</span>

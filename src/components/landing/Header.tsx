@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const isIndexPage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +18,13 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const getTextColor = () => {
+    if (isIndexPage && !isScrolled) {
+      return "text-white";
+    }
+    return "text-black";
+  };
 
   const handleNavigation = (path: string) => {
     setIsMenuOpen(false);
@@ -117,7 +126,7 @@ export default function Header() {
               alt="AI Business Managers" 
               className="h-10 w-auto"
             />
-            <span className="font-semibold text-lg hidden sm:inline text-black">
+            <span className={`font-semibold text-lg hidden sm:inline ${getTextColor()} transition-colors duration-300`}>
               AI Business Managers
             </span>
           </Link>
@@ -127,7 +136,7 @@ export default function Header() {
             {menuItems.map((item, index) => (
               <div key={index} className="relative group">
                 <button
-                  className="hover:text-primary transition-colors flex items-center gap-1 py-2 text-sm font-medium text-black"
+                  className={`hover:text-primary transition-colors flex items-center gap-1 py-2 text-sm font-medium ${getTextColor()}`}
                   onMouseEnter={() => setActiveSubmenu(item.label)}
                   onMouseLeave={() => setActiveSubmenu(null)}
                 >
@@ -186,12 +195,12 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <Button 
               onClick={() => navigate("/solutions")}
-              className="hidden sm:flex bg-primary text-white"
+              className={`hidden sm:flex ${isIndexPage && !isScrolled ? 'bg-white text-primary hover:bg-white/90' : 'bg-primary text-white'}`}
             >
               Get Started
             </Button>
             <button
-              className="md:hidden p-2 text-black"
+              className={`md:hidden p-2 ${getTextColor()}`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (

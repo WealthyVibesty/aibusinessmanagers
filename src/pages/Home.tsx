@@ -142,6 +142,34 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CTA Section */}
+      <section className="py-20 px-6">
+        <motion.div 
+          className="max-w-4xl mx-auto text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="p-12 rounded-3xl bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl">
+            <h2 className="text-3xl font-bold mb-6 text-white">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-xl mb-8 text-blue-100">
+              Get started with our AI Business Manager today and see the difference.
+            </p>
+            <Button 
+              size="lg"
+              variant="secondary"
+              onClick={() => navigate("/solutions")}
+              className="text-lg px-8 py-6 h-auto rounded-full bg-white text-blue-600 hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all group"
+            >
+              Get Started Now
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </motion.div>
+      </section>
+
       {/* Industries Section */}
       <section className="py-20 px-6 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-7xl mx-auto">
@@ -184,34 +212,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-6">
-        <motion.div 
-          className="max-w-4xl mx-auto text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="p-12 rounded-3xl bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl">
-            <h2 className="text-3xl font-bold mb-6 text-white">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-xl mb-8 text-blue-100">
-              Get started with our AI Business Manager today and see the difference.
-            </p>
-            <Button 
-              size="lg"
-              variant="secondary"
-              onClick={() => navigate("/demo")}
-              className="text-lg px-8 py-6 h-auto rounded-full bg-white text-blue-600 hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all group"
-            >
-              Get Live Demo
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
-        </motion.div>
       </section>
     </div>
   );
