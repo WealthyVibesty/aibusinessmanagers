@@ -151,7 +151,7 @@ export default function AIBusinessManagers() {
               We Create Customized Done-for-You AI Business Managers that Automate Your Customer Service Operations
             </h1>
 
-            <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto px-4 animate-fadeIn">
+            <p className="text-xl sm:text-2xl text-gray-800 mb-12 leading-relaxed max-w-3xl mx-auto px-4 animate-fadeIn">
               Experience the future of business automation with AI managers that seamlessly integrate into your operations.
             </p>
           </motion.div>
@@ -175,27 +175,10 @@ export default function AIBusinessManagers() {
                   backgroundColor: "rgba(255, 255, 255, 0.9)" 
                 }}
               >
-                <motion.div 
-                  className="mb-4 text-primary"
-                  animate={{
-                    opacity: [1, 0.7, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
+                <div className="flex items-center gap-4">
                   {feature.icon}
-                </motion.div>
-                <motion.h3 
-                  className="text-xl font-semibold mb-2 text-gray-800"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.3 + 0.5 }}
-                >
-                  {feature.title}
-                </motion.h3>
+                  <h3 className="text-xl font-semibold text-gray-800">{feature.title}</h3>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -266,7 +249,8 @@ export default function AIBusinessManagers() {
 
           <div className="relative">
             {/* First row of sliding logos */}
-            <div className="flex space-x-12 animate-scroll overflow-hidden py-8 opacity-75 hover:opacity-100 transition-opacity duration-300">
+            <div className="flex space-x-12 animate-scroll overflow-hidden py-8 opacity-75 hover:opacity-100 transition-opacity duration-300" 
+                 style={{ animation: 'scroll 1000ms linear infinite' }}>
               {partners.map((partner, index) => (
                 <motion.div
                   key={index}
@@ -286,7 +270,7 @@ export default function AIBusinessManagers() {
             </div>
 
             {/* Second row sliding in opposite direction */}
-            <div className="flex space-x-12 animate-scroll-reverse overflow-hidden py-8 opacity-75 hover:opacity-100 transition-opacity duration-300" style={{ direction: 'rtl' }}>
+            <div className="flex space-x-12 animate-scroll-reverse overflow-hidden py-8 opacity-75 hover:opacity-100 transition-opacity duration-300" style={{ direction: 'rtl', animation: 'scroll-reverse 1000ms linear infinite' }}>
               {[...partners].reverse().map((partner, index) => (
                 <motion.div
                   key={index}

@@ -39,13 +39,13 @@ button {
 .partner-scroll {
   display: flex;
   gap: 2rem;
-  animation: scroll 40s linear infinite;
+  animation: scroll 1000ms linear infinite;
 }
 
 .partner-scroll-reverse {
   display: flex;
   gap: 2rem;
-  animation: scroll-reverse 40s linear infinite;
+  animation: scroll-reverse 1000ms linear infinite;
 }
 
 .partner-logo {
