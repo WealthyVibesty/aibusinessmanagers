@@ -6,17 +6,18 @@ import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 
 const partners = [
-  { name: "IBM", logo: "/lovable-uploads/ibm-logo.png" },
-  { name: "Google", logo: "/lovable-uploads/google-logo.png" },
-  { name: "Microsoft", logo: "/lovable-uploads/microsoft-logo.png" },
-  { name: "Oracle", logo: "/lovable-uploads/oracle-logo.png" },
-  { name: "NVIDIA", logo: "/lovable-uploads/nvidia-logo.png" },
-  { name: "Amazon AWS", logo: "/lovable-uploads/aws-logo.png" },
-  { name: "OpenAI", logo: "/lovable-uploads/openai-logo.png" },
-  { name: "DeepSeek", logo: "/lovable-uploads/deepseek-logo.png" },
-  { name: "Eleven Labs", logo: "/lovable-uploads/eleven-labs-logo.png" },
-  { name: "Vapi AI", logo: "/lovable-uploads/vapi-ai-logo.png" },
-  { name: "Anthropic", logo: "/lovable-uploads/anthropic-logo.png" }
+  { name: "VAPI", logo: "/lovable-uploads/689f666f-f360-42ec-8f5e-c106c7dc14a4.png" },
+  { name: "DeepSeek", logo: "/lovable-uploads/99fbefff-3ce1-4226-b63c-3f4b25d618f1.png" },
+  { name: "OpenAI", logo: "/lovable-uploads/cb8c7243-5b81-4b79-a213-5d169acaede2.png" },
+  { name: "NVIDIA", logo: "/lovable-uploads/a86fa152-b9da-40f8-899e-6a7f321435a6.png" },
+  { name: "Oracle", logo: "/lovable-uploads/4593bf5a-446b-418a-b024-f0848d36a02e.png" },
+  { name: "Google", logo: "/lovable-uploads/ee8b507f-74cb-49de-81dc-a2282b1a7aba.png" },
+  { name: "Eleven Labs", logo: "/lovable-uploads/d93e3f1a-ff0c-49a9-922f-a5ffd654647f.png" },
+  { name: "Anthropic", logo: "/lovable-uploads/10c6384a-7a56-494c-bc22-6d612b09d170.png" },
+  { name: "Amazon AWS", logo: "/lovable-uploads/57f47dd7-cc27-477d-9586-e32ed172d79b.png" },
+  { name: "IBM", logo: "/lovable-uploads/d10dd79d-414a-4e5e-bfc7-7ff92e56f12f.png" },
+  { name: "WatsonX", logo: "/lovable-uploads/22a4d603-9942-4a99-be71-c323c84bd0a3.png" },
+  { name: "Microsoft", logo: "/lovable-uploads/1935155e-b63e-4ae4-a3f6-c51b7db8289a.png" }
 ];
 
 const testimonials = [
@@ -140,19 +141,26 @@ export default function AIBusinessManagers() {
       </section>
 
       {/* Partners Carousel */}
+
+      {/* Partners Carousel */}
       <section className="py-20 bg-white overflow-hidden">
         <div className="container px-4 mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">Our Trusted Partners</h2>
-          <div className="flex animate-slideRight space-x-12">
-            {partners.map((partner, index) => (
-              <div key={index} className="flex-shrink-0">
-                <img 
-                  src={partner.logo} 
-                  alt={partner.name} 
-                  className="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-            ))}
+          <h2 className="text-3xl md:text-4xl font-bold mb-12">Our Technology Partners</h2>
+          <div className="relative">
+            <div className="flex space-x-12 animate-scroll overflow-hidden whitespace-nowrap py-4">
+              {[...partners, ...partners].map((partner, index) => (
+                <div 
+                  key={index} 
+                  className="flex-shrink-0 transition-all duration-300 hover:scale-110"
+                >
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name} 
+                    className="h-12 w-auto object-contain grayscale hover:grayscale-0"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
