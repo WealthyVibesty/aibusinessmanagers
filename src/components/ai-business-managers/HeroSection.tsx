@@ -9,41 +9,46 @@ export default function HeroSection() {
   
   const features = [
     { 
-      icon: <Brain className="w-8 h-8 text-primary/80 hover:text-primary transition-colors" />, 
-      title: "Fully Customized AI" 
+      icon: <Brain className="w-12 h-12 text-primary/80 hover:text-primary transition-colors" />, 
+      title: "Enterprise-Grade AI",
+      description: "Custom-built solutions that adapt to your specific business needs"
     },
     { 
-      icon: <Signal className="w-8 h-8 text-primary/80 hover:text-primary transition-colors" />, 
-      title: "Continuous Learning" 
+      icon: <Signal className="w-12 h-12 text-primary/80 hover:text-primary transition-colors" />, 
+      title: "24/7 Operation",
+      description: "Continuous learning and improvement through real-world interactions"
     },
     { 
-      icon: <Lock className="w-8 h-8 text-primary/80 hover:text-primary transition-colors" />, 
-      title: "Trusted Partnerships" 
+      icon: <Lock className="w-12 h-12 text-primary/80 hover:text-primary transition-colors" />, 
+      title: "Secure & Reliable",
+      description: "Bank-level security with 99.9% uptime guarantee"
     },
     { 
-      icon: <Server className="w-8 h-8 text-primary/80 hover:text-primary transition-colors" />, 
-      title: "Seamless Integration" 
+      icon: <Server className="w-12 h-12 text-primary/80 hover:text-primary transition-colors" />, 
+      title: "Full Integration",
+      description: "Seamlessly connects with your existing tools and workflows"
     }
   ];
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-white">
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#00000010_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-950 via-indigo-900 to-black">
+        <div className="stars" />
+        <div className="twinkling" />
       </div>
 
-      <div className="relative w-full max-w-4xl mx-auto text-center z-10 mt-[120px]">
+      <div className="relative w-full max-w-6xl mx-auto text-center z-10 mt-[120px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 animate-gradient leading-[1.2] mb-8">
-            Transform Your Business Operations with AI-Powered Automation
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.2] mb-8">
+            Let AI Business Managers Automate Your Entire Business Operations for You—Starting Today!
           </h1>
 
-          <p className="text-xl sm:text-2xl text-gray-800 mb-12 leading-relaxed max-w-3xl mx-auto px-4 animate-fadeIn">
-            Unlock the power of intelligent automation with our AI managers that seamlessly integrate into your workflow
+          <p className="text-xl sm:text-2xl text-gray-200 mb-16 leading-relaxed max-w-3xl mx-auto px-4 animate-fadeIn">
+            Get enterprise-level AI automation, fully implemented and managed for you, without the hassle.
           </p>
         </motion.div>
 
@@ -59,15 +64,18 @@ export default function HeroSection() {
                 type: "spring",
                 stiffness: 100 
               }}
-              className="p-6 rounded-xl bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
+              className="p-8 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 hover:bg-white/20 transition-all duration-300 group cursor-pointer"
               whileHover={{ 
                 scale: 1.05,
-                backgroundColor: "rgba(255, 255, 255, 0.9)" 
+                backgroundColor: "rgba(255, 255, 255, 0.2)" 
               }}
             >
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col items-center gap-4 text-center">
                 {feature.icon}
-                <h3 className="text-xl font-semibold text-gray-800">{feature.title}</h3>
+                <div>
+                  <h3 className="text-2xl font-semibold text-white mb-2">{feature.title}</h3>
+                  <p className="text-gray-300">{feature.description}</p>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -77,13 +85,15 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
+          className="relative inline-block"
         >
+          <div className="rocket-flames" />
           <Button
             size="lg"
             onClick={() => navigate("/demo")}
-            className="text-lg px-12 py-6 bg-primary hover:bg-primary/90 text-white rounded-full shadow-lg hover:shadow-xl transition-all"
+            className="text-lg px-16 py-8 bg-white hover:bg-primary text-primary hover:text-white rounded-full shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:shadow-[0_0_50px_rgba(59,130,246,0.8)] transition-all duration-500 transform hover:-translate-y-1 relative z-10 group"
           >
-            Get Started with AI
+            <span className="text-xl font-bold">Get Started with AI</span>
           </Button>
         </motion.div>
       </div>
