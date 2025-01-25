@@ -136,7 +136,7 @@ export default function AIBusinessManagers() {
             >
               <Button 
                 size="lg"
-                onClick={() => navigate("/solutions")}
+                onClick={() => navigate("/")}
                 className="text-lg px-12 py-6 h-auto rounded-full bg-white text-primary hover:bg-white/90 shadow-xl hover:shadow-2xl transition-all duration-300 group"
               >
                 Get Started Now
