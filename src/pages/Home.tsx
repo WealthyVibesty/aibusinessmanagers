@@ -10,42 +10,37 @@ export default function Home() {
   const industries = [
     {
       name: "Healthcare",
-      icon: <Stethoscope className="h-8 w-8" />,
+      icon: <Stethoscope className="h-8 w-8 text-[#8B5CF6]" />,
       path: "/healthcare",
       color: "bg-[#E5DEFF]",
-      hoverColor: "group-hover:text-[#8B5CF6]",
       description: "AI-powered healthcare solutions"
     },
     {
       name: "Restaurants",
-      icon: <UtensilsCrossed className="h-8 w-8" />,
+      icon: <UtensilsCrossed className="h-8 w-8 text-[#F97316]" />,
       path: "/restaurants",
       color: "bg-[#FDE1D3]",
-      hoverColor: "group-hover:text-[#F97316]",
       description: "Streamline restaurant operations"
     },
     {
       name: "Hospitality",
-      icon: <Hotel className="h-8 w-8" />,
+      icon: <Hotel className="h-8 w-8 text-[#0EA5E9]" />,
       path: "/hospitality",
       color: "bg-[#D3E4FD]",
-      hoverColor: "group-hover:text-[#0EA5E9]",
       description: "Enhance guest experiences"
     },
     {
       name: "Transportation",
-      icon: <Car className="h-8 w-8" />,
+      icon: <Car className="h-8 w-8 text-[#16A34A]" />,
       path: "/transportation",
       color: "bg-[#F2FCE2]",
-      hoverColor: "group-hover:text-[#16A34A]",
       description: "Optimize fleet management"
     },
     {
       name: "Finance",
-      icon: <Wallet className="h-8 w-8" />,
+      icon: <Wallet className="h-8 w-8 text-[#D946EF]" />,
       path: "/finance",
       color: "bg-[#FFDEE2]",
-      hoverColor: "group-hover:text-[#D946EF]",
       description: "Automate financial processes"
     }
   ];
@@ -107,7 +102,7 @@ export default function Home() {
                 variant="outline"
                 size="lg"
                 onClick={() => navigate("/pricing")}
-                className="text-lg px-8 py-6 h-auto rounded-full hover:bg-gray-100 transition-all w-full sm:w-auto"
+                className="text-lg px-8 py-6 h-auto rounded-full hover:bg-gray-100 transition-all w-full sm:w-auto text-black border-black"
               >
                 View Pricing
               </Button>
@@ -176,7 +171,7 @@ export default function Home() {
               >
                 <div className={`p-6 rounded-xl ${industry.color} shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1`}>
                   <div className="flex flex-col items-center gap-4">
-                    <div className={`transition-all duration-300 ${industry.hoverColor}`}>
+                    <div className="transition-all duration-300">
                       {industry.icon}
                     </div>
                     <div className="space-y-2 text-center">
