@@ -19,21 +19,6 @@ import FooterSection from "@/components/landing/sections/FooterSection";
 import HealthcareWorkflowAutomation from "@/pages/HealthcareWorkflowAutomation";
 import AboutUs from "@/pages/AboutUs";
 import WhyChooseUs from "@/pages/WhyChooseUs";
-import AIChatbots from "@/pages/solutions/AIChatbots";
-import AIWebsiteDevelopment from "@/pages/solutions/AIWebsiteDevelopment";
-import InstagramAutomation from "@/pages/solutions/InstagramAutomation";
-import SMSMarketing from "@/pages/solutions/SMSMarketing";
-import HIPAACompliant from "@/pages/solutions/HIPAACompliant";
-import CRMIntegration from "@/pages/solutions/CRMIntegration";
-import CallRouting from "@/pages/solutions/CallRouting";
-import MultilingualSupport from "@/pages/solutions/MultilingualSupport";
-import PilotPrograms from "@/pages/solutions/PilotPrograms";
-import ProactiveEngagement from "@/pages/solutions/ProactiveEngagement";
-import TaskAutomation from "@/pages/solutions/TaskAutomation";
-import ActionableInsights from "@/pages/solutions/ActionableInsights";
-import CostEffectiveCallCenters from "@/pages/solutions/CostEffectiveCallCenters";
-import Pricing from "@/pages/Pricing";
-import PropertyManagement from "@/pages/PropertyManagement";
 import Home from "@/pages/Home";
 import Demo from "@/pages/Demo";
 // Import industry pages
@@ -84,26 +69,35 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
-              {/* Make AI Business Managers the landing page */}
+              {/* AI Business Managers as landing page */}
               <Route path="/" element={
                 <div className="animate-fadeIn">
                   <AIBusinessManagers />
                 </div>
               } />
               
-              {/* Move Home to /dashboard */}
-              <Route path="/dashboard" element={
+              {/* Main landing page content moved to /solutions */}
+              <Route path="/solutions" element={
                 <div className="animate-fadeIn">
                   <Home />
                 </div>
               } />
               
-              {/* Add the new Demo route */}
+              {/* Demo route */}
               <Route path="/demo" element={
                 <div className="animate-fadeIn">
                   <Demo />
                 </div>
               } />
+
+              {/* User dashboard (protected) */}
+              <Route path="/user-dashboard" element={<ProtectedRoute />}>
+                <Route index element={
+                  <div className="animate-fadeIn">
+                    <Dashboard />
+                  </div>
+                } />
+              </Route>
 
               {/* Add Property Management Route */}
               <Route path="/property-management" element={
@@ -271,7 +265,7 @@ function App() {
               } />
               
               {/* Protected Routes */}
-              <Route path="/dashboard" element={<ProtectedRoute />}>
+              <Route path="/user-dashboard" element={<ProtectedRoute />}>
                 <Route index element={
                   <div className="animate-fadeIn">
                     <Dashboard />
