@@ -42,10 +42,22 @@ export default function AIBusinessManagers() {
   const navigate = useNavigate();
 
   const features = [
-    { icon: <Brain className="w-8 h-8" />, title: "Fully Customized AI" },
-    { icon: <Signal className="w-8 h-8" />, title: "Continuous Learning" },
-    { icon: <Lock className="w-8 h-8" />, title: "Trusted Partnerships" },
-    { icon: <Server className="w-8 h-8" />, title: "Seamless Integration" }
+    { 
+      icon: <Brain className="w-8 h-8 text-primary/80 hover:text-primary transition-colors" />, 
+      title: "Fully Customized AI" 
+    },
+    { 
+      icon: <Signal className="w-8 h-8 text-primary/80 hover:text-primary transition-colors" />, 
+      title: "Continuous Learning" 
+    },
+    { 
+      icon: <Lock className="w-8 h-8 text-primary/80 hover:text-primary transition-colors" />, 
+      title: "Trusted Partnerships" 
+    },
+    { 
+      icon: <Server className="w-8 h-8 text-primary/80 hover:text-primary transition-colors" />, 
+      title: "Seamless Integration" 
+    }
   ];
 
   const industries = [
@@ -163,12 +175,12 @@ export default function AIBusinessManagers() {
                 <motion.div 
                   className="mb-4 text-primary"
                   animate={{
-                    rotate: [0, 360],
+                    opacity: [1, 0.7, 1],
                   }}
                   transition={{
-                    duration: 20,
+                    duration: 2,
                     repeat: Infinity,
-                    ease: "linear"
+                    ease: "easeInOut"
                   }}
                 >
                   {feature.icon}
