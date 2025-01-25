@@ -47,9 +47,30 @@ export default function HeroSection() {
             Let AI Business Managers Automate Your Entire Business Operations for You—Starting Today!
           </h1>
 
-          <p className="text-xl sm:text-2xl text-gray-200 mb-16 leading-relaxed max-w-3xl mx-auto px-4 animate-fadeIn">
+          <p className="text-xl sm:text-2xl text-gray-200 mb-8 leading-relaxed max-w-3xl mx-auto px-4 animate-fadeIn">
             Get enterprise-level AI automation, fully implemented and managed for you, without the hassle.
           </p>
+
+          <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-16">
+            <div className="relative">
+              <div className="rocket-flames" />
+              <Button
+                size="lg"
+                onClick={() => navigate("/demo")}
+                className="text-lg px-16 py-8 bg-white hover:bg-primary text-primary hover:text-white rounded-full shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:shadow-[0_0_50px_rgba(59,130,246,0.8)] transition-all duration-500 transform hover:-translate-y-1 relative z-10 group whitespace-nowrap"
+              >
+                <span className="text-xl font-bold">Get Started with AI</span>
+              </Button>
+            </div>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => navigate("/pricing")}
+              className="text-lg px-16 py-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary rounded-full transition-all duration-500 transform hover:-translate-y-1 whitespace-nowrap"
+            >
+              <span className="text-xl font-bold">View Pricing</span>
+            </Button>
+          </div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
@@ -81,33 +102,52 @@ export default function HeroSection() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="relative inline-block mb-32"
-        >
-          <div className="flex flex-col gap-4 items-center">
-            <div className="relative">
-              <div className="rocket-flames" />
-              <Button
-                size="lg"
-                onClick={() => navigate("/demo")}
-                className="text-lg px-16 py-8 bg-white hover:bg-primary text-primary hover:text-white rounded-full shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:shadow-[0_0_50px_rgba(59,130,246,0.8)] transition-all duration-500 transform hover:-translate-y-1 relative z-10 group"
-              >
-                <span className="text-xl font-bold">Get Started with AI</span>
-              </Button>
-            </div>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => navigate("/pricing")}
-              className="text-lg px-16 py-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary rounded-full transition-all duration-500 transform hover:-translate-y-1"
-            >
-              <span className="text-xl font-bold">View Pricing</span>
-            </Button>
+        {/* CTA Section */}
+        <section className="py-32 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 relative overflow-hidden rounded-3xl">
+          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute inset-0">
+            <div className="stars" />
+            <div className="twinkling" />
           </div>
-        </motion.div>
+          
+          <div className="container relative px-4 mx-auto text-center text-white">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="max-w-3xl mx-auto"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Ready to Transform Your Business?
+              </h2>
+              <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
+                Get a live demo of our AI Business Managers today and see the difference it can make for your operations.
+              </p>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex flex-col md:flex-row gap-4 justify-center items-center"
+              >
+                <Button 
+                  size="lg"
+                  onClick={() => navigate("/demo")}
+                  className="text-lg px-12 py-6 h-auto rounded-full bg-white text-primary hover:bg-white/90 shadow-xl hover:shadow-2xl transition-all duration-300 group w-full md:w-auto"
+                >
+                  Get Started Now
+                </Button>
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  onClick={() => navigate("/pricing")}
+                  className="text-lg px-12 py-6 h-auto rounded-full border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 w-full md:w-auto"
+                >
+                  View Pricing
+                </Button>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
       </div>
     </section>
   );
