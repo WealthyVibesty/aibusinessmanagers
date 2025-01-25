@@ -32,7 +32,10 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-950 via-indigo-900 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-950 via-indigo-900 to-black">
+        <div className="stars" />
+        <div className="twinkling" />
+      </div>
 
       <div className="relative w-full max-w-6xl mx-auto text-center z-10 mt-[120px]">
         <motion.div
@@ -98,49 +101,6 @@ export default function HeroSection() {
             </motion.div>
           ))}
         </div>
-
-        {/* CTA Section */}
-        <section className="py-32 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 relative overflow-hidden rounded-3xl">
-          <div className="absolute inset-0 bg-black/10" />
-          
-          <div className="container relative px-4 mx-auto text-center text-white">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="max-w-3xl mx-auto"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Ready to Transform Your Business?
-              </h2>
-              <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
-                Get a live demo of our AI Business Managers today and see the difference it can make for your operations.
-              </p>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex flex-col md:flex-row gap-4 justify-center items-center"
-              >
-                <Button 
-                  size="lg"
-                  onClick={() => navigate("/index")}
-                  className="text-lg px-12 py-6 h-auto rounded-full bg-white text-primary hover:bg-white/90 shadow-xl hover:shadow-2xl transition-all duration-300 group w-full md:w-auto"
-                >
-                  Get Started Now
-                </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  onClick={() => navigate("/pricing")}
-                  className="text-lg px-12 py-6 h-auto rounded-full border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 w-full md:w-auto"
-                >
-                  View Pricing
-                </Button>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
       </div>
     </section>
   );
