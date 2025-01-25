@@ -3,13 +3,13 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% - 2rem));
   }
 }
 
 @keyframes scroll-reverse {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% - 2rem));
   }
   100% {
     transform: translateX(0);
@@ -17,11 +17,19 @@
 }
 
 .animate-scroll {
-  animation: scroll 30s linear infinite;
+  animation: scroll 40s linear infinite;
 }
 
 .animate-scroll-reverse {
-  animation: scroll-reverse 30s linear infinite;
+  animation: scroll-reverse 40s linear infinite;
 }
 
-/* ... keep existing code */
+.partner-scroll-container {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
