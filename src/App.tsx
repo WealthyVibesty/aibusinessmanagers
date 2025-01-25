@@ -44,6 +44,7 @@ import Transportation from "@/pages/industries/Transportation";
 import Finance from "@/pages/industries/Finance";
 
 import AIBusinessManagers from "@/pages/AIBusinessManagers";
+import ThankYou from "@/pages/ThankYou";
 
 function App() {
   const { toast } = useToast();
@@ -84,10 +85,10 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
-              {/* Add the new AIBusinessManagers route */}
-              <Route path="/ai-business-managers" element={
+              {/* Add the new ThankYou route */}
+              <Route path="/thank-you" element={
                 <div className="animate-fadeIn">
-                  <AIBusinessManagers />
+                  <ThankYou />
                 </div>
               } />
               

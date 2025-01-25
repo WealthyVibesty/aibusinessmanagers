@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { Calendar, User, Mail, Phone, Building, MessageSquare } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/components/AuthProvider";
@@ -27,8 +27,10 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!name || !email || !phone) {
+    console.log("Starting form submission...");
+
+    if (!name || !email || !phone || !company) {
+      console.log("Missing required fields");
       toast({
         title: "Please fill in all required fields",
         variant: "destructive",
@@ -36,67 +38,39 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
       return;
     }
 
-    if (!user) {
-      console.log("User not authenticated, redirecting to login");
-      toast({
-        title: "Please log in",
-        description: "You need to be logged in to submit a demo request.",
-        variant: "destructive",
-      });
-      onClose();
-      navigate("/login");
-      return;
-    }
-
     setIsSubmitting(true);
+    console.log("Submitting form data...");
 
     try {
-      console.log("Current auth state:", user ? "Authenticated" : "Not authenticated");
-      
-      console.log("Saving demo request form submission...");
-      const { error: supabaseError } = await supabase
+      const { error } = await supabase
         .from('form_submissions')
         .insert([
           {
             form_type: 'demo_request',
-            user_id: user.id,
+            user_id: user?.id,
             data: { name, email, phone, company, message }
           }
         ]);
 
-      if (supabaseError) {
-        console.error("Supabase error details:", supabaseError);
-        throw supabaseError;
+      if (error) {
+        console.error("Form submission error:", error);
+        throw error;
       }
 
-      // Subscribe to Mailchimp
-      console.log("Subscribing to Mailchimp...");
-      const { error: mailchimpError } = await supabase.functions.invoke('mailchimp-subscribe', {
-        body: {
-          email,
-          firstName: name.split(' ')[0],
-          lastName: name.split(' ').slice(1).join(' '),
-          phone,
-          company,
-          formType: 'demo_request'
-        }
-      });
-
-      if (mailchimpError) throw mailchimpError;
-
-      console.log("Form submission completed successfully");
+      console.log("Form submitted successfully");
       toast({
-        title: "Demo Request Received!",
-        description: "We'll contact you shortly to schedule your demo.",
+        title: "Success!",
+        description: "Your demo request has been submitted.",
       });
-
+      
       onClose();
-      resetForm();
+      navigate("/thank-you");
+      
     } catch (error) {
-      console.error("Error processing form submission:", error);
+      console.error("Form submission error:", error);
       toast({
-        title: "Error",
-        description: "There was a problem submitting your request. Please try again.",
+        title: "Error submitting form",
+        description: "Please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -104,26 +78,12 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
     }
   };
 
-  const resetForm = () => {
-    setName("");
-    setEmail("");
-    setPhone("");
-    setCompany("");
-    setMessage("");
-  };
-
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] p-6 bg-white border-2 border-gray-200 shadow-xl rounded-xl">
-        <DialogHeader className="space-y-3 text-center">
-          <DialogTitle className="text-2xl font-bold text-gray-900">
-            Schedule Your Free Personalized Custom Demo
-          </DialogTitle>
-          <DialogDescription className="text-base text-gray-600">
-            See how our AI solution can transform your business operations
-          </DialogDescription>
-        </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4 mt-6">
+      <DialogContent className="sm:max-w-[500px]">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <h2 className="text-2xl font-bold text-center">Request a Demo</h2>
+          
           <div className="space-y-4">
             <div className="relative">
               <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
@@ -131,12 +91,11 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 placeholder="Your Name *"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="pl-10 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                className="pl-10"
                 required
-                disabled={isSubmitting}
               />
             </div>
-          
+
             <div className="relative">
               <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
               <Input
@@ -144,9 +103,8 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 placeholder="Email Address *"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="pl-10 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                className="pl-10"
                 required
-                disabled={isSubmitting}
               />
             </div>
 
@@ -157,41 +115,39 @@ export default function DemoRequestForm({ isOpen, onClose }: DemoRequestFormProp
                 placeholder="Phone Number *"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="pl-10 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                className="pl-10"
                 required
-                disabled={isSubmitting}
               />
             </div>
 
             <div className="relative">
               <Building className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
               <Input
-                placeholder="Company Name"
+                placeholder="Company Name *"
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
-                className="pl-10 bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
-                disabled={isSubmitting}
+                className="pl-10"
+                required
               />
             </div>
 
             <div className="relative">
               <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
               <Textarea
-                placeholder="Tell us about your needs (optional)"
+                placeholder="Message (Optional)"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="pl-10 min-h-[100px] bg-white border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
-                disabled={isSubmitting}
+                className="pl-10 min-h-[100px]"
               />
             </div>
           </div>
 
           <Button 
             type="submit" 
-            className="w-full py-6 text-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-colors"
+            className="w-full"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Submitting...' : 'Schedule Demo'}
+            {isSubmitting ? "Submitting..." : "Submit Request"}
           </Button>
         </form>
       </DialogContent>
