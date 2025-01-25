@@ -156,7 +156,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-black">
               Industries We Serve
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -200,7 +200,7 @@ export default function Home() {
           transition={{ duration: 0.5 }}
         >
           <div className="p-12 rounded-3xl bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl">
-            <h2 className="text-3xl font-bold mb-6">
+            <h2 className="text-3xl font-bold mb-6 text-white">
               Ready to Transform Your Business?
             </h2>
             <p className="text-xl mb-8 text-blue-100">
