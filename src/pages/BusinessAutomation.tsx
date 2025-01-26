@@ -23,7 +23,7 @@ export default function BusinessAutomation() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-black">
               We Will Build AI Business Management Systems That Automate Your Operations and Scale Your Business
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-12">
@@ -45,7 +45,7 @@ export default function BusinessAutomation() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center">Key Features</h2>
+            <h2 className="text-3xl font-bold mb-12 text-center text-black">Key Features</h2>
             <div className="grid md:grid-cols-2 gap-8">
               {[
                 {
@@ -70,7 +70,7 @@ export default function BusinessAutomation() {
                 }
               ].map((feature, index) => (
                 <div key={index} className="p-6 bg-gray-50 rounded-lg">
-                  <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-black">{feature.title}</h3>
                   <p className="text-gray-600">{feature.description}</p>
                 </div>
               ))}
@@ -83,29 +83,29 @@ export default function BusinessAutomation() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center">
+            <h2 className="text-3xl font-bold mb-12 text-center text-black">
               We Scaled ThriveWorks to $350,000 in Monthly Revenue in 90 Days Using Intelligent AI Automation
             </h2>
             
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <div className="space-y-6">
-                <h3 className="text-xl font-semibold">Here's what we achieved:</h3>
+                <h3 className="text-xl font-semibold text-black">Here's what we achieved:</h3>
                 <ul className="space-y-4">
                   <li className="flex items-start space-x-3">
                     <span className="text-primary">•</span>
-                    <span>985 Tasks Automated Per Week: From order tracking to client communications.</span>
+                    <span className="text-gray-600">985 Tasks Automated Per Week: From order tracking to client communications.</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <span className="text-primary">•</span>
-                    <span>60 Hours Saved Per Month: With Twilio-powered customer support integrated into WhatsApp.</span>
+                    <span className="text-gray-600">60 Hours Saved Per Month: With Twilio-powered customer support integrated into WhatsApp.</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <span className="text-primary">•</span>
-                    <span>Revenue Increased by 32%: Through dynamic pricing updates using AI agents.</span>
+                    <span className="text-gray-600">Revenue Increased by 32%: Through dynamic pricing updates using AI agents.</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <span className="text-primary">•</span>
-                    <span>2,200 New Leads Captured in 90 Days: Via automated workflows tied to JotForm submissions.</span>
+                    <span className="text-gray-600">2,200 New Leads Captured in 90 Days: Via automated workflows tied to JotForm submissions.</span>
                   </li>
                 </ul>
               </div>
@@ -129,13 +129,13 @@ export default function BusinessAutomation() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black">
               Get an AI Business Management System Built for You in 7 Days
             </h2>
-            <p className="text-xl mb-12">
+            <p className="text-xl mb-12 text-black">
               Let us build and integrate your custom AI workflows—tailored to automate your tedious operations, scale faster, and deliver outstanding results.
             </p>
             <Button
@@ -153,7 +153,7 @@ export default function BusinessAutomation() {
       {/* Partners Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center mb-12">Trusted by industry leaders</h2>
+          <h2 className="text-2xl font-bold text-center mb-12 text-black">Trusted by industry leaders</h2>
           <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               "IBM",
@@ -176,7 +176,7 @@ export default function BusinessAutomation() {
       {/* Testimonials */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">What Clients Are Saying</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-black">What Clients Are Saying</h2>
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
             {[
               {
@@ -195,7 +195,7 @@ export default function BusinessAutomation() {
                   ))}
                 </div>
                 <p className="text-gray-700 mb-4 italic">{testimonial.text}</p>
-                <p className="font-medium">– {testimonial.author}</p>
+                <p className="font-medium text-black">– {testimonial.author}</p>
               </div>
             ))}
           </div>
