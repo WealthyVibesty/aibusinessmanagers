@@ -31,7 +31,7 @@ export default function BusinessAutomation() {
             </p>
             <Button
               size="lg"
-              onClick={() => navigate("/solutions")}
+              onClick={() => window.location.href = 'https://aibusinessmanagers.com/solutions'}
               className="text-lg px-8 py-6 h-auto rounded-full group"
             >
               Get Pricing & Details
@@ -140,7 +140,7 @@ export default function BusinessAutomation() {
             </p>
             <Button
               size="lg"
-              onClick={() => navigate("/solutions")}
+              onClick={() => window.location.href = 'https://aibusinessmanagers.com/solutions'}
               className="text-lg px-8 py-6 h-auto rounded-full bg-white text-primary hover:bg-white/90"
             >
               Get Started Now

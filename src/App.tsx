@@ -45,6 +45,7 @@ import Transportation from "@/pages/industries/Transportation";
 import Finance from "@/pages/industries/Finance";
 
 import AIBusinessManagers from "@/pages/AIBusinessManagers";
+import BusinessAutomation from "@/pages/BusinessAutomation";
 
 function App() {
   const { toast } = useToast();
@@ -85,7 +86,13 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
-              {/* AI Business Managers as landing page */}
+              {/* Add the new BusinessAutomation route */}
+              <Route path="/business-automation" element={
+                <div className="animate-fadeIn">
+                  <BusinessAutomation />
+                </div>
+              } />
+              
               <Route path="/" element={
                 <div className="animate-fadeIn">
                   <AIBusinessManagers />
