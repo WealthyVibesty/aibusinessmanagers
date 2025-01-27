@@ -90,29 +90,3 @@ button {
   transform: translateY(-2px);
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
-
-/* Ensure dropdowns and dialogs are visible */
-.dialog-content,
-[role="dialog"],
-[role="tooltip"],
-[role="menu"] {
-  background-color: white !important;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  z-index: 50;
-}
-
-/* Ensure dropdown items are visible */
-[role="menuitem"] {
-  background-color: white;
-  color: #1a1f2c;
-}
-
-[role="menuitem"]:hover {
-  background-color: #f3f4f6;
-}
-
-/* Dialog overlay */
-[role="dialog"]::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
-}
