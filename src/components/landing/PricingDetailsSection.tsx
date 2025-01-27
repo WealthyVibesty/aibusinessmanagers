@@ -8,19 +8,8 @@ import { Book, Cpu, Bot } from "lucide-react";
 export default function PricingDetailsSection() {
   const offerings = [
     {
-      title: "AI Voice Agent Profile Creation",
-      value: 15000,
-      monthlyValue: 500,
-      features: [
-        "Custom Scripts",
-        "Integration with Your Systems",
-        "Training and Testing",
-        "First Year of Service Included ($6,000 value)"
-      ]
-    },
-    {
       title: "Personalized AI Agent Workforce Implementation Roadmap",
-      value: 20000,
+      value: 25000,
       monthlyValue: 1000,
       features: [
         "AI Voice Agent Profile Creation",
@@ -31,13 +20,24 @@ export default function PricingDetailsSection() {
     },
     {
       title: "1-Hour Strategy Consultation",
-      value: 25000,
+      value: 20000,
       monthlyValue: 250,
       features: [
         "Review your current workflows",
         "Pinpoint areas for AI implementation",
         "Custom action plan",
         "First Year of Service Included ($3,000 value)"
+      ]
+    },
+    {
+      title: "AI Voice Agent Profile Creation",
+      value: 15000,
+      monthlyValue: 500,
+      features: [
+        "Custom Scripts",
+        "Integration with Your Systems",
+        "Training and Testing",
+        "First Year of Service Included ($6,000 value)"
       ]
     }
   ];
