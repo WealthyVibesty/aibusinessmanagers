@@ -10,23 +10,23 @@ export default function Pricing() {
 
   const plans = [
     {
-      name: "Basic Plan",
-      subtitle: "Essential Automation",
-      price: "2,000",
-      setupFee: "15,000",
-      description: "Perfect for small property management companies managing 1-5 properties",
+      name: "Premium Plan",
+      subtitle: "Comprehensive Integration",
+      price: "3,000",
+      setupFee: "25,000",
+      description: "Built for large property management companies managing 10+ properties",
       features: [
-        "Automated Tenant Support",
-        "Maintenance Request Handling",
-        "Lease Renewal Processing",
-        "Incident Reporting System",
-        "CRM Integration",
-        "Basic Monthly Reporting",
-        "Standard Email Support",
-        "First Year Troubleshooting"
+        "Everything in Advanced, plus:",
+        "Multilingual Support",
+        "Social Media Integration",
+        "Custom AI Branding",
+        "Advanced Analytics Dashboard",
+        "24/7 Emergency Support",
+        "Quarterly Strategy Reviews",
+        "Dedicated Account Manager"
       ],
-      savings: "$80,000-$100,000/year",
-      buttonText: "Get Basic"
+      savings: "$250,000-$300,000/year",
+      buttonText: "Get Premium"
     },
     {
       name: "Advanced Plan",
@@ -49,23 +49,23 @@ export default function Pricing() {
       popular: true
     },
     {
-      name: "Premium Plan",
-      subtitle: "Comprehensive Integration",
-      price: "3,000",
-      setupFee: "25,000",
-      description: "Built for large property management companies managing 10+ properties",
+      name: "Basic Plan",
+      subtitle: "Essential Automation",
+      price: "2,000",
+      setupFee: "15,000",
+      description: "Perfect for small property management companies managing 1-5 properties",
       features: [
-        "Everything in Advanced, plus:",
-        "Multilingual Support",
-        "Social Media Integration",
-        "Custom AI Branding",
-        "Advanced Analytics Dashboard",
-        "24/7 Emergency Support",
-        "Quarterly Strategy Reviews",
-        "Dedicated Account Manager"
+        "Automated Tenant Support",
+        "Maintenance Request Handling",
+        "Lease Renewal Processing",
+        "Incident Reporting System",
+        "CRM Integration",
+        "Basic Monthly Reporting",
+        "Standard Email Support",
+        "First Year Troubleshooting"
       ],
-      savings: "$250,000-$300,000/year",
-      buttonText: "Get Premium"
+      savings: "$80,000-$100,000/year",
+      buttonText: "Get Basic"
     }
   ];
 
