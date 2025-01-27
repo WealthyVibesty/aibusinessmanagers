@@ -117,7 +117,7 @@ export default function AboutUs() {
                 </div>
                 <div className="relative h-64 bg-gray-100 rounded-lg overflow-hidden">
                   <img 
-                    src="/placeholder.svg" 
+                    src="/lovable-uploads/photo-1519389950473.jpg" 
                     alt="Business Success" 
                     className="w-full h-full object-cover"
                   />
