@@ -1,26 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-const industries = [
-  { name: "Healthcare", path: "/industries/healthcare" },
-  { name: "Finance", path: "/industries/finance" },
-  { name: "Hospitality", path: "/industries/hospitality" },
-  { name: "Restaurants", path: "/industries/restaurants" },
-  { name: "Transportation", path: "/industries/transportation" },
-  { name: "Property Management", path: "/industries/property-management" },
-  { name: "Clinics & Private Practices", path: "/industries/clinics-private-practices" },
-  { name: "Hospitals & Health Systems", path: "/industries/hospitals-health-systems" },
-  { name: "Specialty Care", path: "/industries/specialty-care" },
-  { name: "Telehealth Providers", path: "/industries/telehealth-providers" },
-];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +15,7 @@ export default function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-xl font-bold text-primary">
-            AI Voice Agents
+            AI Business Managers
           </Link>
 
           {/* Mobile menu button */}
@@ -50,23 +31,6 @@ export default function Header() {
             <Link to="/business-automation" className="text-gray-600 hover:text-primary">
               Business Automation
             </Link>
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center text-gray-600 hover:text-primary">
-                Industries <ChevronDown className="ml-1 h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white/95 backdrop-blur-md border border-gray-200">
-                {industries.map((industry) => (
-                  <DropdownMenuItem key={industry.path}>
-                    <Link
-                      to={industry.path}
-                      className="w-full text-gray-600 hover:text-primary"
-                    >
-                      {industry.name}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
             <Link to="/solutions" className="text-gray-600 hover:text-primary">
               Solutions
             </Link>
@@ -97,26 +61,6 @@ export default function Header() {
             >
               Business Automation
             </Link>
-            <div className="w-full">
-              <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center text-gray-600 hover:text-primary">
-                  Industries <ChevronDown className="ml-1 h-4 w-4" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white/95 backdrop-blur-md border border-gray-200">
-                  {industries.map((industry) => (
-                    <DropdownMenuItem key={industry.path}>
-                      <Link
-                        to={industry.path}
-                        className="w-full text-gray-600 hover:text-primary"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {industry.name}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
             <Link
               to="/solutions"
               className="text-gray-600 hover:text-primary w-full"
