@@ -2,6 +2,14 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +17,14 @@ export default function Header() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const industries = [
+    { name: "Healthcare", path: "/industries/healthcare" },
+    { name: "Finance", path: "/industries/finance" },
+    { name: "Restaurants", path: "/industries/restaurants" },
+    { name: "Hospitality", path: "/industries/hospitality" },
+    { name: "Transportation", path: "/industries/transportation" },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
@@ -31,6 +47,35 @@ export default function Header() {
             <Link to="/business-automation" className="text-gray-600 hover:text-primary">
               Business Automation
             </Link>
+            
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-gray-600 hover:text-primary">
+                    Industries
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      {industries.map((industry) => (
+                        <li key={industry.path}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              to={industry.path}
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            >
+                              <div className="text-sm font-medium leading-none">
+                                {industry.name}
+                              </div>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
             <Link to="/solutions" className="text-gray-600 hover:text-primary">
               Solutions
             </Link>
@@ -61,6 +106,24 @@ export default function Header() {
             >
               Business Automation
             </Link>
+            
+            {/* Mobile Industries Menu */}
+            <div className="w-full">
+              <div className="font-medium mb-2">Industries</div>
+              <div className="pl-4 space-y-2">
+                {industries.map((industry) => (
+                  <Link
+                    key={industry.path}
+                    to={industry.path}
+                    className="block text-gray-600 hover:text-primary"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {industry.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             <Link
               to="/solutions"
               className="text-gray-600 hover:text-primary w-full"
