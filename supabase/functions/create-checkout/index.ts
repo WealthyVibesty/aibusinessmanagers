@@ -19,8 +19,8 @@ serve(async (req) => {
     const body = await req.json();
     console.log('Request body:', body);
     
-    const { priceId, upsellPriceIds = [], refCode } = body;
-    console.log('Parsed payload:', { priceId, upsellPriceIds, refCode });
+    const { priceId } = body;
+    console.log('Price ID:', priceId);
 
     if (!priceId) {
       console.error('No priceId provided');
@@ -40,35 +40,6 @@ serve(async (req) => {
       httpClient: Stripe.createFetchHttpClient(),
     });
 
-    // Initialize Supabase client
-    const supabaseUrl = Deno.env.get('SUPABASE_URL');
-    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
-    if (!supabaseUrl || !supabaseKey) {
-      throw new Error('Supabase configuration error');
-    }
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
-    // If refCode exists, verify and get affiliate info
-    let affiliateId = null;
-    if (refCode) {
-      const { data: affiliate } = await supabase
-        .from('affiliates')
-        .select('id')
-        .eq('code', refCode)
-        .single();
-      
-      if (affiliate) {
-        affiliateId = affiliate.id;
-      }
-    }
-
-    // Prepare line items
-    const lineItems = [
-      { price: priceId, quantity: 1 },
-      ...upsellPriceIds.map(price => ({ price, quantity: 1 }))
-    ];
-    console.log('Line items prepared:', lineItems);
-
     // Get the base URL from the request URL
     const url = new URL(req.url);
     const baseUrl = `${url.protocol}//${url.hostname}${url.port ? `:${url.port}` : ''}`;
@@ -77,13 +48,17 @@ serve(async (req) => {
     // Create checkout session
     console.log('Creating checkout session...');
     const session = await stripe.checkout.sessions.create({
-      line_items: lineItems,
+      line_items: [
+        {
+          price: priceId,
+          quantity: 1,
+        },
+      ],
       mode: 'payment',
       success_url: `${baseUrl}/dashboard`,
-      cancel_url: `${baseUrl}/checkout`,
+      cancel_url: `${baseUrl}/pricing`,
       allow_promotion_codes: true,
       billing_address_collection: 'required',
-      metadata: affiliateId ? { affiliateId } : undefined,
     });
 
     console.log('Checkout session created successfully:', session.id);

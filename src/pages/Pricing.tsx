@@ -3,6 +3,7 @@ import { Check, Info } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export default function Pricing() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function Pricing() {
     {
       name: "Basic Plan",
       subtitle: "Essential Automation",
+      priceId: "price_1Qm5kMGineWW4dYE51YMtO7I",
       setupFee: "10,000",
       monthlyAfterFirstYear: "2,000",
       description: "Perfect for small property management companies managing 1-5 properties",
@@ -31,6 +33,7 @@ export default function Pricing() {
     {
       name: "Advanced Plan",
       subtitle: "Enhanced Engagement",
+      priceId: "price_1Qm5lwGineWW4dYEcPKRPbsQ",
       setupFee: "15,000",
       monthlyAfterFirstYear: "2,500",
       description: "Ideal for mid-sized property management companies managing 6-10 properties",
@@ -51,6 +54,7 @@ export default function Pricing() {
     {
       name: "Premium Plan",
       subtitle: "Comprehensive Integration",
+      priceId: "price_1Qm5mYGineWW4dYEkHoISblW",
       setupFee: "25,000",
       monthlyAfterFirstYear: "3,000",
       description: "Built for large property management companies managing 10+ properties",
@@ -69,14 +73,36 @@ export default function Pricing() {
     }
   ];
 
-  const handlePlanSelect = (planName: string) => {
-    console.log(`Selected plan: ${planName}`);
-    toast({
-      title: "Plan Selected",
-      description: `You've selected the ${planName}. Our team will contact you shortly.`,
-      duration: 5000,
-    });
-    navigate("/checkout");
+  const handlePlanSelect = async (planName: string, priceId: string) => {
+    try {
+      console.log(`Creating checkout session for ${planName} with price ID: ${priceId}`);
+      
+      const { data: checkoutData, error: checkoutError } = await supabase.functions.invoke('create-checkout', {
+        body: { priceId }
+      });
+
+      if (checkoutError) {
+        console.error('Checkout error:', checkoutError);
+        toast({
+          title: "Error",
+          description: "Unable to process checkout. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      if (checkoutData?.url) {
+        console.log('Redirecting to checkout URL:', checkoutData.url);
+        window.location.href = checkoutData.url;
+      }
+    } catch (error) {
+      console.error('Error handling plan selection:', error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -146,7 +172,7 @@ export default function Pricing() {
                   <span>Save {plan.savings}</span>
                 </div>
                 <Button
-                  onClick={() => handlePlanSelect(plan.name)}
+                  onClick={() => handlePlanSelect(plan.name, plan.priceId)}
                   className={`w-full py-6 ${
                     plan.popular ? 'bg-primary text-white hover:bg-primary/90' : ''
                   }`}
