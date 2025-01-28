@@ -79,7 +79,7 @@ function App() {
   }, [toast]);
 
   return (
-    <ThemeProvider>
+    <ThemeProvider attribute="class" defaultTheme="light">
       <Router>
         <ScrollToTop />
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-white via-blue-50/30 to-white">
@@ -309,8 +309,8 @@ function App() {
           </div>
           <FooterSection />
         </div>
+        <Toaster />
       </Router>
-      <Toaster />
     </ThemeProvider>
   );
 }
