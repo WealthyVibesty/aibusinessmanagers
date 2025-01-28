@@ -51,17 +51,17 @@ export default function Header() {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-gray-600 hover:text-primary">
+                  <NavigationMenuTrigger className="text-gray-600 hover:text-primary bg-white">
                     Industries
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                  <NavigationMenuContent className="bg-white">
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
                       {industries.map((industry) => (
                         <li key={industry.path}>
                           <NavigationMenuLink asChild>
                             <Link
                               to={industry.path}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground bg-white"
                             >
                               <div className="text-sm font-medium leading-none">
                                 {industry.name}
@@ -108,7 +108,7 @@ export default function Header() {
             </Link>
             
             {/* Mobile Industries Menu */}
-            <div className="w-full">
+            <div className="w-full bg-white">
               <div className="font-medium mb-2">Industries</div>
               <div className="pl-4 space-y-2">
                 {industries.map((industry) => (

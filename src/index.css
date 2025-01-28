@@ -51,6 +51,26 @@
     0 0 200px rgba(59,130,246,0.4);
 }
 
+/* Add styles for popups and dropdowns */
+[data-radix-popper-content-wrapper] {
+  background: white !important;
+}
+
+.NavigationMenuContent {
+  background: white !important;
+}
+
+[role="dialog"] {
+  background: white !important;
+}
+
+/* Override any transparent backgrounds in navigation menus */
+[role="navigation"] [role="menuitem"],
+[role="navigation"] [role="menu"] {
+  background: white !important;
+}
+
+/* Keep existing animations */
 .rocket-flames {
   position: absolute;
   bottom: -20px;
