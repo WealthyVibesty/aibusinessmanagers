@@ -12,7 +12,7 @@ export default function Pricing() {
     {
       name: "Basic Plan",
       subtitle: "Essential Automation",
-      setupFee: "15,000",
+      setupFee: "10,000",
       monthlyAfterFirstYear: "2,000",
       description: "Perfect for small property management companies managing 1-5 properties",
       features: [
@@ -31,7 +31,7 @@ export default function Pricing() {
     {
       name: "Advanced Plan",
       subtitle: "Enhanced Engagement",
-      setupFee: "20,000",
+      setupFee: "15,000",
       monthlyAfterFirstYear: "2,500",
       description: "Ideal for mid-sized property management companies managing 6-10 properties",
       features: [
