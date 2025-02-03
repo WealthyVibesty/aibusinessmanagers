@@ -23,10 +23,10 @@ export default function BusinessAutomation() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="relative text-4xl md:text-6xl font-bold mb-8 leading-tight bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent animate-pulse">
+            <h1 className="relative text-5xl md:text-7xl font-bold mb-8 leading-tight bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent animate-pulse">
               <span className="absolute -inset-1 blur-2xl bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-blue-600/20 animate-pulse"></span>
               <span className="relative">
-                We Will Build AI Business Management Systems That Automate Your Operations and Scale Your Business
+                Get Your Business Running on Autopilot
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-12">
