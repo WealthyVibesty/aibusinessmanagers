@@ -21,18 +21,38 @@ export default function BusinessAutomation() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl mx-auto text-center"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-4xl mx-auto text-center relative"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-black">
+            {/* Glowing background effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-100/30 via-purple-100/30 to-blue-100/30 blur-3xl animate-pulse" />
+            
+            {/* Title with gradient and animation */}
+            <motion.h1 
+              className="relative text-5xl md:text-7xl font-bold mb-8 leading-tight bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent"
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              transition={{ 
+                duration: 0.6,
+                ease: [0.4, 0, 0.2, 1]
+              }}
+            >
               We Will Build AI Business Management Systems That Automate Your Operations and Scale Your Business
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-12">
+            </motion.h1>
+
+            <motion.p 
+              className="text-xl md:text-2xl text-gray-600 mb-12 relative"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
               Get your business running on autopilot with AI-driven workflows, precision automations, and actionable insights. Save time, reduce errors, and focus on scaling your revenue.
-            </p>
+            </motion.p>
+
             <Button
               size="lg"
               onClick={() => window.location.href = 'https://aibusinessmanagers.com/solutions'}
-              className="text-lg px-8 py-6 h-auto rounded-full group"
+              className="text-lg px-8 py-6 h-auto rounded-full group relative bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 hover:shadow-lg transition-all duration-300 hover:scale-105"
             >
               Get Pricing & Details
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
