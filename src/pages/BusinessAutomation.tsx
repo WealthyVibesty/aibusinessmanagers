@@ -29,7 +29,7 @@ export default function BusinessAutomation() {
             
             {/* Title with gradient and animation */}
             <motion.h1 
-              className="relative text-5xl md:text-7xl font-bold mb-8 leading-tight bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent"
+              className="relative text-4xl md:text-6xl font-bold mb-4 leading-tight"
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               transition={{ 
@@ -37,11 +37,14 @@ export default function BusinessAutomation() {
                 ease: [0.4, 0, 0.2, 1]
               }}
             >
-              We Will Build AI Business Management Systems That Automate Your Operations and Scale Your Business
+              <span className="text-black">Transform Your Business With</span>{' '}
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+                AI-Powered Automation
+              </span>
             </motion.h1>
 
             <motion.p 
-              className="text-xl md:text-2xl text-gray-600 mb-12 relative"
+              className="text-lg md:text-xl text-gray-600 mb-8 relative"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
