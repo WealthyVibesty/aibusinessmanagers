@@ -6,16 +6,20 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isIndustriesOpen, setIsIndustriesOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleIndustries = () => {
+    setIsIndustriesOpen(!isIndustriesOpen);
   };
 
   const industries = [
@@ -51,23 +55,21 @@ export default function Header() {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-gray-600 hover:text-primary bg-white">
+                  <NavigationMenuTrigger className="text-gray-600 hover:text-primary">
                     Industries
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-white">
+                  <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
                       {industries.map((industry) => (
                         <li key={industry.path}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              to={industry.path}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground bg-white"
-                            >
-                              <div className="text-sm font-medium leading-none">
-                                {industry.name}
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
+                          <Link
+                            to={industry.path}
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">
+                              {industry.name}
+                            </div>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -108,15 +110,26 @@ export default function Header() {
             </Link>
             
             {/* Mobile Industries Menu */}
-            <div className="w-full bg-white">
-              <div className="font-medium mb-2">Industries</div>
-              <div className="pl-4 space-y-2">
+            <div className="w-full">
+              <button
+                onClick={toggleIndustries}
+                className="flex justify-between items-center w-full text-gray-600 hover:text-primary"
+              >
+                <span>Industries</span>
+                <span className={`transform transition-transform ${isIndustriesOpen ? 'rotate-180' : ''}`}>
+                  ▼
+                </span>
+              </button>
+              <div className={`${isIndustriesOpen ? 'block' : 'hidden'} pl-4 mt-2 space-y-2`}>
                 {industries.map((industry) => (
                   <Link
                     key={industry.path}
                     to={industry.path}
-                    className="block text-gray-600 hover:text-primary"
-                    onClick={() => setIsOpen(false)}
+                    className="block text-gray-600 hover:text-primary py-1"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setIsIndustriesOpen(false);
+                    }}
                   >
                     {industry.name}
                   </Link>
