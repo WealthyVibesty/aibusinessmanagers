@@ -34,8 +34,12 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-xl font-bold text-primary">
-            AI Business Managers
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/aba7b0cf-5619-405d-91ce-ac984eb4b793.png" 
+              alt="AI Business Managers Logo" 
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Mobile menu button */}
