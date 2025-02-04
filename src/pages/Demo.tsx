@@ -489,6 +489,23 @@ export default function Demo() {
     }
   };
 
+  const handleBusinessDetailsSave = (details: BusinessDetails) => {
+    console.log('Business details saved:', details);
+    // Update the system prompt based on the business details
+    const newSystemPrompt = `You are an AI assistant for ${details.business_name}, a ${details.industry} business. 
+    Business size: ${details.business_size}
+    Target audience: ${details.target_audience}
+    Key services: ${details.key_services.join(', ')}
+    
+    ${details.custom_prompt}`;
+    
+    setSystemPrompt(newSystemPrompt);
+    toast({
+      title: "Business details saved",
+      description: "Your AI assistant has been customized with your business details."
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 sm:p-6">
       <motion.div 
