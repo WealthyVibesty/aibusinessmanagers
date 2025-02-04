@@ -17,6 +17,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useConversation } from "@11labs/react";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import DemoCustomizationForm from "@/components/DemoCustomizationForm";
+import ChatPreferencesDialog from "@/components/ChatPreferencesDialog";
+import { useAuth } from "@/components/AuthProvider";
 
 const industries = [
   {
@@ -330,7 +332,10 @@ export default function Demo() {
   const [userInput, setUserInput] = useState("");
   const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
   const [showCustomization, setShowCustomization] = useState(false);
+  const [isChatPreferencesOpen, setIsChatPreferencesOpen] = useState(false);
+  const [hasPreferences, setHasPreferences] = useState(false);
   const isMobile = useIsMobile();
+  const { user } = useAuth();
 
   const conversation = useConversation({
     onConnect: () => {
@@ -360,6 +365,42 @@ export default function Demo() {
       },
     },
   });
+
+  useEffect(() => {
+    if (user) {
+      checkUserPreferences();
+    }
+  }, [user]);
+
+  const checkUserPreferences = async () => {
+    if (!user) return;
+
+    try {
+      const { data, error } = await supabase
+        .from('chat_preferences')
+        .select('*')
+        .eq('user_id', user.id)
+        .single();
+
+      if (error) throw error;
+
+      if (data) {
+        setHasPreferences(true);
+        setSelectedIndustry(data.industry);
+        const industryPrompt = industrySystemPrompts[data.industry as keyof typeof industrySystemPrompts] || '';
+        setSystemPrompt(industryPrompt);
+      } else {
+        setIsChatPreferencesOpen(true);
+      }
+    } catch (error) {
+      console.error("Error checking user preferences:", error);
+    }
+  };
+
+  const handlePreferencesSaved = () => {
+    setHasPreferences(true);
+    checkUserPreferences();
+  };
 
   const handleIndustrySelect = (value: string) => {
     setSelectedIndustry(value);
@@ -448,24 +489,6 @@ export default function Demo() {
     }
   };
 
-  const handleBusinessDetailsSave = (details: any) => {
-    setSelectedIndustry(details.industry);
-    setSystemPrompt(details.custom_prompt || industries.find(i => i.id === details.industry)?.defaultSystemPrompt || '');
-    setShowCustomization(false);
-    
-    // Update chat messages with personalized greeting
-    setChatMessages([{
-      type: 'ai',
-      text: `Welcome to ${details.business_name}! I'm your AI assistant. How can I help you today?`
-    }]);
-  };
-
-  useEffect(() => {
-    if (selectedIndustry) {
-      setSystemPrompt(industrySystemPrompts[selectedIndustry as keyof typeof industrySystemPrompts] || '');
-    }
-  }, [selectedIndustry]);
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 sm:p-6">
       <motion.div 
@@ -509,6 +532,17 @@ export default function Demo() {
                 {showCustomization ? 'Hide Customization' : 'Customize AI Assistant'}
               </span>
             </Button>
+
+            {!hasPreferences && (
+              <Button
+                variant="outline"
+                onClick={() => setIsChatPreferencesOpen(true)}
+                className="flex items-center gap-2 border-black"
+              >
+                <Settings className="h-4 w-4" />
+                <span className="text-black">Set Chat Preferences</span>
+              </Button>
+            )}
           </motion.div>
         </div>
 
@@ -742,6 +776,12 @@ export default function Demo() {
         <DemoRequestForm 
           isOpen={isDemoFormOpen}
           onClose={() => setIsDemoFormOpen(false)}
+        />
+
+        <ChatPreferencesDialog
+          isOpen={isChatPreferencesOpen}
+          onClose={() => setIsChatPreferencesOpen(false)}
+          onSuccess={handlePreferencesSaved}
         />
       </motion.div>
     </div>

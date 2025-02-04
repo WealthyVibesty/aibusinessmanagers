@@ -97,6 +97,53 @@ export type Database = {
           },
         ]
       }
+      chat_preferences: {
+        Row: {
+          company: string | null
+          created_at: string
+          goals: string | null
+          id: string
+          industry: string
+          name: string
+          preferences: Json | null
+          role: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          goals?: string | null
+          id?: string
+          industry: string
+          name: string
+          preferences?: Json | null
+          role?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          goals?: string | null
+          id?: string
+          industry?: string
+          name?: string
+          preferences?: Json | null
+          role?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_preferences_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       courses: {
         Row: {
           created_at: string
