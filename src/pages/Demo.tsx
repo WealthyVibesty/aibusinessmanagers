@@ -16,9 +16,10 @@ import { toast } from "sonner";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useConversation } from "@11labs/react";
 import DemoRequestForm from "@/components/DemoRequestForm";
-import DemoCustomizationForm from "@/components/DemoCustomizationForm";
+import DemoCustomizationForm, { BusinessDetails } from "@/components/DemoCustomizationForm";
 import ChatPreferencesDialog from "@/components/ChatPreferencesDialog";
 import { useAuth } from "@/components/AuthProvider";
+import { useToast } from "@/hooks/use-toast";
 
 const industries = [
   {
@@ -500,8 +501,7 @@ export default function Demo() {
     ${details.custom_prompt}`;
     
     setSystemPrompt(newSystemPrompt);
-    toast({
-      title: "Business details saved",
+    toast.success("Business details saved", {
       description: "Your AI assistant has been customized with your business details."
     });
   };
