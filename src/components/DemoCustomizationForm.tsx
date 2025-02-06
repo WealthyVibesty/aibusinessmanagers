@@ -10,7 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { motion } from "framer-motion";
 import { Json } from "@/integrations/supabase/types";
 
-export interface BusinessDetails {
+interface BusinessDetails {
   industry: string;
   business_name: string;
   business_size: string;
