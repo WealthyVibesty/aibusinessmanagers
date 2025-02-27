@@ -8,12 +8,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { 
-  RocketLaunch, 
+  Rocket, 
   Play, 
   Brain, 
   FileText, 
   ArrowRight, 
-  Robot, 
+  Bot, 
   ChartLine, 
   Clock, 
   Building, 
@@ -29,7 +29,8 @@ import {
   ChevronDown,
   ChevronUp,
   BarChart,
-  MessageSquare
+  MessageSquare,
+  Calculator
 } from "lucide-react";
 import ROICalculatorDialog from "@/components/ROICalculatorDialog";
 import StrategyCallForm from "@/components/StrategyCallForm";
@@ -296,7 +297,7 @@ export default function EnhancedAIBusinessManagers() {
               className="inline-block mb-6 px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
             >
               <div className="flex items-center space-x-2">
-                <RocketLaunch className="h-5 w-5 text-blue-400" />
+                <Rocket className="h-5 w-5 text-blue-400" />
                 <span className="text-white/90 font-medium">The Future of Scalable Business Operations</span>
               </div>
             </motion.div>
@@ -721,7 +722,7 @@ export default function EnhancedAIBusinessManagers() {
               
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer">
                 <div className="bg-blue-500/30 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Robot className="h-6 w-6 text-white" />
+                  <Bot className="h-6 w-6 text-white" />
                 </div>
                 <h4 className="text-lg font-semibold mb-2">AI Solutions Deployment</h4>
                 <p className="text-blue-100 text-sm">Custom AI systems tailored to your specific business needs and goals.</p>
@@ -1080,7 +1081,7 @@ export default function EnhancedAIBusinessManagers() {
                 size="lg"
                 className="bg-white text-blue-800 hover:bg-gray-100 px-8 py-6 h-auto text-lg font-medium group"
               >
-                <Robot className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                <Bot className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                 Live AI Demo – Talk to an AI Business Manager
               </Button>
               <p className="text-blue-200 mt-4">
@@ -1341,7 +1342,7 @@ export default function EnhancedAIBusinessManagers() {
               onClick={launchChatAssistant}
               className="group bg-blue-600 hover:bg-blue-700 text-white w-16 h-16 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <Robot className="h-7 w-7 group-hover:scale-110 transition-transform" />
+              <Bot className="h-7 w-7 group-hover:scale-110 transition-transform" />
             </Button>
           </motion.div>
         )}
