@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -41,11 +40,11 @@ export default function AIEbookSales() {
           
           <Button 
             size="lg" 
-            className="text-lg px-8 py-6 h-auto rounded-full animate-pulse"
+            className="text-lg px-4 py-3 md:px-8 md:py-6 h-auto rounded-full animate-pulse"
             onClick={handlePurchase}
           >
             <Download className="mr-2 h-5 w-5" />
-            Get The Book For Only $14.40
+            <span className="whitespace-normal">Send Me The Book + All The Free Bonuses</span>
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </section>
@@ -156,7 +155,7 @@ export default function AIEbookSales() {
             </p>
           </div>
           
-          <div className="mt-8 grid gap-4 mb-8 bg-red-50 p-6 rounded-lg">
+          <div className="mt-8 grid gap-4 bg-red-50 p-6 rounded-lg">
             <h3 className="font-bold text-xl mb-2">Here's what my old life looked like:</h3>
             <div className="flex items-start">
               <span className="mr-3 text-red-500 text-xl flex-shrink-0">🚨</span>
@@ -370,11 +369,11 @@ export default function AIEbookSales() {
             <div className="text-center">
               <Button 
                 size="lg" 
-                className="text-lg px-8 py-6 h-auto rounded-full animate-pulse"
+                className="text-lg px-4 py-3 md:px-8 md:py-6 h-auto rounded-full animate-pulse"
                 onClick={handlePurchase}
               >
                 <Download className="mr-2 h-5 w-5" />
-                Send Me The Book + All The Free Bonuses
+                <span className="whitespace-normal">Send Me The Book + All The Free Bonuses</span>
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
