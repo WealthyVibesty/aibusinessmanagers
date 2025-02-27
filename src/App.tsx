@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Header from "@/components/landing/Header";
@@ -46,6 +47,7 @@ import Finance from "@/pages/industries/Finance";
 
 import AIBusinessManagers from "@/pages/AIBusinessManagers";
 import BusinessAutomation from "@/pages/BusinessAutomation";
+import AIEbookSales from "@/pages/AIEbookSales";
 
 function App() {
   const { toast } = useToast();
@@ -90,6 +92,13 @@ function App() {
               <Route path="/business-automation" element={
                 <div className="animate-fadeIn">
                   <BusinessAutomation />
+                </div>
+              } />
+              
+              {/* Add the new AI Ebook Sales page */}
+              <Route path="/ai-ebook" element={
+                <div className="animate-fadeIn">
+                  <AIEbookSales />
                 </div>
               } />
               

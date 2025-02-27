@@ -1,6 +1,7 @@
+
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Book } from "lucide-react";
 import { useState } from "react";
 import {
   NavigationMenu,
@@ -94,6 +95,10 @@ export default function Header() {
             <Link to="/pricing" className="text-gray-600 hover:text-primary">
               Pricing
             </Link>
+            <Link to="/ai-ebook" className="flex items-center text-gray-600 hover:text-primary">
+              <Book className="mr-1 h-4 w-4" />
+              AI Ebook
+            </Link>
             <Button asChild>
               <Link to="/checkout">Get Started</Link>
             </Button>
@@ -168,6 +173,14 @@ export default function Header() {
               onClick={() => setIsOpen(false)}
             >
               Pricing
+            </Link>
+            <Link
+              to="/ai-ebook"
+              className="flex items-center text-gray-600 hover:text-primary w-full"
+              onClick={() => setIsOpen(false)}
+            >
+              <Book className="mr-1 h-4 w-4" />
+              AI Ebook
             </Link>
             <Button asChild className="w-full">
               <Link to="/checkout" onClick={() => setIsOpen(false)}>
