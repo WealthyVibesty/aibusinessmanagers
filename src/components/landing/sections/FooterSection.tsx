@@ -66,7 +66,7 @@ const FooterSection = () => {
             </p>
             <div className="space-y-5">
               <div className="flex items-center gap-4 group">
-                <div className="bg-primary/10 p-3 rounded-full group-hover:bg-primary/20 transition-colors">
+                <div className="bg-primary/10 p-3 rounded-lg group-hover:bg-primary/20 transition-colors">
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
                 <a 
@@ -77,7 +77,7 @@ const FooterSection = () => {
                 </a>
               </div>
               <div className="flex items-center gap-4 group">
-                <div className="bg-primary/10 p-3 rounded-full group-hover:bg-primary/20 transition-colors">
+                <div className="bg-primary/10 p-3 rounded-lg group-hover:bg-primary/20 transition-colors">
                   <Phone className="h-5 w-5 text-primary" />
                 </div>
                 <a 
@@ -88,7 +88,7 @@ const FooterSection = () => {
                 </a>
               </div>
               <div className="flex items-center gap-4 group">
-                <div className="bg-primary/10 p-3 rounded-full group-hover:bg-primary/20 transition-colors">
+                <div className="bg-primary/10 p-3 rounded-lg group-hover:bg-primary/20 transition-colors">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <a 
@@ -106,10 +106,10 @@ const FooterSection = () => {
           {/* Dropdown Sections */}
           <div className="md:col-span-1 space-y-6">
             {/* Solutions Dropdown */}
-            <div className="rounded-full overflow-hidden shadow-md border border-gray-800 hover:border-primary/40 transition-colors">
+            <div className="overflow-hidden bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-primary/40 transition-colors shadow-lg">
               <button 
                 onClick={() => toggleSection('solutions')}
-                className="w-full px-8 py-4 bg-gray-800/50 backdrop-blur-sm flex justify-between items-center hover:bg-gray-800/80 transition-all duration-300"
+                className="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-800/80 transition-all duration-300"
               >
                 <span className="text-xl font-semibold text-white">Solutions</span>
                 {openSection === 'solutions' ? (
@@ -120,7 +120,7 @@ const FooterSection = () => {
               </button>
               
               <div className={cn(
-                "grid grid-cols-1 sm:grid-cols-2 gap-2 px-8 overflow-hidden transition-all duration-300 bg-gray-800/30 backdrop-blur-sm",
+                "grid grid-cols-1 sm:grid-cols-2 gap-2 px-6 overflow-hidden transition-all duration-300 bg-gray-800/80 backdrop-blur-sm",
                 openSection === 'solutions' ? 'max-h-[500px] py-6' : 'max-h-0 py-0'
               )}>
                 {solutions.map((item) => (
@@ -136,10 +136,10 @@ const FooterSection = () => {
             </div>
 
             {/* Industries Dropdown */}
-            <div className="rounded-full overflow-hidden shadow-md border border-gray-800 hover:border-primary/40 transition-colors">
+            <div className="overflow-hidden bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-primary/40 transition-colors shadow-lg">
               <button 
                 onClick={() => toggleSection('industries')}
-                className="w-full px-8 py-4 bg-gray-800/50 backdrop-blur-sm flex justify-between items-center hover:bg-gray-800/80 transition-all duration-300"
+                className="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-800/80 transition-all duration-300"
               >
                 <span className="text-xl font-semibold text-white">Industries</span>
                 {openSection === 'industries' ? (
@@ -150,7 +150,7 @@ const FooterSection = () => {
               </button>
               
               <div className={cn(
-                "grid grid-cols-1 sm:grid-cols-2 gap-2 px-8 overflow-hidden transition-all duration-300 bg-gray-800/30 backdrop-blur-sm",
+                "grid grid-cols-1 sm:grid-cols-2 gap-2 px-6 overflow-hidden transition-all duration-300 bg-gray-800/80 backdrop-blur-sm",
                 openSection === 'industries' ? 'max-h-[500px] py-6' : 'max-h-0 py-0'
               )}>
                 {industries.map((item) => (
@@ -166,10 +166,10 @@ const FooterSection = () => {
             </div>
 
             {/* Company Dropdown */}
-            <div className="rounded-full overflow-hidden shadow-md border border-gray-800 hover:border-primary/40 transition-colors">
+            <div className="overflow-hidden bg-gray-800/50 rounded-lg border border-gray-700/50 hover:border-primary/40 transition-colors shadow-lg">
               <button 
                 onClick={() => toggleSection('company')}
-                className="w-full px-8 py-4 bg-gray-800/50 backdrop-blur-sm flex justify-between items-center hover:bg-gray-800/80 transition-all duration-300"
+                className="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-800/80 transition-all duration-300"
               >
                 <span className="text-xl font-semibold text-white">Company</span>
                 {openSection === 'company' ? (
@@ -180,7 +180,7 @@ const FooterSection = () => {
               </button>
               
               <div className={cn(
-                "grid grid-cols-1 sm:grid-cols-2 gap-2 px-8 overflow-hidden transition-all duration-300 bg-gray-800/30 backdrop-blur-sm",
+                "grid grid-cols-1 sm:grid-cols-2 gap-2 px-6 overflow-hidden transition-all duration-300 bg-gray-800/80 backdrop-blur-sm",
                 openSection === 'company' ? 'max-h-[500px] py-6' : 'max-h-0 py-0'
               )}>
                 {company.map((item) => (
@@ -209,7 +209,7 @@ const FooterSection = () => {
                 href="https://www.linkedin.com/company/aimarketingprofile/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 bg-gray-800/70 p-3 rounded-full hover:bg-primary/20 hover:text-primary transition-all duration-300"
+                className="text-gray-400 bg-gray-800/70 p-3 rounded-lg hover:bg-primary/20 hover:text-primary transition-all duration-300"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
@@ -223,3 +223,4 @@ const FooterSection = () => {
 };
 
 export default FooterSection;
+
