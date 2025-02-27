@@ -43,7 +43,7 @@ const FooterSection = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-gray-300 py-12 relative overflow-hidden">
+    <footer className="bg-gradient-to-b from-[#1A1F2C] to-[#0F1117] text-gray-300 py-12 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="stars"></div>
