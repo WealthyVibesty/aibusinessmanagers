@@ -47,4 +47,100 @@ export default function StrategyCallForm({ isOpen, onClose }: StrategyCallFormPr
 
       console.log("Strategy call form saved successfully");
       toast({
-        title: "Strategy
+        title: "Strategy Call Request Received!",
+        description: "We'll contact you shortly to discuss your business challenges.",
+      });
+
+      onClose();
+      resetForm();
+    } catch (error) {
+      console.error("Error saving strategy call request:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem submitting your request. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const resetForm = () => {
+    setName("");
+    setEmail("");
+    setPhone("");
+    setCompany("");
+    setChallenges("");
+  };
+
+  return (
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="sm:max-w-[500px] p-6">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-bold text-center">Book a Strategy Call</DialogTitle>
+          <DialogDescription className="text-center text-base">
+            Let's discuss your business challenges and how we can help
+          </DialogDescription>
+        </DialogHeader>
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+          <div className="relative">
+            <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+            <Input
+              placeholder="Your Name *"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="pl-10"
+              required
+            />
+          </div>
+          
+          <div className="relative">
+            <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+            <Input
+              type="email"
+              placeholder="Email Address *"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="pl-10"
+              required
+            />
+          </div>
+
+          <div className="relative">
+            <Phone className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+            <Input
+              type="tel"
+              placeholder="Phone Number *"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="pl-10"
+              required
+            />
+          </div>
+
+          <div className="relative">
+            <Building className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+            <Input
+              placeholder="Company Name"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+              className="pl-10"
+            />
+          </div>
+
+          <div className="relative">
+            <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+            <Textarea
+              placeholder="What challenges are you looking to solve?"
+              value={challenges}
+              onChange={(e) => setChallenges(e.target.value)}
+              className="pl-10 min-h-[100px]"
+            />
+          </div>
+
+          <Button type="submit" className="w-full py-6 text-lg">
+            Schedule Strategy Call
+          </Button>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+}
