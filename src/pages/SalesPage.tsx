@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import ContactCaptureDialog from "@/components/ContactCaptureDialog";
@@ -5,6 +6,7 @@ import { useState } from "react";
 import SEO from "@/components/SEO";
 import DemoRequestForm from "@/components/DemoRequestForm";
 import ROICalculatorDialog from "@/components/ROICalculatorDialog";
+import SocialProofSection from "@/components/landing/sections/SocialProofSection";
 
 export default function SalesPage() {
   const [showContactDialog, setShowContactDialog] = useState(false);
@@ -43,6 +45,30 @@ export default function SalesPage() {
           </p>
         </div>
       </section>
+
+      {/* Social Proof - Mini Version */}
+      <div className="bg-white py-4 border-y border-gray-200">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <div className="flex items-center">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                ))}
+              </div>
+              <span className="ml-2 text-gray-600 text-sm">
+                <span className="font-bold">4.9/5</span> from 200+ reviews
+              </span>
+            </div>
+            <div className="h-6 border-l border-gray-300 hidden md:block"></div>
+            <div className="text-gray-600 text-sm">Trusted by 2,000+ healthcare providers</div>
+            <div className="h-6 border-l border-gray-300 hidden md:block"></div>
+            <div className="text-gray-600 text-sm">Featured in Healthcare Tech Today</div>
+          </div>
+        </div>
+      </div>
 
       {/* Offers Section */}
       <section className="py-16 px-4">
@@ -95,6 +121,14 @@ export default function SalesPage() {
           </div>
         </div>
       </section>
+
+      {/* Full Social Proof Section */}
+      <SocialProofSection 
+        variant="light"
+        showStats={true}
+        showLogos={true}
+        showTestimonials={true}
+      />
 
       {/* Sales Content */}
       <section className="py-16 px-4 bg-gray-50">
@@ -164,6 +198,17 @@ export default function SalesPage() {
             </div>
           </div>
 
+          {/* Customer Logos Section */}
+          <div className="mb-16 text-center">
+            <h3 className="text-2xl font-bold mb-8">Join These Leading Healthcare Providers</h3>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+              <img src="/lovable-uploads/cb8c7243-5b81-4b79-a213-5d169acaede2.png" alt="Healthcare Provider Logo" className="h-12 opacity-70" />
+              <img src="/lovable-uploads/97d27ffa-5e3f-47b1-b550-d47dc525b2cf.png" alt="Healthcare Provider Logo" className="h-12 opacity-70" />
+              <img src="/lovable-uploads/10c6384a-7a56-494c-bc22-6d612b09d170.png" alt="Healthcare Provider Logo" className="h-12 opacity-70" />
+              <img src="/lovable-uploads/4593bf5a-446b-418a-b024-f0848d36a02e.png" alt="Healthcare Provider Logo" className="h-12 opacity-70" />
+            </div>
+          </div>
+
           {/* Final CTA */}
           <div className="text-center">
             <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Patient Support?</h3>
@@ -180,6 +225,40 @@ export default function SalesPage() {
           </div>
         </div>
       </section>
+
+      {/* Additional Social Proof - Dark Variant */}
+      <SocialProofSection 
+        variant="dark"
+        showStats={false}
+        showLogos={false}
+        showTestimonials={true}
+        testimonials={[
+          {
+            name: "Dr. James Wilson",
+            role: "Chief Medical Officer",
+            company: "Pacific Health Network",
+            quote: "After implementing this AI solution, our staff spends more time with patients and less time on the phone. Patient satisfaction is at an all-time high.",
+            avatar: "/lovable-uploads/d10dd79d-414a-4e5e-bfc7-7ff92e56f12f.png",
+            rating: 5
+          },
+          {
+            name: "Lisa Rodriguez",
+            role: "Practice Manager",
+            company: "Family Care Medical Group",
+            quote: "The implementation was seamless and the results were immediate. We reduced wait times by 75% and our staff is much happier.",
+            avatar: "/lovable-uploads/1935155e-b63e-4ae4-a3f6-c51b7db8289a.png",
+            rating: 5
+          },
+          {
+            name: "Robert Thompson",
+            role: "Director of Operations",
+            company: "Midwest Healthcare Alliance",
+            quote: "Our return on investment was realized within the first 3 months. This is the future of healthcare communication.",
+            avatar: "/lovable-uploads/d93e3f1a-ff0c-49a9-922f-a5ffd654647f.png",
+            rating: 5
+          }
+        ]}
+      />
 
       <ContactCaptureDialog 
         isOpen={showContactDialog}
