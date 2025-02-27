@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -24,9 +23,8 @@ export default function PartnersSection() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-900 to-indigo-900/30 relative overflow-hidden">
-      {/* Grid background pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
+    <section className="py-20 bg-gradient-to-b from-white to-blue-50/30 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,#00000005_1px,transparent_1px)] bg-[size:40px_40px]" />
       
       <div className="container px-4 mx-auto text-center relative z-10">
         <motion.div
@@ -36,13 +34,10 @@ export default function PartnersSection() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto"
         >
-          <div className="inline-block px-4 py-1 bg-indigo-600/30 rounded-full text-sm font-medium text-indigo-300 mb-4">
-            REVOLUTIONARY TECHNOLOGY
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
             Our Technology Partners
           </h2>
-          <p className="text-lg text-white/80 mb-12">
+          <p className="text-lg text-gray-600 mb-12">
             Powered by industry leaders in AI and technology
           </p>
         </motion.div>
@@ -57,11 +52,11 @@ export default function PartnersSection() {
               viewport={{ once: true }}
               className="group"
             >
-              <div className="relative w-full h-12 bg-slate-800/50 backdrop-blur-sm border border-indigo-500/20 rounded-lg hover:border-indigo-500/50 transition-all duration-300 p-2">
+              <div className="relative w-full h-12 bg-white/80 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 p-2 backdrop-blur-sm">
                 <img
                   src={partner.logo}
                   alt={partner.name}
-                  className="h-full w-full object-contain opacity-75 group-hover:opacity-100 transition-all duration-300 filter invert"
+                  className="h-full w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             </motion.div>

@@ -53,29 +53,21 @@
 
 /* Add styles for popups and dropdowns */
 [data-radix-popper-content-wrapper] {
-  background: rgba(15, 23, 42, 0.8) !important;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: white !important;
 }
 
 .NavigationMenuContent {
-  background: rgba(15, 23, 42, 0.8) !important;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: white !important;
 }
 
 [role="dialog"] {
-  background: rgba(15, 23, 42, 0.8) !important;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: white !important;
 }
 
 /* Override any transparent backgrounds in navigation menus */
 [role="navigation"] [role="menuitem"],
 [role="navigation"] [role="menu"] {
-  background: rgba(15, 23, 42, 0.8) !important;
-  backdrop-filter: blur(12px);
-  color: #fff;
+  background: white !important;
 }
 
 /* Keep existing animations */
@@ -132,56 +124,3 @@ button:hover + .rocket-flames {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Base styles */
-@layer base {
-  body {
-    @apply bg-gradient-to-b from-slate-900 to-indigo-900/30;
-    @apply text-white;
-    @apply min-h-screen;
-  }
-
-  /* Override header and text colors */
-  h1, h2, h3, h4, h5, h6 {
-    @apply text-white;
-  }
-
-  /* Override link colors */
-  a {
-    @apply text-indigo-300 hover:text-indigo-200 transition-colors;
-  }
-
-  /* Card styles */
-  .card {
-    @apply bg-slate-800/50;
-    @apply backdrop-blur-sm;
-    @apply border border-indigo-500/20;
-    @apply hover:border-indigo-500/50;
-    @apply transition-all duration-300;
-  }
-
-  /* Button styles */
-  button {
-    @apply bg-indigo-600/80;
-    @apply hover:bg-indigo-500/80;
-    @apply text-white;
-    @apply transition-all duration-300;
-  }
-
-  /* Input styles */
-  input, textarea, select {
-    @apply bg-slate-800/50;
-    @apply border border-indigo-500/20;
-    @apply text-white;
-    @apply placeholder:text-gray-400;
-    @apply focus:border-indigo-500/50;
-    @apply transition-all duration-300;
-  }
-}
-
-/* Gradient text utilities */
-@layer utilities {
-  .text-gradient {
-    @apply bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent;
-  }
-}

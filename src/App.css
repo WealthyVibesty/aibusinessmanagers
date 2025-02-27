@@ -5,9 +5,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to bottom, rgb(15, 23, 42), rgba(49, 46, 129, 0.3));
-  color: #fff;
-  min-height: 100vh;
+  background-color: #f9fafb;
+  color: #1A1F2C;
 }
 
 .container {
@@ -18,44 +17,23 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  color: #fff;
+  color: #1A1F2C;
 }
 
 a {
   text-decoration: none;
-  color: #818cf8;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: #6366f1;
+  color: inherit;
 }
 
 button {
   cursor: pointer;
   border-radius: 0.75rem;
-  background: rgba(79, 70, 229, 0.8);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  color: #fff;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background: rgba(99, 102, 241, 0.8);
-  border-color: rgba(99, 102, 241, 0.4);
 }
 
 .card {
   border-radius: 1rem;
-  background: rgba(30, 41, 59, 0.5);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  border-color: rgba(99, 102, 241, 0.4);
-  transform: translateY(-2px);
+  background: white;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 .partner-scroll {
@@ -75,35 +53,10 @@ button:hover {
   height: 60px;
   width: auto;
   transition: all 0.3s ease;
-  filter: invert(1);
-  opacity: 0.8;
 }
 
 .partner-logo:hover {
   transform: scale(1.05);
-  opacity: 1;
-}
-
-/* Glass effect */
-.glass {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  border-radius: 1rem;
-}
-
-/* Modern card styles */
-.modern-card {
-  background: rgba(30, 41, 59, 0.5);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  border-radius: 1rem;
-  transition: all 0.3s ease;
-}
-
-.modern-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(99, 102, 241, 0.4);
 }
 
 /* Base animations */
