@@ -5,9 +5,20 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import VideoBenefitCard from "@/components/landing/VideoBenefitCard";
 import SEO from "@/components/SEO";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
   const navigate = useNavigate();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  
+  useEffect(() => {
+    // Ensure video playback starts on component mount
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.log("Video autoplay failed:", error);
+      });
+    }
+  }, []);
   
   const industries = [
     {
@@ -79,10 +90,26 @@ export default function Home() {
       <section className="relative py-20 sm:py-32 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-100/50 to-white -z-10"></div>
         
-        {/* Background Video Element (placeholder with gradient animation for now) */}
+        {/* Background Video Element */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
+          {/* Fallback background gradient with grid pattern */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-100/30 via-purple-100/30 to-blue-100/30 animate-pulse" style={{ animationDuration: '8s' }}></div>
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#00000008_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+          
+          {/* Video background with overlay */}
+          <div className="absolute inset-0 mix-blend-overlay opacity-60">
+            <video
+              ref={videoRef}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src="/lovable-uploads/ai-automation-demo.mp4" type="video/mp4" />
+              {/* Note: Upload a video file named "ai-automation-demo.mp4" for this to work */}
+            </video>
+          </div>
         </div>
         
         <motion.div 
