@@ -1189,10 +1189,11 @@ export default function EnhancedAIBusinessManagers() {
       {/* CTA Section */}
       <section 
         ref={ctaRef}
-        className="py-24 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 text-white relative overflow-hidden"
+        className="py-24 bg-gradient-to-r from-blue-600 to-blue-800 text-white relative overflow-hidden"
       >
+        {/* Animated background */}
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#ffffff10_1px,transparent_1px)] bg-[size:40px_40px] z-0" />
-        <div className="absolute inset-0 bg-black/20 z-[1]" />
+        <div className="absolute inset-0 bg-gray-900/30 z-[1]" />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
