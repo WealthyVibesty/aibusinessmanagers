@@ -116,7 +116,7 @@ export default function Header() {
           <div
             className={`${
               isOpen ? "block" : "hidden"
-            } md:hidden absolute top-full left-0 right-0 flex-col items-start bg-white border-b border-gray-200 p-4 space-y-4 shadow-lg`}
+            } md:hidden absolute top-full left-0 right-0 flex-col items-start bg-white border-b border-gray-200 p-4 space-y-4 shadow-lg mobile-menu`}
           >
             {/* Social Proof Bar for Mobile */}
             <div className="w-full bg-gray-50 p-3 rounded-lg mb-4">
@@ -147,7 +147,7 @@ export default function Header() {
                   ▼
                 </span>
               </button>
-              <div className={`${isIndustriesOpen ? 'block' : 'hidden'} pl-4 mt-2 space-y-2`}>
+              <div className={`${isIndustriesOpen ? 'block' : 'hidden'} pl-4 mt-2 space-y-2 bg-white`}>
                 {industries.map((industry) => (
                   <Link
                     key={industry.path}

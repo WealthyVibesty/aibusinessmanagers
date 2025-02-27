@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -70,6 +71,12 @@
   background: white !important;
 }
 
+/* Fix mobile menu dropdown */
+.mobile-menu {
+  background: white !important;
+  z-index: 100;
+}
+
 /* Keep existing animations */
 .rocket-flames {
   position: absolute;
@@ -119,8 +126,3 @@ button:hover + .rocket-flames {
     opacity: 0.3;
   }
 }
-
-/* Keep existing styles */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
