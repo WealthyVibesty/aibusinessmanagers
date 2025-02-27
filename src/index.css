@@ -54,26 +54,26 @@
 
 /* Add styles for popups and dropdowns */
 [data-radix-popper-content-wrapper] {
-  background: transparent !important;
+  background: white !important;
 }
 
 .NavigationMenuContent {
-  background: transparent !important;
+  background: white !important;
 }
 
 [role="dialog"] {
-  background: transparent !important;
+  background: white !important;
 }
 
 /* Override any transparent backgrounds in navigation menus */
 [role="navigation"] [role="menuitem"],
 [role="navigation"] [role="menu"] {
-  background: transparent !important;
+  background: white !important;
 }
 
 /* Fix mobile menu dropdown */
 .mobile-menu {
-  background: #0f172a !important;
+  background: white !important;
   z-index: 100;
 }
 
