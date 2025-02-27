@@ -2,12 +2,9 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 
 export default function BusinessAutomation() {
-  const navigate = useNavigate();
-
   return (
     <>
       <SEO 
@@ -17,7 +14,7 @@ export default function BusinessAutomation() {
       />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-slate-900 to-slate-800 relative overflow-hidden">
+      <section className="pt-32 pb-20 bg-gradient-to-b from-slate-950 to-slate-900 relative overflow-hidden">
         <div className="stars absolute inset-0"></div>
         <div className="twinkling absolute inset-0"></div>
         <div className="container mx-auto px-4">
@@ -68,7 +65,7 @@ export default function BusinessAutomation() {
       </section>
 
       {/* Key Features */}
-      <section className="py-20 bg-slate-900">
+      <section className="py-20 bg-slate-950">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center text-white">Key Features</h2>
@@ -95,7 +92,7 @@ export default function BusinessAutomation() {
                   description: "From setup to ongoing support, we handle everything while you watch your business thrive."
                 }
               ].map((feature, index) => (
-                <div key={index} className="p-6 bg-slate-800 rounded-lg border border-slate-700 hover:border-blue-600/50 transition-colors">
+                <div key={index} className="p-6 bg-slate-900 rounded-lg border border-slate-800 hover:border-blue-600/50 transition-colors">
                   <h3 className="text-xl font-semibold mb-4 text-white">{feature.title}</h3>
                   <p className="text-gray-300">{feature.description}</p>
                 </div>
@@ -106,7 +103,7 @@ export default function BusinessAutomation() {
       </section>
 
       {/* Case Study */}
-      <section className="py-20 bg-slate-800">
+      <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center text-white">
@@ -143,7 +140,7 @@ export default function BusinessAutomation() {
                   { label: "Revenue Growth", value: "$350,000" },
                   { label: "Hours Saved Monthly", value: "180" }
                 ].map((metric, index) => (
-                  <div key={index} className="p-6 bg-slate-700 rounded-lg text-center border border-slate-600 hover:border-blue-500/30 transition-colors">
+                  <div key={index} className="p-6 bg-slate-800 rounded-lg text-center border border-slate-700 hover:border-blue-500/30 transition-colors">
                     <div className="text-2xl font-bold text-blue-400 mb-2">{metric.value}</div>
                     <div className="text-sm text-gray-300">{metric.label}</div>
                   </div>
@@ -155,7 +152,7 @@ export default function BusinessAutomation() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-900 via-purple-900 to-blue-900">
+      <section className="py-20 bg-gradient-to-r from-blue-900/80 via-purple-900/80 to-blue-900/80">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
@@ -177,7 +174,7 @@ export default function BusinessAutomation() {
       </section>
 
       {/* Partners Section */}
-      <section className="py-20 bg-slate-900">
+      <section className="py-20 bg-slate-950">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-12 text-white">Trusted by industry leaders</h2>
           <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -191,7 +188,7 @@ export default function BusinessAutomation() {
               "OpenAI",
               "Eleven Labs"
             ].map((partner, index) => (
-              <div key={index} className="flex items-center justify-center p-4 bg-slate-800 rounded-lg border border-slate-700">
+              <div key={index} className="flex items-center justify-center p-4 bg-slate-900 rounded-lg border border-slate-800">
                 <span className="font-medium text-gray-300">{partner}</span>
               </div>
             ))}
@@ -200,7 +197,7 @@ export default function BusinessAutomation() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-slate-800">
+      <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-white">What Clients Are Saying</h2>
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
@@ -214,7 +211,7 @@ export default function BusinessAutomation() {
                 author: "VentureFlow Solutions"
               }
             ].map((testimonial, index) => (
-              <div key={index} className="p-6 bg-slate-700 rounded-lg border border-slate-600 hover:border-blue-500/30 transition-colors">
+              <div key={index} className="p-6 bg-slate-800 rounded-lg border border-slate-700 hover:border-blue-500/30 transition-colors">
                 <div className="flex mb-4">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
@@ -229,7 +226,7 @@ export default function BusinessAutomation() {
       </section>
 
       {/* Disclaimer */}
-      <section className="py-12 bg-slate-900 border-t border-slate-800">
+      <section className="py-12 bg-slate-950 border-t border-slate-900">
         <div className="container mx-auto px-4">
           <p className="max-w-4xl mx-auto text-center text-gray-400">
             This offer is ideal for businesses earning $5,000+ per month, marketing agencies, or operations teams that need streamlined, scalable solutions.
