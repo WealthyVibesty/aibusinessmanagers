@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Target, Users, Award, CheckCircle } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function AboutUs() {
   return (
@@ -45,14 +46,57 @@ export default function AboutUs() {
         <section className="py-20 px-6 sm:px-12 bg-white">
           <div className="container mx-auto">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-slate-900 text-center">Our Mission</h2>
-              <p className="text-lg text-gray-700 leading-relaxed mb-12">
-                At AI Business Managers, our mission is to democratize access to advanced AI technology for businesses of all sizes. We believe that the power of artificial intelligence should not be limited to large corporations with massive resources, but should be available to every entrepreneur and business leader looking to grow their organization and better serve their customers.
-              </p>
+              {/* Enhanced Our Mission Section */}
+              <div className="mb-20 relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl -z-10"></div>
+                <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-3xl overflow-hidden border border-blue-100">
+                  <div className="flex flex-col md:flex-row">
+                    <div className="w-full md:w-2/5 bg-gradient-to-br from-blue-600 to-indigo-700 p-8 flex items-center justify-center">
+                      <div className="text-center">
+                        <Target className="h-20 w-20 text-white/90 mx-auto mb-4" />
+                        <h2 className="text-3xl font-bold text-white mb-2">Our Mission</h2>
+                        <div className="w-16 h-1 bg-blue-300 mx-auto rounded-full"></div>
+                      </div>
+                    </div>
+                    <div className="w-full md:w-3/5 p-8 md:p-10">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true }}
+                      >
+                        <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                          At AI Business Managers, our mission is to democratize access to advanced AI technology for businesses of all sizes. We believe that the power of artificial intelligence should not be limited to large corporations with massive resources.
+                        </p>
+                        <p className="text-lg text-gray-700 leading-relaxed">
+                          We strive to make AI solutions available to every entrepreneur and business leader looking to grow their organization and better serve their customers.
+                        </p>
+                        <div className="mt-8 flex flex-wrap gap-4">
+                          <div className="flex items-center">
+                            <CheckCircle className="h-5 w-5 text-blue-600 mr-2" />
+                            <span className="text-gray-700">Accessible Solutions</span>
+                          </div>
+                          <div className="flex items-center">
+                            <CheckCircle className="h-5 w-5 text-blue-600 mr-2" />
+                            <span className="text-gray-700">Innovative Technology</span>
+                          </div>
+                          <div className="flex items-center">
+                            <CheckCircle className="h-5 w-5 text-blue-600 mr-2" />
+                            <span className="text-gray-700">Business Growth</span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               
               <div className="grid md:grid-cols-2 gap-12 mb-16">
                 <div className="bg-slate-50 p-8 rounded-xl shadow-sm">
-                  <h3 className="text-2xl font-bold mb-4 text-slate-800">Our Values</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-slate-800 flex items-center">
+                    <Award className="h-6 w-6 text-blue-600 mr-2" />
+                    Our Values
+                  </h3>
                   <ul className="space-y-4">
                     <li className="flex items-start">
                       <span className="text-blue-600 font-bold mr-2">•</span>
@@ -74,7 +118,10 @@ export default function AboutUs() {
                 </div>
                 
                 <div className="bg-slate-50 p-8 rounded-xl shadow-sm">
-                  <h3 className="text-2xl font-bold mb-4 text-slate-800">Our Approach</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-slate-800 flex items-center">
+                    <Users className="h-6 w-6 text-blue-600 mr-2" />
+                    Our Approach
+                  </h3>
                   <p className="text-gray-700 mb-4">
                     We combine technical expertise with business acumen to create practical AI solutions that address real business challenges. Our approach is collaborative, working closely with clients to understand their unique needs and develop customized solutions that deliver measurable results.
                   </p>
@@ -103,14 +150,17 @@ export default function AboutUs() {
                     bio: "Taylor ensures seamless delivery of our solutions, managing our operations and client success programs."
                   }
                 ].map((member, index) => (
-                  <div key={index} className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-xl shadow-sm text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-                      <span className="text-blue-600 text-2xl font-bold">{member.name.charAt(0)}</span>
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-800 mb-1">{member.name}</h3>
-                    <p className="text-blue-600 font-medium mb-3">{member.title}</p>
-                    <p className="text-gray-700 text-sm">{member.bio}</p>
-                  </div>
+                  <Card key={index} className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div className="h-3 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+                    <CardContent className="p-6">
+                      <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full flex items-center justify-center">
+                        <span className="text-blue-600 text-2xl font-bold">{member.name.charAt(0)}</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-slate-800 mb-1 text-center">{member.name}</h3>
+                      <p className="text-blue-600 font-medium mb-3 text-center">{member.title}</p>
+                      <p className="text-gray-700 text-sm text-center">{member.bio}</p>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
             </div>
