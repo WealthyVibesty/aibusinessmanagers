@@ -51,7 +51,7 @@ export default function AboutUs() {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl -z-10"></div>
                 <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-3xl overflow-hidden border border-blue-100">
                   <div className="flex flex-col md:flex-row">
-                    <div className="w-full md:w-2/5 bg-gradient-to-br from-blue-600 to-indigo-700 p-8 flex items-center justify-center mx-0 px-0 py-[29px] my-[2px]">
+                    <div className="w-full md:w-2/5 bg-gradient-to-br from-blue-600 to-indigo-700 p-8 flex items-center justify-center mx-0 px-0 py-[33px] my-0">
                       <div className="text-center">
                         <Target className="h-20 w-20 text-white/90 mx-auto mb-4" />
                         <h2 className="text-3xl font-bold text-white mb-2">Our Mission</h2>
