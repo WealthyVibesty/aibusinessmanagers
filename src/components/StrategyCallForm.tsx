@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -48,7 +47,7 @@ export default function StrategyCallForm({ isOpen, onClose }: StrategyCallFormPr
       console.log("Strategy call form saved successfully");
       toast({
         title: "Strategy Call Request Received!",
-        description: "We'll contact you shortly to discuss your business challenges.",
+        description: "We'll contact you shortly to schedule your call.",
       });
 
       onClose();
@@ -73,71 +72,71 @@ export default function StrategyCallForm({ isOpen, onClose }: StrategyCallFormPr
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[95vw] w-full sm:max-w-[500px] p-4 sm:p-6 mx-4 rounded-lg">
-        <DialogHeader className="space-y-2">
-          <DialogTitle className="text-xl sm:text-2xl font-bold text-center">Book a Strategy Call</DialogTitle>
-          <DialogDescription className="text-center text-sm sm:text-base">
-            Let's discuss your business challenges and how we can help
+      <DialogContent className="sm:max-w-[500px] p-6">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-bold text-center">Schedule Your Free Strategy Call</DialogTitle>
+          <DialogDescription className="text-center text-base">
+            Book your 30-minute consultation to discuss how AI can transform your operations
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 mt-3 sm:mt-4">
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <div className="relative">
-            <User className="absolute left-3 top-3 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+            <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
             <Input
               placeholder="Your Name *"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="pl-9 sm:pl-10 text-sm sm:text-base h-10 sm:h-12"
+              className="pl-10"
               required
             />
           </div>
           
           <div className="relative">
-            <Mail className="absolute left-3 top-3 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+            <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
             <Input
               type="email"
               placeholder="Email Address *"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="pl-9 sm:pl-10 text-sm sm:text-base h-10 sm:h-12"
+              className="pl-10"
               required
             />
           </div>
 
           <div className="relative">
-            <Phone className="absolute left-3 top-3 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+            <Phone className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
             <Input
               type="tel"
               placeholder="Phone Number *"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="pl-9 sm:pl-10 text-sm sm:text-base h-10 sm:h-12"
+              className="pl-10"
               required
             />
           </div>
 
           <div className="relative">
-            <Building className="absolute left-3 top-3 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+            <Building className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
             <Input
               placeholder="Company Name"
               value={company}
               onChange={(e) => setCompany(e.target.value)}
-              className="pl-9 sm:pl-10 text-sm sm:text-base h-10 sm:h-12"
+              className="pl-10"
             />
           </div>
 
           <div className="relative">
-            <MessageSquare className="absolute left-3 top-3 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+            <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
             <Textarea
-              placeholder="What challenges are you looking to solve?"
+              placeholder="What challenges would you like to discuss? (optional)"
               value={challenges}
               onChange={(e) => setChallenges(e.target.value)}
-              className="pl-9 sm:pl-10 text-sm sm:text-base min-h-[80px] sm:min-h-[100px]"
+              className="pl-10 min-h-[100px]"
             />
           </div>
 
-          <Button type="submit" className="w-full py-2 sm:py-6 text-base sm:text-lg h-auto">
-            Schedule Strategy Call
+          <Button type="submit" className="w-full py-6 text-lg">
+            Schedule My Strategy Call
           </Button>
         </form>
       </DialogContent>

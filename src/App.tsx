@@ -46,7 +46,6 @@ import Transportation from "@/pages/industries/Transportation";
 import Finance from "@/pages/industries/Finance";
 
 import AIBusinessManagers from "@/pages/AIBusinessManagers";
-import EnhancedAIBusinessManagers from "@/pages/EnhancedAIBusinessManagers";
 import BusinessAutomation from "@/pages/BusinessAutomation";
 import AIEbookSales from "@/pages/AIEbookSales";
 import AIBusinessPartner from "@/pages/AIBusinessPartner";
@@ -90,13 +89,6 @@ function App() {
           <Header />
           <div className="flex-grow page-content">
             <Routes>
-              {/* Add the new Enhanced AI Business Managers route */}
-              <Route path="/enhanced-ai-business-managers" element={
-                <div className="animate-fadeIn">
-                  <EnhancedAIBusinessManagers />
-                </div>
-              } />
-
               {/* Add the new AI Business Partner route */}
               <Route path="/ai-business-partner" element={
                 <div className="animate-fadeIn">
@@ -291,11 +283,7 @@ function App() {
                   <CheckoutFlow />
                 </div>
               } />
-              <Route path="/sales" element={
-                <div className="animate-fadeIn">
-                  <SalesPage />
-                </div>
-              } />
+              <Route path="/sales" element={<Navigate to="/checkout" replace />} />
               
               {/* Authentication Routes */}
               <Route path="/login" element={
