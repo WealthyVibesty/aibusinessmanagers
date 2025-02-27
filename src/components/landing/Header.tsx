@@ -1,6 +1,7 @@
+
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
@@ -55,7 +56,7 @@ export default function Header() {
             {/* Mobile menu button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+              className="md:hidden text-gray-600 hover:text-gray-900 p-2"
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -114,22 +115,22 @@ export default function Header() {
           {/* Mobile Navigation */}
           <div
             className={`${
-              isOpen ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0 pointer-events-none"
-            } md:hidden fixed top-[56px] left-0 right-0 flex-col items-start bg-white border-b border-gray-200 p-4 space-y-4 shadow-lg mobile-menu transition-all duration-200 ease-in-out`}
+              isOpen ? "block" : "hidden"
+            } md:hidden absolute top-full left-0 right-0 flex-col items-start bg-white border-b border-gray-200 p-4 space-y-4 shadow-lg mobile-menu`}
           >
             {/* Social Proof Bar for Mobile */}
-            <div className="w-full bg-gray-50 p-4 rounded-lg mb-4">
-              <div className="text-center text-sm font-medium text-gray-600 mb-3">TRUSTED BY 2,000+ BUSINESSES</div>
-              <div className="flex justify-around items-center gap-4">
-                <img src="/lovable-uploads/cb8c7243-5b81-4b79-a213-5d169acaede2.png" alt="Client Logo" className="h-6 opacity-70 hover:opacity-100 transition-opacity" />
-                <img src="/lovable-uploads/97d27ffa-5e3f-47b1-b550-d47dc525b2cf.png" alt="Client Logo" className="h-6 opacity-70 hover:opacity-100 transition-opacity" />
-                <img src="/lovable-uploads/97d27ffa-5e3f-47b1-b550-d47dc525b2cf.png" alt="Client Logo" className="h-6 opacity-70 hover:opacity-100 transition-opacity" />
+            <div className="w-full bg-gray-50 p-3 rounded-lg mb-4">
+              <div className="text-center text-xs font-medium text-gray-500">TRUSTED BY 2,000+ BUSINESSES</div>
+              <div className="flex justify-around mt-2">
+                <img src="/lovable-uploads/cb8c7243-5b81-4b79-a213-5d169acaede2.png" alt="Client Logo" className="h-5 opacity-70" />
+                <img src="/lovable-uploads/97d27ffa-5e3f-47b1-b550-d47dc525b2cf.png" alt="Client Logo" className="h-5 opacity-70" />
+                <img src="/lovable-uploads/97d27ffa-5e3f-47b1-b550-d47dc525b2cf.png" alt="Client Logo" className="h-5 opacity-70" />
               </div>
             </div>
             
             <Link
               to="/business-automation"
-              className="text-gray-700 hover:text-primary w-full py-3 px-2 rounded-md hover:bg-gray-50 transition-colors text-[15px] font-medium"
+              className="text-gray-600 hover:text-primary w-full py-2"
               onClick={() => setIsOpen(false)}
             >
               Business Automation
@@ -139,52 +140,59 @@ export default function Header() {
             <div className="w-full">
               <button
                 onClick={toggleIndustries}
-                className="flex justify-between items-center w-full text-gray-700 hover:text-primary py-3 px-2 rounded-md hover:bg-gray-50 transition-colors text-[15px] font-medium"
+                className="flex justify-between items-center w-full text-gray-600 hover:text-primary py-2"
               >
                 <span>Industries</span>
-                {isIndustriesOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                <span className={`transform transition-transform ${isIndustriesOpen ? 'rotate-180' : ''}`}>
+                  ▼
+                </span>
               </button>
-              <div 
-                className={`${
-                  isIndustriesOpen 
-                    ? 'max-h-[400px] opacity-100' 
-                    : 'max-h-0 opacity-0'
-                } overflow-hidden transition-all duration-300 ease-in-out`}
-              >
-                <div className="pl-4 py-2 space-y-1">
-                  {industries.map((industry) => (
-                    <Link
-                      key={industry.path}
-                      to={industry.path}
-                      className="block text-gray-600 hover:text-primary py-2 px-2 rounded-md hover:bg-gray-50 transition-colors text-[15px]"
-                      onClick={() => {
-                        setIsOpen(false);
-                        setIsIndustriesOpen(false);
-                      }}
-                    >
-                      {industry.name}
-                    </Link>
-                  ))}
-                </div>
+              <div className={`${isIndustriesOpen ? 'block' : 'hidden'} pl-4 mt-2 space-y-2 bg-white`}>
+                {industries.map((industry) => (
+                  <Link
+                    key={industry.path}
+                    to={industry.path}
+                    className="block text-gray-600 hover:text-primary py-1"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setIsIndustriesOpen(false);
+                    }}
+                  >
+                    {industry.name}
+                  </Link>
+                ))}
               </div>
             </div>
 
-            {['Solutions', 'About', 'Demo', 'Pricing'].map((item) => (
-              <Link
-                key={item}
-                to={`/${item.toLowerCase()}`}
-                className="text-gray-700 hover:text-primary w-full py-3 px-2 rounded-md hover:bg-gray-50 transition-colors text-[15px] font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                {item}
-              </Link>
-            ))}
-
-            <Button 
-              asChild 
-              className="w-full mt-4 shadow-sm font-medium"
-              size="lg"
+            <Link
+              to="/solutions"
+              className="text-gray-600 hover:text-primary w-full py-2"
+              onClick={() => setIsOpen(false)}
             >
+              Solutions
+            </Link>
+            <Link
+              to="/about"
+              className="text-gray-600 hover:text-primary w-full py-2"
+              onClick={() => setIsOpen(false)}
+            >
+              About
+            </Link>
+            <Link
+              to="/demo"
+              className="text-gray-600 hover:text-primary w-full py-2"
+              onClick={() => setIsOpen(false)}
+            >
+              Demo
+            </Link>
+            <Link
+              to="/pricing"
+              className="text-gray-600 hover:text-primary w-full py-2"
+              onClick={() => setIsOpen(false)}
+            >
+              Pricing
+            </Link>
+            <Button asChild className="w-full mt-4">
               <Link to="/checkout" onClick={() => setIsOpen(false)}>
                 Get Started
               </Link>
