@@ -1,8 +1,10 @@
+
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Stethoscope, UtensilsCrossed, Hotel, Car, Wallet, MessageSquare, Layers, DollarSign } from "lucide-react";
+import { ArrowRight, Stethoscope, UtensilsCrossed, Hotel, Car, Wallet, MessageSquare, Layers, DollarSign, Calendar, GraduationCap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import VideoBenefitCard from "@/components/landing/VideoBenefitCard";
+import SEO from "@/components/SEO";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -68,47 +70,92 @@ export default function Home() {
 
   return (
     <div>
+      <SEO 
+        title="AI That Works FOR You—24/7 | No Learning Curve. No Extra Work" 
+        description="AI automation is replacing manual workflows, cutting costs, and scaling businesses faster than ever. We set it up, so you don't have to."
+      />
+      
       {/* Hero Section */}
-      <section className="relative py-20 sm:py-32 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="text-center space-y-6 sm:space-y-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight max-w-[90%] mx-auto">
-              See How AI Business Managers Can{' '}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-                Transform Your Operations Today
-              </span>
-            </h1>
+      <section className="relative py-20 sm:py-32 px-4 sm:px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-100/50 to-white -z-10"></div>
+        
+        {/* Background Video Element (placeholder with gradient animation for now) */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-100/30 via-purple-100/30 to-blue-100/30 animate-pulse" style={{ animationDuration: '8s' }}></div>
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,#00000008_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        </div>
+        
+        <motion.div 
+          className="max-w-6xl mx-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="text-center space-y-6 sm:space-y-8">
+            {/* Hook */}
+            <motion.p 
+              className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-1 rounded-full text-sm sm:text-base font-medium mb-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              AI isn't the future—it's the present. Let's implement it for your business—today.
+            </motion.p>
             
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto px-4">
-              Watch our AI in action and discover how it can revolutionize your business operations
-            </p>
+            {/* Headline */}
+            <motion.h1 
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight max-w-[90%] mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              AI That Works <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">FOR You—24/7.</span>
+              <br />
+              <span className="text-3xl sm:text-4xl md:text-5xl">No Learning Curve. No Extra Work.</span>
+            </motion.h1>
+            
+            {/* Subheading */}
+            <motion.p 
+              className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto px-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              AI automation is replacing manual workflows, cutting costs, and scaling businesses faster than ever. 
+              <span className="font-semibold"> We set it up, so you don't have to.</span>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
+            {/* CTAs */}
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 pt-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              {/* Primary CTA */}
               <Button 
                 size="lg"
                 onClick={() => navigate("/demo")}
                 className="text-lg px-8 py-6 h-auto rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all group w-full sm:w-auto"
               >
-                Create Bot Now
+                <Calendar className="mr-2 h-5 w-5" />
+                Book Your AI Consultation
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               
+              {/* Secondary CTA */}
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => navigate("/pricing")}
-                className="text-lg px-8 py-6 h-auto rounded-full hover:bg-gray-100 transition-all w-full sm:w-auto text-black border-black"
+                onClick={() => navigate("/courses")}
+                className="text-lg px-8 py-6 h-auto rounded-full hover:bg-gray-100 transition-all w-full sm:w-auto text-black border-black group"
               >
-                View Pricing
+                <GraduationCap className="mr-2 h-5 w-5" />
+                Join AI Business Managers University
               </Button>
-            </div>
-          </motion.div>
-        </div>
+            </motion.div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Benefits Section with Animated Icons */}
@@ -116,8 +163,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
             className="text-center mb-12"
           >
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-black">
@@ -147,8 +195,9 @@ export default function Home() {
         <motion.div 
           className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
         >
           <div className="p-12 rounded-3xl bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl">
             <h2 className="text-3xl font-bold mb-6 text-white">
@@ -176,8 +225,9 @@ export default function Home() {
           <motion.div 
             className="text-center mb-12"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-black">
               Industries We Serve
@@ -194,8 +244,9 @@ export default function Home() {
                 className="group cursor-pointer"
                 onClick={() => navigate(industry.path)}
                 initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
                 <div className={`p-6 rounded-xl ${industry.color} shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1`}>
                   <div className="flex flex-col items-center gap-4">
